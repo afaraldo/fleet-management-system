@@ -7,18 +7,17 @@ Things you may want to cover:
 
 * Ruby version: ruby-3.0.0
 
-install rvm 
+rvm use 3.0.0@fleet-management-system 
 
 * System dependencies
+
+bundle install
 
 * Configuration
 
 * Database creation
-* Install podman-compose with
 
-dnf install podman-compose
-
-podman-compose up
+podman-compose up/down
 
 * Database initialization
 
