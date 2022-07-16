@@ -11,7 +11,7 @@
         "pathToBundler": "${workspaceFolder}/bin/bundle",
         "showDebuggerOutput": true,
         "pathToRDebugIDE": "/${workspaceFolder}/bin/rdebug-ide",
-        "args": ["s"]
+        "args": ["server"]
       },
       {
         "name": "Run tests",
