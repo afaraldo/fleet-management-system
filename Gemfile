@@ -64,6 +64,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-thread_safety', require: false
   gem 'ruby-debug-ide', require: false
