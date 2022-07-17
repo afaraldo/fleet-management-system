@@ -13,6 +13,7 @@ gem 'sprockets-rails'
 gem "activerecord", ">= 7.0.3.1"
 
 # This line is required for dependabot security alerts [CVE-2022-32209]
+# hola
 gem "rails-html-sanitizer", ">= 1.4.3"
 
 # Use postgresql as the database for Active Record
