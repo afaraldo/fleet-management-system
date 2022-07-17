@@ -11,6 +11,6 @@ AllCops:
   Exclude:
     - bin/bundle
     - rubocop/*
-    - vendor/**/*.rb
+    - vendor/**/*
     - gemfiles/vendor/bundle/**/*
     - vendor/bundle/**/*
