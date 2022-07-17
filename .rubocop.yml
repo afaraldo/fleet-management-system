@@ -1,5 +1,6 @@
 Style/FrozenStringLiteralComment:
   Enabled: false
 AllCops:
+  NewCops: enable
   Exclude:
     - 'bin/bundle'

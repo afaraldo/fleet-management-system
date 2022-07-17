@@ -10,11 +10,11 @@ gem 'rails', '~> 7.0.3'
 gem 'sprockets-rails'
 
 # This line is required for dependabot security alerts [CVE-2022-32224]
-gem "activerecord", ">= 7.0.3.1"
+gem 'activerecord', '>= 7.0.3.1'
 
 # This line is required for dependabot security alerts [CVE-2022-32209]
 # hola
-gem "rails-html-sanitizer", ">= 1.4.3"
+gem 'rails-html-sanitizer', '>= 1.4.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -58,12 +58,14 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'brakeman', '~> 5.2.3'
-  gem 'rubocop-discourse'
-  gem 'rubocop'
   gem 'bundler-audit', '~> 0.9.1'
   gem 'debase', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'rubocop', '~> 1.31', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-thread_safety', require: false
   gem 'ruby-debug-ide', require: false
   gem 'solargraph', require: false
 end
