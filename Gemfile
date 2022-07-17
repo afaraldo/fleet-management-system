@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -12,10 +10,11 @@ gem 'rails', '~> 7.0.3'
 gem 'sprockets-rails'
 
 # This line is required for dependabot security alerts [CVE-2022-32224]
-gem "activerecord", ">= 7.0.3.1"
+gem 'activerecord', '>= 7.0.3.1'
 
 # This line is required for dependabot security alerts [CVE-2022-32209]
-gem "rails-html-sanitizer", ">= 1.4.3"
+# hola
+gem 'rails-html-sanitizer', '>= 1.4.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -63,6 +62,11 @@ group :development, :test do
   gem 'debase', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'rubocop', '~> 1.31', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-thread_safety', require: false
   gem 'ruby-debug-ide', require: false
   gem 'solargraph', require: false
 end
