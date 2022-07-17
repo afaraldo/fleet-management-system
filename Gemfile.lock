@@ -263,6 +263,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord (>= 7.0.3.1)
   bootsnap
   brakeman (~> 5.2.3)
   bundler-audit (~> 0.9.1)
@@ -273,6 +274,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3)
+  rails-html-sanitizer (>= 1.4.3)
   rspec-rails (~> 6.0.0.rc1)
   ruby-debug-ide
   solargraph
