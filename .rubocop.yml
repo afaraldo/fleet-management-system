@@ -12,3 +12,5 @@ AllCops:
     - bin/bundle
     - rubocop/*
     - vendor/**/*.rb
+    - gemfiles/vendor/bundle/**/*
+    - vendor/bundle/**/*
