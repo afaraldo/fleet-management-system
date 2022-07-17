@@ -9,6 +9,12 @@ gem "rails", "~> 7.0.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+# This line is required for dependabot security alerts [CVE-2022-32224]
+gem "activerecord", ">= 7.0.3.1"
+
+# This line is required for dependabot security alerts [CVE-2022-32209]
+gem "rails-html-sanitizer", ">= 1.4.3"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
