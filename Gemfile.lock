@@ -264,7 +264,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  brakeman
+  brakeman (~> 5.2.3)
   bundler-audit (~> 0.9.1)
   debase
   debug
