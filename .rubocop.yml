@@ -1,0 +1,16 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  #- rubocop-rake
+  - rubocop-thread_safety
+Style/FrozenStringLiteralComment:
+  Enabled: false
+AllCops:
+  NewCops: enable
+  Exclude:
+    - bin/bundle
+    - rubocop/*
+    - vendor/**/*
+    - gemfiles/vendor/bundle/**/*
+    - vendor/bundle/**/*
