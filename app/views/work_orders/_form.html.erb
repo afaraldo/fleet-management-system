@@ -12,18 +12,23 @@
   <% end %>
 
   <div>
-    <%= form.label :fecha, style: "display: block" %>
-    <%= form.date_field :fecha %>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
   </div>
 
   <div>
-    <%= form.label :solicitado_por, style: "display: block" %>
-    <%= form.text_field :solicitado_por %>
+    <%= form.label :requested_by, style: "display: block" %>
+    <%= form.text_field :requested_by %>
   </div>
 
   <div>
-    <%= form.label :encargado, style: "display: block" %>
-    <%= form.text_field :encargado %>
+    <%= form.label :reason, style: "display: block" %>
+    <%= form.text_field :reason %>
+  </div>
+
+  <div>
+    <%= form.label :manager, style: "display: block" %>
+    <%= form.text_field :manager %>
   </div>
 
   <div>

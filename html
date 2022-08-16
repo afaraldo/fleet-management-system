@@ -1,0 +1,266 @@
+Inspecting 51 files
+.....CCC.CCC.......CC.CC.CC...................CCCC.
+
+Offenses:
+
+app/controllers/cars_controller.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CarsController.
+class CarsController < ApplicationController
+^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:2:36: C: [Correctable] Layout/SpaceInsidePercentLiteralDelimiters: Do not use spaces inside percent literal delimiters.
+  before_action :set_car, only: %i[ show edit update destroy ]
+                                   ^
+app/controllers/cars_controller.rb:2:61: C: [Correctable] Layout/SpaceInsidePercentLiteralDelimiters: Do not use spaces inside percent literal delimiters.
+  before_action :set_car, only: %i[ show edit update destroy ]
+                                                            ^
+app/controllers/cars_controller.rb:10:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def show ...
+  ^^^^^^^^
+app/controllers/cars_controller.rb:19:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def edit ...
+  ^^^^^^^^
+app/controllers/cars_controller.rb:28:58: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+        format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:28:58: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.html { redirect_to car_url(@car), notice: "Car was successfully created." }
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:41:58: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+        format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:41:58: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.html { redirect_to car_url(@car), notice: "Car was successfully updated." }
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:55:51: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+      format.html { redirect_to cars_url, notice: "Car was successfully destroyed." }
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:55:51: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      format.html { redirect_to cars_url, notice: "Car was successfully destroyed." }
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/cars_controller.rb:60:3: C: [Correctable] Layout/EmptyLinesAroundAccessModifier: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/cars_controller.rb:62:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def set_car
+^^^^
+app/controllers/cars_controller.rb:62:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def set_car ...
+    ^^^^^^^^^^^
+app/controllers/cars_controller.rb:67:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def car_params
+^^^^
+app/controllers/cars_controller.rb:67:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def car_params ...
+    ^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class EmployeesController.
+class EmployeesController < ApplicationController
+^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:2:41: C: [Correctable] Layout/SpaceInsidePercentLiteralDelimiters: Do not use spaces inside percent literal delimiters.
+  before_action :set_employee, only: %i[ show edit update destroy ]
+                                        ^
+app/controllers/employees_controller.rb:2:66: C: [Correctable] Layout/SpaceInsidePercentLiteralDelimiters: Do not use spaces inside percent literal delimiters.
+  before_action :set_employee, only: %i[ show edit update destroy ]
+                                                                 ^
+app/controllers/employees_controller.rb:10:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def show ...
+  ^^^^^^^^
+app/controllers/employees_controller.rb:19:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def edit ...
+  ^^^^^^^^
+app/controllers/employees_controller.rb:28:68: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:28:68: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully created." }
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:41:68: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully updated." }
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:41:68: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.html { redirect_to employee_url(@employee), notice: "Employee was successfully updated." }
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:55:56: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+      format.html { redirect_to employees_url, notice: "Employee was successfully destroyed." }
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:55:56: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      format.html { redirect_to employees_url, notice: "Employee was successfully destroyed." }
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:60:3: C: [Correctable] Layout/EmptyLinesAroundAccessModifier: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/employees_controller.rb:62:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def set_employee
+^^^^
+app/controllers/employees_controller.rb:62:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def set_employee ...
+    ^^^^^^^^^^^^^^^^
+app/controllers/employees_controller.rb:67:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def employee_params
+^^^^
+app/controllers/employees_controller.rb:67:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def employee_params ...
+    ^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class WorkOrdersController.
+class WorkOrdersController < ApplicationController
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:2:43: C: [Correctable] Layout/SpaceInsidePercentLiteralDelimiters: Do not use spaces inside percent literal delimiters.
+  before_action :set_work_order, only: %i[ show edit update destroy ]
+                                          ^
+app/controllers/work_orders_controller.rb:2:68: C: [Correctable] Layout/SpaceInsidePercentLiteralDelimiters: Do not use spaces inside percent literal delimiters.
+  before_action :set_work_order, only: %i[ show edit update destroy ]
+                                                                   ^
+app/controllers/work_orders_controller.rb:10:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def show ...
+  ^^^^^^^^
+app/controllers/work_orders_controller.rb:19:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def edit ...
+  ^^^^^^^^
+app/controllers/work_orders_controller.rb:28:72: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+        format.html { redirect_to work_order_url(@work_order), notice: "Work order was successfully created." }
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:28:72: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.html { redirect_to work_order_url(@work_order), notice: "Work order was successfully created." }
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:41:72: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+        format.html { redirect_to work_order_url(@work_order), notice: "Work order was successfully updated." }
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:41:72: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        format.html { redirect_to work_order_url(@work_order), notice: "Work order was successfully updated." }
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:55:58: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+      format.html { redirect_to work_orders_url, notice: "Work order was successfully destroyed." }
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:55:58: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      format.html { redirect_to work_orders_url, notice: "Work order was successfully destroyed." }
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:60:3: C: [Correctable] Layout/EmptyLinesAroundAccessModifier: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/work_orders_controller.rb:62:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def set_work_order
+^^^^
+app/controllers/work_orders_controller.rb:62:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def set_work_order ...
+    ^^^^^^^^^^^^^^^^^^
+app/controllers/work_orders_controller.rb:67:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def work_order_params
+^^^^
+app/controllers/work_orders_controller.rb:67:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def work_order_params ...
+    ^^^^^^^^^^^^^^^^^^^^^
+app/helpers/cars_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module CarsHelper.
+module CarsHelper
+^^^^^^^^^^^^^^^^^
+app/helpers/employees_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module EmployeesHelper.
+module EmployeesHelper
+^^^^^^^^^^^^^^^^^^^^^^
+app/helpers/work_orders_helper.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for module WorkOrdersHelper.
+module WorkOrdersHelper
+^^^^^^^^^^^^^^^^^^^^^^^
+app/views/cars/index.json.jbuilder:1:29: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+json.array! @cars, partial: "cars/car", as: :car
+                            ^^^^^^^^^^
+app/views/cars/show.json.jbuilder:1:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+json.partial! "cars/car", car: @car
+              ^^^^^^^^^^
+app/views/employees/index.json.jbuilder:1:34: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+json.array! @employees, partial: "employees/employee", as: :employee
+                                 ^^^^^^^^^^^^^^^^^^^^
+app/views/employees/show.json.jbuilder:1:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+json.partial! "employees/employee", employee: @employee
+              ^^^^^^^^^^^^^^^^^^^^
+app/views/work_orders/index.json.jbuilder:1:36: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+json.array! @work_orders, partial: "work_orders/work_order", as: :work_order
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+app/views/work_orders/show.json.jbuilder:1:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+json.partial! "work_orders/work_order", work_order: @work_order
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20220716214534_create_cars.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreateCars.
+class CreateCars < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^
+db/migrate/20220716222515_create_employees.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreateEmployees.
+class CreateEmployees < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20220716230245_create_work_orders.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreateWorkOrders.
+class CreateWorkOrders < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:13:1: C: Metrics/BlockLength: Block has too many lines. [27/25]
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_230245) do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:13:43: C: [Correctable] Style/NumericLiterals: Use underscores(_) as thousands separator and separate every 3 digits with them.
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_230245) do
+                                          ^^^^^^^^^^^^^^^^^
+db/schema.rb:15:20: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  enable_extension "plpgsql"
+                   ^^^^^^^^^
+db/schema.rb:17:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "cars", force: :cascade do |t|
+               ^^^^^^
+db/schema.rb:18:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "chapa"
+             ^^^^^^^
+db/schema.rb:19:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "marca"
+             ^^^^^^^
+db/schema.rb:20:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "modelo"
+             ^^^^^^^^
+db/schema.rb:21:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "color"
+             ^^^^^^^
+db/schema.rb:22:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "chasis"
+             ^^^^^^^^
+db/schema.rb:23:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "motor"
+             ^^^^^^^
+db/schema.rb:24:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:25:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:28:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "employees", force: :cascade do |t|
+               ^^^^^^^^^^^
+db/schema.rb:29:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "nombre"
+             ^^^^^^^^
+db/schema.rb:30:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "apellido"
+             ^^^^^^^^^^
+db/schema.rb:31:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "documento"
+             ^^^^^^^^^^^
+db/schema.rb:32:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "direccion"
+             ^^^^^^^^^^^
+db/schema.rb:33:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "telefono"
+             ^^^^^^^^^^
+db/schema.rb:34:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:35:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:38:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "work_orders", force: :cascade do |t|
+               ^^^^^^^^^^^^^
+db/schema.rb:39:12: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.date "fecha"
+           ^^^^^^^
+db/schema.rb:40:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "solicitado_por"
+             ^^^^^^^^^^^^^^^^
+db/schema.rb:41:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "encargado"
+             ^^^^^^^^^^^
+db/schema.rb:42:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:43:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:45:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body end.
+
+51 files inspected, 87 offenses detected, 68 offenses autocorrectable
