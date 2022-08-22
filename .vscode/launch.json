@@ -7,10 +7,10 @@
         "request": "launch",
         "cwd": "${workspaceFolder}",
         "program": "${workspaceFolder}/bin/rails",
-        "useBundler": true,
-        "pathToBundler": "${userHome}/.rvm/gems/ruby-3.0.0/wrappers/bundler",
+        //"useBundler": true,
+        //"pathToBundler": "${userHome}/.rvm/gems/ruby-3.0.4/wrappers/bundler",
         "showDebuggerOutput": true,
-        "pathToRDebugIDE": "${userHome}/.rvm/gems/ruby-3.0.0/bin/rdebug-ide",
+        "pathToRDebugIDE": "${userHome}/.rvm/gems/ruby-3.0.4/bin/rdebug-ide",
         "args": [
           "server"
         ]
