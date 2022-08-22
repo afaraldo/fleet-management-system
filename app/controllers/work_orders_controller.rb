@@ -1,5 +1,6 @@
+# Controller for WorkOrder
 class WorkOrdersController < ApplicationController
-  before_action :set_work_order, only: %i[ show edit update destroy ]
+  before_action :set_work_order, only: %i[show edit update destroy]
 
   # GET /work_orders or /work_orders.json
   def index
@@ -7,8 +8,7 @@ class WorkOrdersController < ApplicationController
   end
 
   # GET /work_orders/1 or /work_orders/1.json
-  def show
-  end
+  def show; end
 
   # GET /work_orders/new
   def new
@@ -16,8 +16,7 @@ class WorkOrdersController < ApplicationController
   end
 
   # GET /work_orders/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /work_orders or /work_orders.json
   def create
@@ -25,7 +24,7 @@ class WorkOrdersController < ApplicationController
 
     respond_to do |format|
       if @work_order.save
-        format.html { redirect_to work_order_url(@work_order), notice: "Work order was successfully created." }
+        format.html { redirect_to work_order_url(@work_order), notice: I18n.t('es.created', record: @work_order) }
         format.json { render :show, status: :created, location: @work_order }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +37,7 @@ class WorkOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @work_order.update(work_order_params)
-        format.html { redirect_to work_order_url(@work_order), notice: "Work order was successfully updated." }
+        format.html { redirect_to work_order_url(@work_order), notice: I18n.t('es.update', record: @work_order) }
         format.json { render :show, status: :ok, location: @work_order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +51,20 @@ class WorkOrdersController < ApplicationController
     @work_order.destroy
 
     respond_to do |format|
-      format.html { redirect_to work_orders_url, notice: "Work order was successfully destroyed." }
+      format.html { redirect_to work_orders_url, notice: I18n.t('es.destroyed', record: @work_order) }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_work_order
-      @work_order = WorkOrder.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def work_order_params
-      params.require(:work_order).permit(:date, :requested_by, :reason, :manager)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_work_order
+    @work_order = WorkOrder.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def work_order_params
+    params.require(:work_order).permit(:date, :requested_by, :reason, :manager)
+  end
 end
