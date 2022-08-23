@@ -7,11 +7,13 @@
         "request": "launch",
         "cwd": "${workspaceFolder}",
         "program": "${workspaceFolder}/bin/rails",
-        "useBundler": true,
-        "pathToBundler": "${workspaceFolder}/bin/bundle",
+        //"useBundler": true,
+        //"pathToBundler": "${userHome}/.rvm/gems/ruby-3.0.4/wrappers/bundler",
         "showDebuggerOutput": true,
-        "pathToRDebugIDE": "/${workspaceFolder}/bin/rdebug-ide",
-        "args": ["server"]
+        "pathToRDebugIDE": "${userHome}/.rvm/gems/ruby-3.0.4/bin/rdebug-ide",
+        "args": [
+          "server"
+        ]
       },
       {
         "name": "Run tests",

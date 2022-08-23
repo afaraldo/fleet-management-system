@@ -13,7 +13,6 @@ gem 'sprockets-rails'
 gem 'activerecord', '>= 7.0.3.1'
 
 # This line is required for dependabot security alerts [CVE-2022-32209]
-# hola
 gem 'rails-html-sanitizer', '>= 1.4.3'
 
 # Use postgresql as the database for Active Record
@@ -50,10 +49,13 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # Use Sass to process CSS
-# gem 'sassc-rails'
+gem 'sassc-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
+
+gem 'cssbundling-rails', '~> 1.1' # needed for bootstrap css
+gem 'jsbundling-rails' # needed for bootstrap javascript
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

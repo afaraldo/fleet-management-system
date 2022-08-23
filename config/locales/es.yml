@@ -1,0 +1,4 @@
+es:
+  created: "$%{record} fue creado."
+  updated: "$%{record} fue actualizado."
+  destroyed: "$%{record} fue borrado."
