@@ -1,4 +1,4 @@
-# Controller for Employee
+# Controller for Employees model
 class EmployeesController < ApplicationController
   before_action :set_employee, only: %i[show edit update destroy]
 
@@ -51,7 +51,7 @@ class EmployeesController < ApplicationController
     @employee.destroy
 
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: I18n.t('es.destroyed', record: @employee) }
+      format.html { redirect_to employees_url, notice: I18n.t('es.distroyed', record: @employee) }
       format.json { head :no_content }
     end
   end

@@ -1,3 +1,3 @@
-# Helper for WorkOrder
+# Helper for Work_Orders
 module WorkOrdersHelper
 end

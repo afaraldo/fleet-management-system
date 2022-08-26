@@ -1,3 +1,3 @@
-# Helper for Employee
+# Helper for Employees
 module EmployeesHelper
 end

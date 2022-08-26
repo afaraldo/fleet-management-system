@@ -1,4 +1,4 @@
-# Controller for WorkOrder
+# Controller for Work_Orders model
 class WorkOrdersController < ApplicationController
   before_action :set_work_order, only: %i[show edit update destroy]
 
@@ -37,7 +37,7 @@ class WorkOrdersController < ApplicationController
   def update
     respond_to do |format|
       if @work_order.update(work_order_params)
-        format.html { redirect_to work_order_url(@work_order), notice: I18n.t('es.update', record: @work_order) }
+        format.html { redirect_to work_order_url(@work_order), notice: I18n.t('es.updated', record: @work_order) }
         format.json { render :show, status: :ok, location: @work_order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class WorkOrdersController < ApplicationController
     @work_order.destroy
 
     respond_to do |format|
-      format.html { redirect_to work_orders_url, notice: I18n.t('es.destroyed', record: @work_order) }
+      format.html { redirect_to work_orders_url, notice: I18n.t('es.distroyed', record: @work_order) }
       format.json { head :no_content }
     end
   end
