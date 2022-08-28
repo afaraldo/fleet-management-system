@@ -54,8 +54,14 @@ gem 'sassc-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 
+# Use Assets CSS & JS [https://github.com/rails/cssbundling-rails]
 gem 'cssbundling-rails', '~> 1.1' # needed for bootstrap css
+
+# Use Assets CSS & JS [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails' # needed for bootstrap javascript
+
+# Use to build navbar [https://github.com/bkuhlmann/navigator]
+gem 'navigator', git: 'https://github.com/afaraldo/navigator.git'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
