@@ -73,6 +73,9 @@ group :development, :test do
   gem 'solargraph', require: false
 end
 
+# Flexible authentication solution for Rails with Warden. Read more: http://blog.plataformatec.com.br/tag/devise/
+gem 'devise'
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'

@@ -17,3 +17,4 @@ AllCops:
     - db/schema.rb
     - spec/**/*
     - spec/*
+    - config/initializers/devise.rb
