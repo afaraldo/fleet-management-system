@@ -8,9 +8,9 @@
         "cwd": "${workspaceFolder}",
         "program": "${workspaceFolder}/bin/rails",
         "useBundler": true,
-        "pathToBundler": "${userHome}/.rvm/gems/ruby-3.0.0@fleet-management-system/wrappers/bundler",
+        "pathToBundler": "${userHome}/.rvm/gems/ruby-3.0.0/wrappers/bundler",
         "showDebuggerOutput": true,
-        "pathToRDebugIDE": "${userHome}/.rvm/gems/ruby-3.0.0@fleet-management-system/bin/rdebug-ide",
+        "pathToRDebugIDE": "${userHome}/.rvm/gems/ruby-3.0.0/bin/rdebug-ide",
         "args": [
           "server"
         ]
