@@ -67,21 +67,21 @@ SimpleNavigation::Configuration.run do |navigation|
                   link_html: { class: 'menu-link' }
 
     primary.item  :key2,
-                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-home-circle') +
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-id-card') +
                   content_tag(:div, 'Empleados', class: nil),
                   employees_path,
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' }
 
     primary.item  :key3,
-                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-home-circle') +
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
                   content_tag(:div, 'Ordenes de Trabajo', class: nil),
                   work_orders_path,
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' }
 
     primary.item  :key4,
-                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-home-circle') +
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-car') +
                   content_tag(:div, 'Vehículos', class: nil),
                   cars_path,
                   html: { class: 'menu-item' },
