@@ -12,6 +12,12 @@ gem 'sprockets-rails'
 # This line is required for dependabot security alerts [CVE-2022-32224]
 gem 'activerecord', '>= 7.0.3.1'
 
+# Use Breadcrumbs_on_rails to get breadcrumbs in views/controller [https://github.com/weppos/breadcrumbs_on_rails]
+gem 'breadcrumbs_on_rails'
+
+# Use controller_resources to get DRY controller [https://github.com/tubbo/controller_resources]
+gem 'controller_resources', path: 'vendor/controller_resources'
+
 # This line is required for dependabot security alerts [CVE-2022-32209]
 gem 'rails-html-sanitizer', '>= 1.4.3'
 
@@ -39,6 +45,9 @@ gem 'jbuilder'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
 
+# Use Kaminari to get pagination
+gem 'kaminari'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,6 +56,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
+
+# Use Ransack to get filters in Controller [https://github.com/activerecord-hackery/ransack]
+gem 'ransack'
 
 # Use Sass to process CSS
 gem 'sassc-rails'

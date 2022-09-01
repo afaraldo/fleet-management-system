@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Cars</h1>
+<h4 class="fw-bold py-3 mb-4">
+  <span class="text-muted fw-light"><%= t('navbar.car') %> /</span> <%= t('navbar.new') %>
+</h4>
 
 <div id="cars">
   <% @cars.each do |car| %>

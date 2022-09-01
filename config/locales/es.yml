@@ -2,3 +2,9 @@ es:
   created: "$%{record} fue creado."
   updated: "$%{record} fue actualizado."
   destroyed: "$%{record} fue borrado."
+  navbar:
+    dashboard: "Dashboard"
+    car: "Vehículos"
+    employee: "Empleados"
+    work_order: "Ordenes de Trabajo"
+    new: Crear
