@@ -32,6 +32,7 @@
 
 # Ignore rubocop html folder
 /rubocop
+/rubocop.html
 
 # Ignore IDE folders
 /.idea

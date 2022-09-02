@@ -12,13 +12,14 @@ gem 'sprockets-rails'
 # This line is required for dependabot security alerts [CVE-2022-32224]
 gem 'activerecord', '>= 7.0.3.1'
 
-# Use Breadcrumbs_on_rails to get breadcrumbs in views/controller [https://github.com/weppos/breadcrumbs_on_rails]
-gem 'breadcrumbs_on_rails'
-
 # Use controller_resources to get DRY controller [https://github.com/tubbo/controller_resources]
 gem 'controller_resources'
+
 # This line is required for dependabot security alerts [CVE-2022-32209]
 gem 'rails-html-sanitizer', '>= 1.4.3'
+
+# This gem is used for build form more easily [https://github.com/heartcombo/simple_form]
+gem 'simple_form'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'

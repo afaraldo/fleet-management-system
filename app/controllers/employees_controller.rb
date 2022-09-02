@@ -1,8 +1,7 @@
 # Controller for Employee
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: %i[show edit update destroy]
   resource :employee
-  
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

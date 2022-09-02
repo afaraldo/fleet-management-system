@@ -18,6 +18,8 @@ es:
       engine: Motor
       actions: Acciones
       new: Agregar
+    new:
+      form: Formulario
   views:
     pagination:
       first: "&laquo; First"
@@ -34,3 +36,13 @@ es:
           other: "Mostrando <b>total %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
+  simple_form:
+    labels:
+      car:
+        make: 'Marca'
+    hints:
+      car:
+        make: 'User name to sign in.'
+    placeholders:
+      car:
+        make: 'Marca'

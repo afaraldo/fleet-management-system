@@ -21,3 +21,5 @@ AllCops:
     - db/schema.rb
     - spec/**/*
     - spec/*
+    - config/initializers/simple_form_bootstrap.rb
+    - config/initializers/simple_form.rb

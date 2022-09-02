@@ -79,8 +79,6 @@ GEM
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     brakeman (5.2.3)
-    breadcrumbs_on_rails (4.1.0)
-      railties (>= 5.0)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
@@ -265,6 +263,9 @@ GEM
       tilt
     simple-navigation (4.4.0)
       activesupport (>= 2.3.2)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     solargraph (0.46.0)
       backport (~> 1.2)
       benchmark
@@ -322,7 +323,6 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   brakeman (~> 5.2.3)
-  breadcrumbs_on_rails
   bundler-audit (~> 0.9.1)
   controller_resources
   cssbundling-rails (~> 1.1)
@@ -346,6 +346,7 @@ DEPENDENCIES
   ruby-debug-ide
   sassc-rails
   simple-navigation
+  simple_form
   solargraph
   sprockets-rails
   stimulus-rails

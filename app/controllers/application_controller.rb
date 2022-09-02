@@ -1,7 +1,11 @@
 # Main class controller
 class ApplicationController < ActionController::Base
   include ControllerResources
-  add_breadcrumb 'home', :root_path
+
+  # GET
+  def new
+    @car = Car.new
+  end
 
   protected
 
@@ -15,6 +19,20 @@ class ApplicationController < ActionController::Base
                .result
                .page(pagination_params[:page])
                .per(pagination_params[:per])
+  end
+
+  # Runs before every action to determine its resource in an instance
+  # variable.
+  #
+  # @protected
+  def find_resource
+    if collection?
+      instance_variable_set "@#{plural_resource_name}", collection
+    elsif resource_id
+      instance_variable_set "@#{resource_name}", model
+    else
+      instance_variable_set "@#{resource_name}", model_class.send(:new)
+    end
   end
 
   private
