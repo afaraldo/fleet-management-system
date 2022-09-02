@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dash_board/index'
+  resources :cars
   devise_for :users
   resources :work_orders
   resources :employees
