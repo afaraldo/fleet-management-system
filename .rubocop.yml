@@ -6,6 +6,10 @@ require:
   - rubocop-thread_safety
 Style/FrozenStringLiteralComment:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - config/navigation.rb
+  #Max: 50
 AllCops:
   NewCops: enable
   Exclude:

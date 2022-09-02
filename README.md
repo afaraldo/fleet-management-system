@@ -24,7 +24,9 @@ rspec
 
 * Deployment instructions
 
-* ...application up and running.
+* rails s
+
+* yarn build:css --watch
 
 Things you may want to cover:
 

@@ -51,14 +51,23 @@ gem 'bootsnap', require: false
 # Use Sass to process CSS
 gem 'sassc-rails'
 
+# Use to build navbar [https://github.com/codeplant/simple-navigation]
+gem 'simple-navigation'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 
+# Use Assets CSS & JS [https://github.com/rails/cssbundling-rails]
 gem 'cssbundling-rails', '~> 1.1' # needed for bootstrap css
+
+# Use Assets CSS & JS [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails' # needed for bootstrap javascript
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # Use to debbuging [https://github.com/BetterErrors/better_errors]
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'brakeman', '~> 5.2.3'
   gem 'bundler-audit', '~> 0.9.1'
   gem 'debase', require: false
