@@ -1,16 +1,50 @@
+<% content_for :breadcrumb do %>
+  <span class="text-muted fw-light"><%= t('navbar.car') %> /</span> Listado
+<% end %>
+ 
 <p style="color: green"><%= notice %></p>
 
-<h4 class="fw-bold py-3 mb-4">
-  <span class="text-muted fw-light"><%= t('navbar.car') %> /</span> <%= t('navbar.new') %>
-</h4>
-
-<div id="cars">
-  <% @cars.each do |car| %>
-    <%= render car %>
-    <p>
-      <%= link_to "Show this car", car %>
-    </p>
-  <% end %>
+<div class="card">
+  <h5 class="card-header">Table Caption</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <caption class="ms-4"><%= page_entries_info @cars, entry_name: 'item' %></caption>
+      <thead>
+        <tr>
+          <th><%= t('.brand')%></th>
+          <th><%= t('.model')%></th>
+          <th><%= t('.color')%></th>
+          <th><%= t('.plate_number')%></th>
+          <th><%= t('.chassis')%></th>
+          <th><%= t('.engine')%></th>
+          <th><%= t('.actions')%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cars.each do |car| %>
+          <tr>
+            <td><strong><%= car.make %></strong></td>
+            <td><%= car.model %></td>
+            <td><%= car.color %></td>
+            <td><span class="badge bg-label-primary me-1"><%= car.plate_number %></span></td>
+            <td><%= car.chassis %></td>
+            <td><%= car.engine %></td>
+            <td>
+              <div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<%= link_to "New car", new_car_path %>
+<div class="buy-now">
+  <%= link_to t('.new'), :new_car, class: 'btn btn-primary btn-buy-now' %>
+</div>

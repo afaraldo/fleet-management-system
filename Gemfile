@@ -16,8 +16,7 @@ gem 'activerecord', '>= 7.0.3.1'
 gem 'breadcrumbs_on_rails'
 
 # Use controller_resources to get DRY controller [https://github.com/tubbo/controller_resources]
-gem 'controller_resources', path: 'vendor/controller_resources'
-
+gem 'controller_resources'
 # This line is required for dependabot security alerts [CVE-2022-32209]
 gem 'rails-html-sanitizer', '>= 1.4.3'
 

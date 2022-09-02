@@ -33,6 +33,10 @@
 # Ignore rubocop html folder
 /rubocop
 
+# Ignore IDE folders
+/.idea
+/.vscode
+
 # Ignore node_modules
 /node_modules
 
