@@ -11,13 +11,17 @@
       <caption class="ms-4"><%= page_entries_info @cars, entry_name: 'item' %></caption>
       <thead>
         <tr>
-          <th><%= t('.brand')%></th>
-          <th><%= t('.model')%></th>
-          <th><%= t('.color')%></th>
-          <th><%= t('.plate_number')%></th>
-          <th><%= t('.chassis')%></th>
-          <th><%= t('.engine')%></th>
-          <th><%= t('.actions')%></th>
+          <%= search_form_for @q do |f| %>
+            <th>
+              <%= sort_link(@q, :make, t('.brand'), default_order: :desc) %>
+            </th>
+            <th><%= t('.model')%></th>
+            <th><%= t('.color')%></th>
+            <th><%= t('.plate_number')%></th>
+            <th><%= t('.chassis')%></th>
+            <th><%= t('.engine')%></th>
+            <th><%= t('.actions')%></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>

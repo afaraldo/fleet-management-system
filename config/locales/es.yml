@@ -1,4 +1,7 @@
 es:
+  activerecord:
+    models:
+      car: Vehiculo
   created: "$%{record} fue creado."
   updated: "$%{record} fue actualizado."
   destroyed: "$%{record} fue borrado."
@@ -20,6 +23,8 @@ es:
       new: Agregar
     new:
       form: Formulario
+    form:
+      form: Formulario
   views:
     pagination:
       first: "&laquo; First"
@@ -36,6 +41,10 @@ es:
           other: "Mostrando <b>total %{count}</b> %{entry_name}"
       more_pages:
         display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> en total"
+    submit:
+          car:
+            create: "Agregar %{model}"
+            update: "Actualizar %{model}"
   simple_form:
     labels:
       car:

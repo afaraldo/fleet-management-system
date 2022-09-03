@@ -3,8 +3,29 @@ class ApplicationController < ActionController::Base
   include ControllerResources
 
   # GET
+  def index
+    resource_search_method = :ransack
+    instance_variable_set :@q, model_class.send(resource_search_method)
+    instance_variable_set "@#{resource_name}", @q.result
+                                                 .page(pagination_params[:page])
+                                                 .per(pagination_params[:per])
+  end
+  
+  # GET
   def new
-    @car = Car.new
+    instance_variable_set "@#{resource_name}", model_class.send(:new)
+  end
+
+  # POST
+  def create
+    instance_variable_set "@#{resource_name}", model_class.send(:create, model_params)
+    render :edit
+  end
+
+  # POST
+  def update
+    instance_variable_set "@#{resource_name}", model_class.send(:update, model_params)
+    render :edit
   end
 
   protected
@@ -28,10 +49,8 @@ class ApplicationController < ActionController::Base
   def find_resource
     if collection?
       instance_variable_set "@#{plural_resource_name}", collection
-    elsif resource_id
-      instance_variable_set "@#{resource_name}", model
     else
-      instance_variable_set "@#{resource_name}", model_class.send(:new)
+      instance_variable_set "@#{resource_name}", model
     end
   end
 
@@ -43,7 +62,7 @@ class ApplicationController < ActionController::Base
   # @return [ActionController::Parameters] Params given to the search
   # method.
   def search_params
-    params.permit!.extract!(:q)
+    params.permit(q: {}).extract!(:q)
   end
 
   # Override this method to provide your own search params.
@@ -53,5 +72,14 @@ class ApplicationController < ActionController::Base
   # method.
   def pagination_params
     params.permit(:page, :per).extract!(:page, :per)
+  end
+
+  # Override this method to provide your own model params.
+  #
+  # @private
+  # @return [ActionController::Parameters] Params given to the create
+  # method.
+  def model_params
+    params.require(model_class.name.underscore.to_sym).permit(model_class.attribute_names)
   end
 end
