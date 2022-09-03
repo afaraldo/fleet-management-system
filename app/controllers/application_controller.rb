@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
                                                  .page(pagination_params[:page])
                                                  .per(pagination_params[:per])
   end
-  
+
   # GET
   def new
     instance_variable_set "@#{resource_name}", model_class.send(:new)
