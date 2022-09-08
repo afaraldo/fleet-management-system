@@ -91,6 +91,7 @@ group :development, :test do
   gem 'rubocop-rspec', require: false
   gem 'rubocop-thread_safety', require: false
   gem 'ruby-debug-ide', require: false
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'solargraph', require: false
 end
 

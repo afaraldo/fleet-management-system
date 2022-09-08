@@ -261,6 +261,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     simple-navigation (4.4.0)
       activesupport (>= 2.3.2)
     simple_form (5.1.0)
@@ -345,6 +347,7 @@ DEPENDENCIES
   rubocop-thread_safety
   ruby-debug-ide
   sassc-rails
+  shoulda-matchers (~> 5.0)
   simple-navigation
   simple_form
   solargraph
