@@ -6,6 +6,9 @@ require:
   - rubocop-thread_safety
 Style/FrozenStringLiteralComment:
   Enabled: false
+Layout/LineLength:
+  Exclude:
+    - app/controllers/application_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
