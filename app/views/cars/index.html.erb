@@ -35,10 +35,14 @@
             <td><%= car.engine %></td>
             <td>
               <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                <i class="bx bx-dots-vertical-rounded"></i></button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                  <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                  <%= link_to content_tag(:i, nil, class:'bx bx-edit-alt me-1') + t('edit')   , edit_car_path(car), class:'dropdown-item' %>
+                  <%= link_to content_tag(:i, nil, class:'bx bx-trash me-1')    + t('destroy'), car_path(car), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class:'dropdown-item' %>
                 </div>
               </div>
             </td>
@@ -48,6 +52,8 @@
     </table>
   </div>
 </div>
+<%= paginate @cars %>
+
 
 <div class="buy-now">
   <%= link_to t('.new'), :new_car, class: 'btn btn-primary btn-buy-now' %>

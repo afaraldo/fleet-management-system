@@ -48,10 +48,20 @@ es:
   simple_form:
     labels:
       car:
-        make: 'Marca'
+        make: Marca
+        model: Modelo
+        color: Color
+        plate_number: Numero de placa
+        chassis: Chasis
+        engine: Motor
     hints:
       car:
         make: 'User name to sign in.'
     placeholders:
       car:
-        make: 'Marca'
+        make: Marca
+        model: Modelo
+        color: Color
+        plate_number: Numero de placa
+        chassis: Chasis
+        engine: Motor

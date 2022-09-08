@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def index
     resource_search_method = :ransack
     instance_variable_set :@q, model_class.send(resource_search_method)
-    instance_variable_set "@#{resource_name}", @q.result
+    instance_variable_set "@#{plural_resource_name}", @q.result
                                                  .page(pagination_params[:page])
                                                  .per(pagination_params[:per])
   end
@@ -24,8 +24,23 @@ class ApplicationController < ActionController::Base
 
   # POST
   def update
-    instance_variable_set "@#{resource_name}", model_class.send(:update, model_params)
+    instance_variable_set "@#{resource_name}", model
+    model.send(:update, model_params)
     render :edit
+  end
+
+  # DELETE
+  def destroy
+    instance_variable_set "@#{resource_name}", model
+    model.send(:destroy)
+
+    resource_search_method = :ransack
+    instance_variable_set :@q, model_class.send(resource_search_method)
+    instance_variable_set "@#{plural_resource_name}", @q.result
+                                                 .page(pagination_params[:page])
+                                                 .per(pagination_params[:per])
+
+    redirect_to "#{plural_resource_name}".to_sym
   end
 
   protected
