@@ -13,7 +13,5 @@ RSpec.describe Car, type: :model do
     it { should validate_presence_of(:plate_number) }
     it { should validate_presence_of(:chassis) }
     it { should validate_presence_of(:engine) }
-
-    it { should validate_uniqueness_of(:plate_number) }
   end
 end
