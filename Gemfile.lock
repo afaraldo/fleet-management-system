@@ -99,8 +99,16 @@ GEM
     debug_inspector (1.1.0)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    docile (1.4.0)
     e2mmap (0.1.0)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -227,7 +235,7 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.11.0)
-    rubocop (1.35.1)
+    rubocop (1.36.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.1.2.1)
@@ -268,6 +276,12 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     solargraph (0.46.0)
       backport (~> 1.2)
       benchmark
@@ -330,6 +344,8 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1)
   debase
   debug
+  factory_bot_rails
+  faker
   importmap-rails
   jbuilder
   jsbundling-rails
@@ -350,6 +366,7 @@ DEPENDENCIES
   shoulda-matchers (~> 5.0)
   simple-navigation
   simple_form
+  simplecov
   solargraph
   sprockets-rails
   stimulus-rails

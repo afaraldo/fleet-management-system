@@ -34,8 +34,12 @@
 /rubocop
 /rubocop.html
 
+# Ignore coverage
+/coverage
+
 # Ignore IDE folders
-/.idea
+/.idea/*
+/.idea/fleet-management-system.iml
 /.vscode
 
 # Ignore node_modules

@@ -13,31 +13,26 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/cars", type: :request do
-  
+
+  before { host! "localhost:3000" }
+
   # This should return the minimal set of attributes required to create a valid
   # Car. As you add validations to Car, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:car).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { make: ""}
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Car.create! valid_attributes
+      create(:car)
       get cars_url
       expect(response).to be_successful
-    end
-  end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      car = Car.create! valid_attributes
-      get car_url(car)
-      expect(response).to be_successful
+      expect(Car.count).to eq(1)
     end
   end
 
@@ -49,8 +44,9 @@ RSpec.describe "/cars", type: :request do
   end
 
   describe "GET /edit" do
+    let(:car) { create(:car) }
+
     it "renders a successful response" do
-      car = Car.create! valid_attributes
       get edit_car_url(car)
       expect(response).to be_successful
     end
@@ -64,9 +60,9 @@ RSpec.describe "/cars", type: :request do
         }.to change(Car, :count).by(1)
       end
 
-      it "redirects to the created car" do
+      it "render to the created car" do
         post cars_url, params: { car: valid_attributes }
-        expect(response).to redirect_to(car_url(Car.last))
+        expect(response.status).to eq(302) #redirected
       end
     end
 
@@ -76,45 +72,44 @@ RSpec.describe "/cars", type: :request do
           post cars_url, params: { car: invalid_attributes }
         }.to change(Car, :count).by(0)
       end
-
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post cars_url, params: { car: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
   describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
 
+    let(:new_attributes) {
+      build(:car).attributes.except("id", "created_at", "updated_at")
+    }
+
+    let(:car) { create(:car) }
+
+    context "with valid parameters" do
       it "updates the requested car" do
-        car = Car.create! valid_attributes
         patch car_url(car), params: { car: new_attributes }
         car.reload
-        skip("Add assertions for updated state")
+        new_attributes.keys.each do |key|
+          expect(car.send key).to eq(new_attributes[key])
+        end
       end
 
       it "redirects to the car" do
-        car = Car.create! valid_attributes
         patch car_url(car), params: { car: new_attributes }
         car.reload
-        expect(response).to redirect_to(car_url(car))
+        expect(response.status).to eq(302) #redirected
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        car = Car.create! valid_attributes
         patch car_url(car), params: { car: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 

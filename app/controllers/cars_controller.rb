@@ -1,4 +1,4 @@
 # Controller for Cars model
 class CarsController < ApplicationController
-  resource(:car)
+  resource :car
 end

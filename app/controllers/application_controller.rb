@@ -1,6 +1,7 @@
 # Main class controller
 class ApplicationController < ActionController::Base
   include ControllerResources
+  include Error::ErrorHandler
 
   # GET
   def index
@@ -16,20 +17,26 @@ class ApplicationController < ActionController::Base
 
   # POST
   def create
-    instance_variable_set "@#{resource_name}", model_class.send(:create, model_params)
-    render :edit
+    record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
+    respond_to do |format|
+      format.html { redirect_to action: :edit, id: record.id }
+      format.json { render json: exception.record.errors, status: :unprocessable_entity }
+    end
   end
 
   # POST
   def update
-    instance_variable_set "@#{resource_name}", model
-    model.send(:update, model_params)
-    render :edit
+    model.send(:update!, model_params)
+    record = instance_variable_set "@#{resource_name}", model
+    respond_to do |format|
+      format.html { redirect_to action: :edit, id: record.id }
+      format.json { render json: exception.record.errors, status: :unprocessable_entity }
+    end
   end
 
   # DELETE
   def destroy
-    model.send(:destroy)
+    model.send(:destroy!)
 
     redirect_to :"#{plural_resource_name}"
   end

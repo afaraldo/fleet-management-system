@@ -84,6 +84,8 @@ group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
   gem 'debase', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
+  gem 'faker' # https://github.com/faker-ruby/faker
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
@@ -92,6 +94,7 @@ group :development, :test do
   gem 'rubocop-thread_safety', require: false
   gem 'ruby-debug-ide', require: false
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', require: false
   gem 'solargraph', require: false
 end
 

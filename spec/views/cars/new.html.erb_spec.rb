@@ -2,14 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "cars/new", type: :view do
   before(:each) do
-    assign(:car, Car.new(
-      make: "MyString",
-      model: "MyString",
-      color: "MyString",
-      plate_number: "MyString",
-      chassis: "MyString",
-      engine: "MyString"
-    ))
+    assign(:car, build(:car))
   end
 
   it "renders new car form" do
