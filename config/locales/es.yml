@@ -254,10 +254,10 @@ es:
       form: Formulario
   views:
     pagination:
-      first: "&laquo; First"
-      last: "Last &raquo;"
+      first: "&laquo;"
+      last: "&raquo;"
       previous: "&lsaquo; Prev"
-      next: "Next &rsaquo;"
+      next: "&rsaquo;"
       truncate: "&hellip;"
   simple_form:
     labels:

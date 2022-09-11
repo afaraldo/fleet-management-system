@@ -1,14 +1,52 @@
 <% content_for :breadcrumb do %>
-  <span class="text-muted fw-light"><%= t('navbar.car') %> /</span> Listado
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0);">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0);">Vehiculos</a>
+      </li>
+      <li class="breadcrumb-item active">Listado</li>
+    </ol>
+  </nav>
 <% end %>
  
 <p style="color: green"><%= notice %></p>
 
+<%= search_form_for @q do |f| %>
+  <div class="row align-items-start p-3">
+    <div class="col">
+      <%= f.search_field :make_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :model_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :color_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+    </div>
+    <div class="col">
+      <%= f.search_field :engine_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+    </div>
+    <div class="col">
+      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-primary'  %>
+    </div>
+  </div>
+<% end %>
+
 <div class="card">
   <h5 class="card-header">Table Caption</h5>
-  <div class="table-responsive text-nowrap">
+  <div class="text-nowrap">
     <table class="table">
-      <caption class="ms-4"><%= page_entries_info @cars, entry_name: 'item' %></caption>
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @cars, entry_name: 'item' %>
+          </div>
+          <%= paginate @cars, remote: true %>
+        </div>
+      </caption>
       <thead>
         <tr>
           <%= search_form_for @q do |f| %>
@@ -20,7 +58,7 @@
             <th><%= t('.plate_number')%></th>
             <th><%= t('.chassis')%></th>
             <th><%= t('.engine')%></th>
-            <th><%= t('.actions')%></th>
+            <th></th>
           <% end %>
         </tr>
       </thead>
@@ -51,10 +89,4 @@
       </tbody>
     </table>
   </div>
-</div>
-<%= paginate @cars %>
-
-
-<div class="buy-now">
-  <%= link_to t('.new'), :new_car, class: 'btn btn-primary btn-buy-now' %>
 </div>

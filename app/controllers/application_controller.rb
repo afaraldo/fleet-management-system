@@ -1,12 +1,13 @@
 # Main class controller
 class ApplicationController < ActionController::Base
   include ControllerResources
-  include Error::ErrorHandler
+
+  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
   # GET
   def index
     resource_search_method = :ransack
-    instance_variable_set :@q, model_class.send(resource_search_method)
+    instance_variable_set :@q, model_class.send(resource_search_method, search_params[:q])
     instance_variable_set "@#{plural_resource_name}", @q.result.page(pagination_params[:page]).per(pagination_params[:per])
   end
 
@@ -49,7 +50,7 @@ class ApplicationController < ActionController::Base
   # @return [Object]
   def collection
     resource_search_method = :ransack
-    model_class.send(resource_search_method, search_params[:q])
+    model_class.send(resource_search_method, search_params)
                .result
                .page(pagination_params[:page])
                .per(pagination_params[:per])
@@ -94,5 +95,14 @@ class ApplicationController < ActionController::Base
   # method.
   def model_params
     params.require(model_class.name.underscore.to_sym).permit(model_class.attribute_names)
+  end
+
+  def record_invalid(exception)
+    instance_variable_set "@#{resource_name}", exception.record
+
+    respond_to do |format|
+      format.html { render :edit, status: :unprocessable_entity }
+      format.json { render json: exception.record.errors, status: :unprocessable_entity }
+    end
   end
 end

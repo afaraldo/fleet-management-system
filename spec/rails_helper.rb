@@ -67,7 +67,8 @@ RSpec.configure do |config|
     end
   end
 
-  RSpec.configure do |config|
-    config.include FactoryBot::Syntax::Methods
-  end
+  config.include FactoryBot::Syntax::Methods
+
+  Dir["./spec/support/**/*.rb"].sort.each {|f| require f} # Import shared examples rspec
+
 end

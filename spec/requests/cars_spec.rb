@@ -105,7 +105,7 @@ RSpec.describe "/cars", type: :request do
     end
 
     context "with invalid parameters" do
-    
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         patch car_url(car), params: { car: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
