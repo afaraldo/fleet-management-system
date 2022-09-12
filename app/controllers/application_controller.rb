@@ -2,10 +2,12 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
 
+  add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
   # GET
   def index
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}", count: 2), "#{plural_resource_name}_path".to_sym # Use for breadcrumbs_on_rails gem
     resource_search_method = :ransack
     instance_variable_set :@q, model_class.send(resource_search_method, search_params[:q])
     instance_variable_set "@#{plural_resource_name}", @q.result.page(pagination_params[:page]).per(pagination_params[:per])
@@ -13,6 +15,8 @@ class ApplicationController < ActionController::Base
 
   # GET
   def new
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}", count: 2), "#{plural_resource_name}_path".to_sym # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t('cars.index.new', count: 2), nil # Use for breadcrumbs_on_rails gem
     instance_variable_set "@#{resource_name}", model_class.send(:new)
   end
 

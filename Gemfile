@@ -12,6 +12,9 @@ gem 'sprockets-rails'
 # This line is required for dependabot security alerts [CVE-2022-32224]
 gem 'activerecord', '>= 7.0.3.1'
 
+# Used to breadcrumbs [https://github.com/fnando/breadcrumbs]
+gem 'breadcrumbs_on_rails'
+
 # Use controller_resources to get DRY controller [https://github.com/tubbo/controller_re  sources]
 gem 'controller_resources'
 

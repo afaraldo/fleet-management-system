@@ -1,32 +1,30 @@
-<% content_for :breadcrumb do %>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="javascript:void(0);">Home</a>
-      </li>
-      <li class="breadcrumb-item">
-        <a href="javascript:void(0);">Vehiculos</a>
-      </li>
-      <li class="breadcrumb-item active">Listado</li>
-    </ol>
-  </nav>
-<% end %>
- 
 <p style="color: green"><%= notice %></p>
 
 <%= search_form_for @q do |f| %>
   <div class="row align-items-start p-3">
     <div class="col">
-      <%= f.search_field :make_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+      <div class='form-floating'>
+        <%= f.search_field :make_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :make, for: 'floatingInput' %>
+      </div>
     </div>
     <div class="col">
-      <%= f.search_field :model_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+      <div class='form-floating'>
+        <%= f.search_field :model_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :model, for: 'floatingInput' %>
+      </div>
     </div>
     <div class="col">
-      <%= f.search_field :color_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+      <div class='form-floating'>
+        <%= f.search_field :color_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :color, for: 'floatingInput' %>
+      </div>
     </div>
     <div class="col">
-      <%= f.search_field :engine_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+      <div class='form-floating'>
+        <%= f.search_field :engine_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :engine, for: 'floatingInput' %>
+      </div>
     </div>
     <div class="col">
       <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-primary'  %>
@@ -35,7 +33,11 @@
 <% end %>
 
 <div class="card">
-  <h5 class="card-header">Table Caption</h5>
+  <h5 class="card-header">
+    <%= t('.cars') %>
+    <%= link_to 'Agregar', new_car_path, class: 'btn btn-primary' %>
+  </h5>
+
   <div class="text-nowrap">
     <table class="table">
       <caption class="ms-4">
