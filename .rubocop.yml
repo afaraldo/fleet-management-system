@@ -9,6 +9,9 @@ Style/FrozenStringLiteralComment:
 Layout/LineLength:
   Exclude:
     - app/controllers/application_controller.rb
+Metrics/AbcSize:
+  Exclude:
+    - app/controllers/application_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
