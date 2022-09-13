@@ -1,47 +1,62 @@
-<%= form_with(model: car) do |form| %>
-  <% if car.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
-
-      <ul>
-        <% car.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :make, style: "display: block" %>
-    <%= form.text_field :make %>
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t('.form')%>
+  </h5>
+  <div class="card-body">
+    <%= simple_form_for car, class: 'form-floating' do |f| %>
+      <% if car.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
+    
+          <ul>
+            <% car.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class='row'>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :make, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :make, for: 'floatingInput' %>
+            <!-- <div id="floatingInputHelp" class="form-text">We'll never share your details with anyone else.</div>-->
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :model, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :model, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :color, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :color, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :plate_number, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :plate_number, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :chassis, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :chassis, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :engine, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :engine, for: 'floatingInput' %>
+          </div>
+        </div>
+      </div>
+      <div class='mt-2'>
+        <%= f.button 'submit', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :model, style: "display: block" %>
-    <%= form.text_field :model %>
-  </div>
-
-  <div>
-    <%= form.label :color, style: "display: block" %>
-    <%= form.text_field :color %>
-  </div>
-
-  <div>
-    <%= form.label :plate_number, style: "display: block" %>
-    <%= form.text_field :plate_number %>
-  </div>
-
-  <div>
-    <%= form.label :chassis, style: "display: block" %>
-    <%= form.text_field :chassis %>
-  </div>
-
-  <div>
-    <%= form.label :engine, style: "display: block" %>
-    <%= form.text_field :engine %>
-  </div>
-
-  <div>
-    <%= form.submit nil, class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>
