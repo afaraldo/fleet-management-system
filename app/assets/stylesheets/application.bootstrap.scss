@@ -1,7 +1,14 @@
 @import "boxicons/css/boxicons";
 @import "sneat-bootstrap-html-admin-template-free/scss/core";
-@import "sneat-bootstrap-html-admin-template-free/scss/theme-default";      
+@import "sneat-bootstrap-html-admin-template-free/scss/theme-default";
 @import "sneat-bootstrap-html-admin-template-free/assets/css/demo";
+@import "theme-default";
+
+.app-brand-text.demo {
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    text-transform: none;
+}
 
 .buy-now .btn-buy-now {
     position: fixed;
