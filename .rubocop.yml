@@ -10,6 +10,12 @@ Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
   #Max: 50
+MethodLength:
+  Max: 35
+Metrics/AbcSize:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
 AllCops:
   NewCops: enable
   Exclude:

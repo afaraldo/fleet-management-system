@@ -68,11 +68,11 @@
 
           <%= render_navigation %>
 
-          
+
         </aside>
 
         <!-- / Menu -->
-    
+
         <!-- Layout container -->
         <div class="layout-page">
           
@@ -80,6 +80,16 @@
           <div class="content-wrapper">
 
             <!-- Content -->
+            <p class="navbar-text float-right">
+              <% if user_signed_in? %>
+                Logged in as <strong><%= current_user.email %></strong>.
+                <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+              <% else %>
+                <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+              <% end %>
+            </p>
             
             <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -113,8 +123,6 @@
                   <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
                   
                   <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="footer-link me-4">Support</a>
-                  
-                  
                 </div>
               </div>
             </footer>
@@ -125,10 +133,11 @@
       </div>
       <!-- / Layout page -->
     </div>
-
+    </div>
+    </div>
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div> 
-  </div>
+    </div>
   <!-- / Layout wrapper -->
   <div class="buy-now">
     <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank" class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
