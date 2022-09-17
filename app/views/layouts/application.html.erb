@@ -1,7 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en">
   <head>
-    <title>FleetManagementSystem</title>
+    <title>
+      <%= SystemSettings[:site_name] %>
+    </title>
+    <%= favicon_link_tag asset_path(SystemSettings[:favicon]) %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <%= csrf_meta_tags %>
@@ -9,24 +12,28 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-   
+
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
+    <div id="ok" class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
           
           <div class="app-brand demo ">
-            <a href="index.html" class="app-brand-link">
+            <a href="<%= root_path %>>" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <%= image_tag "logo.jpg", size: "80x80" %>
+                <%= image_tag SystemSettings[:logo_file], size: "80x80" %>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Gobernación <br>de Itapúa</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">
+                <%= SystemSettings[:organization_name].html_safe %>
+              </span>
             </a>
+
+
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -44,7 +51,10 @@
         <div class="layout-page">
 
           <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-  
+
+            <button class="navbar-toggler" type="button" data-toggle="layout-menu-expanded" data-target="#ok" data-bs-toggle="collapse" data-bs-target="#navbar-ex-14">
+              <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
               <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                 <i class="bx bx-menu bx-sm"></i>
@@ -140,6 +150,19 @@
             <!-- Content --> 
             <div class="container-xxl flex-grow-1 container-p-y">
 
+              <p>
+                <a class="btn btn-primary" data-bs-toggle="layout-menu-expanded" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Link with href
+                </a>
+                <button class="btn btn-primary" type="button" data-bs-toggle="layout-menu-expanded" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Button with data-bs-target
+                </button>
+              </p>
+              <div class="collapse layout-menu-expanded" id="collapseExample">
+                <div class="card card-body">
+                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
 
             <h3>
               <%= render_breadcrumbs separator: ' / ' %>
@@ -178,7 +201,9 @@
   
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
-  
+  <script>
+      $('.layout-menu-toggle').dropdown()
+  </script>
 </body>
 </html>
 
