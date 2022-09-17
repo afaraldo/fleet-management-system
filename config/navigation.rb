@@ -39,7 +39,6 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Define the primary navigation
   navigation.items do |primary|
-    primary.dom_class = 'menu-inner py-1 ps ps--active-y'
     # Add an item to the primary navigation. The following params apply:
     # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
     # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
@@ -59,33 +58,37 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
+    primary.dom_class = 'menu-inner py-1 ps ps--active-y'
     primary.item  :key1,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-home-circle') +
-                  content_tag(:div, 'Dashboard', class: nil),
+                  content_tag(:div, I18n.t('navbar.dashboard'), class: nil),
                   root_path,
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' }
 
     primary.item  :key2,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-id-card') +
-                  content_tag(:div, 'Empleados', class: nil),
+                  content_tag(:div, I18n.t('navbar.employee'), class: nil),
                   employees_path,
                   html: { class: 'menu-item' },
-                  link_html: { class: 'menu-link' }
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/employees}
 
     primary.item  :key3,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
-                  content_tag(:div, 'Ordenes de Trabajo', class: nil),
+                  content_tag(:div, I18n.t('navbar.work_order'), class: nil),
                   work_orders_path,
                   html: { class: 'menu-item' },
-                  link_html: { class: 'menu-link' }
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/work_orders}
 
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-car') +
-                  content_tag(:div, 'Vehículos', class: nil),
+                  content_tag(:div, I18n.t('navbar.car'), class: nil),
                   cars_path,
                   html: { class: 'menu-item' },
-                  link_html: { class: 'menu-link' }
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/cars}
 
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|

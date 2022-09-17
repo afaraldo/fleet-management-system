@@ -6,16 +6,16 @@ require:
   - rubocop-thread_safety
 Style/FrozenStringLiteralComment:
   Enabled: false
+Layout/LineLength:
+  Exclude:
+    - app/controllers/application_controller.rb
+Metrics/AbcSize:
+  Exclude:
+    - app/controllers/application_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
   #Max: 50
-MethodLength:
-  Max: 35
-Metrics/AbcSize:
-  Enabled: false
-Style/ClassAndModuleChildren:
-  Enabled: false
 AllCops:
   NewCops: enable
   Exclude:
@@ -27,4 +27,5 @@ AllCops:
     - db/schema.rb
     - spec/**/*
     - spec/*
-    - config/initializers/devise.rb
+    - config/initializers/simple_form_bootstrap.rb
+    - config/initializers/simple_form.rb

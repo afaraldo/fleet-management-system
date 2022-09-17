@@ -32,6 +32,15 @@
 
 # Ignore rubocop html folder
 /rubocop
+/rubocop.html
+
+# Ignore coverage
+/coverage
+
+# Ignore IDE folders
+/.idea/*
+/.idea/fleet-management-system.iml
+/.vscode
 
 # Ignore node_modules
 /node_modules

@@ -1,14 +1,94 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Cars</h1>
+<%= search_form_for @q do |f| %>
+  <div class="row align-items-start p-3">
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :make_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :make, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :model_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :model, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :color_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :color, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :engine_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :engine, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-primary'  %>
+    </div>
+  </div>
+<% end %>
 
-<div id="cars">
-  <% @cars.each do |car| %>
-    <%= render car %>
-    <p>
-      <%= link_to "Show this car", car %>
-    </p>
-  <% end %>
+<div class="card">
+  <h5 class="card-header">
+    <%= t('.cars') %>
+    <%= link_to 'Agregar', new_car_path, class: 'btn btn-primary' %>
+  </h5>
+
+  <div class="text-nowrap">
+    <table class="table">
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @cars, entry_name: 'item' %>
+          </div>
+          <%= paginate @cars, remote: true %>
+        </div>
+      </caption>
+      <thead>
+        <tr>
+          <%= search_form_for @q do |f| %>
+            <th>
+              <%= sort_link(@q, :make, t('.brand'), default_order: :desc) %>
+            </th>
+            <th><%= t('.model')%></th>
+            <th><%= t('.color')%></th>
+            <th><%= t('.plate_number')%></th>
+            <th><%= t('.chassis')%></th>
+            <th><%= t('.engine')%></th>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cars.each do |car| %>
+          <tr>
+            <td><strong><%= car.make %></strong></td>
+            <td><%= car.model %></td>
+            <td><%= car.color %></td>
+            <td><span class="badge bg-label-primary me-1"><%= car.plate_number %></span></td>
+            <td><%= car.chassis %></td>
+            <td><%= car.engine %></td>
+            <td>
+              <div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                <i class="bx bx-dots-vertical-rounded"></i></button>
+                <div class="dropdown-menu">
+                  <%= link_to content_tag(:i, nil, class:'bx bx-edit-alt me-1') + t('edit')   , edit_car_path(car), class:'dropdown-item' %>
+                  <%= link_to content_tag(:i, nil, class:'bx bx-trash me-1')    + t('destroy'), car_path(car), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  }, class:'dropdown-item' %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New car", new_car_path %>
