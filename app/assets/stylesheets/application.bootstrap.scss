@@ -3,6 +3,8 @@
 @import "sneat-bootstrap-html-admin-template-free/scss/theme-default";
 @import "sneat-bootstrap-html-admin-template-free/assets/css/demo";
 @import "theme-default";
+@import "bootstrap-print-css/css/bootstrap-print.min";
+@import "print-styles";
 
 .app-brand-text.demo {
     font-size: 1.2rem;

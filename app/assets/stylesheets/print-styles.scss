@@ -1,0 +1,29 @@
+@media print {
+    .btn {
+        display: none;
+    }
+
+    .form-control {
+        display: none;
+    }
+
+    .layout-navbar{
+        display: none;
+    }
+
+    .content-footer {
+        display: none;
+    }
+
+    .pagination {
+        display: none;
+    }
+
+    .body {
+        background-color: white;
+    }
+
+    .breadcrumbs {
+        display: none;
+    }
+}
