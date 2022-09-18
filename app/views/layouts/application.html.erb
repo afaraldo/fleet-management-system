@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="en">
+<html id="html-document" lang="en">
   <head>
     <title>
       <%= SystemSettings[:site_name] %>
@@ -17,7 +17,7 @@
   </head>
   <body>
     <!-- Layout wrapper -->
-    <div id="ok" class="layout-wrapper layout-content-navbar">
+    <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
 
@@ -32,8 +32,6 @@
                 <%= SystemSettings[:organization_name].html_safe %>
               </span>
             </a>
-
-
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -51,14 +49,10 @@
         <div class="layout-page">
 
           <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-
-            <button class="navbar-toggler" type="button" data-toggle="layout-menu-expanded" data-target="#ok" data-bs-toggle="collapse" data-bs-target="#navbar-ex-14">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="bx bx-menu bx-sm"></i>
-              </a>
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none ">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ok">
+                <span class="navbar-toggler-icon"></span>
+              </button>
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
@@ -150,20 +144,6 @@
             <!-- Content --> 
             <div class="container-xxl flex-grow-1 container-p-y">
 
-              <p>
-                <a class="btn btn-primary" data-bs-toggle="layout-menu-expanded" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  Link with href
-                </a>
-                <button class="btn btn-primary" type="button" data-bs-toggle="layout-menu-expanded" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                  Button with data-bs-target
-                </button>
-              </p>
-              <div class="collapse layout-menu-expanded" id="collapseExample">
-                <div class="card card-body">
-                  Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-              </div>
-
             <h3>
               <%= render_breadcrumbs separator: ' / ' %>
             </h3>
@@ -195,15 +175,11 @@
     </div>
 
     <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div> 
+    <!--<div class="layout-overlay layout-menu-toggle"></div>-->
   </div>
   <!-- / Layout wrapper -->
-  
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
-  <script>
-      $('.layout-menu-toggle').dropdown()
-  </script>
 </body>
 </html>
 

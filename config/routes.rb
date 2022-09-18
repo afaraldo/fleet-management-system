@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount SystemSettings::Engine, at: "/system_settings"
+  mount SystemSettings::Engine, at: '/system_settings'
 
   get 'dash_board/index'
   resources :cars

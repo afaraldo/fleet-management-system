@@ -240,6 +240,7 @@ es:
     new: Crear
   cars:
     index:
+      cars: Vehiculos
       brand: Marca
       model: Modelo
       color: Color
@@ -278,4 +279,22 @@ es:
         color: Color
         plate_number: Numero de placa
         chassis: Chasis
+        engine: Motor
+  ransack:
+    asc: Ascendente
+    desc: Descendente
+    predicates:
+      cont: contine
+      not_cont: no contiene
+      start: empieza con
+      end: termina con
+      gt: mayor que
+      lt: menor que
+    models:
+      car: Vehiculo
+    attributes:
+      car:
+        make: Marca
+        model: Model
+        color: Color
         engine: Motor
