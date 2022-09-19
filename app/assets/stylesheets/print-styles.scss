@@ -7,6 +7,12 @@
         display: none;
     }
 
+    .form-floating {
+        label {
+            display: none;
+        }
+    }
+
     .layout-navbar{
         display: none;
     }
@@ -19,7 +25,12 @@
         display: none;
     }
 
-    .body {
+    @page {
+        size: a4;
+    }
+
+    body {
+        min-width: 992px !important;
         background-color: white;
     }
 
