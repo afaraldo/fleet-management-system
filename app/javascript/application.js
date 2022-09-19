@@ -3,9 +3,6 @@ import "@hotwired/turbo-rails"
 //import "controllers"
 import * as bootstrap from "bootstrap"
 
-import "sneat-bootstrap-html-admin-template-free/assets/vendor/js/helpers"
-import "sneat-bootstrap-html-admin-template-free/assets/vendor/js/bootstrap"
-import "sneat-bootstrap-html-admin-template-free/assets/vendor/js/menu"
 // Import JQuery
 import jquery from 'jquery'
 window.jQuery = jquery
