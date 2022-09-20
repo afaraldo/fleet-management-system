@@ -1,0 +1,40 @@
+@media print {
+    .btn {
+        display: none;
+    }
+
+    .form-control {
+        display: none;
+    }
+
+    .form-floating {
+        label {
+            display: none;
+        }
+    }
+
+    .layout-navbar{
+        display: none;
+    }
+
+    .content-footer {
+        display: none;
+    }
+
+    .pagination {
+        display: none;
+    }
+
+    @page {
+        size: a4;
+    }
+
+    body {
+        min-width: 992px !important;
+        background-color: white;
+    }
+
+    .breadcrumbs {
+        display: none;
+    }
+}
