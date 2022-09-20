@@ -35,10 +35,10 @@
 <div class="card">
   <h5 class="card-header">
     <%= t('.cars') %>
-    <%= link_to 'Agregar', new_car_path, class: 'btn btn-primary' %>
+    <%= link_to t('.new'), new_car_path, class: 'btn btn-primary' %>
   </h5>
 
-  <div class="text-nowrap">
+  <div class="table-responsive text-nowrap">
     <table class="table">
       <caption class="ms-4">
 
@@ -60,7 +60,7 @@
             <th><%= t('.plate_number')%></th>
             <th><%= t('.chassis')%></th>
             <th><%= t('.engine')%></th>
-            <th></th>
+            <th class="d-print-none"></th>
           <% end %>
         </tr>
       </thead>
@@ -73,7 +73,7 @@
             <td><span class="badge bg-label-primary me-1"><%= car.plate_number %></span></td>
             <td><%= car.chassis %></td>
             <td><%= car.engine %></td>
-            <td>
+            <td class="d-print-none">
               <div class="dropdown">
                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                 <i class="bx bx-dots-vertical-rounded"></i></button>

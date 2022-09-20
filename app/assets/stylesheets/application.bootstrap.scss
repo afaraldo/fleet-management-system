@@ -1,9 +1,16 @@
 @import "boxicons/css/boxicons";
 @import "sneat-bootstrap-html-admin-template-free/scss/core";
-@import "sneat-bootstrap-html-admin-template-free/scss/theme-default";      
+@import "sneat-bootstrap-html-admin-template-free/scss/theme-default";
 @import "sneat-bootstrap-html-admin-template-free/assets/css/demo";
-@import "login";
-@import "devise-flash-messages";
+@import "theme-default";
+@import "bootstrap-print-css/css/bootstrap-print.min";
+@import "print-styles";
+
+.app-brand-text.demo {
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    text-transform: none;
+}
 
 .buy-now .btn-buy-now {
     position: fixed;

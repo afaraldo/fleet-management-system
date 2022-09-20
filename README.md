@@ -37,15 +37,15 @@ Nothing
 
 * Deployment instructions
 
+yarn build:css --watch # compiling css
+yarn build --watch # compiling js
+rails system_settings:load # load system setting to db
 rails s
-
-yarn build:css --watch
 
 * Contributing
 
 Contributions to fleet-management-system may be made using GitHub pull requests. You must include accompanying tests, and all tests must pass for any contribution to be considered.
 
 Also use rubocop -f html -o rubocop.html
-
 
 # fleet-management-system
