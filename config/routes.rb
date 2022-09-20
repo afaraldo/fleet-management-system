@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'login/index'
+  #get 'login/index'
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root 'dash_board#index'
-  root 'login#index'
+  root 'dash_board#index'
+  #root 'login#index'
 end

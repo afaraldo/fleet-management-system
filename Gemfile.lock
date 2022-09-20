@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     ast (2.4.2)
     backport (1.2.0)
+    bcrypt (3.1.18)
     benchmark (0.2.0)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
@@ -99,6 +100,15 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     debug_inspector (1.1.0)
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
+    devise-i18n-views (0.3.7)
     diff-lcs (1.5.0)
     digest (3.1.0)
     docile (1.4.0)
@@ -172,6 +182,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
@@ -217,6 +228,9 @@ GEM
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
@@ -319,6 +333,8 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -347,6 +363,9 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1)
   debase
   debug
+  devise
+  devise-i18n
+  devise-i18n-views
   factory_bot_rails
   faker
   importmap-rails
@@ -381,4 +400,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.3
+   2.3.18

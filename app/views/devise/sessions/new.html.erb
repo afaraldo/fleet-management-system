@@ -1,26 +1,45 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="col-lg-4 mx-lg-auto" xmlns="http://www.w3.org/1999/html">
+  <div class="card shadow">
+    <div class="card-header">
+      <h2 class="card-title text-center">Iniciar Sesión</h2>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+        <div class='mb-3'>
+            <label for="email" class="form-label">Correo Electrónico </label>
+            <input type="text" class="form-control" id="email" name= "email-username" placeholder="Ingrese su correo" autofocus >
+        </div>
+        <div class="mb-3 form-password-toggle">
+          <div class="d-flex justify-content-between">
+            <label class="form-label" for="password">Contraseña</label>
+            <a href="auth-forgot-password-basic.html">
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Olvidaste tu contraseña?", new_password_path(resource_name) %><br />
+              <% end %>
+            </a>
+          </div>
+          <div class="input-group input-group-merge">
+            <input type="password" id="password" class="form-control" name="password" placeholder="············" aria-describedby="password">
+            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="remember-me">
+            <label class="form-check-label" for="remember-me">
+              Recuerdame
+            </label>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <button class="btn btn-primary d-grid w-100" type="submit">Iniciar Sesión</button>
+        </div>
+        </form>
+      <% end %>
+      <p class="text-center">
+        <%= render "devise/shared/links" %>
+      </p>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

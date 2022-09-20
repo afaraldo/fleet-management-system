@@ -1,4 +1,6 @@
 # Controller for Login model
 class LoginController < ApplicationController
-  def index; end
+    # before_filter :authenticate_user!
+    def index; end
+    def no_autorizado; end
 end

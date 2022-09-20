@@ -268,6 +268,9 @@ es:
         plate_number: Numero de placa
         chassis: Chasis
         engine: Motor
+      user:
+        email: Correo electrónico
+        password: Contraseña
     hints:
       car:
         make: 'User name to sign in.'
@@ -279,3 +282,6 @@ es:
         plate_number: Numero de placa
         chassis: Chasis
         engine: Motor
+      user:
+        email: Correo electrónico
+        password: Contraseña
