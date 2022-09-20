@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def create
     record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
     respond_to do |format|
-      format.html { redirect_to action: :edit, id: record.id }
+      format.html { redirect_to action: :edit, id: record.id, notice: "Book not found" }
       format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
   end
@@ -105,7 +105,8 @@ class ApplicationController < ActionController::Base
     instance_variable_set "@#{resource_name}", exception.record
 
     respond_to do |format|
-      format.html { render :edit, status: :unprocessable_entity }
+      flash.now[:error] = "error"
+      format.html { render :edit, status: :unprocessable_entity, error: "error2" }
       format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
   end
