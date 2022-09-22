@@ -9,10 +9,10 @@
 
   <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
     <div class="mb-3">
-      <label for="email" class="form-label">Correo electrónico</label>
-      <input type="text" class="form-control" id="email" name="email" placeholder="Ingrese su correo" autofocus="">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Ingrese su correo"%>
     </div>
-    <button class="btn btn-primary d-grid w-100">Enviar enlace de reinicio</button>
+    <%= f.submit "Enviar enlace de reinicio" , class:"btn btn-primary d-grid w-100" %>
   </form>
 <% end %>
 
