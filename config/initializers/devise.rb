@@ -160,7 +160,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-   config.confirmation_keys = [:email]
+  config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -266,8 +266,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  #config.sign_out_via = :delete
-  config.sign_out_via =  [:get, :delete]
+  config.sign_out_via = %i[get delete]
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

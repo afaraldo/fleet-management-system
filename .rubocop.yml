@@ -9,6 +9,7 @@ Style/FrozenStringLiteralComment:
 Layout/LineLength:
   Exclude:
     - app/controllers/application_controller.rb
+    - config/initializers/devise.rb
 Metrics/AbcSize:
   Exclude:
     - app/controllers/application_controller.rb
@@ -16,6 +17,8 @@ Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
   #Max: 50
+Metrics/MethodLength:
+  Enabled: false
 AllCops:
   NewCops: enable
   Exclude:

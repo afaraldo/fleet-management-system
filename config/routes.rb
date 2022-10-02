@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  #get 'login/index'
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  devise_for :users
+
   mount SystemSettings::Engine, at: '/system_settings'
 
   get 'dash_board/index'
-  resources :cars
   resources :work_orders
   resources :employees
   resources :cars
@@ -14,5 +11,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'dash_board#index'
-  #root 'login#index'
 end

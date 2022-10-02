@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html id="html-document" lang="en">
+<head>
+  <title>
+    <%= SystemSettings[:site_name] %>
+  </title>
+  <%= favicon_link_tag asset_path(SystemSettings[:favicon]) %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<!-- Layout wrapper -->
+
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <!-- Layout container -->
+    <div class="layout-page">
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <%= yield %>
+        </div>
+        <!-- Footer -->
+        <footer class="content-footer footer bg-footer-theme">
+          <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+            <div class="mb-2 mb-md-0">
+              © Desarrollado por
+              <a href="https://github.com/afaraldo" class="footer-link fw-bolder">@afaraldo</a> y
+              <a href="https://github.com/KariSanabria" class="footer-link fw-bolder">KariSanabria</a>
+            </div>
+          </div>
+        </footer>
+        <!-- / Footer -->
+        <div class="content-backdrop fade"></div>
+      </div>
+      <!-- Content wrapper -->
+    </div>
+
+    <!-- / Layout page -->
+  </div>
+</div>
+<!-- / Layout wrapper -->
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>
+
