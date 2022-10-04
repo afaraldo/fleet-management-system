@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
   # POST
   def create
     record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
+    flash[:success] = I18n.t('created', record: record)
     respond_to do |format|
-      format.html { redirect_to action: :edit, id: record.id, notice: "Book not found" }
-      format.json { render json: exception.record.errors, status: :unprocessable_entity }
+      format.html { redirect_to action: :edit, id: record.id }
     end
   end
 
@@ -33,16 +33,18 @@ class ApplicationController < ActionController::Base
   def update
     model.send(:update!, model_params)
     record = instance_variable_set "@#{resource_name}", model
+    flash[:success] = I18n.t('updated', record: record)
     respond_to do |format|
       format.html { redirect_to action: :edit, id: record.id }
-      format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
   end
 
   # DELETE
   def destroy
+    record = instance_variable_set "@#{resource_name}", model
     model.send(:destroy!)
 
+    flash[:success] = I18n.t('destroyed', record: record)
     redirect_to :"#{plural_resource_name}"
   end
 
@@ -105,8 +107,8 @@ class ApplicationController < ActionController::Base
     instance_variable_set "@#{resource_name}", exception.record
 
     respond_to do |format|
-      flash.now[:error] = "error"
-      format.html { render :edit, status: :unprocessable_entity, error: "error2" }
+      flash.turbo[:danger] = exception.message.to_s
+      format.html { render :edit, status: :unprocessable_entity }
       format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
   end
