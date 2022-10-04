@@ -15,14 +15,14 @@
 
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
-<% if user_signed_in? %>
-  <%= render "layouts/menu" %>
-<% else %>
-  <div id="principal-content">
-    <%= render "layouts/devise" %>
-  </div>
+  <body>
+    <% if user_signed_in? %>
+      <%= render "layouts/menu" %>
+    <% else %>
+      <div id="principal-content">
+        <%= render "layouts/devise" %>
+      </div>
+    <% end %>
 
-<% end %>
-</body>
+  </body>
 </html>
