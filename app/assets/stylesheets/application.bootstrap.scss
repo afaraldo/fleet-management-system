@@ -1,4 +1,4 @@
-@import "boxicons/css/boxicons";
+
 @import "sneat-bootstrap-html-admin-template-free/scss/core";
 @import "sneat-bootstrap-html-admin-template-free/scss/theme-default";
 @import "sneat-bootstrap-html-admin-template-free/assets/css/demo";
@@ -10,6 +10,7 @@
     font-size: 1.2rem;
     letter-spacing: -0.5px;
     text-transform: none;
+    max-width: 120px;
 }
 
 .buy-now .btn-buy-now {
