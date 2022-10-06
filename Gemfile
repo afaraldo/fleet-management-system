@@ -67,7 +67,7 @@ gem 'ransack'
 gem 'sassc-rails'
 
 # Use to dry validation between database and model [https://github.com/SchemaPlus/schema_validations]
-gem "schema_validations"
+gem 'schema_validations'
 
 # Use to build navbar [https://github.com/codeplant/simple-navigation]
 gem 'simple-navigation'

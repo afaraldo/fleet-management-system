@@ -1,7 +1,6 @@
-class RenameColumnToWorkOrders < ActiveRecord::Migration[7.0]
+class CreateWorkOrder < ActiveRecord::Migration[7.0]
   def change
-    drop_table :work_orders
-    create_table :work_orders do |t|
+    create_table(:work_orders) do |t|
       t.date :date, null: false
       t.bigint :number, null: false
       t.string :description, null: false

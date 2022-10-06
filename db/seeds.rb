@@ -13,3 +13,5 @@ end
 100.times do
   FactoryBot.create(:work_order)
 end
+
+User.find_or_create_by!(username: "admin@email.com", password:"test123")

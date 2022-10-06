@@ -69,7 +69,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key2,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-id-card') +
                   content_tag(:div, I18n.t('navbar.employee'), class: nil),
-                  employees_path,
+                  employees_path(session['employees']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/employees}
@@ -77,7 +77,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key3,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
                   content_tag(:div, I18n.t('navbar.work_order'), class: nil),
-                  work_orders_path,
+                  work_orders_path(session['work_orders']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/work_orders}
@@ -85,11 +85,10 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-car') +
                   content_tag(:div, I18n.t('navbar.car'), class: nil),
-                  cars_path({params: { q: {s: "plate_number asc" }}}),
+                  cars_path(session['cars']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/cars}
-
 
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|

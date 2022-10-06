@@ -2,21 +2,13 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
   before_action :authenticate_user!
-  # layout :layout_by_resource
-  # private
-  # def layout_by_resource
-  #   if devise_controller?
-  #        "menu"
-  #   else
-  #     "application"
-  #   end
-  # end
+
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
   # GET
   def index
-    add_breadcrumb I18n.t("activerecord.models.#{resource_name}", count: 2), "#{plural_resource_name}_path".to_sym # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}..other"), polymorphic_url(plural_resource_name, params: session["/#{plural_resource_name}"], only_path: true) # Use for breadcrumbs_on_rails gem
     resource_search_method = :ransack
     instance_variable_set :@q, model_class.send(resource_search_method, search_params[:q])
     instance_variable_set "@#{plural_resource_name}", @q.result.page(pagination_params[:page]).per(pagination_params[:per])
@@ -24,8 +16,8 @@ class ApplicationController < ActionController::Base
 
   # GET
   def new
-    add_breadcrumb I18n.t("activerecord.models.#{resource_name}", count: 2), "#{plural_resource_name}_path".to_sym # Use for breadcrumbs_on_rails gem
-    add_breadcrumb I18n.t('cars.index.new', count: 2), nil # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t('buttons.new'), nil # Use for breadcrumbs_on_rails gem
     instance_variable_set "@#{resource_name}", model_class.send(:new)
   end
 
@@ -86,12 +78,15 @@ class ApplicationController < ActionController::Base
   private
 
   # Override this method to provide your own search params.
+  # Also it save filters in params[:q] in cookies.
+  # This allow remember last action in index views
   #
   # @private
   # @return [ActionController::Parameters] Params given to the search
   # method.
   def search_params
-    params.permit(q: {}).extract!(:q)
+    session[controller_name] = params.permit(q: {}).extract!(:q)
+    session[controller_name]
   end
 
   # Override this method to provide your own search params.
