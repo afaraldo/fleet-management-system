@@ -17,6 +17,13 @@ es:
         one: Orden de Trabajo
         other: Ordenes de Trabajo
     attributes:
+      car:
+        make: Marca
+        model: Modelo
+        color: Color
+        plate_number: Numero de placa
+        chassis: Chasis
+        engine: Motor
       work_order:
         date: Fecha
   date:
@@ -237,9 +244,9 @@ es:
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     pm: pm
-  created: "$%{record} fue creado."
-  updated: "$%{record} fue actualizado."
-  destroyed: "$%{record} fue borrado."
+  created: "%{record} fue creado."
+  updated: "%{record} fue actualizado."
+  destroyed: "%{record} fue borrado."
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"
@@ -261,9 +268,6 @@ es:
       form: Formulario
     form:
       form: Formulario
-  work_orders:
-    index:
-      new: Agregar
   views:
     pagination:
       first: "&laquo;"

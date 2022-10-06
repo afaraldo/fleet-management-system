@@ -4,17 +4,6 @@
   </h5>
   <div class="card-body">
     <%= simple_form_for car, class: 'form-floating' do |f| %>
-      <% if car.errors.any? %>
-        <div style="color: red">
-          <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
-    
-          <ul>
-            <% car.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <div class='row'>
         <div class='mb-3'>
           <div class='form-floating'>
