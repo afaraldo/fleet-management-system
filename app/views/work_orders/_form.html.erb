@@ -1,37 +1,63 @@
-<%= form_with(model: work_order) do |form| %>
-  <% if work_order.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(work_order.errors.count, "error") %> prohibited this work_order from being saved:</h2>
-
-      <ul>
-        <% work_order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t('.form')%>
+  </h5>
+  <div class="card-body">
+    <%= simple_form_for work_order, class: 'form-floating' do |f| %>
+      <div class='row'>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :date, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :date, for: 'floatingInput' %>
+            <!-- <div id="floatingInputHelp" class="form-text">We'll never share your details with anyone else.</div>-->
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :number, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :number, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :description, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :description, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :city, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :city, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :workdays, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :workdays, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :start_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :start_mileage, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :final_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :final_mileage, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :employee_id, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :employee, for: 'floatingInput' %>
+          </div>
+        </div>
+      </div>
+      <div class='mt-2'>
+        <%= f.button 'submit', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :requested_by, style: "display: block" %>
-    <%= form.text_field :requested_by %>
-  </div>
-
-  <div>
-    <%= form.label :reason, style: "display: block" %>
-    <%= form.text_field :reason %>
-  </div>
-
-  <div>
-    <%= form.label :manager, style: "display: block" %>
-    <%= form.text_field :manager %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -35,7 +35,7 @@ es:
         workdays: Duracion
         start_mileage: Km Inicio
         final_mileage: Km Fin
-        distance: Recorrid
+        distance: Recorrido
         employee: Firma
   date:
     abbr_day_names:

@@ -2,18 +2,30 @@
   <div class="row align-items-start p-3">
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :make, for: 'floatingInput' %>
+        <%= f.search_field :date_gteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :date, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :date_gteq, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :model, for: 'floatingInput' %>
+        <%= f.search_field :date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :date, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
-      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-primary'  %>
+      <div class='form-floating'>
+        <%= f.search_field :number, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :number, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :employee_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :employee, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn btn-secondary'  %>
     </div>
   </div>
 <% end %>
