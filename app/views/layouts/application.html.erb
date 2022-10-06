@@ -20,29 +20,7 @@
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
-
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
-          
-          <div class="app-brand demo ">
-            <a href="<%= root_path %>>" class="app-brand-link">
-              <span class="app-brand-logo demo">
-                <%= image_tag SystemSettings[:logo_file], size: "80x80" %>
-              </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <%= SystemSettings[:organization_name].html_safe %>
-              </span>
-            </a>
-
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
-              <i class="bx bx-chevron-left bx-sm align-middle"></i>
-            </a>
-          </div>
-
-          <div class="menu-inner-shadow"></div>
-
-          <%= render_navigation %>
-        </aside>
-
+        <%= render(partial: 'layouts/sidebar') %>
         <!-- / Menu -->
     
         <!-- Layout container -->
@@ -129,10 +107,10 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
-                      </a>
+                      <% end %>
                     </li>
                   </ul>
                 </li>
@@ -183,10 +161,6 @@
     <!--<div class="layout-overlay layout-menu-toggle"></div>-->
   </div>
   <!-- / Layout wrapper -->
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
-    <%= javascript_import_module_tag "./assets/application" %>
-
   </body>
 </html>
 

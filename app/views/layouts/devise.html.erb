@@ -26,6 +26,11 @@
       <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
+          <div id="flash">
+            <% flash.each do |role, message| %>
+              <%= render(partial: 'shared/flash', locals: { role: role, message: message }) %>
+            <% end %>
+          </div>
           <%= yield %>
         </div>
         <!-- Footer -->
@@ -48,8 +53,5 @@
   </div>
 </div>
 <!-- / Layout wrapper -->
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
-
