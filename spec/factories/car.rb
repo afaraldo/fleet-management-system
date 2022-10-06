@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :car do
-    make { Faker::Name.unique.clear }
-    model { Faker::Company.name }
-    color { Faker::Color.color_name }
-    plate_number { Faker::Number.number(digits: 6) }
-    chassis { Faker::Name.name }
-    engine { Faker::Name.name }
+    make { Faker::Vehicle.make }
+    model { Faker::Vehicle.model }
+    color { Faker::Color.hex_color }
+    plate_number { Faker::Vehicle.license_plate }
+    chassis { Faker::Vehicle.car_type }
+    engine { Faker::Vehicle.engine }
   end
 end

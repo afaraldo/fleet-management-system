@@ -321,6 +321,6 @@ es:
     attributes:
       car:
         make: Marca
-        model: Model
+        model: Modelo
         color: Color
         engine: Motor
