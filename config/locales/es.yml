@@ -1,5 +1,7 @@
 ---
 es:
+  buttons:
+    new: Agregar
   activerecord:
     errors:
       messages:
@@ -11,6 +13,12 @@ es:
       car:
         one: 'Vehiculo'
         other: 'Vehiculos'
+      work_order:
+        one: Orden de Trabajo
+        other: Ordenes de Trabajo
+    attributes:
+      work_order:
+        date: Fecha
   date:
     abbr_day_names:
       - dom
@@ -253,6 +261,9 @@ es:
       form: Formulario
     form:
       form: Formulario
+  work_orders:
+    index:
+      new: Agregar
   views:
     pagination:
       first: "&laquo;"
