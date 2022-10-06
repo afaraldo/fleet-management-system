@@ -72,6 +72,9 @@ gem 'simple-navigation'
 # Use to System Setting [https://github.com/krists/system_settings]
 gem 'system_settings'
 
+# Use to show alerts [https://github.com/joshmn/turbo_flash]
+gem 'turbo_flash'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 
