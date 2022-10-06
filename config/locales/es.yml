@@ -306,6 +306,16 @@ es:
         plate_number: Numero de placa
         chassis: Chasis
         engine: Motor
+      work_order:
+        date: Fecha
+        number: Numero
+        description: Mision
+        city: Destino
+        workdays: Duracion
+        start_mileage: Km Inicio
+        final_mileage: Km Fin
+        distance: Recorrido
+        employee: Firma
   ransack:
     asc: Ascendente
     desc: Descendente

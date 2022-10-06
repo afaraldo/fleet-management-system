@@ -618,6 +618,11 @@ source-map@^0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+stimulus-datepicker@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/stimulus-datepicker/-/stimulus-datepicker-1.0.1.tgz#a917f70d0c87b9a8cb578beb4da38ce62c3d7210"
+  integrity sha512-xiJouzpE6pxKcp82w5NmV0w9YyEP3ro4r99b1srEQIIFRm1fdZA1Hh7NQPLFpPJG82z3m/OBH5jO9RUu9xnuvQ==
+
 svg.draggable.js@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/svg.draggable.js/-/svg.draggable.js-2.2.2.tgz#c514a2f1405efb6f0263e7958f5b68fce50603ba"
