@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_15_001355) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_06_055921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,12 +65,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_001355) do
   end
 
   create_table "work_orders", force: :cascade do |t|
-    t.date "date"
-    t.string "requested_by"
-    t.string "reason"
-    t.string "manager"
+    t.date "date", null: false
+    t.bigint "number", null: false
+    t.string "description", null: false
+    t.string "city"
+    t.integer "workdays"
+    t.integer "start_mileage"
+    t.integer "final_mileage"
+    t.bigint "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city"], name: "index_work_orders_on_city"
+    t.index ["date"], name: "index_work_orders_on_date"
+    t.index ["description"], name: "index_work_orders_on_description"
+    t.index ["employee_id"], name: "index_work_orders_on_employee_id"
+    t.index ["number"], name: "index_work_orders_on_number"
   end
 
 end

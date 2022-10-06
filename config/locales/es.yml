@@ -2,6 +2,9 @@
 es:
   buttons:
     new: Agregar
+    edit: Editar
+    destroy: Eliminar
+    confirm: Estas seguro?
   activerecord:
     errors:
       messages:
@@ -26,6 +29,14 @@ es:
         engine: Motor
       work_order:
         date: Fecha
+        number: Numero
+        description: Mision
+        city: Destino
+        workdays: Duracion
+        start_mileage: Km Inicio
+        final_mileage: Km Fin
+        distance: Recorrid
+        employee: Firma
   date:
     abbr_day_names:
       - dom
