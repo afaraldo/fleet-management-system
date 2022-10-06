@@ -18,7 +18,8 @@ Metrics/BlockLength:
     - config/navigation.rb
   #Max: 50
 Metrics/MethodLength:
-  Enabled: false
+  Exclude:
+    - db/migrate/20220911194444_devise_create_users.rb
 AllCops:
   NewCops: enable
   Exclude:

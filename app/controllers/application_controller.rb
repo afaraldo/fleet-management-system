@@ -2,15 +2,6 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
   before_action :authenticate_user!
-  # layout :layout_by_resource
-  # private
-  # def layout_by_resource
-  #   if devise_controller?
-  #        "menu"
-  #   else
-  #     "application"
-  #   end
-  # end
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
