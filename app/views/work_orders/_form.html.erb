@@ -6,7 +6,6 @@
     <%= simple_form_for work_order, class: 'form-floating' do |f| %>
       <div class='row'>
         <div class="col-3">
-
           <div data-controller="datepicker">
             <div class="input-group">
               <div class='form-floating'>
@@ -15,7 +14,9 @@
                                   class:'form-control',
                                   'aria-describedby':"floatingInputHelp",
                                   autofocus: true,
-                                  'data-datepicker-target': 'input' %>
+                                  'data-datepicker-target': 'input',
+                                  'data-datepicker-format-value': "%-d %b %y"
+                %>
                 <%= f.label :date, for: 'floatingInput' %>
               </div>
               <span id="basic-default-password2" data-datepicker-target="toggle" class="input-group-text cursor-pointer"><i class="bx bx-calendar"></i></span>
@@ -35,39 +36,45 @@
       <div class='row'>
         <div class='mb-3'>
           <div class='form-floating'>
-            <%= f.input_field :description, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= f.label :description, for: 'floatingInput' %>
-          </div>
-        </div>
-        <div class='mb-3'>
-          <div class='form-floating'>
             <%= f.input_field :city, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :city, for: 'floatingInput' %>
           </div>
         </div>
-        <div class='mb-3'>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
           <div class='form-floating'>
             <%= f.input_field :workdays, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :workdays, for: 'floatingInput' %>
           </div>
         </div>
-        <div class='mb-3'>
+        <div class="col-4">
           <div class='form-floating'>
             <%= f.input_field :start_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :start_mileage, for: 'floatingInput' %>
           </div>
         </div>
-        <div class='mb-3'>
+        <div class='col-4'>
           <div class='form-floating'>
             <%= f.input_field :final_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :final_mileage, for: 'floatingInput' %>
           </div>
         </div>
-        <div class='mb-3'>
-          <div class='form-floating'>
-            <%= f.input_field :employee_id, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= f.label :employee, for: 'floatingInput' %>
-          </div>
+      </div>
+      <div class="row">
+        <div class='form-floating mb-3'>
+          <%= f.input_field :employee_id, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+          <%= f.label :employee, for: 'floatingInput' %>
+        </div>
+        <div class='form-floating mb-3'>
+          <%= f.input_field :description,
+                            as: :text,
+                            class:'form-control',
+                            'aria-describedby':"floatingInputHelp",
+                            cols: 5,
+                            rows: 10
+          %>
+          <%= f.label :description, for: 'floatingInput' %>
         </div>
       </div>
       <div class='mt-2'>
