@@ -10,9 +10,6 @@
       </div>
       <h3 class="card-title text-center">Iniciar Sesión</h3>
     </div>
-<!--    <div class="card-header">-->
-<!--      <h2 class="card-title text-center">Iniciar Sesión</h2>-->
-<!--    </div>-->
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
@@ -47,9 +44,6 @@
         </div>
         </form>
       <% end %>
-<!--      <p class="text-center">-->
-        <%#= render "devise/shared/links" %>
-<!--      </p>-->
     </div>
   </div>
 </div>
