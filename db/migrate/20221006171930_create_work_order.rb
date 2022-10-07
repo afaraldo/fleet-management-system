@@ -1,3 +1,4 @@
+# This migrate add new columns to work order table
 class CreateWorkOrder < ActiveRecord::Migration[7.0]
   def change
     create_table(:work_orders) do |t|

@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   mount SystemSettings::Engine, at: '/system_settings'
 
-  resources :dash_board, only: [:index]
-  resources :cars, except: [:show]
-  resources :employees, except: [:show]
-  resources :users, except: [:show]
-  resources :work_orders, except: [:show]
+  resources :dash_board
+  resources :cars
+  resources :employees
+  resources :users
+  resources :work_orders
 
   # Defines the root path route ("/")
   root 'dash_board#index'
