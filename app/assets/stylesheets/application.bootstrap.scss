@@ -3,11 +3,9 @@
 @import "sneat-bootstrap-html-admin-template-free/scss/theme-default";
 @import "sneat-bootstrap-html-admin-template-free/assets/css/demo";
 @import "theme-default";
-@import "polipop/dist/css/polipop.default.min";
 @import "bootstrap-print-css/css/bootstrap-print.min";
 @import "print-styles";
-@import "polipop/dist/css/polipop.core.min";
-@import "polipop/dist/css/polipop.default.min";
+@import "menu";
 
 .app-brand-text.demo {
     font-size: 1.2rem;
