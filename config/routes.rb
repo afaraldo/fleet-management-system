@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   mount SystemSettings::Engine, at: '/system_settings'
 
-  resources :dash_board
+  resources :dash_board, only: [:index]
   resources :cars
   resources :employees
   resources :users

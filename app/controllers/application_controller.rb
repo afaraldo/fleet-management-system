@@ -2,13 +2,12 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
   before_action :authenticate_user!
-
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
   # GET
   def index
-    add_breadcrumb I18n.t("activerecord.models.#{resource_name}..other"), polymorphic_url(plural_resource_name, params: session["/#{plural_resource_name}"], only_path: true) # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session["/#{plural_resource_name}"], only_path: true) # Use for breadcrumbs_on_rails gem
     resource_search_method = :ransack
     instance_variable_set :@q, model_class.send(resource_search_method, search_params[:q])
     instance_variable_set "@#{plural_resource_name}", @q.result.page(pagination_params[:page]).per(pagination_params[:per])
