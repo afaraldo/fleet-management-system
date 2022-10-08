@@ -3,7 +3,7 @@
 This README would normally document whatever steps are necessary to get the
 
 * Ruby version 
-
+nvm install 12.16.3
 rvm install 3.0.0
 rvm use 3.0.0
 rvm gemset create fleet-management-system
