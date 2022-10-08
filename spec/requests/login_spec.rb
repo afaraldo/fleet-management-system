@@ -1,11 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "DashBoards", type: :request do
-  login_user
-
+RSpec.describe "Logins", type: :request do
   describe "GET /index" do
     it "returns http success" do
-      get dash_board_index_path
+      get new_user_session_path
       expect(response).to have_http_status(:success)
     end
   end

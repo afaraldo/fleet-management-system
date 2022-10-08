@@ -14,7 +14,11 @@ require 'rails_helper'
 
 RSpec.describe "/cars", type: :request do
 
-  before { host! "localhost:3000" }
+  login_user
+
+  before {
+    host! "localhost:3000"
+  }
 
   # This should return the minimal set of attributes required to create a valid
   # Car. As you add validations to Car, be sure to

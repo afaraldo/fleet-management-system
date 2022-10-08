@@ -107,6 +107,18 @@ group :development, :test do
   gem 'solargraph', require: false
 end
 
+# Flexible authentication solution for Rails with Warden. Read more: http://blog.plataformatec.com.br/tag/devise/
+gem 'devise'
+
+# An enterprise security extension for devise, trying to meet industrial standard security demands for web applications.
+# gem 'devise_security_extension'
+
+# Translations for the devise gem
+gem 'devise-i18n'
+
+# I18n support for devise views
+gem 'devise-i18n-views'
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'

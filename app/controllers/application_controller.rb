@@ -1,7 +1,7 @@
 # Main class controller
 class ApplicationController < ActionController::Base
   include ControllerResources
-
+  before_action :authenticate_user!
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 

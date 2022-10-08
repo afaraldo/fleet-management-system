@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users
   mount SystemSettings::Engine, at: '/system_settings'
 
-  get 'dash_board/index'
+  resources :dash_board, only: [:index]
   resources :cars
-  resources :work_orders
   resources :employees
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :users
+  resources :work_orders
 
   # Defines the root path route ("/")
   root 'dash_board#index'
