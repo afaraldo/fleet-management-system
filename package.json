@@ -14,7 +14,7 @@
     "jquery": "^3.6.1",
     "sass": "^1.54.5",
     "sneat-bootstrap-html-admin-template-free": "github:afaraldo/sneat-html-admin-template-free#136ea6236ca004ae0426998231b417ff9ad8811f",
-    "stimulus-datepicker": "github:afaraldo/stimulus-datepicker#^1.0.2"
+    "stimulus-datepicker": "^1.0.1"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
