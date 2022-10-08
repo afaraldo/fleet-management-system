@@ -1,5 +1,10 @@
 ---
 es:
+  buttons:
+    new: Agregar
+    edit: Editar
+    destroy: Eliminar
+    confirm: Estas seguro?
   activerecord:
     errors:
       messages:
@@ -11,6 +16,9 @@ es:
       car:
         one: 'Vehiculo'
         other: 'Vehiculos'
+      work_order:
+        one: Orden de Trabajo
+        other: Ordenes de Trabajo
     attributes:
       car:
         make: Marca
@@ -19,6 +27,16 @@ es:
         plate_number: Numero de placa
         chassis: Chasis
         engine: Motor
+      work_order:
+        date: Fecha
+        number: Numero
+        description: Mision
+        city: Destino
+        workdays: Duracion
+        start_mileage: Km Inicio
+        final_mileage: Km Fin
+        distance: Recorrido
+        employee: Firma
   date:
     abbr_day_names:
       - dom
@@ -288,6 +306,16 @@ es:
         plate_number: Numero de placa
         chassis: Chasis
         engine: Motor
+      work_order:
+        date: Fecha
+        number: Numero
+        description: Mision
+        city: Destino
+        workdays: Duracion
+        start_mileage: Km Inicio
+        final_mileage: Km Fin
+        distance: Recorrido
+        employee: Firma
   ransack:
     asc: Ascendente
     desc: Descendente
@@ -303,6 +331,6 @@ es:
     attributes:
       car:
         make: Marca
-        model: Model
+        model: Modelo
         color: Color
         engine: Motor

@@ -1,8 +1,8 @@
 # representation of a vehicle
 class Car < ApplicationRecord
-  validates :make, :model, :color, :plate_number, :chassis, :engine, presence: true
+  validates :make, :model, :plate_number, presence: true
 
   def to_s
-    "#{model} #{plate_number}"
+    "#{make} #{model} #{plate_number}"
   end
 end

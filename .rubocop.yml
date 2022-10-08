@@ -20,6 +20,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/20220911194444_devise_create_users.rb
+    - db/migrate/20221006171930_create_work_order.rb
 AllCops:
   NewCops: enable
   Exclude:

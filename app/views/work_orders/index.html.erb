@@ -1,14 +1,88 @@
-<p style="color: green"><%= notice %></p>
+<%= search_form_for @q do |f| %>
+  <div class="row align-items-start p-3">
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :date_gteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :date, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :date, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :number, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :number, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :employee_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :employee, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn btn-secondary'  %>
+    </div>
+  </div>
+<% end %>
 
-<h1>Work orders</h1>
+<div class="card">
+  <h5 class="card-header">
+    <%= t('activerecord.models.work_order.other') %>
+    <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
+  </h5>
 
-<div id="work_orders">
-  <% @work_orders.each do |work_order| %>
-    <%= render work_order %>
-    <p>
-      <%= link_to "Show this work order", work_order %>
-    </p>
-  <% end %>
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @work_orders, entry_name: 'item' %>
+          </div>
+          <%= paginate @work_orders, remote: true %>
+        </div>
+      </caption>
+      <thead>
+      <tr>
+        <%= search_form_for @q do |f| %>
+          <th>
+            <%= sort_link(@q, :date, t('activerecord.attributes.work_order.date'), default_order: :desc) %>
+          </th>
+          <th><%= t('activerecord.attributes.work_order.number')%></th>
+          <th><%= t('activerecord.attributes.work_order.description')%></th>
+          <th><%= t('activerecord.attributes.work_order.city')%></th>
+          <th><%= t('activerecord.attributes.work_order.workdays')%></th>
+          <th><%= t('activerecord.attributes.work_order.start_mileage')%></th>
+          <th><%= t('activerecord.attributes.work_order.final_mileage')%></th>
+          <th><%= t('activerecord.attributes.work_order.distance')%></th>
+          <th><%= t('activerecord.attributes.work_order.employee')%></th>
+          <th class="d-print-none"></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% @work_orders.each do |work_order| %>
+        <tr>
+          <td><strong><%= work_order.date %></strong></td>
+          <td><%= work_order.number %></td>
+          <td><%= work_order.description %></td>
+          <td><%= work_order.city %></td>
+          <td><%= work_order.workdays %></td>
+          <td><%= work_order.start_mileage %></td>
+          <td><%= work_order.final_mileage %></td>
+          <td><%= work_order.distance %></td>
+          <td><%= work_order.employee_id %></td>
+          <td class="d-print-none">
+            <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New work order", new_work_order_path %>

@@ -4,5 +4,3 @@
 
 import { application } from "./application"
 
-import CarsController from "./cars_controller"
-application.register("cars", CarsController)

@@ -159,7 +159,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    loofah (2.18.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -168,6 +168,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.3)
+    modware (1.0.2)
     msgpack (1.5.6)
     net-imap (0.2.3)
       digest
@@ -289,6 +290,23 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    schema_monkey (3.0.2)
+      activerecord (>= 5.2)
+      modware (~> 1.0.2)
+    schema_plus_columns (1.0.1)
+      activerecord (>= 5.2, < 7.1)
+      schema_plus_core (~> 3.1.0)
+      schema_plus_indexes (~> 1.0.1)
+    schema_plus_core (3.1.0)
+      activerecord (>= 5.2, < 7.1)
+      schema_monkey (~> 3.0.2)
+    schema_plus_indexes (1.0.1)
+      activerecord (>= 5.2, < 7.1)
+      schema_plus_core (~> 3.1.0)
+    schema_validations (2.4.1)
+      activerecord (>= 5.2, < 7.1)
+      schema_plus_columns (~> 1.0.1)
+      valuable
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     simple-navigation (4.4.0)
@@ -341,6 +359,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
+    valuable (0.9.14)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -354,7 +373,7 @@ GEM
     websocket-extensions (0.1.5)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   x86_64-linux
@@ -393,6 +412,7 @@ DEPENDENCIES
   rubocop-thread_safety
   ruby-debug-ide
   sassc-rails
+  schema_validations
   shoulda-matchers (~> 5.0)
   simple-navigation
   simple_form
