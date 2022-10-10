@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_10_030858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,8 +60,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
     t.datetime "updated_at",             :null=>false
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      :null=>false, :index=>{:name=>"index_versions_on_item_type_and_item_id", :with=>["item_id"]}
+    t.bigint   "item_id",        :null=>false
+    t.string   "event",          :null=>false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.json     "object_changes"
+  end
+
   create_table "work_orders", force: :cascade do |t|
-    t.date     "date",          :null=>false, :index=>{:name=>"index_work_orders_on_date"}
+    t.datetime "date",          :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_date"}
     t.bigint   "number",        :null=>false, :index=>{:name=>"index_work_orders_on_number"}
     t.string   "description",   :null=>false, :index=>{:name=>"index_work_orders_on_description"}
     t.string   "city",          :index=>{:name=>"index_work_orders_on_city"}
@@ -71,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
     t.bigint   "employee_id",   :index=>{:name=>"index_work_orders_on_employee_id"}
     t.datetime "created_at",    :null=>false
     t.datetime "updated_at",    :null=>false
+    t.string   "status"
   end
 
 end

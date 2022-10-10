@@ -5,13 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+PaperTrail.request(whodunnit: 'Administrador') do
+  100.times do
+    FactoryBot.create(:car)
+  end
 
-100.times do
-  FactoryBot.create(:car)
+  100.times do
+    FactoryBot.create(:work_order)
+  end
+
+  superuser = User.find_or_create_by(email: 'admin@email.com')
+  superuser.update(password: 'test123')
 end
 
-100.times do
-  FactoryBot.create(:work_order)
-end
-
-User.find_or_create_by!(username: 'admin@email.com', password: 'test123')
