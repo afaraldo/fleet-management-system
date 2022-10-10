@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :employees
   resources :users
   resources :work_orders
-  resources :insurance_carriers, as: :suppliers
 
   # Defines the root path route ("/")
   root 'dash_board#index'
