@@ -1,0 +1,32 @@
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t('.form')%>
+  </h5>
+  <div class="card-body">
+    <%= simple_form_for supplier, class: 'form-floating' do |f| %>
+      <div class='row mb-3'>
+        <div class="col-4">
+          <div class='form-floating'>
+            <%= f.input_field :name, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.label :name, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class='form-floating'>
+            <%= f.input_field :ruc, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.label :ruc, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class='form-floating'>
+            <%= f.input_field :type, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.label :type, for: 'floatingInput' %>
+          </div>
+        </div>
+      </div>
+      <div class='mb-3'>
+        <%= f.button 'submit', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

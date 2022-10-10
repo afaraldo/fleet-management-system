@@ -90,6 +90,14 @@ SimpleNavigation::Configuration.run do |navigation|
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/cars}
 
+    primary.item  :key4,
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-supplier') +
+                  content_tag(:div, I18n.t('navbar.supplier'), class: nil),
+                  suppliers_path(session['suppliers']),
+                  html: { class: 'menu-item' },
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/suppliers}
+
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|
     #  # Add an item to the sub navigation (same params again)

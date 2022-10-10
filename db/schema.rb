@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
     t.datetime "updated_at", :null=>false
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "ruc"
+    t.string   "type"
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+  end
+
   create_table "system_settings_settings", id: :serial, force: :cascade do |t|
     t.string   "name",        :null=>false, :index=>{:name=>"index_system_settings_settings_on_name", :unique=>true}
     t.string   "type",        :null=>false, :index=>{:name=>"index_system_settings_settings_on_type"}
@@ -47,7 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  :default=>"", :null=>false, :index=>{:name=>"index_users_on_email", :unique=>true}
     t.string   "encrypted_password",     :default=>"", :null=>false
-    t.string   "profile_foto"
     t.string   "reset_password_token",   :index=>{:name=>"index_users_on_reset_password_token", :unique=>true}
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -56,8 +63,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_171930) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",             :null=>false
     t.datetime "updated_at",             :null=>false
+    t.string   "profile_foto"
   end
 
   create_table "work_orders", force: :cascade do |t|
