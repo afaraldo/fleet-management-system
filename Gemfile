@@ -133,4 +133,4 @@ group :development do
   # gem 'spring'
 end
 
-gem "paper_trail", "~> 13.0"
+gem 'paper_trail', '~> 13.0'

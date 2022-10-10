@@ -3,7 +3,7 @@ class WorkOrder < ApplicationRecord
   belongs_to :employee
   has_paper_trail
 
-  enum status: [:requested, :authorized, :finished]
+  enum status: { requested: 0, authorized: 1, finished: 2 }
 
   def distance
     final_mileage ||= 0

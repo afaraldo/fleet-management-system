@@ -17,4 +17,3 @@ PaperTrail.request(whodunnit: 'Administrador') do
   superuser = User.find_or_create_by(email: 'admin@email.com')
   superuser.update(password: 'test123')
 end
-
