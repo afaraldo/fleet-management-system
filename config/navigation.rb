@@ -91,8 +91,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   highlights_on: %r{/cars}
 
     primary.item  :key4,
-                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-supplier') +
-                  content_tag(:div, I18n.t('navbar.supplier'), class: nil),
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-group') +
+                  content_tag(:div, I18n.t('navbar.group'), class: nil),
                   suppliers_path(session['suppliers']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
