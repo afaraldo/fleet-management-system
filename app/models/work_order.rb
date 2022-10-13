@@ -1,6 +1,6 @@
 # This class represent a task
 class WorkOrder < ApplicationRecord
-  belongs_to :employee
+  belongs_to :employee, optional: true
   has_paper_trail
 
   enum status: { requested: 0, authorized: 1, finished: 2 }

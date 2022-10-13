@@ -71,7 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_030858) do
   end
 
   create_table "work_orders", force: :cascade do |t|
-    t.datetime "date",          :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_date"}
     t.bigint   "number",        :null=>false, :index=>{:name=>"index_work_orders_on_number"}
     t.string   "description",   :null=>false, :index=>{:name=>"index_work_orders_on_description"}
     t.string   "city",          :index=>{:name=>"index_work_orders_on_city"}
@@ -81,7 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_030858) do
     t.bigint   "employee_id",   :index=>{:name=>"index_work_orders_on_employee_id"}
     t.datetime "created_at",    :null=>false
     t.datetime "updated_at",    :null=>false
-    t.string   "status"
+    t.time     "date",          :null=>false
+    t.string   "status",        :null=>false
   end
 
 end
