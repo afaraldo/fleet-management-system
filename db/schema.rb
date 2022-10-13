@@ -36,9 +36,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
   end
 
   create_table "suppliers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "ruc"
-    t.string   "type"
+    t.string   "name",       :null=>false
+    t.string   "ruc",        :null=>false
+    t.string   "type",       :null=>false
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
   end
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  :default=>"", :null=>false, :index=>{:name=>"index_users_on_email", :unique=>true}
     t.string   "encrypted_password",     :default=>"", :null=>false
+    t.string   "profile_foto"
     t.string   "reset_password_token",   :index=>{:name=>"index_users_on_reset_password_token", :unique=>true}
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -63,17 +64,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.datetime "created_at",             :null=>false
     t.datetime "updated_at",             :null=>false
-    t.string   "profile_foto"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      :null=>false, :index=>{:name=>"index_versions_on_item_type_and_item_id", :with=>["item_id"]}
+    t.bigint   "item_id",        :null=>false
+    t.string   "event",          :null=>false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.json     "object_changes"
   end
 
   create_table "work_orders", force: :cascade do |t|
-    t.date     "date",          :null=>false, :index=>{:name=>"index_work_orders_on_date"}
+    t.datetime "date",          :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_date"}
     t.bigint   "number",        :null=>false, :index=>{:name=>"index_work_orders_on_number"}
     t.string   "description",   :null=>false, :index=>{:name=>"index_work_orders_on_description"}
     t.string   "city",          :index=>{:name=>"index_work_orders_on_city"}
@@ -83,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
     t.bigint   "employee_id",   :index=>{:name=>"index_work_orders_on_employee_id"}
     t.datetime "created_at",    :null=>false
     t.datetime "updated_at",    :null=>false
+    t.string   "status"
   end
 
 end
