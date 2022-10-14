@@ -23,10 +23,13 @@
             <div class="input-group">
               <div class='form-floating'>
                 <%= f.input_field :date,
-                                  as: :string,
-                                  class:'form-control',
-                                  'aria-describedby':"floatingInputHelp",
-                                  'data-datepicker-target': 'input'
+                                 as: :string,
+                                 class: 'form-control',
+                                 data: {
+                                   controller: "flatpickr",
+                                   flatpickr_date_format: "Y-m-d",
+                                   flatpickr_min_date: Time.zone.now
+                                 }
                 %>
                 <%= f.label :date, for: 'floatingInput' %>
               </div>
