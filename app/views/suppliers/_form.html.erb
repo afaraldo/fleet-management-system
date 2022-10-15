@@ -13,14 +13,14 @@
         </div>
         <div class="col-4">
           <div class='form-floating'>
-            <%= f.input_field :ruc, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.input_field :ruc, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :ruc, for: 'floatingInput' %>
           </div>
         </div>
         <div class="col-4">
           <div class='form-floating'>
             <%#= f.collection_select :provider_id, @suppliers, :name, :ruc, include_blank: true %>
-            <%= f.input_field :type, as: :select, collection:[['InsuranceCarrier', 'Aseguradora'], ['MechanicalWorkshop', 'Taller Mecánico']], label_method: :second, value_method: :first, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.input_field :type, as: :select, collection:[['InsuranceCarrier', 'Aseguradora'], ['MechanicalWorkshop', 'Taller Mecánico']], label_method: :second, value_method: :first, class:'form-control', 'aria-describedby':"floatingInputHelp"%>
             <%= f.label :type, for: 'floatingInput' %>
           </div>
         </div>

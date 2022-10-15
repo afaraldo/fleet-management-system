@@ -14,6 +14,9 @@ end
   FactoryBot.create(:work_order)
 end
 
+100.times do
+  FactoryBot.create(:supplier)
+end
 # User.find_or_create!(email: 'admin@email.com', password: 'test123')
-InsuranceCarrier.create(name: 'Fenix', ruc: '4763428')
-MechanicalWorkshop.create(name: 'Taller Juanka', ruc: '4763409')
+# InsuranceCarrier.create(name: 'Fenix', ruc: '4763428')
+# MechanicalWorkshop.create(name: 'Taller Juanka', ruc: '4763409')

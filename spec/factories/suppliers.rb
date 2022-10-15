@@ -1,7 +1,10 @@
 FactoryBot.define do
   factory :supplier do
-    name { "MyString" }
-    ruc { "MyString" }
-    type { "" }
+        initialize_with { type.present? ? type.constantize.new : Supplier.new }
   end
+
+    # call examples
+    FactoryBot.build(:supplier) #=> Invoice
+    FactoryBot.build(:supplier, :InsuranceCarrier)
+    #=> InvoiceAdditionalCost
 end
