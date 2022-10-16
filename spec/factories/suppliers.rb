@@ -1,10 +1,5 @@
 FactoryBot.define do
   factory :supplier do
-        initialize_with { type.present? ? type.constantize.new : Supplier.new }
+    name { Faker::Name.name }
   end
-
-    # call examples
-    FactoryBot.build(:supplier) #=> Invoice
-    FactoryBot.build(:supplier, :InsuranceCarrier)
-    #=> InvoiceAdditionalCost
 end
