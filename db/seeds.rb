@@ -14,4 +14,12 @@ end
   FactoryBot.create(:work_order)
 end
 
-User.find_or_create_by!(username: 'admin@email.com', password: 'test123')
+50.times do
+  FactoryBot.create(:insurance_carrier)
+end
+
+50.times do
+  FactoryBot.create(:mechanical_workshop)
+end
+
+# User.find_or_create!(email: 'admin@email.com', password: 'test123')

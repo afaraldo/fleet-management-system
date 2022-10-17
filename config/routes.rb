@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :dash_board, only: [:index]
   resources :cars
   resources :employees
+  resources :suppliers
   resources :users
   resources :work_orders
 
