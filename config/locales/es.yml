@@ -19,6 +19,9 @@ es:
       work_order:
         one: Orden de Trabajo
         other: Ordenes de Trabajo
+      supplier:
+        one: Proveedor
+        other: Proveedores
     attributes:
       car:
         make: Marca
@@ -43,6 +46,10 @@ es:
         authorized_by: Authorizado por
         finished_on: Completado el
         finished_by: Completado por
+      supplier:
+        name: Nombre
+        ruc: Ruc
+        type: Tipo
   date:
     abbr_day_names:
       - dom
@@ -269,6 +276,7 @@ es:
     car: "Vehículos"
     employee: "Empleados"
     work_order: "Ordenes de Trabajo"
+    supplier: "Proveedores"
     new: Crear
   cars:
     index:

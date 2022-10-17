@@ -1,0 +1,2 @@
+class MechanicalWorkshop < Supplier
+end
