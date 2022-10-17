@@ -35,6 +35,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_030858) do
     t.datetime "updated_at", :null=>false
   end
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string   "name",       :null=>false
+    t.string   "ruc",        :null=>false
+    t.string   "type",       :null=>false
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+  end
+
   create_table "system_settings_settings", id: :serial, force: :cascade do |t|
     t.string   "name",        :null=>false, :index=>{:name=>"index_system_settings_settings_on_name", :unique=>true}
     t.string   "type",        :null=>false, :index=>{:name=>"index_system_settings_settings_on_type"}
