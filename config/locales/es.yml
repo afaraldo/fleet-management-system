@@ -19,6 +19,9 @@ es:
       work_order:
         one: Orden de Trabajo
         other: Ordenes de Trabajo
+      supplier:
+        one: Proveedor
+        other: Proveedores
     attributes:
       car:
         make: Marca
@@ -37,6 +40,10 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
+      supplier:
+        name: Nombre
+        ruc: Ruc
+        type: Tipo
   date:
     abbr_day_names:
       - dom
@@ -263,6 +270,7 @@ es:
     car: "Vehículos"
     employee: "Empleados"
     work_order: "Ordenes de Trabajo"
+    supplier: "Proveedores"
     new: Crear
   cars:
     index:
