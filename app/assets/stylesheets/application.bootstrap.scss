@@ -5,8 +5,10 @@
 @import "bootstrap-print-css/css/bootstrap-print.min";
 @import "print-styles";
 @import "menu";
+@import "flatpickr/dist/flatpickr.min";
+@import "flatpickr/dist/themes/airbnb";
 
-//.form-floating {
+  //.form-floating {
 //  .form-select, .form-control {
 //    /* height: calc(3.5rem + 2px); */
 //    height: 100%;

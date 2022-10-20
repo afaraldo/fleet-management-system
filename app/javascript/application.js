@@ -12,6 +12,3 @@ $( document ).ready(function() {
         $('#html-document').toggleClass('layout-menu-expanded');
     });
 });
-
-
-
