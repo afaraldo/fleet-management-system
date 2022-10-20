@@ -1,1 +1,1 @@
-json.array! @maintenances, partial: "maintenances/maintenance", as: :maintenance
+json.array! @maintenances, partial: 'maintenances/maintenance', as: :maintenance
