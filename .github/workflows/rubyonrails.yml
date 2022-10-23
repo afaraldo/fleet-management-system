@@ -42,7 +42,7 @@ jobs:
         run: bin/rails system_settings:load
       # Add or replace test runners here
       - name: Run tests
-        run: bin/bundle exec rspec
+        run: bin/bundle exec rspec -b
 
   lint:
     runs-on: ubuntu-latest
