@@ -1,5 +1,11 @@
 ---
 es:
+  enums:
+    work_order:
+      status:
+        requested: Solicitado
+        authorized: Autorizado
+        finished: Completado
   buttons:
     new: Agregar
     edit: Editar
@@ -46,6 +52,7 @@ es:
         authorized_by: Authorizado por
         finished_on: Completado el
         finished_by: Completado por
+        status: Estado
       supplier:
         name: Nombre
         ruc: Ruc

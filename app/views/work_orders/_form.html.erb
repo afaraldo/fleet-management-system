@@ -25,6 +25,7 @@
                 <%= f.input_field :date,
                                  as: :string,
                                  class: 'form-control',
+                                 readonly: false,
                                  data: {
                                    controller: "flatpickr",
                                    flatpickr_default_date: f.object.date || Time.now,
@@ -47,10 +48,26 @@
         <div class="col-2">
           <div class='mb-3'>
             <div class='form-floating'>
-              <%= f.input_field :status, class:'form-control', 'aria-describedby':"floatingInputHelp", value: :requested %>
+              <%= f.input_field :status,
+                                class:'form-control',
+                                'aria-describedby':"floatingInputHelp",
+                                selected: f.object.status,
+                                disabled: true
+              %>
               <%= f.label :status, for: 'floatingInput' %>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class='form-floating mb-3'>
+          <%= f.select :car, [], {},
+                       placeholder: 'Type to search',
+                       data: {
+                         controller: 'ts--search',
+                         ts__search_url_value: cars_path
+                       } %>
+          <%#= f.label :car, for: 'floatingInput' %>
         </div>
       </div>
       <div class="row">

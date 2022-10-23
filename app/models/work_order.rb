@@ -1,6 +1,7 @@
 # This class represent a task
 class WorkOrder < ApplicationRecord
   belongs_to :employee, optional: true
+  belongs_to :car
   has_paper_trail
 
   enum status: { requested: 0, authorized: 1, finished: 2 }
@@ -36,6 +37,6 @@ class WorkOrder < ApplicationRecord
   end
 
   def to_s
-    number
+    "Order ##{number}"
   end
 end
