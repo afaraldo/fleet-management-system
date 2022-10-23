@@ -17,6 +17,7 @@ RSpec.configure do |config|
   # Use the following instead if you are on Devise <= 4.1.1
   # config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :request
+  config.include Rails.application.routes.url_helpers, type: :request
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
