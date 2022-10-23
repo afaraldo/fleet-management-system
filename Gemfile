@@ -134,5 +134,3 @@ gem 'faker' # https://github.com/faker-ruby/faker
 gem 'enum_help'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
-
-

@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
     @q = model_class.send(resource_search_method, search_params[:q])
     @q1 = @q.result.page(pagination_params[:page]).per(pagination_params[:per])
     instance_variable_set :@result, @q1.includes(included_associations)
-    #.includes(included_associations).references(included_associations)
+    # TODO; add includes
+    # .includes(included_associations).references(included_associations)
     instance_variable_set "@#{plural_resource_name}", @result
   end
 
@@ -91,7 +92,6 @@ class ApplicationController < ActionController::Base
     session[controller_name]
   end
 
-
   # Override this method to provide your own search params.
   #
   # @private
@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
   #
   # @private
   # @return [:symbol, symbol: [:symbol]] Array with include format
-  def included_associations ; end
+  def included_associations; end
 
   # Override this method to provide your own model params.
   #

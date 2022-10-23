@@ -6,7 +6,6 @@ class WorkOrder < ApplicationRecord
 
   enum status: { requested: 0, authorized: 1, finished: 2 }
 
-  validates_presence_of :car
   delegate :plate_number, to: :car, prefix: true
 
   def distance
