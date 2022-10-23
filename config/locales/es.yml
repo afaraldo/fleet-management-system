@@ -53,6 +53,7 @@ es:
         finished_on: Completado el
         finished_by: Completado por
         status: Estado
+        car: Auto
       supplier:
         name: Nombre
         ruc: Ruc
@@ -337,6 +338,7 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
+        car: Auto
   ransack:
     asc: Ascendente
     desc: Descendente

@@ -19,22 +19,19 @@
           </div>
         </div>
         <div class="col-4">
-          <div data-controller="datepicker">
-            <div class="input-group">
-              <div class='form-floating'>
-                <%= f.input_field :date,
-                                 as: :string,
-                                 class: 'form-control',
-                                 readonly: false,
-                                 data: {
-                                   controller: "flatpickr",
-                                   flatpickr_default_date: f.object.date || Time.now,
-                                 }
-                %>
-                <%= f.label :date, for: 'floatingInput' %>
-              </div>
-              <span id="basic-default-password2" data-datepicker-target="toggle" class="input-group-text cursor-pointer"><i class="bx bx-calendar"></i></span>
+          <div class="input-group">
+            <div class='form-floating'>
+              <%= f.input_field :date,
+                                as: :string,
+                                class: 'form-control',
+                                data: {
+                                  controller: "flatpickr",
+                                  flatpickr_default_date: f.object.date || Time.now
+                                }
+              %>
+              <%= f.label :date, for: 'floatingInput' %>
             </div>
+            <span id="basic-default-password2" data-datepicker-target="toggle" class="input-group-text cursor-pointer"><i class="bx bx-calendar"></i></span>
           </div>
         </div>
         <div class="col-2">
@@ -61,13 +58,12 @@
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.select :car, [], {},
-                       placeholder: 'Type to search',
+          <%= f.select :car, [f.object.car], {},
                        data: {
-                         controller: 'ts--search',
-                         ts__search_url_value: cars_path
+                         controller: 'ts--select',
+                         'ts--select-url-value': cars_path
                        } %>
-          <%#= f.label :car, for: 'floatingInput' %>
+          <%= f.label :car, for: 'floatingInput' %>
         </div>
       </div>
       <div class="row">

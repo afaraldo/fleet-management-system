@@ -9,5 +9,6 @@ FactoryBot.define do
     start_mileage { Faker::Number.number(digits: 5) }
     final_mileage { Faker::Number.number(digits: 5) }
     employee
+    car
   end
 end
