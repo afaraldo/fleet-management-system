@@ -132,7 +132,7 @@ gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
 gem 'faker' # https://github.com/faker-ruby/faker
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
+# Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
+gem 'nokogiri', '>= 1.13.9'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
-
-gem "nokogiri", ">= 1.13.9"

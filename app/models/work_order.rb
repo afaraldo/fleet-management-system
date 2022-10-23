@@ -9,9 +9,9 @@ class WorkOrder < ApplicationRecord
   delegate :plate_number, to: :car, prefix: true
 
   def distance
-    final_mileage ||= 0
-    start_mileage ||= 0
-    final_mileage - start_mileage
+    self.final_mileage ||= 0
+    self.start_mileage ||= 0
+    self.final_mileage - self.start_mileage
   end
 
   def requested_by
@@ -39,6 +39,6 @@ class WorkOrder < ApplicationRecord
   end
 
   def to_s
-    "Order ##{number}"
+    "#{self.class.model_name.human} #{number}"
   end
 end
