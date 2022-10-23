@@ -184,7 +184,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.8-x86_64-linux)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     paper_trail (13.0.0)
@@ -403,6 +403,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari
+  nokogiri (>= 1.13.9)
   paper_trail (~> 13.0)
   pg (~> 1.1)
   puma (~> 5.0)
