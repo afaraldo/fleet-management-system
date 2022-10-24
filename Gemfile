@@ -60,6 +60,9 @@ gem 'bootsnap', require: false
 # Use Ransack to get filters in Controller [https://github.com/activerecord-hackery/ransack]
 gem 'ransack'
 
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'importmap-rails'
+
 # Use Sass to process CSS
 gem 'sassc-rails'
 
@@ -93,6 +96,8 @@ group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
   gem 'debase', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
+  gem 'faker' # https://github.com/faker-ruby/faker
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
@@ -128,8 +133,6 @@ group :development do
   # gem 'spring'
 end
 
-gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
-gem 'faker' # https://github.com/faker-ruby/faker
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
