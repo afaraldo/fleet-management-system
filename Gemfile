@@ -30,9 +30,6 @@ gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'importmap-rails'
-
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
@@ -96,8 +93,6 @@ group :development, :test do
   gem 'bundler-audit', '~> 0.9.1'
   gem 'debase', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
-  gem 'faker' # https://github.com/faker-ruby/faker
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
@@ -132,3 +127,12 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 end
+
+gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
+gem 'faker' # https://github.com/faker-ruby/faker
+# Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
+gem 'enum_help'
+# Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
+gem 'nokogiri', '>= 1.13.9'
+# Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
+gem 'paper_trail', '~> 13.0'
