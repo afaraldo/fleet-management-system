@@ -36,7 +36,6 @@ jobs:
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
       - name: Install dependencies
         run: |
-          - apt -yq install libpq-dev build-essential libcurl4-openssl-dev
           - bundle install
         #with:
           #bundler-cache: true
