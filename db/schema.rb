@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_23_072925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,7 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
   end
 
   create_table "work_orders", force: :cascade do |t|
-    t.datetime "date",          :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_date"}
     t.bigint   "number",        :null=>false, :index=>{:name=>"index_work_orders_on_number"}
     t.string   "description",   :null=>false, :index=>{:name=>"index_work_orders_on_description"}
     t.string   "city",          :index=>{:name=>"index_work_orders_on_city"}
@@ -89,7 +88,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_182447) do
     t.bigint   "employee_id",   :index=>{:name=>"index_work_orders_on_employee_id"}
     t.datetime "created_at",    :null=>false
     t.datetime "updated_at",    :null=>false
-    t.string   "status"
+    t.time     "date",          :null=>false
+    t.string   "status",        :null=>false
+    t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
   end
 
+  add_foreign_key "work_orders", "cars"
+  add_foreign_key "work_orders", "employees"
 end
