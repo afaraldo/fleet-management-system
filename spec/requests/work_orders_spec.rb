@@ -15,8 +15,6 @@ require 'rails_helper'
 RSpec.describe "/work_orders", type: :request do
   login_user
 
-  before { host! "localhost:3000" }
-
   # This should return the minimal set of attributes required to create a valid
   # WorkOrder. As you add validations to WorkOrder, be sure to
   # adjust the attributes here as well.

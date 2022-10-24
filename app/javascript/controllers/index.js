@@ -4,3 +4,8 @@
 
 import { application } from "./application"
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
+import Ts__SelectController from "./ts/select_controller"
+application.register("ts--select", Ts__SelectController)

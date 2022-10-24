@@ -9,8 +9,12 @@ class ApplicationController < ActionController::Base
   def index
     add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session["/#{plural_resource_name}"], only_path: true) # Use for breadcrumbs_on_rails gem
     resource_search_method = :ransack
-    instance_variable_set :@q, model_class.send(resource_search_method, search_params[:q])
-    instance_variable_set "@#{plural_resource_name}", @q.result.page(pagination_params[:page]).per(pagination_params[:per])
+    @q = model_class.send(resource_search_method, search_params[:q])
+    @q1 = @q.result.page(pagination_params[:page]).per(pagination_params[:per])
+    instance_variable_set :@result, @q1.includes(included_associations)
+    # TODO; add includes
+    # .includes(included_associations).references(included_associations)
+    instance_variable_set "@#{plural_resource_name}", @result
   end
 
   # GET
@@ -96,6 +100,12 @@ class ApplicationController < ActionController::Base
   def pagination_params
     params.permit(:page, :per).extract!(:page, :per)
   end
+
+  # Override this method to provide your own model params.
+  #
+  # @private
+  # @return [:symbol, symbol: [:symbol]] Array with include format
+  def included_associations; end
 
   # Override this method to provide your own model params.
   #

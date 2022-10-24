@@ -5,15 +5,16 @@
 @import "bootstrap-print-css/css/bootstrap-print.min";
 @import "print-styles";
 @import "menu";
-@import "stimulus-datepicker/css/datepicker";
+@import "flatpickr/dist/flatpickr.min";
+@import "flatpickr/dist/themes/airbnb";
+@import "tom-select/dist/css/tom-select.bootstrap4.min";
 
-//.form-floating {
-//  .form-select, .form-control {
-//    /* height: calc(3.5rem + 2px); */
-//    height: 100%;
-//    line-height: 1.25;
-//  }
-//}
+.form-floating {
+  .form-control {
+    height: 100%;
+    line-height: 1.25;
+  }
+}
 
 .app-brand-text.demo {
   font-size: 1.2rem;

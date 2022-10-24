@@ -1,5 +1,11 @@
 ---
 es:
+  enums:
+    work_order:
+      status:
+        requested: Solicitado
+        authorized: Autorizado
+        finished: Completado
   buttons:
     new: Agregar
     edit: Editar
@@ -40,6 +46,14 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
+        requested_on: Solicitado el
+        requested_by: Solicitado por
+        authorized_on: Authorizado el
+        authorized_by: Authorizado por
+        finished_on: Completado el
+        finished_by: Completado por
+        status: Estado
+        car: Auto
       supplier:
         name: Nombre
         ruc: Ruc
@@ -258,7 +272,7 @@ es:
   time:
     am: am
     formats:
-      default: "%A, %-d de %B de %Y %H:%M:%S %z"
+      default: '%d/%m/%Y %H:%M'
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     pm: pm
@@ -324,6 +338,7 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
+        car: Auto
   ransack:
     asc: Ascendente
     desc: Descendente

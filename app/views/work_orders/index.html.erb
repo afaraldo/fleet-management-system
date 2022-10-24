@@ -37,7 +37,7 @@
   </h5>
 
   <div class="table-responsive text-nowrap">
-    <table class="table">
+    <table class="table table-sm table-hover">
       <caption class="ms-4">
 
         <div class="d-flex align-items-center justify-content-between">
@@ -55,7 +55,14 @@
           </th>
           <th><%= t('activerecord.attributes.work_order.number')%></th>
           <th><%= t('activerecord.attributes.work_order.description')%></th>
+          <th><%= t('activerecord.attributes.work_order.car')%></th>
           <th><%= t('activerecord.attributes.work_order.city')%></th>
+          <th><%= t('activerecord.attributes.work_order.requested_on')%></th>
+          <th><%= t('activerecord.attributes.work_order.requested_by')%></th>
+          <th><%= t('activerecord.attributes.work_order.authorized_on')%></th>
+          <th><%= t('activerecord.attributes.work_order.authorized_by')%></th>
+          <th><%= t('activerecord.attributes.work_order.completed_on')%></th>
+          <th><%= t('activerecord.attributes.work_order.completed_by')%></th>
           <th><%= t('activerecord.attributes.work_order.workdays')%></th>
           <th><%= t('activerecord.attributes.work_order.start_mileage')%></th>
           <th><%= t('activerecord.attributes.work_order.final_mileage')%></th>
@@ -68,14 +75,21 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <td><strong><%= work_order.date %></strong></td>
+          <td><strong><%= datetime_format(work_order.date) %></strong></td>
           <td><%= work_order.number %></td>
           <td><%= work_order.description %></td>
+          <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
           <td><%= work_order.city %></td>
-          <td><%= work_order.workdays %></td>
-          <td><%= work_order.start_mileage %></td>
-          <td><%= work_order.final_mileage %></td>
-          <td><%= work_order.distance %></td>
+          <td><%= datetime_format(work_order.requested_on) %></td>
+          <td><%= work_order.requested_by %></td>
+          <td><%= datetime_format(work_order.authorized_on) %></td>
+          <td><%= work_order.authorized_by %></td>
+          <td><%= datetime_format(work_order.finished_on) %></td>
+          <td><%= work_order.finished_by %></td>
+          <td style="text-align: right"><%= work_order.workdays %></td>
+          <td style="text-align: right"><%= ActiveSupport::NumberHelper.number_to_delimited(work_order.start_mileage) %></td>
+          <td style="text-align: right"><%= ActiveSupport::NumberHelper.number_to_delimited(work_order.final_mileage) %></td>
+          <td style="text-align: right"><%= work_order.distance %></td>
           <td><%= work_order.employee_id %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
