@@ -60,6 +60,9 @@ gem 'bootsnap', require: false
 # Use Ransack to get filters in Controller [https://github.com/activerecord-hackery/ransack]
 gem 'ransack'
 
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'importmap-rails'
+
 # Use Sass to process CSS
 gem 'sassc-rails'
 
@@ -131,8 +134,8 @@ group :development do
 end
 
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
-#gem 'enum_help'
+# gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
 gem 'nokogiri', '>= 1.13.9'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
-#gem 'paper_trail', '~> 13.0'
+# gem 'paper_trail', '~> 13.0'
