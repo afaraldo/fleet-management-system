@@ -19,6 +19,11 @@ jobs:
         image: postgres:11-alpine
         ports:
           - "5432:5432"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         env:
           POSTGRES_DB: fleet_management_system_test
           POSTGRES_USER: postgres
@@ -32,9 +37,9 @@ jobs:
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
-        with:
+        #with:
           #bundler-cache: true
-          ruby-version: 3.0.0
+          #ruby-version: 3.0.0
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
