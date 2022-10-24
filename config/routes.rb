@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :work_orders
 
   # Defines the root path route ("/")
-  root 'dash_board#index'
+  root 'dash_boards#index'
 end
