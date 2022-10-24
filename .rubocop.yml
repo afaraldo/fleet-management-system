@@ -10,9 +10,11 @@ Layout/LineLength:
   Exclude:
     - app/controllers/application_controller.rb
     - config/initializers/devise.rb
+    - app/controllers/work_orders_controller.rb
 Metrics/AbcSize:
   Exclude:
     - app/controllers/application_controller.rb
+    - app/controllers/work_orders_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
