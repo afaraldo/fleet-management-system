@@ -38,7 +38,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
       - name: Install dependencies
-        run:
+        run: |
           - sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
           - bundle install
         #with:
