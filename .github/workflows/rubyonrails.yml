@@ -12,7 +12,7 @@ on:
       - '*'         # matches every branch that doesn't contain a '/'
       - '*/*'       # matches every branch containing a single '/'
       - '**'        # matches every branch
-      - '!master'   # excludes master
+      - '!main'   # excludes master
   pull_request:
     branches: [ "main" ]
 jobs:
@@ -43,7 +43,7 @@ jobs:
         run: bin/rails db:schema:load
       # Add or replace database setup steps here
       - name: Set up database System Setting
-        run: bin/rails system_settings:load
+        run: bin/rails system_settings:load RAILS_ENV=test
       # Add or replace test runners here
       - name: Run tests
         run: bin/rake

@@ -63,9 +63,6 @@ gem 'ransack'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-# Use Sass to process CSS
-#gem 'sassc-rails'
-
 # Use to dry validation between database and model [https://github.com/SchemaPlus/schema_validations]
 gem 'schema_validations'
 
