@@ -1,11 +1,5 @@
 ---
 es:
-  enums:
-    work_order:
-      status:
-        requested: Solicitado
-        authorized: Autorizado
-        finished: Completado
   buttons:
     new: Agregar
     edit: Editar
@@ -28,6 +22,9 @@ es:
       supplier:
         one: Proveedor
         other: Proveedores
+      maintenance:
+        one: Mantenimiento
+        other: Mantenimientos
     attributes:
       car:
         make: Marca
@@ -46,18 +43,16 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
-        requested_on: Solicitado el
-        requested_by: Solicitado por
-        authorized_on: Authorizado el
-        authorized_by: Authorizado por
-        finished_on: Completado el
-        finished_by: Completado por
-        status: Estado
-        car: Auto
       supplier:
         name: Nombre
         ruc: Ruc
         type: Tipo
+      maintenance:
+        date: Fecha
+        car:  Vehiculo
+        mechanica_workshop: Taller Mecanico
+        budget: Presupuesto
+        description: Descripcion
   date:
     abbr_day_names:
       - dom
@@ -272,7 +267,7 @@ es:
   time:
     am: am
     formats:
-      default: '%d/%m/%Y %H:%M'
+      default: "%A, %-d de %B de %Y %H:%M:%S %z"
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     pm: pm
@@ -285,6 +280,7 @@ es:
     employee: "Empleados"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
+    maintenance: "Mantenimientos"
     new: Crear
   cars:
     index:
@@ -295,6 +291,19 @@ es:
       plate_number: Chapa
       chassis: Chasis
       engine: Motor
+      actions: Acciones
+      new: Agregar
+    new:
+      form: Formulario
+    form:
+      form: Formulario
+  maintenance:
+    index:
+      date: Fecha
+      mechanical_workshop: Taller
+      car: Vehiculo
+      budget: Presupuesto
+      description: Decripcion
       actions: Acciones
       new: Agregar
     new:
@@ -338,7 +347,16 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
-        car: Auto
+      supplier:
+        name: Nombre
+        ruc: Nro Documento
+      maintenance:
+        date: Fecha
+        car : Vehiculo
+        mechanical_workshop : Taller Mecanico
+        budget : Presupuesto
+        description : Descripcion
+
   ransack:
     asc: Ascendente
     desc: Descendente
