@@ -1,4 +1,4 @@
 # config/initializers/dartsass.rb
 Rails.application.config.dartsass.builds = {
-  "application.bootstrap.scss"  => "application.bootstrap.css"
+  "application.scss"  => "application.bootstrap.css"
 }
