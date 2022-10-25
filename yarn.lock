@@ -646,10 +646,10 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-"sneat-bootstrap-html-admin-template-free@github:afaraldo/sneat-html-admin-template-free#136ea6236ca004ae0426998231b417ff9ad8811f":
+sneat-bootstrap-html-admin-template-free@^1.0.0:
   version "1.0.0"
-  resolved "git+ssh://git@github.com/afaraldo/sneat-html-admin-template-free.git#136ea6236ca004ae0426998231b417ff9ad8811f"
-  integrity sha512-y0KpxLJzMdp3Py0Eqg6hVwbXTJJ4NEvekdSeCOaqgU8EZihs9TY3xtFdE4SVleJ7pTeeSsHKzkFHywsh27YRew==
+  resolved "https://registry.yarnpkg.com/sneat-bootstrap-html-admin-template-free/-/sneat-bootstrap-html-admin-template-free-1.0.0.tgz#52418150eba01aec5424a1a77f69b2c79fa194b6"
+  integrity sha512-UjYdeDBc4rRg5w6hAS9Ll5jdp/NisxBaiDqhVJvaq7A7R96NfktmY6PgFtfPPgWQlte3/VxAZuDt+tmBt26e4A==
   dependencies:
     "@popperjs/core" "^2.9.2"
     apexcharts-clevision "^3.28.3"
