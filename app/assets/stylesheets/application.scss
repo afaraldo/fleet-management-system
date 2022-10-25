@@ -1,4 +1,43 @@
-//@import "../../node_modules/sneat-bootstrap-html-admin-template-free/scss/core.scss";
-//@import "../../node_modules/bootstrap/scss/bootstrap.scss";
-//@import "../../node_modules/sneat-bootstrap-html-admin-template-free/scss/core.scss";
-//@import "../../node_modules/sneat-bootstrap-html-admin-template-free/scss/theme-default.scss";
+@import "sneat-bootstrap-html-admin-template-free/scss/core";
+@import "sneat-bootstrap-html-admin-template-free/scss/theme-default";
+@import "sneat-bootstrap-html-admin-template-free/assets/css/demo";
+@import "theme-default";
+@import "bootstrap-print-css/css/bootstrap-print.min";
+@import "print-styles";
+@import "menu";
+@import "flatpickr/dist/flatpickr.min";
+@import "flatpickr/dist/themes/airbnb";
+@import "tom-select/dist/css/tom-select.bootstrap4.min";
+.form-floating {
+  .form-control {
+    height: 100%;
+    line-height: 1.25;
+  }
+}
+
+.app-brand-text.demo {
+  font-size: 1.2rem;
+  letter-spacing: -0.5px;
+  text-transform: none;
+  max-width: 120px;
+}
+
+.buy-now .btn-buy-now {
+  position: fixed;
+  bottom: 3rem;
+  right: 1.625rem;
+  z-index: 999999;
+  box-shadow: 0 1px 20px 1px #5f61e6;
+}
+
+.form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  height: 100%;
+  padding: 1rem 0.875rem;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}

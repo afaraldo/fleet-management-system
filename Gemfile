@@ -140,4 +140,4 @@ gem 'nokogiri', '>= 1.13.9'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
 # Use to CSS [https://github.com/rails/dartsass-rails]
-gem "dartsass-rails", "~> 0.4.0"
+gem 'dartsass-rails', '~> 0.4.0'
