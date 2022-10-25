@@ -22,4 +22,8 @@ end
   FactoryBot.create(:mechanical_workshop)
 end
 
+3.times do
+  FactoryBot.create(:maintenance)
+end
+
 # User.find_or_create!(email: 'admin@email.com', password: 'test123')

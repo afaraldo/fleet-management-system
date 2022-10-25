@@ -57,10 +57,18 @@
           <th>
             <%= sort_link(@q, :date, t('activerecord.attributes.work_order.date'), default_order: :desc) %>
           </th>
-          <th><%= t('activerecord.attributes.maintenance.car')%></th>
-          <th><%= t('activerecord.attributes.maintenance.taller_mecanico')%></th>
-          <th><%= t('activerecord.attributes.maintenance.presupuesto')%></th>
-          <th><%= t('activerecord.attributes.maintenance.descripcion')%></th>
+          <th>
+            <%= sort_link(@q, :car, t('activerecord.attributes.maintenance.car'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :mechanical_workshop, t('activerecord.attributes.maintenance.mechanica_workshop'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :budget, t('activerecord.attributes.maintenance.budget'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :description, t('activerecord.attributes.maintenance.description'), default_order: :desc) %>
+          </th>
           <th class="d-print-none"></th>
         <% end %>
       </tr>
@@ -69,11 +77,10 @@
       <% @maintenances.each do |maintenance| %>
         <tr>
           <td><strong><%= maintenance.date %></strong></td>
-          <td><%= maintenance.car %></td>
-          <td><%= maintenance.mechanical_workshop %></td>
+          <td><%= maintenance.car%></td>
+          <td><%= maintenance.mechanical_workshop.name%></td>
           <td><%= maintenance.budget %></td>
           <td><%= maintenance.description %></td>
-          <td class="d-print-none">
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: maintenance })%>
           </td>

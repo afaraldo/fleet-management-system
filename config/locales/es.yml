@@ -297,6 +297,19 @@ es:
       form: Formulario
     form:
       form: Formulario
+  maintenance:
+    index:
+      date: Fecha
+      mechanical_workshop: Taller
+      car: Vehiculo
+      budget: Presupuesto
+      description: Decripcion
+      actions: Acciones
+      new: Agregar
+    new:
+      form: Formulario
+    form:
+      form: Formulario
   views:
     pagination:
       first: "&laquo;"

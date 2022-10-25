@@ -23,33 +23,42 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
-            <div class='form-floating'>
-              <%= f.association :car, class:'form-control'%>
-              <%= f.label :car %>
-            </div>
-        </div>
+
         <div class="col-4">
           <div class='form-floating'>
-            <%= f.association :mechanical_workshop, class:'form-control' %>
-            <%= f.label :mechanical_workshop   %>
+            <%= f.association :mechanical_workshop, as: :string, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :mechanical_workshop, for: 'floatingInput'  %>
           </div>
         </div>
       </div>
-        <div class="row mb-3">
-          <div class="col-4">
-            <div class='form-floating'>
+      <div class="row mb-3">
+        <div class="col-4">
+          <div class='form-floating'>
             <%= f.input_field :budget, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :budget, for: 'floatingInput' %>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class='form-floating'>
-              <%= f.input_field :description, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-              <%= f.label :description, for: 'floatingInput' %>
-            </div>
           </div>
         </div>
+        <div class="col-4">
+          <div class='form-floating'>
+            <%= f.association :car, class:'form-control'%>
+            <%= f.label :car %>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :description,
+                              as: :text,
+                              class:'form-control',
+                              'aria-describedby':"floatingInputHelp",
+                              cols: 5,
+                              rows: 10
+            %>
+            <%= f.label :description, for: 'floatingInput' %>
+          </div>
+        </div>
+      </div>
       <div class='mb-3'>
         <%= f.button 'submit', class: 'btn btn-primary' %>
       </div>
