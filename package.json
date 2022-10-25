@@ -19,7 +19,8 @@
     "sneat-bootstrap-html-admin-template-free": "github:afaraldo/sneat-html-admin-template-free#136ea6236ca004ae0426998231b417ff9ad8811f",
     "stimulus": "^2.0.0",
     "stimulus-flatpickr": "^1.4.0",
-    "tom-select": "^2.2.2"
+    "tom-select": "^2.2.2",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
