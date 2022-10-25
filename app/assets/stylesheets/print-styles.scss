@@ -21,12 +21,12 @@
         display: none;
     }
 
-    .pagination {
-        display: none;
+    @page {
+        size: auto;
     }
 
-    @page {
-        size: a4;
+    .pagination {
+        display: none;
     }
 
     body {

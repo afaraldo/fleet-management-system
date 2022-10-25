@@ -1,4 +1,4 @@
 # Controller class to Dashboard
-class DashBoardController < ApplicationController
+class DashBoardsController < ApplicationController
   def index; end
 end

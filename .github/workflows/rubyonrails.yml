@@ -4,11 +4,15 @@
 #
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
+# Tests
 name: "Ruby on Rails CI"
 on:
   push:
     branches:
-      - '!main'   # excludes main
+      - '*'         # matches every branch that doesn't contain a '/'
+      - '*/*'       # matches every branch containing a single '/'
+      - '**'        # matches every branch
+      - '!master'   # excludes master
   pull_request:
     branches: [ "main" ]
 jobs:

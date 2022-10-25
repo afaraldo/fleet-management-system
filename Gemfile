@@ -30,9 +30,6 @@ gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'importmap-rails'
-
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
@@ -62,6 +59,9 @@ gem 'bootsnap', require: false
 
 # Use Ransack to get filters in Controller [https://github.com/activerecord-hackery/ransack]
 gem 'ransack'
+
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'importmap-rails'
 
 # Use Sass to process CSS
 gem 'sassc-rails'
@@ -132,3 +132,10 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 end
+
+# Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
+gem 'enum_help'
+# Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
+gem 'nokogiri', '>= 1.13.9'
+# Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
+gem 'paper_trail', '~> 13.0'

@@ -14,7 +14,6 @@ require 'rails_helper'
 
 RSpec.describe "/suppliers", type: :request do
   login_user
-  before { host! "localhost:3000" }
   
   # This should return the minimal set of attributes required to create a valid
   # Supplier. As you add validations to Supplier, be sure to

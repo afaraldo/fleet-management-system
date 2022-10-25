@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :work_order do
     date { Faker::Date.between(from: 6.months.ago, to: Date.today) }
+    status { 0 }
     number { Faker::Number.number(digits: 5) }
     description { Faker::Lorem.sentence }
     city { Faker::Lorem.sentence }
@@ -8,5 +9,6 @@ FactoryBot.define do
     start_mileage { Faker::Number.number(digits: 5) }
     final_mileage { Faker::Number.number(digits: 5) }
     employee
+    car
   end
 end
