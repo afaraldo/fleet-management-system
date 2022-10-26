@@ -26,8 +26,10 @@
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: f.object.date || Time.now
-                                }
+                                  #flatpickr_default_date: f.object.date || Time.now
+                                  readonly: false
+                                },
+                                disabled: false
               %>
               <%= f.label :date, for: 'floatingInput' %>
             </div>

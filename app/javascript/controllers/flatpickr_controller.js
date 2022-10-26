@@ -15,13 +15,11 @@ export default class extends Flatpickr {
     //define locale and global flatpickr settings for all datepickers
     this.config = {
       locale: 'es',
-      altInput: true,
-      showMonths: 1,
-      enableTime: true,
-      time_24hr: true
     };
-
+    debugger;
     super.connect();
+    this.element.setAttribute('autocomplete','off')
+    this.element.removeAttribute('readonly')
   }
 
   get locale() {
