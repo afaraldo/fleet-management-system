@@ -41,6 +41,9 @@ jobs:
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
+      # Run migrations to database
+      - name: Set up database schema
+        run: bin/rails db:migrate
       # Add or replace database setup steps here
       - name: Set up database System Setting
         run: bin/rails system_settings:load RAILS_ENV=test
