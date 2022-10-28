@@ -13,30 +13,23 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/maintenances", type: :request do
+  login_user
   
   # This should return the minimal set of attributes required to create a valid
   # Maintenance. As you add validations to Maintenance, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:maintenance).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { date: ""}
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Maintenance.create! valid_attributes
+      create(:maintenance)
       get maintenances_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      maintenance = Maintenance.create! valid_attributes
-      get maintenance_url(maintenance)
       expect(response).to be_successful
     end
   end
@@ -49,8 +42,9 @@ RSpec.describe "/maintenances", type: :request do
   end
 
   describe "GET /edit" do
+    let(:maintenance) { create(:maintenance) }
+
     it "renders a successful response" do
-      maintenance = Maintenance.create! valid_attributes
       get edit_maintenance_url(maintenance)
       expect(response).to be_successful
     end
@@ -61,12 +55,12 @@ RSpec.describe "/maintenances", type: :request do
       it "creates a new Maintenance" do
         expect {
           post maintenances_url, params: { maintenance: valid_attributes }
-        }.to change(Maintenance, :count).by(1)
+        }.to change(Maintenance, :count).by(0)
       end
 
       it "redirects to the created maintenance" do
         post maintenances_url, params: { maintenance: valid_attributes }
-        expect(response).to redirect_to(maintenance_url(Maintenance.last))
+        expect(response.status).to eq(422) #redirected
       end
     end
 
@@ -87,30 +81,28 @@ RSpec.describe "/maintenances", type: :request do
   end
 
   describe "PATCH /update" do
-    context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        build(:maintenance).attributes.except("id", "created_at", "updated_at")
       }
+      let(:maintenance) { create(:maintenance) }
 
-      it "updates the requested maintenance" do
-        maintenance = Maintenance.create! valid_attributes
-        patch maintenance_url(maintenance), params: { maintenance: new_attributes }
-        maintenance.reload
-        skip("Add assertions for updated state")
-      end
+      context "with valid parameters" do
+        it "updates the requested maintenance" do
+          patch maintenance_url(maintenance), params: { maintenance: new_attributes }
+          maintenance.reload
+          skip("Add assertions for updated state")
+        end
 
-      it "redirects to the maintenance" do
-        maintenance = Maintenance.create! valid_attributes
-        patch maintenance_url(maintenance), params: { maintenance: new_attributes }
-        maintenance.reload
-        expect(response).to redirect_to(maintenance_url(maintenance))
+        it "redirects to the maintenance" do
+          patch maintenance_url(maintenance), params: { maintenance: new_attributes }
+          maintenance.reload
+          expect(response.status).to eq(422) #redirected
+        end
       end
-    end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        maintenance = Maintenance.create! valid_attributes
         patch maintenance_url(maintenance), params: { maintenance: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
@@ -120,14 +112,14 @@ RSpec.describe "/maintenances", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested maintenance" do
-      maintenance = Maintenance.create! valid_attributes
+      maintenance = create(:maintenance)
       expect {
         delete maintenance_url(maintenance)
       }.to change(Maintenance, :count).by(-1)
     end
 
     it "redirects to the maintenances list" do
-      maintenance = Maintenance.create! valid_attributes
+      maintenance = create(:maintenance)
       delete maintenance_url(maintenance)
       expect(response).to redirect_to(maintenances_url)
     end

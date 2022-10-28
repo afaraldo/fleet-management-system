@@ -32,7 +32,7 @@ module FleetManagementSystem
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    config.time_zone = 'Santiago'
+    config.time_zone = 'America/La_Paz'
     # config.eager_load_paths << Rails.root.join('app/navigation_renderers')
 
     # Don't generate system test files.
