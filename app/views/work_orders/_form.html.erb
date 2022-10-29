@@ -1,9 +1,9 @@
 <div class="card mb-4">
   <h5 class="card-header">
-    <%= t('.form')%>
+    <%= t('form')%>
   </h5>
   <div class="card-body">
-    <%= simple_form_for work_order, class: 'form-floating' do |f| %>
+    <%= simple_form_for work_order, class: 'form-floating', novalidate: true do |f| %>
       <div class='row'>
         <div class="col-2">
           <div class='mb-3'>
@@ -19,24 +19,21 @@
           </div>
         </div>
         <div class="col-4">
-          <div class="input-group">
-            <div class='form-floating'>
-              <%= f.input_field :date,
-                                as: :string,
-                                class: 'form-control',
-                                data: {
-                                  controller: "flatpickr",
-                                  #flatpickr_default_date: f.object.date || Time.now
-                                  readonly: false
-                                },
-                                disabled: false
-              %>
-              <%= f.label :date, for: 'floatingInput' %>
-            </div>
-            <span id="basic-default-password2" data-datepicker-target="toggle" class="input-group-text cursor-pointer"><i class="bx bx-calendar"></i></span>
+          <div class='form-floating'>
+            <%= f.input_field :date,
+                              as: :string,
+                              class: 'form-control',
+                              data: {
+                                controller: "flatpickr",
+                                flatpickr_default_date: f.object.date || Time.now,
+                                flatpickr_enable_time: true
+                              },
+                              value: f.object.date
+            %>
+            <%= f.label :date, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-4">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :city, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
@@ -51,7 +48,7 @@
                                 class:'form-control',
                                 'aria-describedby':"floatingInputHelp",
                                 selected: f.object.status,
-                                disabled: true
+                                readonly: true
               %>
               <%= f.label :status, for: 'floatingInput' %>
             </div>
@@ -60,12 +57,16 @@
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.select :car, [f.object.car], {},
-                       data: {
-                         controller: 'ts--select',
-                         'ts--select-url-value': cars_path
-                       } %>
-          <%= f.label :car, for: 'floatingInput' %>
+          <%= f.association :car, collection: Car.all.page(0),
+                            include_blank: true,
+                            placeholder: t("activerecord.models.car.one"),
+                            input_html: {
+                              data: {
+                                controller: 'ts--select',
+                              'ts--select-url-value': cars_path
+                              }
+                            }
+          %>
         </div>
       </div>
       <div class="row">
@@ -80,6 +81,7 @@
           <%= f.label :description, for: 'floatingInput' %>
         </div>
       </div>
+      <% if work_order.authorized? %>
       <div class="divider text-start-center">
         <div class="divider-text">Completar al finalizar</div>
       </div>
@@ -108,10 +110,11 @@
           <%= f.input_field :employee_id, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
           <%= f.label :employee, for: 'floatingInput' %>
         </div>
-
       </div>
+      <% end %>
       <div class='mt-2'>
         <%= f.button 'submit', class: 'btn btn-primary' %>
+        <%= f.button 'submit', class: 'btn btn-secondary' %>
       </div>
     <% end %>
   </div>

@@ -1,5 +1,6 @@
 ---
 es:
+  form: Formulario
   enums:
     work_order:
       status:

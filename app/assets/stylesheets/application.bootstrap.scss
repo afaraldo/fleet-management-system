@@ -8,6 +8,16 @@
 @import "flatpickr/dist/flatpickr.min";
 @import "flatpickr/dist/themes/airbnb";
 @import "tom-select/dist/css/tom-select.bootstrap4.min";
+
+// Using to fix text area height
+.form-floating {
+   input[type="color"].form-control {
+     height: calc(3.5rem + 2px);
+     line-height: 1.25;
+  }
+}
+
+// Using to fix text area height
 .form-floating {
   .form-control {
     height: 100%;
