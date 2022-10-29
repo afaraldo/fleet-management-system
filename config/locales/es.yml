@@ -28,6 +28,9 @@ es:
       supplier:
         one: Proveedor
         other: Proveedores
+      maintenance:
+        one: Mantenimiento
+        other: Mantenimientos
     attributes:
       car:
         make: Marca
@@ -58,6 +61,12 @@ es:
         name: Nombre
         ruc: Ruc
         type: Tipo
+      maintenance:
+        date: Fecha
+        car:  Vehiculo
+        mechanica_workshop: Taller Mecanico
+        budget: Presupuesto
+        description: Descripcion
   date:
     abbr_day_names:
       - dom
@@ -285,6 +294,7 @@ es:
     employee: "Empleados"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
+    maintenance: "Mantenimientos"
     new: Crear
   cars:
     index:
@@ -295,6 +305,19 @@ es:
       plate_number: Chapa
       chassis: Chasis
       engine: Motor
+      actions: Acciones
+      new: Agregar
+    new:
+      form: Formulario
+    form:
+      form: Formulario
+  maintenance:
+    index:
+      date: Fecha
+      mechanical_workshop: Taller
+      car: Vehiculo
+      budget: Presupuesto
+      description: Decripcion
       actions: Acciones
       new: Agregar
     new:
@@ -339,6 +362,16 @@ es:
         distance: Recorrido
         employee: Firma
         car: Auto
+      supplier:
+        name: Nombre
+        ruc: Nro Documento
+      maintenance:
+        date: Fecha
+        car : Vehiculo
+        mechanical_workshop : Taller Mecanico
+        budget : Presupuesto
+        description : Descripcion
+
   ransack:
     asc: Ascendente
     desc: Descendente

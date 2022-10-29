@@ -35,6 +35,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_072925) do
     t.datetime "updated_at", :null=>false
   end
 
+  create_table "maintenances", force: :cascade do |t|
+    t.date     "date",                   :null=>false
+    t.bigint   "mechanical_workshop_id", :null=>false, :index=>{:name=>"index_maintenances_on_mechanical_workshop_id"}
+    t.integer  "budget"
+    t.bigint   "car_id",                 :null=>false, :index=>{:name=>"index_maintenances_on_car_id"}
+    t.string   "description"
+    t.datetime "created_at",             :null=>false
+    t.datetime "updated_at",             :null=>false
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string   "name",       :null=>false
     t.string   "ruc",        :null=>false
@@ -93,6 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_072925) do
     t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
   end
 
+  add_foreign_key "maintenances", "cars"
+  add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "work_orders", "cars"
   add_foreign_key "work_orders", "employees"
 end
