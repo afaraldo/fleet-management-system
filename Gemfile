@@ -63,9 +63,6 @@ gem 'ransack'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-# Use Sass to process CSS
-gem 'sassc-rails'
-
 # Use to dry validation between database and model [https://github.com/SchemaPlus/schema_validations]
 gem 'schema_validations'
 
@@ -139,3 +136,5 @@ gem 'enum_help'
 gem 'nokogiri', '>= 1.13.9'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
+# Use to CSS [https://github.com/rails/dartsass-rails]
+gem 'dartsass-rails', '~> 0.4.0'

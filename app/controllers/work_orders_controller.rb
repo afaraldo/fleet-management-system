@@ -12,5 +12,6 @@ class WorkOrdersController < ApplicationController
 
     # Add extra variables
     @last_number = WorkOrder.last.try(:number) || 1
+    @cars = Car.all.page(0)
   end
 end
