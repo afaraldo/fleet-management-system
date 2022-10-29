@@ -129,7 +129,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 end
-
+gem 'sassc-rails', group: :test
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
