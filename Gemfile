@@ -133,7 +133,7 @@ end
 # DON'T REMOVE BECAUSE TESTS SHOULD FAIL [https://github.com/sass/sassc-rails]
 gem 'sassc-rails'
 # Use css compressor [https://github.com/rails/dartsass-rails]
-gem "dartsass-rails", "~> 0.4.0"
+gem 'dartsass-rails', '~> 0.4.0'
 
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
