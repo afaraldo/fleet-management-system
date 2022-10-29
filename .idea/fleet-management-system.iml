@@ -57,7 +57,6 @@
     <orderEntry type="library" scope="PROVIDED" name="controller_resources (v1.0.0, RVM: ruby-3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cssbundling-rails (v1.1.1, RVM: ruby-3.0.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="dartsass-rails (v0.4.0, RVM: ruby-3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debase (v0.2.4.1, RVM: ruby-3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debase-ruby_core_source (v0.10.17, RVM: ruby-3.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.6.2, RVM: ruby-3.0.0) [gem]" level="application" />
@@ -415,14 +414,6 @@
                   <RakeTaskImpl description="Install Tailwind" fullCommand="css:install:tailwind" id="tailwind" />
                 </subtasks>
               </RakeTaskImpl>
-            </subtasks>
-          </RakeTaskImpl>
-          <RakeTaskImpl id="dartsass">
-            <subtasks>
-              <RakeTaskImpl description="Build your Dart Sass CSS" fullCommand="dartsass:build" id="build" />
-              <RakeTaskImpl description="Remove CSS builds" fullCommand="dartsass:clobber" id="clobber" />
-              <RakeTaskImpl description="Install Dart Sass into the app" fullCommand="dartsass:install" id="install" />
-              <RakeTaskImpl description="Watch and build your Dart Sass CSS on file changes" fullCommand="dartsass:watch" id="watch" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="db">
