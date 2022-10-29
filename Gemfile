@@ -130,10 +130,10 @@ group :development do
   # gem 'spring'
 end
 
-# group :test do
-#   # DON'T REMOVE BECAUSE TESTS SHOULD FAIL [https://github.com/sass/sassc-rails]
-#   gem 'sassc-rails'
-# end
+group :test do
+  # DON'T REMOVE BECAUSE TESTS SHOULD FAIL [https://github.com/sass/sassc-rails]
+  gem 'sassc-rails'
+end
 
 group :production do
   # Use css compressor [https://github.com/rails/dartsass-rails]
