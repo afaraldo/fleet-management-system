@@ -130,9 +130,15 @@ group :development do
   # gem 'spring'
 end
 
+# DON'T REMOVE BECAUSE TESTS SHOULD FAIL [https://github.com/sass/sassc-rails]
+gem 'sassc-rails'
+# Use css compressor [https://github.com/rails/dartsass-rails]
+gem "dartsass-rails", "~> 0.4.0"
+
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
 gem 'nokogiri', '>= 1.13.9'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
+
