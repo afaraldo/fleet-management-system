@@ -1,5 +1,8 @@
 ---
 es:
+  form: Formulario
+  authorize: Autorizar
+  finish: Finalizar
   enums:
     work_order:
       status:

@@ -2,8 +2,6 @@
   "name": "app",
   "private": "true",
   "dependencies": {
-    "@hotwired/stimulus": "^3.1.0",
-    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo-rails": "^7.1.0",
     "@popperjs/core": "^2.11.0",
     "@rails/request.js": "^0.0.6",
@@ -16,13 +14,14 @@
     "highlight.js": ">=10.4.1",
     "jquery": "^3.6.1",
     "sass": "^1.54.5",
-    "sneat-bootstrap-html-admin-template-free": "github:afaraldo/sneat-html-admin-template-free#136ea6236ca004ae0426998231b417ff9ad8811f",
+    "sneat-bootstrap-html-admin-template-free": "^1.0.0",
     "stimulus": "^2.0.0",
     "stimulus-flatpickr": "^1.4.0",
-    "tom-select": "^2.2.2"
+    "tom-select": "^2.2.2",
+    "yarn": "^1.22.19"
   },
   "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --source-map --embed-source-map --load-path=node_modules",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   }
 }

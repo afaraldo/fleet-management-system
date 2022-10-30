@@ -113,7 +113,11 @@ class ApplicationController < ActionController::Base
   # @return [ActionController::Parameters] Params given to the create
   # method.
   def model_params
-    params.require(model_class.name.underscore.to_sym).permit(model_class.attribute_names)
+    params.require(model_class.name.underscore.to_sym).permit(_params)
+  end
+
+  def _params
+    model_class.attribute_names + model_class.reflect_on_all_associations.map(&:name)
   end
 
   def record_invalid(exception)
