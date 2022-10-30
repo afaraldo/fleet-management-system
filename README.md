@@ -49,3 +49,8 @@ Contributions to fleet-management-system may be made using GitHub pull requests.
 Also use rubocop -f html -o rubocop.html
 
 # fleet-management-system
+
+Demo: https://fleet-management-system-prod.herokuapp.com/
+Credentials:
+- username: admin@email.com
+- password: test123
