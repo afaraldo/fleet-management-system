@@ -1,6 +1,9 @@
+# This migration change column type in status work_orders
 class ChangeColumnStatusWorkOrder < ActiveRecord::Migration[7.0]
   def change
-    remove_column(:work_orders, :status, :string)
-    add_column(:work_orders, :status, :integer)
+    change_table :work_orders, bulk: true do |t|
+      t.remove :status, type: :string
+      t.string :status, :integer
+    end
   end
 end
