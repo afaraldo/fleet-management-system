@@ -133,9 +133,6 @@ gem 'sassc-rails', group: :test
 gem 'factory_bot_rails' # https://github.com/thoughtbot/factory_bot_rails
 gem 'faker' # https://github.com/faker-ruby/faker
 
-# Use css compressor [https://github.com/rails/dartsass-rails]
-gem 'dartsass-rails', '~> 0.4.0'
-
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
