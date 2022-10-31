@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
     instance_variable_set "@#{resource_name}", model_class.send(:new)
   end
 
+  # GET
+  def edit
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t('buttons.edit'), nil # Use for breadcrumbs_on_rails gem
+  end
+
   # POST
   def create
     record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
