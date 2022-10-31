@@ -4,6 +4,11 @@ class WorkOrder < ApplicationRecord
   belongs_to :car
   has_paper_trail
 
+  validates :start_mileage, presence: true, if: :finished?
+  validates :final_mileage, presence: true, if: :finished?
+  validates :final_oil, presence: true, if: :finished?
+  validates :employee, presence: true, if: :finished?
+
   enum status: { requested: 0, authorized: 1, finished: 2 }
 
   delegate :plate_number, to: :car, prefix: true

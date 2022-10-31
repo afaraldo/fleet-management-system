@@ -5,7 +5,7 @@
   <div class="card-body">
     <%= simple_form_for work_order, class: 'form-floating', novalidate: true do |f| %>
       <div class='row'>
-        <div class="col-2">
+        <div class="col-xl-2">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :number,
@@ -18,23 +18,25 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class='form-floating'>
-            <%= f.input_field :date,
-                              as: :string,
-                              class: 'form-control',
-                              data: {
-                                controller: "flatpickr",
-                                flatpickr_default_date: f.object.date || [Time.now, Time.now],
-                                flatpickr_enable_time: true,
-                                flatpickr_mode: "range"
-                              },
-                              value: f.object.date
-            %>
-            <%= f.label :date, for: 'floatingInput' %>
+        <div class="col-xl-4">
+          <div class='mb-3'>
+            <div class='form-floating'>
+              <%= f.input_field :start_date,
+                                as: :string,
+                                class: 'form-control',
+                                data: {
+                                  controller: "flatpickr",
+                                  flatpickr_default_date: f.object.date || [Time.now, Time.now],
+                                  flatpickr_enable_time: true,
+                                  flatpickr_mode: "range"
+                                },
+                                value: f.object.date
+              %>
+              <%= f.label :date, for: 'floatingInput' %>
+            </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :city, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
@@ -42,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-xl-2">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :status,
@@ -108,8 +110,16 @@
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.input_field :employee_id, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-          <%= f.label :employee, for: 'floatingInput' %>
+          <%= f.association :employee, collection: Employee.all.page(0),
+                            include_blank: true,
+                            placeholder: t("activerecord.models.employee.one"),
+                            input_html: {
+                              data: {
+                                controller: 'ts--select',
+                                'ts--select-url-value': employees_path
+                              }
+                            }
+          %>
         </div>
       </div>
       <% end %>

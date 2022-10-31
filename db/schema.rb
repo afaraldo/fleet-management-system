@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_30_044547) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_041923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,9 +98,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_044547) do
     t.bigint   "employee_id",   :index=>{:name=>"index_work_orders_on_employee_id"}
     t.datetime "created_at",    :null=>false
     t.datetime "updated_at",    :null=>false
-    t.time     "date",          :null=>false
     t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
     t.integer  "status"
+    t.datetime "start_date",    :precision=>nil, :null=>false
+    t.datetime "final_date",    :precision=>nil, :null=>false
+    t.integer  "final_oil"
   end
 
   add_foreign_key "maintenances", "cars"
