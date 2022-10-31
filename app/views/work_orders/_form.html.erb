@@ -26,11 +26,10 @@
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: f.object.date || [Time.now, Time.now],
+                                  flatpickr_default_date: [f.object.start_date, f.object.final_date] || [Time.now, Time.now],
                                   flatpickr_enable_time: true,
                                   flatpickr_mode: "range"
-                                },
-                                value: f.object.date
+                                }
               %>
               <%= f.label :date, for: 'floatingInput' %>
             </div>

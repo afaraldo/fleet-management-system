@@ -43,6 +43,10 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 
+if defined?(Rails.root.to_s) && File.exist?(Rails.root.join('config','version.yml'))
+  APP_VERSION = App::Version.load Rails.root.join('config','version.yml').to_s
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

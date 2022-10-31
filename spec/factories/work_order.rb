@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :work_order do
-    date { Faker::Date.between(from: 6.months.ago, to: Date.today) }
+    start_date { Faker::Date.between(from: 6.months.ago, to: Date.today) }
+    final_date { Faker::Date.between(from: 6.months.since, to: Date.today) }
     status { 0 }
     number { Faker::Number.number(digits: 5) }
     description { Faker::Lorem.sentence }

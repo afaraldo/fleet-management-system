@@ -1,3 +1,4 @@
+# add new columns start_date, final_date and final_oil
 class AddColumnsToWorkOrder < ActiveRecord::Migration[7.0]
   def change
     change_table :work_orders, bulk: true do |t|
