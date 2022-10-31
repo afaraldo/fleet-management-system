@@ -26,6 +26,7 @@ class AccessPolicy
        can :manage, Post
        can :manage, Comment
        can :destroy, Post
+       can :update, Post
      end
     # Less privileged moderator role
      role :moderator, proc {|u| u.moderator? } do
@@ -36,7 +37,8 @@ class AccessPolicy
        can :create, Post
     #   can :create, Comment
        can [:update, :destroy], Post do |post, user|
-         post.author == user && post.comments.empty?
+         #post.author == user && post.comments.empty?
+         post.author_id == user.id
        end
      end
 

@@ -100,7 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_044547) do
     t.datetime "updated_at",    :null=>false
     t.time     "date",          :null=>false
     t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
-    t.integer  "status"
+    t.string   "status"
+    t.string   "integer"
   end
 
   add_foreign_key "maintenances", "cars"
