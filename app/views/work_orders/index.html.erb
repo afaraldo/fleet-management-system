@@ -2,13 +2,13 @@
   <div class="row align-items-start p-3">
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :date_gteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :start_date_gteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :date, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :start_date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :date, for: 'floatingInput' %>
       </div>
     </div>
@@ -51,7 +51,7 @@
       <tr>
         <%= search_form_for @q do |f| %>
           <th>
-            <%= sort_link(@q, :date, t('activerecord.attributes.work_order.date'), default_order: :desc) %>
+            <%= sort_link(@q, :date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
           </th>
           <th><%= t('activerecord.attributes.work_order.number')%></th>
           <th><%= t('activerecord.attributes.work_order.description')%></th>
@@ -75,7 +75,7 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <td><strong><%= datetime_format(work_order.date) %></strong></td>
+          <td><strong><%= datetime_format(work_order.start_date) %></strong></td>
           <td><%= work_order.number %></td>
           <td><%= work_order.description %></td>
           <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>

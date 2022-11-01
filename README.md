@@ -40,6 +40,7 @@ Nothing
 yarn build:css --watch # compiling css
 yarn build --watch # compiling js
 rails system_settings:load # load system setting to db
+rake app:render # Update version number in application
 rails s
 
 * Contributing
