@@ -139,5 +139,5 @@ gem 'enum_help'
 gem 'nokogiri', '>= 1.13.9'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
-# Access-granted [https://github.com/chaps-io/access-granted]
-gem 'access-granted', '~> 1.0.0'
+# Used to add app version [https://github.com/mort666/app_version]
+gem 'app_version', '~> 0.1.8'

@@ -67,6 +67,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    app_version (0.1.8)
+      rails (>= 3.2.8)
     ast (2.4.2)
     backport (1.2.0)
     bcrypt (3.1.18)
@@ -381,6 +383,7 @@ PLATFORMS
 DEPENDENCIES
   access-granted (~> 1.0.0)
   activerecord (>= 7.0.3.1)
+  app_version (~> 0.1.8)
   better_errors
   binding_of_caller
   bootsnap

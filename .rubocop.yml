@@ -23,6 +23,12 @@ Metrics/MethodLength:
   Exclude:
     - db/migrate/20220911194444_devise_create_users.rb
     - db/migrate/20221006171930_create_work_order.rb
+Rails/RootPathnameMethods:
+  Exclude:
+    - config/initializers/app_version.rb
+Rails/FilePath:
+  Exclude:
+    - config/initializers/app_version.rb
 AllCops:
   NewCops: enable
   Exclude:
