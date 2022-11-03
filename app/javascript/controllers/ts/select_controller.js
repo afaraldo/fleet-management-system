@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "stimulus"
 import { get }        from '@rails/request.js'
 import TomSelect      from "tom-select"
 
@@ -11,20 +11,7 @@ export default class extends Controller {
     const config = {
       plugins: ['clear_button'],
       valueField: 'value',
-      render:{
-        option_create: function( data, escape ){
-          return '<div class="create">Crear <strong>' + escape(data.input) + '</strong>&hellip;</div>';
-        },
-        option: function(data, escape) {
-          return '<div>' +
-              '<span class="title">' + escape(data.text) + '</span>' +
-              '<span class="url">' + escape(data.id) + '</span>' +
-              '</div>'
-        },
-        no_results: function( data, escape ){
-          return '<div class="no-results">No existen resultados</div>';
-        },
-      },
+
       load: (q, callback) => this.search(q, callback)
     };
 

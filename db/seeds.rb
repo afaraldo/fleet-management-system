@@ -22,6 +22,10 @@ PaperTrail.request(whodunnit: 'Administrador') do
     FactoryBot.create(:mechanical_workshop)
   end
 
+  3.times do
+    FactoryBot.create(:maintenance)
+  end
+
   superuser = User.find_or_create_by(email: 'admin@email.com')
   superuser.update(password: 'test123')
 end

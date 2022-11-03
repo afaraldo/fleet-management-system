@@ -1,20 +1,18 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" data-bg-class="bg-menu-theme">
-
-  <div class="app-brand demo ">
-    <a href="<%= root_path %>>" class="app-brand-link">
-              <span class="app-brand-logo demo">
-                <%= image_tag SystemSettings[:logo_file], size: "80x80" %>
-              </span>
-      <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <%= SystemSettings[:organization_name].html_safe %>
-              </span>
-    </a>
-
-    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
-      <i class="bx bx-chevron-left bx-sm align-middle"></i>
-    </a>
-  </div>
-
+<aside id="layout-menu" class="layout-menu menu-vertical app-brand app-brand-logo menu bg-menu-theme menu-collapsed" data-bg-class="bg-menu-theme">
+  <a href="<%= root_path %>" class="app-brand-link gap-2">
+    <%= image_tag SystemSettings[:logo_file],
+                  class: "demo h-auto",
+                  alt: "logo",
+                  width: 80
+    %>
+    <span class="app-brand-text demo menu-text fw-bolder">
+      <%= SystemSettings[:organization_name].html_safe %>
+    </span>
+  </a>
+  <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none" data-controller="navbar">
+    <i class="bx bx-chevron-left bx-sm align-middle"></i>
+  </a>
+  <div class="menu-divider mt-0"></div>
   <div class="menu-inner-shadow"></div>
 
   <%= render_navigation %>

@@ -1,11 +1,11 @@
 <div class="card mb-4">
   <h5 class="card-header">
-    <%= t('.form')%>
+    <%= t('form')%>
   </h5>
   <div class="card-body">
-    <%= simple_form_for work_order, class: 'form-floating' do |f| %>
+    <%= simple_form_for work_order, class: 'form-floating', novalidate: true do |f| %>
       <div class='row'>
-        <div class="col-2">
+        <div class="col-xl-2">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :number,
@@ -18,23 +18,24 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="input-group">
+        <div class="col-xl-4">
+          <div class='mb-3'>
             <div class='form-floating'>
-              <%= f.input_field :date,
+              <%= f.input_field :start_date,
                                 as: :string,
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: f.object.date || Time.now
+                                  flatpickr_default_date: [f.object.start_date, f.object.final_date] || [Time.now, Time.now],
+                                  flatpickr_enable_time: true,
+                                  flatpickr_mode: "range"
                                 }
               %>
               <%= f.label :date, for: 'floatingInput' %>
             </div>
-            <span id="basic-default-password2" data-datepicker-target="toggle" class="input-group-text cursor-pointer"><i class="bx bx-calendar"></i></span>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-xl-4">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :city, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
@@ -42,28 +43,32 @@
             </div>
           </div>
         </div>
-        <div class="col-2">
+        <div class="col-xl-2">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :status,
                                 class:'form-control',
                                 'aria-describedby':"floatingInputHelp",
                                 selected: f.object.status,
-                                disabled: true
+                                readonly: true if f.object.status
               %>
-              <%= f.label :status, for: 'floatingInput' %>
+              <%= f.label :status, for: 'floatingInput' if f.object.status %>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.select :car, [f.object.car], {},
-                       data: {
-                         controller: 'ts--select',
-                         'ts--select-url-value': cars_path
-                       } %>
-          <%= f.label :car, for: 'floatingInput' %>
+          <%= f.association :car, collection: Car.all.page(0),
+                            include_blank: true,
+                            placeholder: t("activerecord.models.car.one"),
+                            input_html: {
+                              data: {
+                                controller: 'ts--select',
+                              'ts--select-url-value': cars_path
+                              }
+                            }
+          %>
         </div>
       </div>
       <div class="row">
@@ -78,6 +83,7 @@
           <%= f.label :description, for: 'floatingInput' %>
         </div>
       </div>
+      <% if work_order.authorized? %>
       <div class="divider text-start-center">
         <div class="divider-text">Completar al finalizar</div>
       </div>
@@ -103,13 +109,35 @@
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.input_field :employee_id, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-          <%= f.label :employee, for: 'floatingInput' %>
+          <%= f.association :employee, collection: Employee.all.page(0),
+                            include_blank: true,
+                            placeholder: t("activerecord.models.employee.one"),
+                            input_html: {
+                              data: {
+                                controller: 'ts--select',
+                                'ts--select-url-value': employees_path
+                              }
+                            }
+          %>
         </div>
-
       </div>
+      <% end %>
       <div class='mt-2'>
-        <%= f.button 'submit', class: 'btn btn-primary' %>
+        <%= f.button 'submit', class: 'btn btn-primary' unless f.object.finished?%>
+        <%= button_to t('authorize'),
+                      work_order_path(work_order),
+                      method: :put,
+                      params: {work_order: {status: :authorized}},
+                      remote: true,
+                      data: { confirm: t('buttons.confirm') },
+                      class: 'btn btn-secondary' if work_order.requested? %>
+        <%= button_to t('finish'),
+                      work_order_path(work_order),
+                      method: :put,
+                      params: {work_order: {status: :finished}},
+                      remote: true,
+                      data: { confirm: t('buttons.confirm') },
+                      class: 'btn btn-secondary' if work_order.authorized? %>
       </div>
     <% end %>
   </div>
