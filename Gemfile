@@ -141,3 +141,5 @@ gem 'nokogiri', '>= 1.13.9'
 gem 'paper_trail', '~> 13.0'
 # Used to add app version [https://github.com/mort666/app_version]
 gem 'app_version', '~> 0.1.8'
+# Used to add access-granted [https://github.com/chaps-io/access-granted]
+gem 'access-granted', '~> 1.1.0'
