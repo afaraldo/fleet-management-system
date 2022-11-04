@@ -1,14 +1,78 @@
-<p style="color: green"><%= notice %></p>
+<%= search_form_for @q do |f| %>
+  <div class="row align-items-start p-3">
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :contract_date, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :contract_date, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :exp_date, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :exp_date, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :amount, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :amount, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :car_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :car, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn btn-secondary'  %>
+    </div>
+  </div>
+<% end %>
 
-<h1>Insurance plans</h1>
+<div class="card">
+  <h5 class="card-header">
+    <%= t('activerecord.models.insurance_plan.other') %>
+    <%= link_to t('buttons.new'), new_insurance_plan_path, class: 'btn btn-primary' %>
+  </h5>
 
-<div id="insurance_plans">
-  <% @insurance_plans.each do |insurance_plan| %>
-    <%= render insurance_plan %>
-    <p>
-      <%= link_to "Show this insurance plan", insurance_plan %>
-    </p>
-  <% end %>
+  <div class="table-responsive text-nowrap">
+    <table class="table table-sm table-hover">
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @insurance_plans, entry_name: 'item' %>
+          </div>
+          <%= paginate @insurance_plans, remote: true %>
+        </div>
+      </caption>
+      <thead>
+      <tr>
+        <%= search_form_for @q do |f| %>
+          <th>
+            <%= sort_link(@q, :contract_date, t('activerecord.attributes.insurance_plan.contract_date'), default_order: :desc) %>
+          </th>
+          <th><%= t('activerecord.attributes.insurance_plan.exp_date')%></th>
+          <th><%= t('activerecord.attributes.insurance_plan.car')%></th>
+          <th><%= t('activerecord.attributes.insurance_plan.amount')%></th>
+          <th class="d-print-none"></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% @insurance_plans.each do |insurance_plan| %>
+        <tr>
+          <td><strong><%= insurance_plan.contract_date %></strong></td>
+          <td><%= insurance_plan.exp_date%></td>
+          <td><%= insurance_plan.car%></td>
+          <td><%= insurance_plan.amount %></td>
+          <td class="d-print-none">
+            <%= render(partial: 'components/action_buttons', locals: { model: insurance_plan })%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New insurance plan", new_insurance_plan_path %>

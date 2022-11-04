@@ -34,6 +34,9 @@ es:
       maintenance:
         one: Mantenimiento
         other: Mantenimientos
+      insurance_plan:
+        one: Plan de Seguro
+        other: Plan de Seguros
     attributes:
       car:
         make: Marca
@@ -70,6 +73,11 @@ es:
         mechanica_workshop: Taller Mecanico
         budget: Presupuesto
         description: Descripcion
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        exp_date: Fecha de  Vencimiento
+        car: Vehiculo
+        amount: Monto
   date:
     abbr_day_names:
       - dom
@@ -298,6 +306,7 @@ es:
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
+    insurance_plan: "Plan de Seguros"
     new: Crear
   cars:
     index:
@@ -374,6 +383,11 @@ es:
         mechanical_workshop : Taller Mecanico
         budget : Presupuesto
         description : Descripcion
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        car: Vehiculo
+        exp_date: Fecha de Vencimiento
+        amount: Monto
 
   ransack:
     asc: Ascendente
