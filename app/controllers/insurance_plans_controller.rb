@@ -1,5 +1,4 @@
 # Controller for InsurancePlan model
 class InsurancePlansController < ApplicationController
-    resource :insurance_plan
+  resource :insurance_plan
 end
-
