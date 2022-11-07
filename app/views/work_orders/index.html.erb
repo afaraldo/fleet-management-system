@@ -50,9 +50,15 @@
       <thead>
       <tr>
         <%= search_form_for @q do |f| %>
-          <th><%= t('activerecord.attributes.work_order.number')%></th>
-          <th><%= t('activerecord.attributes.work_order.car')%></th>
-          <th><%= t('activerecord.attributes.work_order.city')%></th>
+          <th>
+            <%= sort_link(@q, :number, t('activerecord.attributes.work_order.number'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :car_plate_number, t('activerecord.attributes.work_order.car'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :city, t('activerecord.attributes.work_order.city'), default_order: :desc) %>
+          </th>
           <th>
             <%= sort_link(@q, :start_date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
           </th>
@@ -60,7 +66,9 @@
             <%= sort_link(@q, :final_date, t('activerecord.attributes.work_order.final_date'), default_order: :desc) %>
           </th>
           <th><%= t('activerecord.attributes.work_order.description')%></th>
-          <th><%= t('activerecord.attributes.work_order.employee')%></th>
+          <th>
+            <%= sort_link(@q, :employee_full_name, t('activerecord.attributes.work_order.employee'), default_order: :desc) %>
+          </th>
           <th><%= t('activerecord.attributes.work_order.status')%></th>
           <th class="d-print-none"></th>
         <% end %>
@@ -69,13 +77,13 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <td><strong><%=  link_to work_order.number, work_order_path(work_order) %></strong></td>
+          <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
           <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
           <td><%= work_order.city %></td>
           <td><%= datetime_format(work_order.start_date) %></td>
           <td><%= datetime_format(work_order.final_date) %></td>
           <td><%= work_order.description %></td>
-          <td><%= work_order.employee.to_s %></td>
+          <td><%= work_order.employee_full_name %></td>
           <td><%= add_status(work_order.status) %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>

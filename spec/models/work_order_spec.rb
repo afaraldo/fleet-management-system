@@ -23,20 +23,22 @@ RSpec.describe WorkOrder, type: :model do
     it { should have_db_index(:employee_id) }
   end
 
+  let(:user) { create(:user) }
+
   describe '.requested_by' do
     subject do
-      PaperTrail.request(whodunnit: 'Dorian Marié') do
+      PaperTrail.request(whodunnit: user.id) do
         create(:work_order)
       end
     end
     context 'should return who created register' do
-      it { expect(subject.requested_by).to eq('Dorian Marié') }
+      it { expect(subject.requested_by).to eq(user) }
     end
   end
 
   describe '.requested_on' do
     subject do
-      PaperTrail.request(whodunnit: 'Dorian Marié') do
+      PaperTrail.request(whodunnit: user.id) do
         create(:work_order)
       end
     end
@@ -47,7 +49,7 @@ RSpec.describe WorkOrder, type: :model do
 
   describe '.requested_on' do
     subject do
-      PaperTrail.request(whodunnit: 'Dorian Marié') do
+      PaperTrail.request(whodunnit: user.id) do
         create(:work_order)
       end
     end
@@ -60,10 +62,10 @@ RSpec.describe WorkOrder, type: :model do
     context 'should return who update status of the register from requested to authorized' do
       let(:work_order) { create(:work_order) }
       it {
-        PaperTrail.request(whodunnit: 'Other person') do
+        PaperTrail.request(whodunnit: user.id) do
           work_order.update(status: :authorized)
         end
-        expect(work_order.authorized_by).to eq('Other person')
+        expect(work_order.authorized_by).to eq(user)
       }
     end
   end
@@ -84,11 +86,11 @@ RSpec.describe WorkOrder, type: :model do
     context 'should return who update status of the register from authorized to finished' do
       let(:work_order) { create(:work_order) }
       it {
-        PaperTrail.request(whodunnit: 'Last Person') do
+        PaperTrail.request(whodunnit: user.id) do
           work_order.update(status: :authorized)
           work_order.update(status: :finished)
         end
-        expect(work_order.finished_by).to eq('Last Person')
+        expect(work_order.finished_by).to eq(user)
       }
     end
   end

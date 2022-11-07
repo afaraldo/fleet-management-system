@@ -41,7 +41,7 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
       work_order:
@@ -62,7 +62,8 @@ es:
         finished_on: Completado el
         finished_by: Completado por
         status: Estado
-        car: Auto
+        car: Chapa
+        area: Area Asignada
       supplier:
         name: Nombre
         ruc: Ruc
@@ -297,7 +298,7 @@ es:
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"
-    employee: "Empleados"
+    employee: "Funcionario"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
@@ -343,7 +344,7 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
     hints:
@@ -354,7 +355,7 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
       work_order:
@@ -367,7 +368,8 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
-        car: Auto
+        car: Chapa
+        area: Area Asignada
       supplier:
         name: Nombre
         ruc: Nro Documento

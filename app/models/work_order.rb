@@ -12,15 +12,17 @@ class WorkOrder < ApplicationRecord
   validates :employee, presence: true, if: :finished?
 
   # Validate that a car has only work orders in a time period
-  validate :date_collision
+  validates :start_date, collision_date: true
+  validates :final_date, collision_date: true
 
   # Validations date
   validates_comparison_of :start_date, less_than: :final_date
   validates_comparison_of :final_date, greater_than: :start_date
 
-  enum status: { draft: 0, requested: 1, authorized: 2, finished: 3 }, _default: :requested
+  enum status: { requested: 0, authorized: 1, finished: 2 }, _default: :requested
 
   delegate :plate_number, to: :car, prefix: true
+  delegate :full_name, to: :employee, prefix: true, allow_nil: true
 
   def workdays
     final_date - start_date
@@ -33,15 +35,17 @@ class WorkOrder < ApplicationRecord
   end
 
   def requested_by
-    versions.first.whodunnit
+    user_id = versions.where_object_changes(status: :requested).first.try(:whodunnit)
+    User.find_by(id: user_id)
   end
 
   def requested_on
-    versions.first.created_at
+    versions.where_object_changes(status: :requested).first.try(:created_at)
   end
 
   def authorized_by
-    versions.where_object_changes(status: :authorized).last.try(:whodunnit) || 'pending'
+    user_id = versions.where_object_changes(status: :authorized).last.try(:whodunnit)
+    User.find_by(id: user_id)
   end
 
   def authorized_on
@@ -49,7 +53,8 @@ class WorkOrder < ApplicationRecord
   end
 
   def finished_by
-    versions.where_object_changes(status: :finished).last.try(:whodunnit) || 'pending'
+    user_id = versions.where_object_changes(status: :finished).last.try(:whodunnit)
+    User.find_by(id: user_id)
   end
 
   def finished_on
@@ -58,23 +63,5 @@ class WorkOrder < ApplicationRecord
 
   def to_s
     "#{self.class.model_name.human} ##{number}"
-  end
-
-  private
-
-  # This method validates that there are not two work orders overlapping in time, that is, that the start and end days of any work order are contained in the start and end days of another.
-  # Only work orders with the same car are considered
-  def date_collision
-    invalid_start_date = WorkOrder.where('start_date BETWEEN ? AND ?',
-                             start_date, final_date)
-                      .where(car_id: car_id)
-                      .excluding(self)
-    invalid_final_date = WorkOrder.where('final_date BETWEEN ? AND ?',
-                                         start_date, final_date)
-                                  .where(car_id: car_id)
-                                  .excluding(self)
-
-    errors.add(:start_date, :busy_date, record: invalid_start_date.first.to_s) if invalid_start_date.any?
-    errors.add(:final_date, :busy_date, record: invalid_final_date.first.to_s) if invalid_final_date.any?
   end
 end
