@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-2">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :start_date,
@@ -26,12 +26,27 @@
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: [f.object.start_date, f.object.final_date] || [Time.now, Time.now],
-                                  flatpickr_enable_time: true,
-                                  flatpickr_mode: "range"
+                                  flatpickr_default_date: f.object.start_date || Time.now.beginning_of_day,
+                                  flatpickr_enable_time: true
                                 }
               %>
-              <%= f.label :date, for: 'floatingInput' %>
+              <%= f.label :start_date, for: 'floatingInput' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2">
+          <div class='mb-3'>
+            <div class='form-floating'>
+              <%= f.input_field :final_date,
+                                as: :string,
+                                class: 'form-control',
+                                data: {
+                                  controller: "flatpickr",
+                                  flatpickr_default_date: f.object.final_date || Time.now.end_of_day ,
+                                  flatpickr_enable_time: true
+                                }
+              %>
+              <%= f.label :final_date, for: 'floatingInput' %>
             </div>
           </div>
         </div>
@@ -50,9 +65,10 @@
                                 class:'form-control',
                                 'aria-describedby':"floatingInputHelp",
                                 selected: f.object.status,
-                                readonly: true if f.object.status
+                                disabled: true
+
               %>
-              <%= f.label :status, for: 'floatingInput' if f.object.status %>
+              <%= f.label :status, for: 'floatingInput' %>
             </div>
           </div>
         </div>
@@ -130,7 +146,7 @@
                       params: {work_order: {status: :authorized}},
                       remote: true,
                       data: { confirm: t('buttons.confirm') },
-                      class: 'btn btn-secondary' if work_order.requested? %>
+                      class: 'btn btn-secondary' if work_order.requested? && work_order.persisted? %>
         <%= button_to t('finish'),
                       work_order_path(work_order),
                       method: :put,

@@ -50,24 +50,18 @@
       <thead>
       <tr>
         <%= search_form_for @q do |f| %>
-          <th>
-            <%= sort_link(@q, :date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
-          </th>
           <th><%= t('activerecord.attributes.work_order.number')%></th>
-          <th><%= t('activerecord.attributes.work_order.description')%></th>
           <th><%= t('activerecord.attributes.work_order.car')%></th>
           <th><%= t('activerecord.attributes.work_order.city')%></th>
-          <th><%= t('activerecord.attributes.work_order.requested_on')%></th>
-          <th><%= t('activerecord.attributes.work_order.requested_by')%></th>
-          <th><%= t('activerecord.attributes.work_order.authorized_on')%></th>
-          <th><%= t('activerecord.attributes.work_order.authorized_by')%></th>
-          <th><%= t('activerecord.attributes.work_order.completed_on')%></th>
-          <th><%= t('activerecord.attributes.work_order.completed_by')%></th>
-          <th><%= t('activerecord.attributes.work_order.workdays')%></th>
-          <th><%= t('activerecord.attributes.work_order.start_mileage')%></th>
-          <th><%= t('activerecord.attributes.work_order.final_mileage')%></th>
-          <th><%= t('activerecord.attributes.work_order.distance')%></th>
+          <th>
+            <%= sort_link(@q, :start_date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :final_date, t('activerecord.attributes.work_order.final_date'), default_order: :desc) %>
+          </th>
+          <th><%= t('activerecord.attributes.work_order.description')%></th>
           <th><%= t('activerecord.attributes.work_order.employee')%></th>
+          <th><%= t('activerecord.attributes.work_order.status')%></th>
           <th class="d-print-none"></th>
         <% end %>
       </tr>
@@ -75,22 +69,14 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <td><strong><%= datetime_format(work_order.start_date) %></strong></td>
-          <td><%= work_order.number %></td>
-          <td><%= work_order.description %></td>
+          <td><strong><%=  link_to work_order.number, work_order_path(work_order) %></strong></td>
           <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
           <td><%= work_order.city %></td>
-          <td><%= datetime_format(work_order.requested_on) %></td>
-          <td><%= work_order.requested_by %></td>
-          <td><%= datetime_format(work_order.authorized_on) %></td>
-          <td><%= work_order.authorized_by %></td>
-          <td><%= datetime_format(work_order.finished_on) %></td>
-          <td><%= work_order.finished_by %></td>
-          <td style="text-align: right"><%= work_order.workdays %></td>
-          <td style="text-align: right"><%= ActiveSupport::NumberHelper.number_to_delimited(work_order.start_mileage) %></td>
-          <td style="text-align: right"><%= ActiveSupport::NumberHelper.number_to_delimited(work_order.final_mileage) %></td>
-          <td style="text-align: right"><%= work_order.distance %></td>
-          <td><%= work_order.employee_id %></td>
+          <td><%= datetime_format(work_order.start_date) %></td>
+          <td><%= datetime_format(work_order.final_date) %></td>
+          <td><%= work_order.description %></td>
+          <td><%= work_order.employee.to_s %></td>
+          <td><%= add_status(work_order.status) %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
           </td>

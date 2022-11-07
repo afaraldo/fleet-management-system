@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe WorkOrder, type: :model do
+  describe 'validations' do
+    it { should validate_presence_of(:start_date) }
+    it { should validate_presence_of(:final_date) }
+    it { should validate_presence_of(:status) }
+    it { should validate_presence_of(:start_date) }
+    it { should belong_to(:car) }
+  end
+
+  describe 'uniqueness' do
+    subject { create(:work_order) }
+    it { should validate_uniqueness_of(:number) }
+  end
+
+  describe 'db indexes' do
+    it { should have_db_index(:number) }
+    it { should have_db_index(:start_date) }
+    it { should have_db_index(:final_date) }
+    it { should have_db_index(:status) }
+    it { should have_db_index(:car_id) }
+    it { should have_db_index(:employee_id) }
+  end
 
   describe '.requested_by' do
     subject do
@@ -97,7 +118,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.to_s' do
     subject { create(:work_order, { number: 101}) }
     context 'should return a String with format "#{class_name.human} #{number}"' do
-      it { expect(subject.to_s).to  eq("Orden de Trabajo 101") }
+      it { expect(subject.to_s).to  eq("Orden de Trabajo #101") }
     end
   end
 end
