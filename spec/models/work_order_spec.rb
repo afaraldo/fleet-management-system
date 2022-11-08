@@ -88,7 +88,7 @@ RSpec.describe WorkOrder, type: :model do
       it {
         PaperTrail.request(whodunnit: user.id) do
           work_order.update(status: :authorized)
-          work_order.update(status: :finished)
+          work_order.update!(status: :finished, final_oil: 2, start_mileage: 1, final_mileage: 2)
         end
         expect(work_order.finished_by).to eq(user)
       }
@@ -99,9 +99,9 @@ RSpec.describe WorkOrder, type: :model do
     context 'should return time when update status of the register from authorized to finished' do
       let(:work_order) { create(:work_order) }
       it {
-        PaperTrail.request(whodunnit: 'Last Person') do
+        PaperTrail.request(whodunnit: user.id) do
           work_order.update(status: :authorized)
-          work_order.update(status: :finished)
+          work_order.update!(status: :finished, final_oil: 2, start_mileage: 1, final_mileage: 2)
         end
         expect(work_order.finished_on).to eq(work_order.updated_at)
       }

@@ -19,14 +19,10 @@ class WorkOrder < ApplicationRecord
   validates_comparison_of :start_date, less_than: :final_date
   validates_comparison_of :final_date, greater_than: :start_date
 
-  enum status: { requested: 0, authorized: 1, finished: 2 }, _default: :requested
+  enum status: { requested: 0, authorized: 1, finished: 2 }, _default: 0
 
   delegate :plate_number, to: :car, prefix: true
   delegate :full_name, to: :employee, prefix: true, allow_nil: true
-
-  def workdays
-    final_date - start_date
-  end
 
   def distance
     self.final_mileage ||= 0

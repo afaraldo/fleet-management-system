@@ -19,7 +19,9 @@ RSpec.describe "/cars", type: :request do
   # Car. As you add validations to Car, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    build(:car).attributes
+    hash = build(:car).attributes
+    hash.extract!("id")
+    hash
   }
 
   let(:invalid_attributes) {
