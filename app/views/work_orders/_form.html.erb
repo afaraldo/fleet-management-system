@@ -11,14 +11,13 @@
               <%= f.input_field :number,
                                 class:'form-control',
                                 'aria-describedby':"floatingInputHelp",
-                                value: f.object.number || last_number,
-                                autofocus: true
+                                value: f.object.number || last_number
               %>
               <%= f.label :number, for: 'floatingInput' %>
             </div>
           </div>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-2">
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :start_date,
@@ -26,12 +25,28 @@
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: [f.object.start_date, f.object.final_date] || [Time.now, Time.now],
-                                  flatpickr_enable_time: true,
-                                  flatpickr_mode: "range"
+                                  flatpickr_default_date: f.object.start_date,
+                                  flatpickr_enable_time: true
+                                },
+                                autofocus: true
+              %>
+              <%= f.label :start_date, for: 'floatingInput' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-2">
+          <div class='mb-3'>
+            <div class='form-floating'>
+              <%= f.input_field :final_date,
+                                as: :string,
+                                class: 'form-control',
+                                data: {
+                                  controller: "flatpickr",
+                                  flatpickr_default_date: f.object.final_date,
+                                  flatpickr_enable_time: true
                                 }
               %>
-              <%= f.label :date, for: 'floatingInput' %>
+              <%= f.label :final_date, for: 'floatingInput' %>
             </div>
           </div>
         </div>
@@ -50,25 +65,34 @@
                                 class:'form-control',
                                 'aria-describedby':"floatingInputHelp",
                                 selected: f.object.status,
-                                readonly: true if f.object.status
+                                disabled: true
+
               %>
-              <%= f.label :status, for: 'floatingInput' if f.object.status %>
+              <%= f.label :status, for: 'floatingInput' %>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class='form-floating mb-3'>
-          <%= f.association :car, collection: Car.all.page(0),
-                            include_blank: true,
-                            placeholder: t("activerecord.models.car.one"),
-                            input_html: {
-                              data: {
-                                controller: 'ts--select',
-                              'ts--select-url-value': cars_path
+        <div class="col-xl-8">
+          <div class='form-floating mb-3'>
+            <%= f.association :car, collection: Car.all.page(0),
+                              include_blank: true,
+                              placeholder: t("activerecord.attributes.work_order.car"),
+                              input_html: {
+                                data: {
+                                  controller: 'ts--select',
+                                  'ts--select-url-value': cars_path
+                                }
                               }
-                            }
-          %>
+            %>
+          </div>
+        </div>
+        <div class="col-xl-2">
+          <div class='form-floating'>
+            <%= f.input_field :area, class:'form-control', 'aria-describedby':"floatingInputHelp", autocomplete: true%>
+            <%= f.label :area, for: 'floatingInput' %>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -88,12 +112,6 @@
         <div class="divider-text">Completar al finalizar</div>
       </div>
       <div class="row mb-3">
-        <div class="col-4">
-          <div class='form-floating'>
-            <%= f.input_field :workdays, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= f.label :workdays, for: 'floatingInput' %>
-          </div>
-        </div>
         <div class="col-4">
           <div class='form-floating'>
             <%= f.input_field :start_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
@@ -124,21 +142,36 @@
       <% end %>
       <div class='mt-2'>
         <%= f.button 'submit', class: 'btn btn-primary' unless f.object.finished?%>
-        <%= button_to t('authorize'),
-                      work_order_path(work_order),
-                      method: :put,
-                      params: {work_order: {status: :authorized}},
-                      remote: true,
-                      data: { confirm: t('buttons.confirm') },
-                      class: 'btn btn-secondary' if work_order.requested? %>
-        <%= button_to t('finish'),
-                      work_order_path(work_order),
-                      method: :put,
-                      params: {work_order: {status: :finished}},
-                      remote: true,
-                      data: { confirm: t('buttons.confirm') },
-                      class: 'btn btn-secondary' if work_order.authorized? %>
       </div>
     <% end %>
+    <div class='mt-2'>
+      <%= button_to t('authorize'),
+                    work_order_path(work_order),
+                    method: :put,
+                    params: {work_order: {status: :authorized}},
+                    remote: true,
+                    data: { confirm: t('buttons.confirm') },
+                    class: 'btn btn-secondary' if work_order.requested? && work_order.persisted? %>
+      <%= button_to t('finish'),
+                    work_order_path(work_order),
+                    method: :put,
+                    params: {work_order: {status: :finished}},
+                    remote: true,
+                    data: { confirm: t('buttons.confirm') },
+                    class: 'btn btn-secondary' if work_order.authorized? %>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+    <small class="text-light fw-semibold">
+      <%= "Solicitado por #{work_order.requested_by.email} el #{datetime_format(work_order.requested_on)}" if work_order.requested_by %>
+    </small>
+    <br>
+    <small class="text-light fw-semibold">
+      <%= "Autorizado por #{work_order.authorized_by.email} el #{datetime_format(work_order.authorized_on)}" if work_order.authorized_by %>
+    </small>
+    <br>
+    <small class="text-light fw-semibold">
+      <%= "Finalizado por #{work_order.finished_by.email} el #{datetime_format(work_order.finished_on)}" if work_order.finished_by %>
+    </small>
   </div>
 </div>
