@@ -12,8 +12,7 @@
                               class: 'form-control',
                               data: {
                                 controller: "flatpickr",
-                                flatpickr_default_date: f.object.contract_date || Time.now,
-                                flatpickr_enable_time: true
+                                flatpickr_default_date: f.object.contract_date || Date.today
                               }
             %>
             <%= f.label :contract_date, for: 'floatingInput' %>
@@ -21,33 +20,33 @@
         </div>
         <div class="col-xl-4">
           <div class='form-floating'>
-            <%= f.input_field :exp_date,
+            <%= f.input_field :expiry_date,
                               as: :string,
                               class: 'form-control',
                               data: {
                                 controller: "flatpickr",
-                                flatpickr_default_date: f.object.exp_date || Time.now,
-                                flatpickr_enable_time: true
+                                flatpickr_default_date: f.object.expiry_date || Date.today
                               }
             %>
-            <%= f.label :exp_date, for: 'floatingInput' %>
+            <%= f.label :expiry_date, for: 'floatingInput' %>
           </div>
         </div>
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.association :car, collection: Car.all.page(0),
+          <%= f.association :insurance_carrier, collection: InsuranceCarrier.all.page(0),
                             include_blank: true,
-                            placeholder: t("activerecord.models.car.one"),
+                            # placeholder: t("activerecord.models.insurance_carrier"),
                             input_html: {
                               data: {
-                                controller: 'ts--select',
-                                'ts--select-url-value': cars_path
+                                 controller: 'ts--select',
+                                 'ts--select-url-value': insurance_plans_path
                               }
                             }
           %>
         </div>
       </div>
+
       <div class="row mb-3">
         <div class="col-4">
           <div class='form-floating'>

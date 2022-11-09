@@ -1,3 +1,4 @@
 class InsurancePlan < ApplicationRecord
-  belongs_to :car
+  has_and_belongs_to_many :cars
+  belongs_to :insurance_carrier
 end

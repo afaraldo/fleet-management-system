@@ -87,15 +87,13 @@ RSpec.describe "/insurance_plans", type: :request do
 
       context "with valid parameters" do
         let(:new_attributes) {
-          skip("Add a hash of attributes valid for your model")
         }
-
-      it "updates the requested insurance_plan" do
-        create(:insurance_plan)
-        patch insurance_plan_url(insurance_plan), params: { insurance_plan: new_attributes }
-        insurance_plan.reload
-        skip("Add assertions for updated state")
-      end
+        it "updates the requested insurance_plan" do
+          create(:insurance_plan)
+          patch insurance_plan_url(insurance_plan), params: { insurance_plan: new_attributes }
+          insurance_plan.reload
+          #skip("Add assertions for updated state")
+        end
 
       it "redirects to the insurance_plan" do
         patch insurance_plan_url(insurance_plan), params: { insurance_plan: new_attributes }

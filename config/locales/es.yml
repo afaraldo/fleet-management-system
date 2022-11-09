@@ -75,7 +75,8 @@ es:
         description: Descripcion
       insurance_plan:
         contract_date: Fecha de Contrato
-        exp_date: Fecha de  Vencimiento
+        expiry_date: Fecha de  Vencimiento
+        insurance_carrier: Seguro
         car: Vehiculo
         amount: Monto
   date:
@@ -386,7 +387,8 @@ es:
       insurance_plan:
         contract_date: Fecha de Contrato
         car: Vehiculo
-        exp_date: Fecha de Vencimiento
+        insurance_carrier: Seguro
+        expiry_date: Fecha de Vencimiento
         amount: Monto
 
   ransack:
