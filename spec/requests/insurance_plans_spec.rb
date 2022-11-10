@@ -54,12 +54,12 @@ RSpec.describe "/insurance_plans", type: :request do
       it "creates a new InsurancePlan" do
         expect {
           post insurance_plans_url, params: { insurance_plan: valid_attributes }
-        }.to change(InsurancePlan, :count).by(0)
+        }.to change(InsurancePlan, :count).by(1)
       end
 
       it "redirects to the created insurance_plan" do
         post insurance_plans_url, params: { insurance_plan: valid_attributes }
-        expect(response.status).to eq(422) #redirected
+        expect(response.status).to eq(302) #redirected
       end
     end
 
@@ -86,19 +86,16 @@ RSpec.describe "/insurance_plans", type: :request do
       let(:insurance_plan) { create(:insurance_plan) }
 
       context "with valid parameters" do
-        let(:new_attributes) {
-        }
         it "updates the requested insurance_plan" do
           create(:insurance_plan)
           patch insurance_plan_url(insurance_plan), params: { insurance_plan: new_attributes }
           insurance_plan.reload
-          #skip("Add assertions for updated state")
         end
 
       it "redirects to the insurance_plan" do
-        patch insurance_plan_url(insurance_plan), params: { insurance_plan: new_attributes }
+        put insurance_plan_url(insurance_plan), params: { insurance_plan: new_attributes }
         insurance_plan.reload
-        expect(response).to redirect_to(insurance_plan_url(insurance_plan))
+        expect(response).to redirect_to(edit_insurance_plan_url(insurance_plan))
       end
     end
 
