@@ -66,7 +66,7 @@
         <tr>
           <td><strong><%= insurance_plan.contract_date %></strong></td>
           <td><%= insurance_plan.expiry_date%></td>
-          <td><%= insurance_plan.cars%></td>
+          <td><%= insurance_plan.cars.map {|car| car.to_s }.to_sentence %></td>
           <td><%= insurance_plan.insurance_carrier.name%></td>
           <td><%= insurance_plan.amount %></td>
           <td class="d-print-none">
