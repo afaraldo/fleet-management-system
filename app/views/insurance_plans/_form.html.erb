@@ -34,6 +34,19 @@
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
+          <%= f.association :cars, collection: Car.all.page(0),
+                            include_blank: true,
+                            placeholder: t("activerecord.models.car.other"),
+                            input_html: {
+                              data: {
+                                controller: 'ts--select',
+                                multiple:true, class: 'multiselectuser',
+                                'ts--select-url-value': cars_path
+                              }
+                            }
+          %>
+        </div>
+        <div class='form-floating mb-3'>
           <%= f.association :insurance_carrier, collection: InsuranceCarrier.all.page(0),
                             include_blank: true,
                             # placeholder: t("activerecord.models.insurance_carrier"),

@@ -20,8 +20,8 @@
     </div>
 <!--    <div class="col">-->
 <!--      <div class='form-floating'>-->
-        <%#= f.search_field :car_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%#= f.label :car, for: 'floatingInput' %>
+        <%#= f.search_field :car, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%#= f.label :cars, for: 'floatingInput' %>
 <!--      </div>-->
 <!--    </div>-->
     <div class="col">
@@ -54,7 +54,7 @@
             <%= sort_link(@q, :contract_date, t('activerecord.attributes.insurance_plan.contract_date'), default_order: :desc) %>
           </th>
           <th><%= t('activerecord.attributes.insurance_plan.expiry_date')%></th>
-          <th><%= t('activerecord.attributes.insurance_plan.car')%></th>
+          <th><%= t('activerecord.attributes.insurance_plan.cars')%></th>
           <th><%= t('activerecord.attributes.insurance_plan.insurance_carrier')%></th>
           <th><%= t('activerecord.attributes.insurance_plan.amount')%></th>
           <th class="d-print-none"></th>
@@ -66,8 +66,8 @@
         <tr>
           <td><strong><%= insurance_plan.contract_date %></strong></td>
           <td><%= insurance_plan.expiry_date%></td>
-<!--          <td><%#= insurance_plan.car_id%></td>-->
-          <td><%= insurance_plan.insurance_carrier_id%></td>
+          <td><%= insurance_plan.cars%></td>
+          <td><%= insurance_plan.insurance_carrier.name%></td>
           <td><%= insurance_plan.amount %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: insurance_plan })%>

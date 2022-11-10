@@ -77,7 +77,7 @@ es:
         contract_date: Fecha de Contrato
         expiry_date: Fecha de  Vencimiento
         insurance_carrier: Seguro
-        car: Vehiculo
+        cars: Vehiculo
         amount: Monto
   date:
     abbr_day_names:
@@ -386,7 +386,7 @@ es:
         description : Descripcion
       insurance_plan:
         contract_date: Fecha de Contrato
-        car: Vehiculo
+        cars: Vehiculo
         insurance_carrier: Seguro
         expiry_date: Fecha de Vencimiento
         amount: Monto
