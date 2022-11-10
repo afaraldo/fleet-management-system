@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_205920) do
     t.string   "engine"
     t.datetime "created_at",   :null=>false
     t.datetime "updated_at",   :null=>false
-    t.string   "rasp"
-    t.boolean  "horometro"
+    t.string   "rasp",         :index=>{:name=>"index_cars_on_rasp"}
+    t.boolean  "horometro",    :default=>false, :null=>false
   end
 
   create_table "employees", force: :cascade do |t|

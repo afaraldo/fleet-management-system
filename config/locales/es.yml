@@ -358,6 +358,8 @@ es:
         plate_number: Chapa
         chassis: Chasis
         engine: Motor
+        rasp: RASP
+        horometro: Horometro
       work_order:
         date: Fecha
         number: Numero
