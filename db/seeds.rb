@@ -6,14 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 PaperTrail.request(whodunnit: 'Administrador') do
-  100.times do
-    FactoryBot.create(:car)
-  end
+
+  superuser = User.find_or_create_by(email: 'admin@email.com')
+  superuser.update(password: 'test123')
 
   100.times do
-    FactoryBot.create(:work_order)
-  rescue ActiveRecord::RecordInvalid => e
-    logger.fatal e.errors.messages.to_s
+    FactoryBot.create(:car)
   end
 
   50.times do
@@ -28,6 +26,9 @@ PaperTrail.request(whodunnit: 'Administrador') do
     FactoryBot.create(:maintenance)
   end
 
-  superuser = User.find_or_create_by(email: 'admin@email.com')
-  superuser.update(password: 'test123')
+  100.times do
+    FactoryBot.create(:work_order)
+  rescue ActiveRecord::RecordInvalid => e
+    logger.fatal e.errors.messages.to_s
+  end
 end
