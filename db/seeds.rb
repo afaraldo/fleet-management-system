@@ -12,6 +12,8 @@ PaperTrail.request(whodunnit: 'Administrador') do
 
   100.times do
     FactoryBot.create(:work_order)
+  rescue ActiveRecord::RecordInvalid => e
+    logger.fatal e.errors.messages.to_s
   end
 
   50.times do
