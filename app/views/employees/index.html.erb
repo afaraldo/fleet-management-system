@@ -2,31 +2,31 @@
   <div class="row align-items-start p-3">
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :name, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :name_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :name, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :last_name, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :last_name_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :last_name, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :document, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :document_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :document, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :address, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :address_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :address, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :phone, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :phone_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :phone, for: 'floatingInput' %>
       </div>
     </div>
@@ -69,7 +69,7 @@
             <%= sort_link(@q, :address, t('activerecord.attributes.employee.address'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :phone, t('activerecord.attributes.employee.address'), default_order: :asc) %>
+            <%= sort_link(@q, :phone, t('activerecord.attributes.employee.phone'), default_order: :asc) %>
           </th>
           <th class="d-print-none"></th>
         <% end %>
