@@ -4,4 +4,8 @@ class Employee < ApplicationRecord
   def full_name
     "#{name} #{last_name}"
   end
+
+  def to_s
+    full_name
+  end
 end

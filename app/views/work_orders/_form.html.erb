@@ -66,7 +66,6 @@
                                 'aria-describedby':"floatingInputHelp",
                                 selected: f.object.status,
                                 disabled: true
-
               %>
               <%= f.label :status, for: 'floatingInput' %>
             </div>
@@ -76,7 +75,8 @@
       <div class="row">
         <div class="col-xl-8">
           <div class='form-floating mb-3'>
-            <%= f.association :car, collection: Car.all.page(0),
+            <%= f.association :car,
+                              collection: f.object.car ? [f.object.car] : Car.all.page(0),
                               include_blank: true,
                               placeholder: t("activerecord.attributes.work_order.car"),
                               input_html: {
@@ -89,7 +89,7 @@
           </div>
         </div>
         <div class="col-xl-2">
-          <div class='form-floating'>
+          <div class='form-floating mb-3'>
             <%= f.input_field :area, class:'form-control', 'aria-describedby':"floatingInputHelp", autocomplete: true%>
             <%= f.label :area, for: 'floatingInput' %>
           </div>
@@ -111,15 +111,15 @@
       <div class="divider text-start-center">
         <div class="divider-text">Completar al finalizar</div>
       </div>
-      <div class="row mb-3">
-        <div class="col-4">
-          <div class='form-floating'>
+      <div class="row">
+        <div class="col-xl-4">
+          <div class='form-floating mb-3'>
             <%= f.input_field :start_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :start_mileage, for: 'floatingInput' %>
           </div>
         </div>
-        <div class='col-4'>
-          <div class='form-floating'>
+        <div class='col-xl-4'>
+          <div class='form-floating mb-3'>
             <%= f.input_field :final_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :final_mileage, for: 'floatingInput' %>
           </div>
@@ -127,9 +127,9 @@
       </div>
       <div class="row">
         <div class='form-floating mb-3'>
-          <%= f.association :employee, collection: Employee.all.page(0),
+          <%= f.association :employee, collection: f.object.employee ? [f.object.employee] : Employee.all.page(0),
                             include_blank: true,
-                            placeholder: t("activerecord.models.employee.one"),
+                            placeholder: t("activerecord.attributes.work_order.employee"),
                             input_html: {
                               data: {
                                 controller: 'ts--select',
@@ -140,8 +140,8 @@
         </div>
       </div>
       <% end %>
-      <div class='mt-2'>
-        <%= f.button 'submit', class: 'btn btn-primary' unless f.object.finished?%>
+      <div class='col-xl-2 d-grid gap-2'>
+        <%= f.button 'submit', class: 'btn-primary btn-block' unless f.object.finished?%>
       </div>
     <% end %>
     <div class='mt-2'>
