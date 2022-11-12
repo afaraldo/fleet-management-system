@@ -6,6 +6,7 @@ es:
   enums:
     work_order:
       status:
+        draft: Borrador
         requested: Solicitado
         authorized: Autorizado
         finished: Completado
@@ -21,6 +22,7 @@ es:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+        busy_date: Fecha ya ha sido ocupada %{record}
     models:
       car:
         one: 'Vehiculo'
@@ -42,11 +44,12 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
       work_order:
-        date: Fecha
+        start_date: Desde
+        final_date: Hasta
         number: Numero
         description: Mision
         city: Destino
@@ -54,7 +57,7 @@ es:
         start_mileage: Km Inicio
         final_mileage: Km Fin
         distance: Recorrido
-        employee: Firma
+        employee: Realizado por
         requested_on: Solicitado el
         requested_by: Solicitado por
         authorized_on: Authorizado el
@@ -62,7 +65,8 @@ es:
         finished_on: Completado el
         finished_by: Completado por
         status: Estado
-        car: Auto
+        car: Chapa
+        area: Area Asignada
       supplier:
         name: Nombre
         ruc: Ruc
@@ -303,7 +307,7 @@ es:
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"
-    employee: "Empleados"
+    employee: "Funcionario"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
@@ -362,7 +366,7 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
     hints:
@@ -373,9 +377,11 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
+        rasp: RASP
+        horometro: Horometro
       work_order:
         date: Fecha
         number: Numero
@@ -386,7 +392,8 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
-        car: Auto
+        car: Chapa
+        area: Area Asignada
       supplier:
         name: Nombre
         ruc: Nro Documento

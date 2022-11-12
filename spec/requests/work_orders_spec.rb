@@ -19,25 +19,22 @@ RSpec.describe "/work_orders", type: :request do
   # WorkOrder. As you add validations to WorkOrder, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    car = create(:car)
+    hash = build(:work_order).attributes
+    hash.extract!("id")
+    hash["status"] = :requested
+    hash["car_id"] = car.id
+    hash
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {number: nil}
   }
 
   describe "GET /index" do
     it "renders a successful response" do
       WorkOrder.create! valid_attributes
       get work_orders_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      work_order = WorkOrder.create! valid_attributes
-      get work_order_url(work_order)
       expect(response).to be_successful
     end
   end
@@ -67,7 +64,7 @@ RSpec.describe "/work_orders", type: :request do
 
       it "redirects to the created work_order" do
         post work_orders_url, params: { work_order: valid_attributes }
-        expect(response).to redirect_to(work_order_url(WorkOrder.last))
+        expect(response).to redirect_to(edit_work_order_url(WorkOrder.last))
       end
     end
 
@@ -90,21 +87,21 @@ RSpec.describe "/work_orders", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {number: rand(100)}
       }
 
       it "updates the requested work_order" do
         work_order = WorkOrder.create! valid_attributes
         patch work_order_url(work_order), params: { work_order: new_attributes }
         work_order.reload
-        skip("Add assertions for updated state")
+        expect(work_order.number).to eq(new_attributes[:number])
       end
 
       it "redirects to the work_order" do
         work_order = WorkOrder.create! valid_attributes
-        patch work_order_url(work_order), params: { work_order: new_attributes }
+        put work_order_url(work_order), params: { work_order: new_attributes }
         work_order.reload
-        expect(response).to redirect_to(work_order_url(work_order))
+        expect(response).to redirect_to(edit_work_order_url(work_order))
       end
     end
 
@@ -112,7 +109,7 @@ RSpec.describe "/work_orders", type: :request do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         work_order = WorkOrder.create! valid_attributes
-        patch work_order_url(work_order), params: { work_order: invalid_attributes }
+        put work_order_url(work_order), params: { work_order: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     

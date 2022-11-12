@@ -2,6 +2,7 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
   before_action :authenticate_user!
+  before_action :set_paper_trail_whodunnit
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
