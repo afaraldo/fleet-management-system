@@ -27,7 +27,7 @@ class WorkOrder < ApplicationRecord
   end
 
   def workdays
-    (self.final_date.to_date - self.start_date.to_date).to_i
+    (final_date.to_date - start_date.to_date).to_i
   end
 
   def requested_by

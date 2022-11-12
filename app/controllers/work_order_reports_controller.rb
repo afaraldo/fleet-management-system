@@ -9,10 +9,10 @@ class WorkOrderReportsController < ApplicationController
     add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), nil
 
     @work_orders = WorkOrder
-                     .includes(:car)
-                     .joins(:car)
-                     .where(status: :finished)
-                     .order('cars.plate_number ASC')
+                   .includes(:car)
+                   .joins(:car)
+                   .where(status: :finished)
+                   .order('cars.plate_number ASC')
 
     reporter(@work_orders) do
       filter :number, type: :text
@@ -28,17 +28,13 @@ class WorkOrderReportsController < ApplicationController
       column :car
       column :description
       column :city
-      column :distance, show_total: true do |work_order|
-        work_order.distance
-      end
+      column :distance, show_total: true, &:distance
       column :start_mileage
       column :final_mileage
-      column :workdays, show_total: true do |work_order|
-        work_order.workdays
-      end
+      column :workdays, show_total: true, &:workdays
       column :final_oil, show_total: true
       column :employee do |work_order|
-         work_order.employee.to_s
+        work_order.employee.to_s
       end
     end
   end
