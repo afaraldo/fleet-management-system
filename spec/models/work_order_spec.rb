@@ -28,7 +28,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.requested_by' do
     subject do
       PaperTrail.request(whodunnit: user.id) do
-        create(:work_order)
+        create(:work_order, status: :requested)
       end
     end
     context 'should return who created register' do
@@ -39,7 +39,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.requested_on' do
     subject do
       PaperTrail.request(whodunnit: user.id) do
-        create(:work_order)
+        create(:work_order, status: :requested)
       end
     end
     context 'should return time of creation register' do
@@ -50,7 +50,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.requested_on' do
     subject do
       PaperTrail.request(whodunnit: user.id) do
-        create(:work_order)
+        create(:work_order, status: :requested)
       end
     end
     context 'should return time of creation register' do
@@ -60,7 +60,7 @@ RSpec.describe WorkOrder, type: :model do
 
   describe '.authorized_by' do
     context 'should return who update status of the register from requested to authorized' do
-      let(:work_order) { create(:work_order) }
+      let(:work_order) { create(:work_order, status: :requested) }
       it {
         PaperTrail.request(whodunnit: user.id) do
           work_order.update!(status: :authorized)
@@ -72,7 +72,7 @@ RSpec.describe WorkOrder, type: :model do
 
   describe '.authorized_on' do
     context 'should return time when update status from requested to authorized in the register' do
-      let(:work_order) { create(:work_order) }
+      let(:work_order) { create(:work_order, status: :requested) }
       it {
         PaperTrail.request(whodunnit: user.id) do
           work_order.update!(status: :authorized)
@@ -84,7 +84,7 @@ RSpec.describe WorkOrder, type: :model do
 
   describe '.authorized_by' do
     context 'should return who update status of the register from authorized to finished' do
-      let(:work_order) { create(:work_order) }
+      let(:work_order) { create(:work_order, status: :requested) }
       it {
         PaperTrail.request(whodunnit: user.id) do
           work_order.update(status: :authorized)
@@ -97,7 +97,7 @@ RSpec.describe WorkOrder, type: :model do
 
   describe '.authorized_by' do
     context 'should return time when update status of the register from authorized to finished' do
-      let(:work_order) { create(:work_order) }
+      let(:work_order) { create(:work_order, status: :requested) }
       it {
         PaperTrail.request(whodunnit: user.id) do
           work_order.update(status: :authorized)
@@ -114,6 +114,15 @@ RSpec.describe WorkOrder, type: :model do
     subject { create(:work_order, { start_mileage: start_mileage, final_mileage: final_mileage}) }
     context 'should return a Number equal to the difference between start_mileage and final_mileage' do
       it { expect(subject.distance).to eq(final_mileage - start_mileage) }
+    end
+  end
+
+  describe '.workdays' do
+    let(:start_date){ Time.find_zone('Santiago').parse('2022-11-12 2pm') }
+    let(:final_date){ Time.find_zone('Santiago').parse('2022-11-14 2pm') }
+    subject { create(:work_order, { start_date: start_date, final_date: final_date}) }
+    context 'should return a Number equal to the difference between start_date and final_date' do
+      it { expect(subject.workdays).to eq((final_date.to_date - start_date.to_date).to_i) }
     end
   end
 

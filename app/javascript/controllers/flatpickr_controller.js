@@ -17,7 +17,7 @@ export default class extends Flatpickr {
       locale: 'es',
       showMonths: 1,
       enable_time: true,
-      dateFormat: "d/m/Y H:M"
+      dateFormat: "d/m/Y H:i"
     };
   }
 
@@ -28,7 +28,7 @@ export default class extends Flatpickr {
       locale: 'es',
       showMonths: 1,
       enable_time: true,
-      date_format: "d/m/Y Z"
+      dateFormat: "d/m/Y H:i"
     };
     super.connect(); // always call super.connect();
     this.element.setAttribute('autocomplete','off')

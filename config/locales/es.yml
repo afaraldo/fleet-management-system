@@ -1,5 +1,12 @@
 ---
 es:
+  query_report:
+    labels:
+      search: Filtrar
+    filters:
+      number:
+        contains: Contiene
+    total: Total
   form: Formulario
   authorize: Autorizar
   finish: Finalizar
@@ -311,7 +318,7 @@ es:
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
-    new: Crear
+    report: Reportes
   cars:
     index:
       cars: Vehiculos
@@ -354,6 +361,9 @@ es:
     form:
       form: Formulario
   views:
+    links:
+      pdf: PDF
+      csv: Excel
     pagination:
       first: "&laquo;"
       last: "&raquo;"
