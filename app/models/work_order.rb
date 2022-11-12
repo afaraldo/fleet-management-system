@@ -26,6 +26,10 @@ class WorkOrder < ApplicationRecord
     self.final_mileage - self.start_mileage
   end
 
+  def workdays
+    (self.final_date.to_date - self.start_date.to_date).to_i
+  end
+
   def requested_by
     user_id = versions.where_object_changes(status: :requested).first.try(:whodunnit)
     User.find_by(id: user_id)
