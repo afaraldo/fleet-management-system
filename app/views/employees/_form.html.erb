@@ -1,6 +1,6 @@
 <div class="card mb-4">
   <h5 class="card-header">
-    <%= t('.form')%>
+    <%= t('form')%>
   </h5>
   <div class="card-body">
     <%= simple_form_for employee, class: 'form-floating' do |f| %>
@@ -13,7 +13,7 @@
         </div>
         <div class="col-4">
           <div class='form-floating'>
-          <%= f.input_field :last_name, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+          <%= f.input_field :last_name, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
           <%= f.label :last_name , for: 'floatingInput' %>
           </div>
         </div>
