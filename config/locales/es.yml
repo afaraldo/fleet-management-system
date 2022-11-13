@@ -43,6 +43,9 @@ es:
       maintenance:
         one: Mantenimiento
         other: Mantenimientos
+      employee:
+        one: Empleado
+        other: Empleados
     attributes:
       car:
         make: Marca
@@ -81,6 +84,12 @@ es:
         mechanica_workshop: Taller Mecanico
         budget: Presupuesto
         description: Descripcion
+      employee:
+        name: Nombre
+        last_name: Apellido
+        document: Nro. de Identidad
+        address: Dirección
+        phone: Teléfono
   date:
     abbr_day_names:
       - dom
@@ -338,6 +347,19 @@ es:
       form: Formulario
     form:
       form: Formulario
+  employee:
+    index:
+      name: Nombre
+      last_name: Apellido
+      document: Nro. de Identidad
+      address: Dirección
+      phone: Teléfono
+      actions: Acciones
+      new: Agregar
+    new:
+      form: Formulario
+    form:
+      form: Formulario
   views:
     links:
       pdf: PDF
@@ -391,6 +413,12 @@ es:
         mechanical_workshop : Taller Mecanico
         budget : Presupuesto
         description : Descripcion
+      employee:
+        name: Nombre
+        last_name: Apellido
+        document: Nro. de Identidad
+        address: Dirección
+        phone: Teléfono
 
   ransack:
     asc: Ascendente
