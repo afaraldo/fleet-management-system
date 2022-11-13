@@ -46,6 +46,9 @@ es:
       employee:
         one: Empleado
         other: Empleados
+      insurance_plan:
+        one: Plan de Seguro
+        other: Planes de Seguros
     attributes:
       car:
         make: Marca
@@ -90,6 +93,12 @@ es:
         document: Nro. de Identidad
         address: Dirección
         phone: Teléfono
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        expiry_date: Fecha de Vencimiento
+        cars: Vehículos
+        insurance_carrier: Plan de Seguro
+        amount: Monto
   date:
     abbr_day_names:
       - dom
@@ -314,10 +323,11 @@ es:
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"
-    employee: "Funcionario"
+    employee: "Funcionarios"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
+    insurance_plan : "Seguros"
     report: Reportes
   cars:
     index:
@@ -354,6 +364,19 @@ es:
       document: Nro. de Identidad
       address: Dirección
       phone: Teléfono
+      actions: Acciones
+      new: Agregar
+    new:
+      form: Formulario
+    form:
+      form: Formulario
+  insurance_plan:
+    index:
+      contract_date: Fecha de Contrato
+      expiry_date: Fecha de Vencimiento
+      cars: Vehículos
+      insurance_carrier: Plan de Seguro
+      amount: Monto
       actions: Acciones
       new: Agregar
     new:
@@ -419,6 +442,12 @@ es:
         document: Nro. de Identidad
         address: Dirección
         phone: Teléfono
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        expiry_date: Fecha de Vencimiento
+        cars: Vehículos
+        insurance_carrier: Plan de Seguro
+        amount: Monto
 
   ransack:
     asc: Ascendente
