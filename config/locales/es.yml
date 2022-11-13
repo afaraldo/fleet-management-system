@@ -43,9 +43,9 @@ es:
       maintenance:
         one: Mantenimiento
         other: Mantenimientos
-      insurance_plan:
-        one: Plan de Seguro
-        other: Plan de Seguros
+      employee:
+        one: Empleado
+        other: Empleados
     attributes:
       car:
         make: Marca
@@ -84,12 +84,12 @@ es:
         mechanica_workshop: Taller Mecanico
         budget: Presupuesto
         description: Descripcion
-      insurance_plan:
-        contract_date: Fecha de contrato
-        expiry_date: Fecha de vencimiento
-        cars: Vehículos
-        insurance_carrier: Seguro
-        amount: Monto
+      employee:
+        name: Nombre
+        last_name: Apellido
+        document: Nro. de Identidad
+        address: Dirección
+        phone: Teléfono
   date:
     abbr_day_names:
       - dom
@@ -318,7 +318,6 @@ es:
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
-    insurance_plan: "Plan de Seguros"
     report: Reportes
   cars:
     index:
@@ -348,19 +347,19 @@ es:
       form: Formulario
     form:
       form: Formulario
-  insurance_plan:
+  employee:
     index:
-      contract_date: Fecha de contrato
-      expiry_date: Fecha de vencimiento
-      cars: Vehículos
-      insurance_carrier: Seguro
-      amount: Monto
+      name: Nombre
+      last_name: Apellido
+      document: Nro. de Identidad
+      address: Dirección
+      phone: Teléfono
       actions: Acciones
       new: Agregar
     new:
-        form: Formulario
+      form: Formulario
     form:
-        form: Formulario
+      form: Formulario
   views:
     links:
       pdf: PDF
@@ -414,13 +413,12 @@ es:
         mechanical_workshop : Taller Mecanico
         budget : Presupuesto
         description : Descripcion
-      insurance_plan:
-        contract_date: Fecha de contrato
-        expiry_date: Fecha de vencimiento
-        cars: Vehículos
-        insurance_carrier: Seguro
-        amount: Monto
-
+      employee:
+        name: Nombre
+        last_name: Apellido
+        document: Nro. de Identidad
+        address: Dirección
+        phone: Teléfono
 
   ransack:
     asc: Ascendente

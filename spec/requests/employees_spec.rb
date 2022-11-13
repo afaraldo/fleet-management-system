@@ -13,16 +13,17 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/employees", type: :request do
+  login_user
   
   # This should return the minimal set of attributes required to create a valid
   # Employee. As you add validations to Employee, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:employee).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: ""}
   }
 
   describe "GET /index" do
@@ -33,13 +34,6 @@ RSpec.describe "/employees", type: :request do
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      employee = Employee.create! valid_attributes
-      get employee_url(employee)
-      expect(response).to be_successful
-    end
-  end
 
   describe "GET /new" do
     it "renders a successful response" do
@@ -66,7 +60,7 @@ RSpec.describe "/employees", type: :request do
 
       it "redirects to the created employee" do
         post employees_url, params: { employee: valid_attributes }
-        expect(response).to redirect_to(employee_url(Employee.last))
+        expect(response.status).to eq(302)
       end
     end
 
@@ -89,7 +83,7 @@ RSpec.describe "/employees", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        build(:employee).attributes.except("id", "created_at", "updated_at")
       }
 
       it "updates the requested employee" do
@@ -103,7 +97,7 @@ RSpec.describe "/employees", type: :request do
         employee = Employee.create! valid_attributes
         patch employee_url(employee), params: { employee: new_attributes }
         employee.reload
-        expect(response).to redirect_to(employee_url(employee))
+        expect(response.status).to eq(302)
       end
     end
 
