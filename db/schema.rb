@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_010943) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_08_205920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,13 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010943) do
     t.boolean  "horometro",    :default=>false, :null=>false
   end
 
-  create_table "cars_insurance_plans", force: :cascade do |t|
-    t.bigint   "car_id",            :index=>{:name=>"index_cars_insurance_plans_on_car_id"}
-    t.bigint   "insurance_plan_id", :index=>{:name=>"index_cars_insurance_plans_on_insurance_plan_id"}
-    t.datetime "created_at",        :null=>false
-    t.datetime "updated_at",        :null=>false
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "last_name"
@@ -42,15 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010943) do
     t.string   "phone"
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
-  end
-
-  create_table "insurance_plans", force: :cascade do |t|
-    t.date     "contract_date",        :null=>false
-    t.integer  "amount",               :null=>false
-    t.date     "expiry_date",          :index=>{:name=>"index_insurance_plans_on_expiry_date"}
-    t.datetime "created_at",           :null=>false
-    t.datetime "updated_at",           :null=>false
-    t.bigint   "insurance_carrier_id", :index=>{:name=>"index_insurance_plans_on_insurance_carrier_id"}
   end
 
   create_table "maintenances", force: :cascade do |t|
@@ -121,10 +105,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010943) do
     t.datetime "final_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_final_date"}
     t.integer  "final_oil"
     t.string   "area",          :null=>false
-    t.integer  "status",        :null=>false, :index=>{:name=>"index_work_orders_on_status"}
+    t.integer  "status",        :default=>0, :null=>false, :index=>{:name=>"index_work_orders_on_status"}
   end
 
-  add_foreign_key "insurance_plans", "suppliers", column: "insurance_carrier_id"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "work_orders", "cars"

@@ -1,14 +1,94 @@
-<p style="color: green"><%= notice %></p>
+<%= search_form_for @q do |f| %>
+  <div class="row align-items-start p-3">
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :name_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :name, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :last_name_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :last_name, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :document_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :document, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :address_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :address, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :phone_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :phone, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-secondary'  %>
+    </div>
+  </div>
+<% end %>
 
-<h1>Employees</h1>
+<div class="card">
+  <h5 class="card-header">
+    <%= t('activerecord.models.employee.other') %>
+    <%= link_to t('buttons.new'), new_employee_path, class: 'btn btn-primary' %>
+  </h5>
 
-<div id="employees">
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @employees, entry_name: 'item' %>
+          </div>
+          <%= paginate @employees, remote: true %>
+        </div>
+      </caption>
+      <thead>
+      <tr>
+        <%= search_form_for @q do |f| %>
+          <th>
+            <%= sort_link(@q, :name, t('activerecord.attributes.employee.name'), default_order: :asc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :last_name, t('activerecord.attributes.employee.last_name'), default_order: :asc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :document, t('activerecord.attributes.employee.document'), default_order: :asc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :address, t('activerecord.attributes.employee.address'), default_order: :asc) %>
+          </th>
+          <th>
+            <%= sort_link(@q, :phone, t('activerecord.attributes.employee.phone'), default_order: :asc) %>
+          </th>
+          <th class="d-print-none"></th>
+        <% end %>
+      </tr>
+    </thead>
+  <tbody>
   <% @employees.each do |employee| %>
-    <%= render employee %>
-    <p>
-      <%= link_to "Show this employee", employee %>
-    </p>
-  <% end %>
+        <tr>
+          <td><strong><%= employee.name %></strong></td>
+          <td><%= employee.last_name %></td>
+          <td><%= employee.document %></td>
+          <td><%= employee.address %></td>
+          <td><%= employee.phone %></td>
+          <td class="d-print-none">
+            <%= render(partial: 'components/action_buttons', locals: { model: employee })%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New employee", new_employee_path %>

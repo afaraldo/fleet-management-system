@@ -53,6 +53,9 @@ rails system_settings:load # load system setting to db
 rake app:render # Update version number in application
 rails s
 
+* Install ImageMagick on Rocky Linux 8
+https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
+
 * Contributing
 
 Contributions to fleet-management-system may be made using GitHub pull requests. You must include accompanying tests, and all tests must pass for any contribution to be considered.
