@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010943) do
     t.string   "engine"
     t.datetime "created_at",   :null=>false
     t.datetime "updated_at",   :null=>false
+    t.string   "rasp",         :index=>{:name=>"index_cars_on_rasp"}
+    t.boolean  "horometro",    :default=>false, :null=>false
+  end
+
+  create_table "cars_insurance_plans", force: :cascade do |t|
+    t.bigint   "car_id",            :index=>{:name=>"index_cars_insurance_plans_on_car_id"}
+    t.bigint   "insurance_plan_id", :index=>{:name=>"index_cars_insurance_plans_on_insurance_plan_id"}
+    t.datetime "created_at",        :null=>false
+    t.datetime "updated_at",        :null=>false
   end
 
   create_table "cars_insurance_plans", force: :cascade do |t|

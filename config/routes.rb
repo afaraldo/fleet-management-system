@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :suppliers
   resources :users
   resources :work_orders
+  resources :work_order_reports
 
   # Defines the root path route ("/")
   root 'dash_boards#index'

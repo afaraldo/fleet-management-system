@@ -26,6 +26,10 @@ class WorkOrder < ApplicationRecord
     self.final_mileage - self.start_mileage
   end
 
+  def workdays
+    (final_date.to_date - start_date.to_date).to_i
+  end
+
   def requested_by
     user_id = versions.where_object_changes(status: :requested).first.try(:whodunnit)
     User.find_by(id: user_id)
@@ -88,9 +92,7 @@ class WorkOrder < ApplicationRecord
     wo2 = WorkOrder.where('final_date >= ?', final_date).order(final_date: :asc).excluding(self).limit(1)
 
     # if wo1 and wo2 are equal then wo1 contains to new work order record
-    return unless wo1.any? && wo2.any?
-
-    raise StandardError if wo1.first != wo2.first
+    return unless wo1.any? && wo2.any? && wo1.first == wo2.first
 
     errors.add :start_date, :busy_date, record: wo1.first.to_s
     errors.add :final_date, :busy_date, record: wo2.first.to_s

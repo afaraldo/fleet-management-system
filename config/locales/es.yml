@@ -1,5 +1,12 @@
 ---
 es:
+  query_report:
+    labels:
+      search: Filtrar
+    filters:
+      number:
+        contains: Contiene
+    total: Total
   form: Formulario
   authorize: Autorizar
   finish: Finalizar
@@ -36,9 +43,6 @@ es:
       maintenance:
         one: Mantenimiento
         other: Mantenimientos
-      insurance_plan:
-        one: Plan de Seguro
-        other: Plan de Seguros
     attributes:
       car:
         make: Marca
@@ -77,12 +81,6 @@ es:
         mechanica_workshop: Taller Mecanico
         budget: Presupuesto
         description: Descripcion
-      insurance_plan:
-        contract_date: Fecha de Contrato
-        expiry_date: Fecha de  Vencimiento
-        insurance_carrier: Seguro
-        cars: Vehiculo
-        amount: Monto
   date:
     abbr_day_names:
       - dom
@@ -311,8 +309,7 @@ es:
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
-    insurance_plan: "Plan de Seguros"
-    new: Crear
+    report: Reportes
   cars:
     index:
       cars: Vehiculos
@@ -342,6 +339,9 @@ es:
     form:
       form: Formulario
   views:
+    links:
+      pdf: PDF
+      csv: Excel
     pagination:
       first: "&laquo;"
       last: "&raquo;"
@@ -368,6 +368,8 @@ es:
         plate_number: Chapa
         chassis: Chasis
         engine: Motor
+        rasp: RASP
+        horometro: Horometro
       work_order:
         date: Fecha
         number: Numero
@@ -389,12 +391,6 @@ es:
         mechanical_workshop : Taller Mecanico
         budget : Presupuesto
         description : Descripcion
-      insurance_plan:
-        contract_date: Fecha de Contrato
-        cars: Vehiculo
-        insurance_carrier: Seguro
-        expiry_date: Fecha de Vencimiento
-        amount: Monto
 
   ransack:
     asc: Ascendente
