@@ -11,26 +11,17 @@ export default class extends Flatpickr {
     es: Spanish
   };
 
-  initialize() {
-    // sets your language (you can also set some global setting for all time pickers)
-    this.config = {
-      locale: 'es',
-      showMonths: 1,
-      enable_time: true,
-      dateFormat: "d/m/Y H:i"
-    };
-  }
-
   connect() {
-    //define locale and global flatpickr settings for all datepickers
     this.config = {
       ...this.config, //spread options in case some where defined in initialize
       locale: 'es',
-      showMonths: 1,
-      enable_time: true,
-      dateFormat: "d/m/Y H:i"
+      enableTime: true,
+      time_24hr: true
     };
-    super.connect(); // always call super.connect();
+
+    //always call super.connect()
+    super.connect();
+
     this.element.setAttribute('autocomplete','off')
     this.element.removeAttribute('readonly')
   }

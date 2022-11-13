@@ -146,3 +146,5 @@ gem 'app_version', '~> 0.1.8'
 # Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 # Used to generate reports [https://github.com/ashrafuzzaman/query_report]
 gem 'query_report'
+# Used to add service layer [https://github.com/collectiveidea/interactor-rails]
+gem 'interactor-rails', '~> 2.0'

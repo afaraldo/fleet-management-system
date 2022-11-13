@@ -30,4 +30,6 @@ class WorkOrdersController < ApplicationController
       format.html { redirect_to action: :edit, id: record.id }
     end
   end
+
+  def collection; end
 end

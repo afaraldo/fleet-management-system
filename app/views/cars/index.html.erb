@@ -75,7 +75,7 @@
       <tbody>
         <% @cars.each do |car| %>
           <tr>
-            <td><strong><%= car.plate_number %></strong></td>
+            <td><strong><%= link_to car.plate_number, car_path(car) %></strong></td>
             <td><%= car.make %></td>
             <td><%= car.model %></td>
             <td>

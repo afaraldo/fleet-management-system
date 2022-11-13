@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
     instance_variable_set "@#{plural_resource_name}", @result
   end
 
+  # GET /cars/{id}
+  def show
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t('buttons.edit'), nil # Use for breadcrumbs_on_rails gem
+  end
+
   # GET
   def new
     add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
@@ -96,6 +102,7 @@ class ApplicationController < ActionController::Base
   # method.
   def search_params
     session[controller_name] = params.permit(q: {}).extract!(:q)
+    # session[controller_name] = clean_search_params(session[controller_name])
     session[controller_name]
   end
 
@@ -135,5 +142,11 @@ class ApplicationController < ActionController::Base
       format.html { render :edit, status: :unprocessable_entity }
       format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
+  end
+
+  def clean_search_params(params)
+    return params unless params[:q]
+
+    params.each(&:compact_blank!)
   end
 end

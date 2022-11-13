@@ -25,7 +25,6 @@
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: f.object.start_date,
                                   flatpickr_enable_time: true
                                 },
                                 autofocus: true
@@ -42,8 +41,6 @@
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
-                                  flatpickr_default_date: f.object.final_date,
-                                  flatpickr_enable_time: true
                                 }
               %>
               <%= f.label :final_date, for: 'floatingInput' %>

@@ -8,14 +8,20 @@
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :start_date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :final_date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :date, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.search_field :number, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.search_field :number_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
         <%= f.label :number, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :car_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :car, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
