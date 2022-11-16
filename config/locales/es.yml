@@ -47,8 +47,8 @@ es:
         one: Empleado
         other: Empleados
       insurance_plan:
-        one: Plan de Seguro
-        other: Planes de Seguros
+        one: Aseguradora
+        other: Pólizas de Seguros
     attributes:
       car:
         make: Marca
@@ -97,7 +97,7 @@ es:
         contract_date: Fecha de Contrato
         expiry_date: Fecha de Vencimiento
         cars: Vehículos
-        insurance_carrier: Plan de Seguro
+        insurance_carrier: Aseguradora
         amount: Monto
   date:
     abbr_day_names:
@@ -327,7 +327,7 @@ es:
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
-    insurance_plan : "Seguros"
+    insurance_plan : "Pólizas de Seguros"
     report: Reportes
   cars:
     index:
@@ -375,7 +375,7 @@ es:
       contract_date: Fecha de Contrato
       expiry_date: Fecha de Vencimiento
       cars: Vehículos
-      insurance_carrier: Plan de Seguro
+      insurance_carrier: Aseguradora
       amount: Monto
       actions: Acciones
       new: Agregar
@@ -446,7 +446,7 @@ es:
         contract_date: Fecha de Contrato
         expiry_date: Fecha de Vencimiento
         cars: Vehículos
-        insurance_carrier: Plan de Seguro
+        insurance_carrier: Aseguradora
         amount: Monto
 
   ransack:

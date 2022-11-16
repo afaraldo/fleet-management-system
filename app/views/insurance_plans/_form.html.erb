@@ -12,7 +12,7 @@
                               class: 'form-control',
                               data: {
                                 controller: "flatpickr",
-                                flatpickr_default_date: f.object.contract_date || Date.today
+                                flatpickr_default_date: f.object.contract_date
                               }
             %>
             <%= f.label :contract_date, for: 'floatingInput' %>
@@ -25,7 +25,7 @@
                               class: 'form-control',
                               data: {
                                 controller: "flatpickr",
-                                flatpickr_default_date: f.object.expiry_date || Date.today
+                                flatpickr_default_date: f.object.expiry_date
                               }
             %>
             <%= f.label :expiry_date, for: 'floatingInput' %>

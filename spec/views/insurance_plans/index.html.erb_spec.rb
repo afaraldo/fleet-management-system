@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "insurance_plans/index", type: :view do
   before(:each) do
-    # assign(:insurance_plans, [
+     assign(:insurance_plans, [
     #   InsurancePlan.create!(
     #     car: nil,
     #     amount: 2
@@ -11,7 +11,7 @@ RSpec.describe "insurance_plans/index", type: :view do
     #     car: nil,
     #     amount: 2
     #   )
-    # ])
+     ])
   end
 
   it "renders a list of insurance_plans" do
