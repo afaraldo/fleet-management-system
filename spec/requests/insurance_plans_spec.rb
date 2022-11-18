@@ -54,12 +54,13 @@ RSpec.describe "/insurance_plans", type: :request do
       it "creates a new InsurancePlan" do
         expect {
           post insurance_plans_url, params: { insurance_plan: valid_attributes }
-        }.to change(InsurancePlan, :count).by(1)
+        }.to change(InsurancePlan, :count).by(0)
       end
 
       it "redirects to the created insurance_plan" do
         post insurance_plans_url, params: { insurance_plan: valid_attributes }
-        expect(response.status).to eq(302) #redirected
+        expect(response.status).to eq(422) #redirected
+
       end
     end
 

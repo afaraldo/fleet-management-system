@@ -18,12 +18,12 @@
         <%= f.label :insurance_carrier, for: 'floatingInput' %>
       </div>
     </div>
-<!--    <div class="col">-->
-<!--      <div class='form-floating'>-->
-        <%#= f.search_field :car, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%#= f.label :cars, for: 'floatingInput' %>
-<!--      </div>-->
-<!--    </div>-->
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.search_field :cars_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
+        <%= f.label :cars, for: 'floatingInput' %>
+      </div>
+    </div>
     <div class="col">
       <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn btn-secondary'  %>
     </div>

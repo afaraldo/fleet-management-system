@@ -10,7 +10,6 @@ class InsurancePlansController < ApplicationController
     instance_variable_set "@#{resource_name}", @model
 
     # Add extra variables
-    #@last_number = (WorkOrder.last.try(:number) || 0) + 1
     @cars = Car.all.page(0)
   end
 
