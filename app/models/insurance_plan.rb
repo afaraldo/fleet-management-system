@@ -3,13 +3,9 @@ class InsurancePlan < ApplicationRecord
   has_and_belongs_to_many :cars
   belongs_to :insurance_carrier
   validates :cars, presence: true
-  delegate :plate_number, to: :car, prefix: true
-
-  def full_name
-    "#{insurance_carrier.name}"
-  end
+  delegate :name, to: :insurance_carrier, prefix: true
 
   def to_s
-    full_name
+    "#{self.class.model_name.human} Nro: #{id}"
   end
 end

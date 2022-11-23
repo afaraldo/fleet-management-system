@@ -67,7 +67,7 @@
           <td><strong><%= datetime_format(insurance_plan.contract_date)%></strong></td>
           <td><%= datetime_format(insurance_plan.expiry_date)%></td>
           <td><%= insurance_plan.cars.map {|car| car.to_s }.to_sentence %></td>
-          <td><%= insurance_plan.insurance_carrier.name%></td>
+          <td><%= insurance_plan.insurance_carrier_name%></td>
           <td><%= insurance_plan.amount %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: insurance_plan })%>

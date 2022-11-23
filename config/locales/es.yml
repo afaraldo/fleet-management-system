@@ -47,7 +47,7 @@ es:
         one: Empleado
         other: Empleados
       insurance_plan:
-        one: Aseguradora
+        one: Seguro
         other: Pólizas de Seguros
     attributes:
       car:
@@ -329,60 +329,6 @@ es:
     maintenance: "Mantenimientos"
     insurance_plan : "Pólizas de Seguros"
     report: Reportes
-  cars:
-    index:
-      cars: Vehiculos
-      brand: Marca
-      model: Modelo
-      color: Color
-      plate_number: Chapa
-      chassis: Chasis
-      engine: Motor
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
-  maintenance:
-    index:
-      date: Fecha
-      mechanical_workshop: Taller
-      car: Vehiculo
-      budget: Presupuesto
-      description: Decripcion
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
-  employee:
-    index:
-      name: Nombre
-      last_name: Apellido
-      document: Nro. de Identidad
-      address: Dirección
-      phone: Teléfono
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
-  insurance_plan:
-    index:
-      contract_date: Fecha de Contrato
-      expiry_date: Fecha de Vencimiento
-      cars: Vehículos
-      insurance_carrier: Aseguradora
-      amount: Monto
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
   views:
     links:
       pdf: PDF
