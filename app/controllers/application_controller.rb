@@ -124,7 +124,12 @@ class ApplicationController < ActionController::Base
   end
 
   def _params
-    model_class.attribute_names + model_class.reflect_on_all_associations.map(&:name)
+    model_class.attribute_names + model_class.reflect_on_all_associations.map(&:name) + extra_params
+  end
+
+  # Used to add more attributes for example car_ids
+  def extra_params
+    []
   end
 
   def record_invalid(exception)
