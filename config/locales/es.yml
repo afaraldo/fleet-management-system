@@ -1,11 +1,19 @@
 ---
 es:
+  query_report:
+    labels:
+      search: Filtrar
+    filters:
+      number:
+        contains: Contiene
+    total: Total
   form: Formulario
   authorize: Autorizar
   finish: Finalizar
   enums:
     work_order:
       status:
+        draft: Borrador
         requested: Solicitado
         authorized: Autorizado
         finished: Completado
@@ -21,6 +29,7 @@ es:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+        busy_date: Fecha ya ha sido ocupada %{record}
     models:
       car:
         one: 'Vehiculo'
@@ -34,16 +43,23 @@ es:
       maintenance:
         one: Mantenimiento
         other: Mantenimientos
+      employee:
+        one: Empleado
+        other: Empleados
+      insurance_plan:
+        one: Seguro
+        other: Pólizas de Seguros
     attributes:
       car:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
       work_order:
-        date: Fecha
+        start_date: Desde
+        final_date: Hasta
         number: Numero
         description: Mision
         city: Destino
@@ -51,7 +67,7 @@ es:
         start_mileage: Km Inicio
         final_mileage: Km Fin
         distance: Recorrido
-        employee: Firma
+        employee: Realizado por
         requested_on: Solicitado el
         requested_by: Solicitado por
         authorized_on: Authorizado el
@@ -59,7 +75,8 @@ es:
         finished_on: Completado el
         finished_by: Completado por
         status: Estado
-        car: Auto
+        car: Chapa
+        area: Area Asignada
       supplier:
         name: Nombre
         ruc: Ruc
@@ -70,6 +87,18 @@ es:
         mechanica_workshop: Taller Mecanico
         budget: Presupuesto
         description: Descripcion
+      employee:
+        name: Nombre
+        last_name: Apellido
+        document: Nro. de Identidad
+        address: Dirección
+        phone: Teléfono
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        expiry_date: Fecha de Vencimiento
+        cars: Vehículos
+        insurance_carrier: Aseguradora
+        amount: Monto
   date:
     abbr_day_names:
       - dom
@@ -294,40 +323,16 @@ es:
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"
-    employee: "Empleados"
+    employee: "Funcionarios"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
-    new: Crear
-  cars:
-    index:
-      cars: Vehiculos
-      brand: Marca
-      model: Modelo
-      color: Color
-      plate_number: Chapa
-      chassis: Chasis
-      engine: Motor
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
-  maintenance:
-    index:
-      date: Fecha
-      mechanical_workshop: Taller
-      car: Vehiculo
-      budget: Presupuesto
-      description: Decripcion
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
+    insurance_plan : "Pólizas de Seguros"
+    report: Reportes
   views:
+    links:
+      pdf: PDF
+      csv: Excel
     pagination:
       first: "&laquo;"
       last: "&raquo;"
@@ -340,7 +345,7 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
     hints:
@@ -351,9 +356,11 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        plate_number: Numero de placa
+        plate_number: Chapa
         chassis: Chasis
         engine: Motor
+        rasp: RASP
+        horometro: Horometro
       work_order:
         date: Fecha
         number: Numero
@@ -364,7 +371,8 @@ es:
         final_mileage: Km Fin
         distance: Recorrido
         employee: Firma
-        car: Auto
+        car: Chapa
+        area: Area Asignada
       supplier:
         name: Nombre
         ruc: Nro Documento
@@ -374,6 +382,18 @@ es:
         mechanical_workshop : Taller Mecanico
         budget : Presupuesto
         description : Descripcion
+      employee:
+        name: Nombre
+        last_name: Apellido
+        document: Nro. de Identidad
+        address: Dirección
+        phone: Teléfono
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        expiry_date: Fecha de Vencimiento
+        cars: Vehículos
+        insurance_carrier: Aseguradora
+        amount: Monto
 
   ransack:
     asc: Ascendente

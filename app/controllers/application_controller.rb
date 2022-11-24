@@ -2,6 +2,7 @@
 class ApplicationController < ActionController::Base
   include ControllerResources
   before_action :authenticate_user!
+  before_action :set_paper_trail_whodunnit
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
@@ -123,7 +124,12 @@ class ApplicationController < ActionController::Base
   end
 
   def _params
-    model_class.attribute_names + model_class.reflect_on_all_associations.map(&:name)
+    model_class.attribute_names + model_class.reflect_on_all_associations.map(&:name) + extra_params
+  end
+
+  # Used to add more attributes for example car_ids
+  def extra_params
+    []
   end
 
   def record_invalid(exception)

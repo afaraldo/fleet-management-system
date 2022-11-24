@@ -10,17 +10,15 @@ class WorkOrdersController < ApplicationController
     instance_variable_set "@#{resource_name}", @model
 
     # Add extra variables
-    @last_number = WorkOrder.last.try(:number) || 1
+    @last_number = (WorkOrder.last.try(:number) || 0) + 1
     @cars = Car.all.page(0)
   end
 
   def create
-    record = instance_variable_set "@#{resource_name}", model_class.send(:new, model_params)
-    record.status = :authorized
-    record.save!
-    flash[:success] = I18n.t('created', record: @work_order)
+    record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
+    flash[:success] = I18n.t('created', record: record)
     respond_to do |format|
-      format.html { redirect_to action: :edit, id: @work_order.id }
+      format.html { redirect_to action: :edit, id: record.id }
     end
   end
 

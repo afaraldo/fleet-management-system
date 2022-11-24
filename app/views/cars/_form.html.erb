@@ -4,21 +4,20 @@
   </h5>
   <div class="card-body">
     <%= simple_form_for car, class: 'form-floating' do |f| %>
-      <div class='row mb-3'>
-        <div class="col-4">
+      <div class='row'>
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :make, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
             <%= f.label :make, for: 'floatingInput' %>
-            <!-- <div id="floatingInputHelp" class="form-text">We'll never share your details with anyone else.</div>-->
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :model, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :model, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :plate_number, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :plate_number, for: 'floatingInput' %>
@@ -42,6 +41,17 @@
           <div class='form-floating'>
             <%= f.input_field :engine, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :engine, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input_field :rasp, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :rasp, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class='mb-3'>
+          <div class='form-floating'>
+            <%= f.input :horometro, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
           </div>
         </div>
       </div>

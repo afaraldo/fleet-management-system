@@ -2,12 +2,15 @@
 
 This README would normally document whatever steps are necessary to get the
 
-* Ruby version 
-nvm install 12.16.3
+* Ruby version
 rvm install 3.0.0
 rvm use 3.0.0
 rvm gemset create fleet-management-system
 rvm use 3.0.0@fleet-management-system 
+
+* Node version
+nvm install 18.11
+nvm use --default 18.11
 
 * System dependencies
 
@@ -42,6 +45,9 @@ yarn build --watch # compiling js
 rails system_settings:load # load system setting to db
 rake app:render # Update version number in application
 rails s
+
+* Install ImageMagick on Rocky Linux 8
+https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 
 * Contributing
 

@@ -11,24 +11,35 @@ Layout/LineLength:
     - app/controllers/application_controller.rb
     - config/initializers/devise.rb
     - app/controllers/work_orders_controller.rb
+    - app/controllers/insurance_plans_controller.rb
 Metrics/AbcSize:
   Exclude:
     - app/controllers/application_controller.rb
     - app/controllers/work_orders_controller.rb
+    - app/models/work_order.rb
+    - app/controllers/work_order_reports_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
   #Max: 50
+Rails/Delegate:
+  Exclude:
+    - app/controllers/work_order_reports_controller.rb
 Metrics/MethodLength:
   Exclude:
     - db/migrate/20220911194444_devise_create_users.rb
     - db/migrate/20221006171930_create_work_order.rb
+    - app/controllers/work_order_reports_controller.rb
 Rails/RootPathnameMethods:
   Exclude:
     - config/initializers/app_version.rb
 Rails/FilePath:
   Exclude:
     - config/initializers/app_version.rb
+Rails/HasAndBelongsToMany:
+  Description: 'Prefer has_many :through to has_and_belongs_to_many.'
+  StyleGuide: 'https://github.com/bbatsov/rails-style-guide#has-many-through'
+  Enabled: false
 AllCops:
   NewCops: enable
   Exclude:
