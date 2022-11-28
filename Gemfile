@@ -23,6 +23,8 @@ gem 'rails-html-sanitizer', '>= 1.4.3'
 
 # This gem is used for build form more easily [https://github.com/heartcombo/simple_form]
 gem 'simple_form'
+# This gem is used for build search form with ransack [https://github.com/kaspernj/simple_form_ransack]
+gem 'simple_form_ransack'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
