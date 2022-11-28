@@ -32,4 +32,8 @@ class WorkOrdersController < ApplicationController
   end
 
   def collection; end
+
+  def included_associations
+    %i[car employee]
+  end
 end
