@@ -18,12 +18,11 @@ export default class extends Controller {
     new TomSelect(this.element, config)
   }
 
-  async search(q, callback) {
+  async search(query, callback) {
     const response = await get(this.urlValue, {
-      query: {
-        q: JSON.stringify({ make_start_or_number_plate_start: q })
-      },
-      responseKind: 'json'
+      query: {'q[plate_number_cont]': query},
+      responseKind: 'json',
+      contentType: "application/json",
     })
 
     if (response.ok) {
