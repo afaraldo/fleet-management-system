@@ -15,7 +15,7 @@ class WorkOrder < ApplicationRecord
   validates_comparison_of :start_date, less_than: :final_date
   validates_comparison_of :final_date, greater_than: :start_date
 
-  enum status: { requested: 0, authorized: 1, finished: 2 }, _default: 0
+  enum status: { requested: 0, authorized: 1, finished: 2 }
 
   delegate :plate_number, to: :car, prefix: true
   delegate :full_name, to: :employee, prefix: true, allow_nil: true
@@ -64,6 +64,11 @@ class WorkOrder < ApplicationRecord
   validate :validate_start_date,
            :validate_final_date,
            :validate_start_date_and_final_date
+
+  # From https://stackoverflow.com/questions/37257835/searching-on-an-enum-field-with-ransack
+  ransacker :status, formatter: proc { |v| statuses[v] } do |parent|
+    parent.table[:status]
+  end
 
   private
 
