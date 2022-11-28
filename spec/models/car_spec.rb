@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Car, type: :model do
   describe 'associations' do
     it { should have_many(:work_orders) }
+    it { should have_and_belong_to_many(:insurance_plans) }
   end
 
   describe 'validations' do

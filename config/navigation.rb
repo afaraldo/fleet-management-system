@@ -91,7 +91,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   highlights_on: %r{/cars}
 
     primary.item  :key5,
-                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-mechanic') +
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-garage') +
                   content_tag(:div, I18n.t('navbar.supplier'), class: nil),
                   suppliers_path(session['suppliers']),
                   html: { class: 'menu-item' },
@@ -105,6 +105,13 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/maintenances}
+    primary.item  :key4,
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-crash') +
+                  content_tag(:div, I18n.t('navbar.insurance_plan'), class: nil),
+                  insurance_plans_path(session['insurance_plans']),
+                  html: { class: 'menu-item' },
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/insurance_plans}
 
     primary.item :report,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-report') +

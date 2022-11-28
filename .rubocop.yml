@@ -11,6 +11,7 @@ Layout/LineLength:
     - app/controllers/application_controller.rb
     - config/initializers/devise.rb
     - app/controllers/work_orders_controller.rb
+    - app/controllers/insurance_plans_controller.rb
 Metrics/AbcSize:
   Exclude:
     - app/controllers/application_controller.rb
@@ -37,6 +38,10 @@ Rails/RootPathnameMethods:
 Rails/FilePath:
   Exclude:
     - config/initializers/app_version.rb
+Rails/HasAndBelongsToMany:
+  Description: 'Prefer has_many :through to has_and_belongs_to_many.'
+  StyleGuide: 'https://github.com/bbatsov/rails-style-guide#has-many-through'
+  Enabled: false
 AllCops:
   NewCops: enable
   Exclude:

@@ -47,6 +47,9 @@ es:
       employee:
         one: Empleado
         other: Empleados
+      insurance_plan:
+        one: Seguro
+        other: Pólizas de Seguros
     attributes:
       car:
         make: Marca
@@ -91,6 +94,12 @@ es:
         document: Nro. de Identidad
         address: Dirección
         phone: Teléfono
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        expiry_date: Fecha de Vencimiento
+        cars: Vehículos
+        insurance_carrier: Aseguradora
+        amount: Monto
   date:
     abbr_day_names:
       - dom
@@ -315,52 +324,12 @@ es:
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"
-    employee: "Funcionario"
+    employee: "Funcionarios"
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"
+    insurance_plan : "Pólizas de Seguros"
     report: Reportes
-  cars:
-    index:
-      cars: Vehiculos
-      brand: Marca
-      model: Modelo
-      color: Color
-      plate_number: Chapa
-      chassis: Chasis
-      engine: Motor
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
-  maintenance:
-    index:
-      date: Fecha
-      mechanical_workshop: Taller
-      car: Vehiculo
-      budget: Presupuesto
-      description: Decripcion
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
-  employee:
-    index:
-      name: Nombre
-      last_name: Apellido
-      document: Nro. de Identidad
-      address: Dirección
-      phone: Teléfono
-      actions: Acciones
-      new: Agregar
-    new:
-      form: Formulario
-    form:
-      form: Formulario
   views:
     links:
       pdf: PDF
@@ -420,6 +389,12 @@ es:
         document: Nro. de Identidad
         address: Dirección
         phone: Teléfono
+      insurance_plan:
+        contract_date: Fecha de Contrato
+        expiry_date: Fecha de Vencimiento
+        cars: Vehículos
+        insurance_carrier: Aseguradora
+        amount: Monto
 
   ransack:
     asc: Ascendente
