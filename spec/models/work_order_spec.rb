@@ -28,7 +28,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.requested_by' do
     subject do
       PaperTrail.request(whodunnit: user.id) do
-        create(:work_order, status: 0)
+        create(:work_order, status: :requested)
       end
     end
     context 'should return who created register' do
@@ -39,7 +39,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.requested_on' do
     subject do
       PaperTrail.request(whodunnit: user.id) do
-        create(:work_order, status: 0)
+        create(:work_order, status: :requested)
       end
     end
     context 'should return time of creation register' do
