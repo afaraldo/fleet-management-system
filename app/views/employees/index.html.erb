@@ -1,47 +1,10 @@
-<%= search_form_for @q do |f| %>
-  <div class="row align-items-start p-3">
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :name_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :name, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :last_name_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :last_name, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :document_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :document, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :address_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :address, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :phone_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :phone, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-secondary'  %>
-    </div>
-  </div>
-<% end %>
+<%= render 'search_form', ransack: @ransack %>
 
 <div class="card">
   <h5 class="card-header">
     <%= t('activerecord.models.employee.other') %>
     <%= link_to t('buttons.new'), new_employee_path, class: 'btn btn-primary' %>
   </h5>
-
   <div class="table-responsive text-nowrap">
     <table class="table">
       <caption class="ms-4">
@@ -55,21 +18,21 @@
       </caption>
       <thead>
       <tr>
-        <%= search_form_for @q do |f| %>
+        <%= search_form_for @ransack do |f| %>
           <th>
-            <%= sort_link(@q, :name, t('activerecord.attributes.employee.name'), default_order: :asc) %>
+            <%= sort_link(@ransack, :name, t('activerecord.attributes.employee.name'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :last_name, t('activerecord.attributes.employee.last_name'), default_order: :asc) %>
+            <%= sort_link(@ransack, :last_name, t('activerecord.attributes.employee.last_name'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :document, t('activerecord.attributes.employee.document'), default_order: :asc) %>
+            <%= sort_link(@ransack, :document, t('activerecord.attributes.employee.document'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :address, t('activerecord.attributes.employee.address'), default_order: :asc) %>
+            <%= sort_link(@ransack, :address, t('activerecord.attributes.employee.address'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :phone, t('activerecord.attributes.employee.phone'), default_order: :asc) %>
+            <%= sort_link(@ransack, :phone, t('activerecord.attributes.employee.phone'), default_order: :asc) %>
           </th>
           <th class="d-print-none"></th>
         <% end %>

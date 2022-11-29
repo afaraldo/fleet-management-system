@@ -1,6 +1,6 @@
 <div class="card mb-4">
   <h5 class="card-header">
-    <%= t('.form')%>
+    <%= t('form')%>
   </h5>
   <div class="card-body">
     <%= simple_form_for supplier.becomes(Supplier), class: 'form-floating' do |f| %>
@@ -19,7 +19,6 @@
         </div>
         <div class="col-4">
           <div class='form-floating'>
-            <%#= f.collection_select :provider_id, @suppliers, :name, :ruc, include_blank: true %>
             <%= f.input_field :type, as: :select, collection:[['InsuranceCarrier', 'Aseguradora'], ['MechanicalWorkshop', 'Taller Mecánico']], label_method: :second, value_method: :first, class:'form-control', 'aria-describedby':"floatingInputHelp"%>
             <%= f.label :type, for: 'floatingInput' %>
           </div>

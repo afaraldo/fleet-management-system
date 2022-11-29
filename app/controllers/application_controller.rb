@@ -10,12 +10,17 @@ class ApplicationController < ActionController::Base
   def index
     add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session["/#{plural_resource_name}"], only_path: true) # Use for breadcrumbs_on_rails gem
     resource_search_method = :ransack
-    @q = model_class.send(resource_search_method, search_params[:q])
-    @q1 = @q.result.page(pagination_params[:page]).per(pagination_params[:per])
-    instance_variable_set :@result, @q1.includes(included_associations)
-    # TODO; add includes
-    # .includes(included_associations).references(included_associations)
+    @ransack = model_class.send(resource_search_method, search_params)
+    @q = @ransack.result.page(pagination_params[:page]).per(pagination_params[:per])
+    instance_variable_set :@result, @q.includes(included_associations)
     instance_variable_set "@#{plural_resource_name}", @result
+    save_last_params
+  end
+
+  # GET /cars/{id}
+  def show
+    add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
+    add_breadcrumb I18n.t('buttons.edit'), nil # Use for breadcrumbs_on_rails gem
   end
 
   # GET
@@ -65,13 +70,7 @@ class ApplicationController < ActionController::Base
   #
   # @protected
   # @return [Object]
-  def collection
-    resource_search_method = :ransack
-    model_class.send(resource_search_method, search_params)
-               .result
-               .page(pagination_params[:page])
-               .per(pagination_params[:per])
-  end
+  def collection; end
 
   # Runs before every action to determine its resource in an instance
   # variable.
@@ -95,7 +94,14 @@ class ApplicationController < ActionController::Base
   # @return [ActionController::Parameters] Params given to the search
   # method.
   def search_params
-    session[controller_name] = params.permit(q: {}).extract!(:q)
+    params[:q]
+  end
+
+  # @private
+  # @return [ActionController::Parameters] Params given to the search
+  # Save the last params in cookies
+  def save_last_params
+    session[controller_name] = params.permit!
     session[controller_name]
   end
 

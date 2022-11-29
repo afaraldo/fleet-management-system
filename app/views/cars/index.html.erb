@@ -1,34 +1,4 @@
-<%= search_form_for @q do |f| %>
-  <div class="row align-items-start p-3">
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :make_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :make, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :model_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :model, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :color_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :color, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :engine_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :engine, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-secondary'  %>
-    </div>
-  </div>
-<% end %>
+<%= render 'search_form', ransack: @ransack %>
 
 <div class="card">
   <h5 class="card-header">
@@ -49,24 +19,27 @@
       </caption>
       <thead>
         <tr>
-          <%= search_form_for @q do |f| %>
+          <%= search_form_for @ransack do |f| %>
             <th>
-              <%= sort_link(@q, :plate_number, t('activerecord.attributes.car.plate_number'), default_order: :asc) %>
+              <%= sort_link(@ransack, :plate_number, t('activerecord.attributes.car.plate_number'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@q, :make, t('activerecord.attributes.car.make'), default_order: :asc) %>
+              <%= sort_link(@ransack, :make, t('activerecord.attributes.car.make'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@q, :model, t('activerecord.attributes.car.model'), default_order: :asc) %>
+              <%= sort_link(@ransack, :model, t('activerecord.attributes.car.model'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@q, :color, t('activerecord.attributes.car.color'), default_order: :asc) %>
+              <%= sort_link(@ransack, :color, t('activerecord.attributes.car.color'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@q, :chassis, t('activerecord.attributes.car.chassis'), default_order: :asc) %>
+              <%= sort_link(@ransack, :chassis, t('activerecord.attributes.car.chassis'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@q, :engine, t('activerecord.attributes.car.engine'), default_order: :asc) %>
+              <%= sort_link(@ransack, :engine, t('activerecord.attributes.car.engine'), default_order: :asc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :rasp, t('activerecord.attributes.car.rasp'), default_order: :asc) %>
             </th>
             <th class="d-print-none"></th>
           <% end %>
@@ -75,7 +48,7 @@
       <tbody>
         <% @cars.each do |car| %>
           <tr>
-            <td><strong><%= car.plate_number %></strong></td>
+            <td><strong><%= link_to car.plate_number, car_path(car) %></strong></td>
             <td><%= car.make %></td>
             <td><%= car.model %></td>
             <td>
@@ -83,6 +56,7 @@
             </td>
             <td><%= car.chassis %></td>
             <td><%= car.engine %></td>
+            <td><%= car.rasp %></td>
             <td class="d-print-none">
             <td class="d-print-none">
               <%= render(partial: 'components/action_buttons', locals: { model: car })%>

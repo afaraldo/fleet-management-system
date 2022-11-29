@@ -23,6 +23,8 @@ gem 'rails-html-sanitizer', '>= 1.4.3'
 
 # This gem is used for build form more easily [https://github.com/heartcombo/simple_form]
 gem 'simple_form'
+# This gem is used for build search form with ransack [https://github.com/kaspernj/simple_form_ransack]
+gem 'simple_form_ransack'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -146,5 +148,5 @@ gem 'app_version', '~> 0.1.8'
 # Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 # Used to generate reports [https://github.com/ashrafuzzaman/query_report]
 gem 'query_report'
-# Used to add access-granted [https://github.com/chaps-io/access-granted]
-gem 'access-granted', '~> 1.1.0'
+# Used to add service layer [https://github.com/collectiveidea/interactor-rails]
+gem 'interactor-rails', '~> 2.0'

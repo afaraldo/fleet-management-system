@@ -39,7 +39,6 @@ module FleetManagementSystem
     config.generators.system_tests = nil
 
     config.i18n.default_locale = :es
-
-    config.autoload_paths += %W(#{config.root}/app/policies #{config.root}/app/roles)
+    config.i18n.load_path += SimpleFormRansack.locale_files # Using for https://github.com/kaspernj/simple_form_ransack
   end
 end

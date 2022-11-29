@@ -1,28 +1,4 @@
-<%= search_form_for @q do |f| %>
-  <div class="row align-items-start p-3">
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :name_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :name, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :ruc_start, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :ruc, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :type_start, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :type, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn-secondary'  %>
-    </div>
-  </div>
-<% end %>
+<%= render 'search_form', ransack: @ransack %>
 
 <div class="card">
   <h5 class="card-header">
@@ -33,7 +9,6 @@
   <div class="table-responsive text-nowrap">
     <table class="table">
       <caption class="ms-4">
-
         <div class="d-flex align-items-center justify-content-between">
           <div class="mr-auto">
             <%= page_entries_info @suppliers, entry_name: 'item' %>
@@ -43,15 +18,15 @@
       </caption>
       <thead>
       <tr>
-        <%= search_form_for @q do |f| %>
+        <%= search_form_for @ransack do |f| %>
           <th>
-            <%= sort_link(@q, :name, t('activerecord.attributes.supplier.name'), default_order: :asc) %>
+            <%= sort_link(@ransack, :name, t('activerecord.attributes.supplier.name'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :ruc, t('activerecord.attributes.supplier.ruc'), default_order: :asc) %>
+            <%= sort_link(@ransack, :ruc, t('activerecord.attributes.supplier.ruc'), default_order: :asc) %>
           </th>
           <th>
-            <%= sort_link(@q, :type, t('activerecord.attributes.supplier.type'), default_order: :asc) %>
+            <%= sort_link(@ransack, :type, t('activerecord.attributes.supplier.type'), default_order: :asc) %>
           </th>
           <th class="d-print-none"></th>
         <% end %>
@@ -62,7 +37,7 @@
         <tr>
           <td><strong><%= supplier.name %></strong></td>
           <td><%= supplier.ruc %></td>
-          <td><%= supplier.type %></td>
+          <td><%= t("activerecord.models.#{supplier.type.underscore}.one") %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: supplier })%>
           </td>

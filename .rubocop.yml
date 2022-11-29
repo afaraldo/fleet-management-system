@@ -12,12 +12,15 @@ Layout/LineLength:
     - config/initializers/devise.rb
     - app/controllers/work_orders_controller.rb
     - app/controllers/insurance_plans_controller.rb
+    - app/controllers/cars_controller.rb
 Metrics/AbcSize:
   Exclude:
     - app/controllers/application_controller.rb
     - app/controllers/work_orders_controller.rb
     - app/models/work_order.rb
     - app/controllers/work_order_reports_controller.rb
+    - app/controllers/cars_controller.rb
+    - app/interactors/get_car_events.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
@@ -30,6 +33,8 @@ Metrics/MethodLength:
     - db/migrate/20220911194444_devise_create_users.rb
     - db/migrate/20221006171930_create_work_order.rb
     - app/controllers/work_order_reports_controller.rb
+    - app/interactors/get_car_events.rb
+    - app/controllers/cars_controller.rb
 Rails/RootPathnameMethods:
   Exclude:
     - config/initializers/app_version.rb
