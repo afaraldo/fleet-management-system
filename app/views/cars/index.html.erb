@@ -1,4 +1,4 @@
-<%#= render 'search_form', ransack: @ransack %>
+<%= render 'search_form', ransack: @ransack %>
 
 <div class="card">
   <h5 class="card-header">
@@ -38,6 +38,9 @@
             <th>
               <%= sort_link(@ransack, :engine, t('activerecord.attributes.car.engine'), default_order: :asc) %>
             </th>
+            <th>
+              <%= sort_link(@ransack, :rasp, t('activerecord.attributes.car.rasp'), default_order: :asc) %>
+            </th>
             <th class="d-print-none"></th>
           <% end %>
         </tr>
@@ -53,6 +56,7 @@
             </td>
             <td><%= car.chassis %></td>
             <td><%= car.engine %></td>
+            <td><%= car.rasp %></td>
             <td class="d-print-none">
             <td class="d-print-none">
               <%= render(partial: 'components/action_buttons', locals: { model: car })%>

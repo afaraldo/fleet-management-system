@@ -54,7 +54,8 @@
                             name: "q[car_id_eq]", # This attributes is necessary to ransack
                             data: {
                               controller: 'ts--select',
-                              'ts--select-url-value': cars_path
+                              'ts--select-url-value': cars_path,
+                              searcher: "q[plate_number_cont]"
                             }
                           }
         %>

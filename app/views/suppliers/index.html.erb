@@ -1,4 +1,4 @@
-<%#= render 'search_form', ransack: @ransack %>
+<%= render 'search_form', ransack: @ransack %>
 
 <div class="card">
   <h5 class="card-header">
@@ -37,7 +37,7 @@
         <tr>
           <td><strong><%= supplier.name %></strong></td>
           <td><%= supplier.ruc %></td>
-          <td><%= supplier.type %></td>
+          <td><%= t("activerecord.models.#{supplier.type.underscore}.one") %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: supplier })%>
           </td>

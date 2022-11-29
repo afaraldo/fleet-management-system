@@ -9,12 +9,12 @@ class ApplicationController < ActionController::Base
   # GET
   def index
     add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session["/#{plural_resource_name}"], only_path: true) # Use for breadcrumbs_on_rails gem
-    save_last_params
     resource_search_method = :ransack
     @ransack = model_class.send(resource_search_method, search_params)
     @q = @ransack.result.page(pagination_params[:page]).per(pagination_params[:per])
     instance_variable_set :@result, @q.includes(included_associations)
     instance_variable_set "@#{plural_resource_name}", @result
+    save_last_params
   end
 
   # GET /cars/{id}
@@ -101,7 +101,8 @@ class ApplicationController < ActionController::Base
   # @return [ActionController::Parameters] Params given to the search
   # Save the last params in cookies
   def save_last_params
-    session[controller_name] = params[:q]
+    params.permit!
+    session[controller_name] = params
     session[controller_name]
   end
 

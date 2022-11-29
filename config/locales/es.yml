@@ -50,6 +50,12 @@ es:
       insurance_plan:
         one: Seguro
         other: Pólizas de Seguros
+      mechanical_workshop:
+        one: Taller
+        other: Talleres
+      insurance_carrier:
+        one: Aseguradora
+        other: Aseguradoras
     attributes:
       car:
         make: Marca
@@ -85,7 +91,7 @@ es:
       maintenance:
         date: Fecha
         car:  Vehiculo
-        mechanica_workshop: Taller Mecanico
+        mechanical_workshop: Taller
         budget: Presupuesto
         description: Descripcion
       employee:
@@ -377,6 +383,7 @@ es:
       supplier:
         name: Nombre
         ruc: Nro Documento
+        type: Tipo
       maintenance:
         date: Fecha
         car : Vehiculo

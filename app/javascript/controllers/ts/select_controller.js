@@ -19,11 +19,14 @@ export default class extends Controller {
   }
 
   async search(query, callback) {
+    let criteria = this.element.dataset.searcher;
+    let hash = {}
+    hash[criteria] = query
     const response = await get(this.urlValue, {
-      query: {'q[plate_number_cont]': query},
+      query: hash,
       responseKind: 'json',
       contentType: "application/json",
-    })
+    });
 
     if (response.ok) {
       const list = await response.json
