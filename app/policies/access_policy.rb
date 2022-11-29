@@ -10,26 +10,26 @@ class AccessPolicy
     # Roles inherit from less important roles, so:
     # - :admin has permissions defined in :member, :guest and himself
     # - :member has permissions from :guest and himself
-    # - :guest has only its own permissions since it's the first role.
+    # - :guest has only its own permissions since it's the first roles.
     #
-    # The most important role should be at the top.
+    # The most important roles should be at the top.
     # In this case an administrator.
     #
-    # role :admin, proc { |user| user.admin? } do
+    # roles :admin, proc { |user| user.admin? } do
     #   can :destroy, User
     # end
 
-    # More privileged role, applies to registered users.
+    # More privileged roles, applies to registered users.
     #
-    # The most important admin role, gets checked first
+    # The most important admin roles, gets checked first
      role :admin, { is_admin: true } do
        can :manage, User#Post
        #can :manage, Comment
        can :destroy, Supplier#Post
        can :update, Supplier#Post
      end
-    #role :member, MemberRole, -> { |user| !u.guest? }
-    # Less privileged moderator role
+    #roles :member, MemberRole, -> { |user| !u.guest? }
+    # Less privileged moderator roles
      role :moderator, proc {|u| u.moderator? } do
         can [:update, :destroy], Supplier#Post
         can :update, User
@@ -43,15 +43,15 @@ class AccessPolicy
        end
      end
 
-    # The base role with no additional conditions.
+    # The base roles with no additional conditions.
     # Applies to every user.
     #
-    # role :guest do
+    # roles :guest do
     #  can :read, Post
     #  can :read, Comment
     # end
 =begin
-    role :member do
+    roles :member do
       can :read, Post, { published: true }
       can :create, Post
     end

@@ -146,3 +146,5 @@ gem 'app_version', '~> 0.1.8'
 # Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 # Used to generate reports [https://github.com/ashrafuzzaman/query_report]
 gem 'query_report'
+# Used to add access-granted [https://github.com/chaps-io/access-granted]
+gem 'access-granted', '~> 1.1.0'
