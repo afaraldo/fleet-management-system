@@ -101,8 +101,7 @@ class ApplicationController < ActionController::Base
   # @return [ActionController::Parameters] Params given to the search
   # Save the last params in cookies
   def save_last_params
-    params.permit!
-    session[controller_name] = params
+    session[controller_name] = params.permit
     session[controller_name]
   end
 
