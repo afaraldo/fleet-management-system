@@ -9,9 +9,10 @@ class GetCarEvents
        .joins(:versions)
        .where("(object_changes->>'status' ILIKE '[\"finished\",%') OR
                (object_changes->>'status' ILIKE '[%,\"finished\"]%')")
+       .distinct
        .find_each do |work_order|
          result << {
-           title: work_order.number,
+           title: work_order.to_s,
            date: work_order.finished_on,
            description: work_order.description,
            type: :work_order

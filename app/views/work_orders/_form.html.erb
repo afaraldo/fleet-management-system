@@ -61,8 +61,8 @@
               <%= f.input_field :status,
                                 class:'form-control',
                                 'aria-describedby':"floatingInputHelp",
-                                selected: f.object.status,
-                                disabled: true
+                                selected: f.object.status || :requested,
+                                onlyread: true
               %>
               <%= f.label :status, for: 'floatingInput' %>
             </div>

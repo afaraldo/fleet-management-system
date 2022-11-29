@@ -23,6 +23,7 @@ es:
     destroy: Eliminar
     confirm: Estas seguro?
     search: Buscar
+    show: Mostrar
   activerecord:
     errors:
       messages:
@@ -421,3 +422,5 @@ es:
         model: Modelo
         color: Color
         engine: Motor
+      work_order:
+        date: Fecha
