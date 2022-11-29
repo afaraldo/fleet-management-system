@@ -8,6 +8,7 @@
 @import "flatpickr/dist/flatpickr.min";
 @import "flatpickr/dist/themes/airbnb";
 @import "tom-select/dist/css/tom-select.bootstrap4.min";
+@import "timeline";
 
 // Using to fix text area height
 .form-floating {
@@ -50,4 +51,17 @@
   border: 1px solid transparent;
   transform-origin: 0 0;
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+// using for simple search form button clean X
+.plugin-clear_button .clear-button {
+  background: transparent !important;
+  cursor: pointer;
+  margin-right: 0 !important;
+  opacity: 100;
+  position: absolute;
+  right: calc(0.75rem - 5px);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.5s;
 }

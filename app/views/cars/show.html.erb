@@ -1,0 +1,31 @@
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t("activerecord.models.car.one") + " #{@car.plate_number}" %>
+  </h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <!-- Section: Timeline -->
+        <section class="py-3">
+          <ul class="timeline-with-icons">
+            <% @events.each do |event| %>
+              <li class="timeline-item mb-5">
+                <span class="timeline-icon">
+                  <i class="bx bx-tachometer text-primary fa-sm fa-fw"></i>
+                </span>
+                <h5 class="fw-bold"><%= event[:title] %></h5>
+                <p class="text-muted mb-2 fw-bold"><%= datetime_format(event[:date]) %></p>
+                <p class="text-muted">
+                  <%= event[:description] %>
+                </p>
+              </li>
+            <% end %>
+            <%= content_tag(:h5,
+                            t('helpers.page_entries_info.one_page.display_entries.zero', entry_name: 'items')) if @events.empty? %>
+          </ul>
+        </section>
+        <!-- Section: Timeline -->
+      </div>
+    </div>
+  </div>
+</div>

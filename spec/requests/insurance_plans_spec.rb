@@ -19,7 +19,9 @@ RSpec.describe "/insurance_plans", type: :request do
   # InsurancePlan. As you add validations to InsurancePlan, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    build(:insurance_plan).attributes
+    hash = build(:insurance_plan).attributes
+    hash.extract!("id")
+    hash
   }
 
   let(:invalid_attributes) {
@@ -31,6 +33,7 @@ RSpec.describe "/insurance_plans", type: :request do
       create(:insurance_plan)
       get insurance_plans_url
       expect(response).to be_successful
+      expect(InsurancePlan.count).to eq(1)
     end
   end
 

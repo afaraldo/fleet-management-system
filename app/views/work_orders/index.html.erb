@@ -1,34 +1,4 @@
-<%= search_form_for @q do |f| %>
-  <div class="row align-items-start p-3">
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :start_date_gteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :date, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :start_date_lteq, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :date, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :number, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :number, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.search_field :employee_id, class:'form-control col-auto', 'aria-describedby':"floatingInputHelp" %>
-        <%= f.label :employee, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <%= f.button content_tag(:i, nil, class:'bx bx-search-alt'), class:'btn btn btn-secondary'  %>
-    </div>
-  </div>
-<% end %>
+<%= render "search_form", ransack: @ransack %>
 
 <div class="card">
   <h5 class="card-header">
@@ -39,7 +9,6 @@
   <div class="table-responsive text-nowrap">
     <table class="table table-sm table-hover">
       <caption class="ms-4">
-
         <div class="d-flex align-items-center justify-content-between">
           <div class="mr-auto">
             <%= page_entries_info @work_orders, entry_name: 'item' %>
@@ -49,25 +18,25 @@
       </caption>
       <thead>
       <tr>
-        <%= search_form_for @q do |f| %>
+        <%= simple_search_form_for @ransack do |f| %>
           <th>
-            <%= sort_link(@q, :number, t('activerecord.attributes.work_order.number'), default_order: :desc) %>
+            <%= sort_link(@ransack, :number, t('activerecord.attributes.work_order.number'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@q, :car_plate_number, t('activerecord.attributes.work_order.car'), default_order: :desc) %>
+            <%= sort_link(@ransack, :car_plate_number, t('activerecord.attributes.work_order.car'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@q, :city, t('activerecord.attributes.work_order.city'), default_order: :desc) %>
+            <%= sort_link(@ransack, :city, t('activerecord.attributes.work_order.city'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@q, :start_date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
+            <%= sort_link(@ransack, :start_date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@q, :final_date, t('activerecord.attributes.work_order.final_date'), default_order: :desc) %>
+            <%= sort_link(@ransack, :final_date, t('activerecord.attributes.work_order.final_date'), default_order: :desc) %>
           </th>
           <th><%= t('activerecord.attributes.work_order.description')%></th>
           <th>
-            <%= sort_link(@q, :employee_full_name, t('activerecord.attributes.work_order.employee'), default_order: :desc) %>
+            <%= sort_link(@ransack, :employee_full_name, t('activerecord.attributes.work_order.employee'), default_order: :desc) %>
           </th>
           <th><%= t('activerecord.attributes.work_order.status')%></th>
           <th class="d-print-none"></th>

@@ -41,7 +41,8 @@
                               data: {
                                 controller: 'ts--select',
                                 multiple:true, class: 'multiselectuser',
-                                'ts--select-url-value': cars_path
+                                'ts--select-url-value': cars_path,
+                                searcher: "q[plate_number_cont]"
                               }
                             }
           %>
@@ -53,7 +54,8 @@
                             input_html: {
                               data: {
                                  controller: 'ts--select',
-                                 'ts--select-url-value': insurance_plans_path
+                                 'ts--select-url-value': suppliers_path,
+                                 searcher: "q[name_start]"
                               }
                             }
           %>

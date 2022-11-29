@@ -30,4 +30,10 @@ class WorkOrdersController < ApplicationController
       format.html { redirect_to action: :edit, id: record.id }
     end
   end
+
+  def collection; end
+
+  def included_associations
+    %i[car employee]
+  end
 end

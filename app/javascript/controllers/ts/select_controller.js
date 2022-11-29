@@ -18,13 +18,15 @@ export default class extends Controller {
     new TomSelect(this.element, config)
   }
 
-  async search(q, callback) {
+  async search(query, callback) {
+    let criteria = this.element.dataset.searcher;
+    let hash = {}
+    hash[criteria] = query
     const response = await get(this.urlValue, {
-      query: {
-        q: JSON.stringify({ make_start_or_number_plate_start: q })
-      },
-      responseKind: 'json'
-    })
+      query: hash,
+      responseKind: 'json',
+      contentType: "application/json",
+    });
 
     if (response.ok) {
       const list = await response.json

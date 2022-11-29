@@ -1,6 +1,9 @@
 # README
 
 This README would normally document whatever steps are necessary to get the
+* Podman
+  podman version: 4.1.1
+  podman-composer version:  1.0.3
 
 * Ruby version
 rvm install 3.0.0
@@ -13,6 +16,10 @@ nvm install 18.11
 nvm use --default 18.11
 
 * System dependencies
+
+You need to install ImageMagick
+Use dnf install ImageMagick ImageMagick-devel in RHEL Linux [https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/]
+Use apt install imagemagick
 
 bundle install # for dependencies in RoR
 yarn install   # for dependencies in NodeJS
