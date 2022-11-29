@@ -12,12 +12,14 @@ Layout/LineLength:
     - config/initializers/devise.rb
     - app/controllers/work_orders_controller.rb
     - app/controllers/insurance_plans_controller.rb
+    - app/controllers/cars_controller.rb
 Metrics/AbcSize:
   Exclude:
     - app/controllers/application_controller.rb
     - app/controllers/work_orders_controller.rb
     - app/models/work_order.rb
     - app/controllers/work_order_reports_controller.rb
+    - app/controllers/cars_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
