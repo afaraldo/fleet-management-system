@@ -4,8 +4,8 @@
   </h5>
   <div class="card-body">
     <%= simple_form_for maintenance, class: 'form-floating' do |f| %>
-      <div class='row mb-3'>
-        <div class="col-4">
+      <div class='row'>
+        <div class="col-xl-6 mb-3">
           <div class='form-floating'>
             <%= f.input_field :date,
                               as: :string,
@@ -19,8 +19,8 @@
           </div>
         </div>
 
-        <div class="col-4">
-          <div class='form-floating mb-3'>
+        <div class="col-xl-6 mb-3">
+          <div class='form-floating'>
             <%= f.association :mechanical_workshop, collection: MechanicalWorkshop.all.page(0),
                               include_blank: true,
                               placeholder: t("activerecord.attributes.insurance_plan.mechanical_workshop"),
@@ -37,14 +37,14 @@
           </div>
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-xl-6 mb-3">
           <div class='form-floating'>
             <%= f.input_field :budget, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :budget, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-6 mb-3">
           <div class='form-floating'>
             <%= f.association :car,
                               collection: f.object.car ? [f.object.car] : Car.all.page(0),
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class='row'>
-        <div class='mb-3'>
+        <div class='col-xl-12 mb-3'>
           <div class='form-floating'>
             <%= f.input_field :description,
                               as: :text,
@@ -75,8 +75,8 @@
           </div>
         </div>
       </div>
-      <div class='mb-3'>
-        <%= f.button 'submit', class: 'btn btn-primary' %>
+      <div class='col-xl-2 d-grid gap-2'>
+        <%= f.button 'submit', class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>
   </div>

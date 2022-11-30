@@ -4,8 +4,8 @@
   </h5>
   <div class="card-body">
     <%= simple_form_for(@insurance_plan) do |f| %>
-      <div class='row mb-3'>
-        <div class='col-4'>
+      <div class='row'>
+        <div class='col-xl-6 mb-3'>
           <div class='form-floating'>
             <%= f.input_field :contract_date,
                               as: :string,
@@ -18,7 +18,7 @@
             <%= f.label :contract_date, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-6 mb-3">
           <div class='form-floating'>
             <%= f.input_field :expiry_date,
                               as: :string,
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="row">
-        <div class='form-floating mb-3'>
+        <div class='form-floating col-xl-6 mb-3'>
           <%= f.association :cars, collection: Car.all.page(0),
                             include_blank: true,
                             placeholder: t("activerecord.models.car.other"),
@@ -47,7 +47,7 @@
                             }
           %>
         </div>
-        <div class='form-floating mb-3'>
+        <div class='form-floating col-xl-6 mb-3'>
           <%= f.association :insurance_carrier, collection: InsuranceCarrier.all.page(0),
                             include_blank: true,
                             placeholder: t("activerecord.attributes.insurance_plan.insurance_carrier"),
@@ -62,16 +62,16 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-xl-12 mb-3">
           <div class='form-floating'>
             <%= f.input_field :amount, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :amount, for: 'floatingInput' %>
           </div>
         </div>
       </div>
-      <div class='mb-3'>
-        <%= f.button 'submit', class: 'btn btn-primary' %>
+      <div class='col-xl-2 d-grid gap-2'>
+        <%= f.button 'submit', class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>
   </div>
