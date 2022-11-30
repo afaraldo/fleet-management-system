@@ -4,28 +4,28 @@
   </h5>
   <div class="card-body">
     <%= simple_form_for supplier.becomes(Supplier), class: 'form-floating' do |f| %>
-      <div class='row mb-3'>
-        <div class="col-4">
+      <div class='row'>
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :name, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
             <%= f.label :name, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :ruc, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :ruc, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :type, as: :select, collection:[['InsuranceCarrier', 'Aseguradora'], ['MechanicalWorkshop', 'Taller Mecánico']], label_method: :second, value_method: :first, class:'form-control', 'aria-describedby':"floatingInputHelp"%>
             <%= f.label :type, for: 'floatingInput' %>
           </div>
         </div>
       </div>
-      <div class='mb-3'>
-        <%= f.button 'submit', class: 'btn btn-primary' %>
+      <div class='col-xl-2 d-grid gap-2'>
+        <%= f.button 'submit', class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>
   </div>

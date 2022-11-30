@@ -1,2 +1,17 @@
-json.extract! work_order, :id, :date, :requested_by, :reason, :manager, :created_at, :updated_at
+json.extract! work_order, :id,
+              :number,
+              :description,
+              :city,
+              :start_mileage,
+              :final_mileage,
+              :employee_id,
+              :created_at,
+              :updated_at,
+              :integer,
+              :car_id,
+              :start_date,
+              :final_date,
+              :final_oil,
+              :area,
+              :status
 json.url work_order_url(work_order, format: :json)
