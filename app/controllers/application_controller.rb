@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     @q = @ransack.result.page(pagination_params[:page]).per(pagination_params[:per])
     instance_variable_set :@result, @q.includes(included_associations)
     instance_variable_set "@#{plural_resource_name}", @result
+    respond_to do |format|
+      format.html
+      format.json
+      format.xlsx do
+        filename = "#{model_class.model_name.human}_#{current_user.email}_#{Time.zone.today}"
+        response.headers['Content-Disposition'] = "attachment;filename=\"#{filename}\".xlsx"
+      end
+    end
     save_last_params
   end
 
