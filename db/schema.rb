@@ -116,7 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_015400) do
     t.datetime "created_at",    :null=>false
     t.datetime "updated_at",    :null=>false
     t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
-    t.string   "integer"
     t.datetime "start_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_start_date"}
     t.datetime "final_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_final_date"}
     t.integer  "final_oil"

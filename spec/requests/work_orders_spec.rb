@@ -37,6 +37,23 @@ RSpec.describe "/work_orders", type: :request do
       get work_orders_url
       expect(response).to be_successful
     end
+
+    context 'ransack search by status' do
+
+      let!(:work_order1) { create(:work_order, status: :requested, start_date: 4.days.ago, final_date: 3.days.ago) }
+      let!(:work_order2) { create(:work_order, status: :finished, start_date: 2.days.ago, final_date: 1.days.ago) }
+
+      context 'finds specific status' do
+        before { get work_orders_url, params: { q: { status: :requested }, format: :json} }
+
+        it "should find just one work_order" do
+          expect(response).to eq(work_order1)
+        end
+
+        it { should respond_with(:success) }
+        it { should render_template(:index) }
+      end
+    end
   end
 
   describe "GET /new" do
