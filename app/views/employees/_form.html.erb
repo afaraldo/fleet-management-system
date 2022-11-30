@@ -4,42 +4,42 @@
   </h5>
   <div class="card-body">
     <%= simple_form_for employee, class: 'form-floating' do |f| %>
-      <div class='row mb-3'>
-        <div class="col-4">
+      <div class='row'>
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :name, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
             <%= f.label :name, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
           <%= f.input_field :last_name, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
           <%= f.label :last_name , for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :document, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :document, for: 'floatingInput' %>
           </div>
         </div>
       </div>
-      <div class="row mb-3">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :address, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :address, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-xl-2 mb-3">
           <div class='form-floating'>
             <%= f.input_field :phone, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :phone, for: 'floatingInput' %>
           </div>
         </div>
       </div>
-      <div class='mb-3'>
-        <%= f.button 'submit', class: 'btn btn-primary' %>
+      <div class='col-xl-2 d-grid gap-2'>
+        <%= f.button 'submit', class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>
   </div>
