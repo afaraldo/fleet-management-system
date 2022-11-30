@@ -47,11 +47,10 @@ RSpec.describe "/work_orders", type: :request do
         before { get work_orders_url, params: { q: { status: :requested }, format: :json} }
 
         it "should find just one work_order" do
-          expect(response).to eq(work_order1)
+          expect(JSON.parse(response.body)[0]["id"]).to eq(work_order1.id)
         end
 
-        it { should respond_with(:success) }
-        it { should render_template(:index) }
+        it {  expect(response).to be_successful }
       end
     end
   end
