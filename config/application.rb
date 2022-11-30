@@ -40,5 +40,6 @@ module FleetManagementSystem
 
     config.i18n.default_locale = :es
     config.i18n.load_path += SimpleFormRansack.locale_files # Using for https://github.com/kaspernj/simple_form_ransack
+    config.autoload_paths += %W(#{config.root}/app/policies #{config.root}/app/roles)
   end
 end

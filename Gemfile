@@ -150,3 +150,5 @@ gem 'app_version', '~> 0.1.8'
 gem 'query_report'
 # Used to add service layer [https://github.com/collectiveidea/interactor-rails]
 gem 'interactor-rails', '~> 2.0'
+# Access-granted [https://github.com/chaps-io/access-granted]
+gem 'access-granted', '~> 1.0.0'
