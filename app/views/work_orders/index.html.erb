@@ -4,6 +4,9 @@
   <h5 class="card-header">
     <%= t('activerecord.models.work_order.other') %>
     <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
+    <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                work_orders_path(params: session['work_orders'], format: 'xlsx' ),
+                class: 'btn btn-secondary' %>
   </h5>
 
   <div class="table-responsive text-nowrap">

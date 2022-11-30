@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: WorkOrder.model_name.human) do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w[number start_date final_date]
+  @work_orders.each do |work_order|
+    sheet.add_row [work_order.number, work_order.start_date, work_order.final_date]
+  end
+end

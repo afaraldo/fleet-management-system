@@ -35,6 +35,7 @@ Metrics/MethodLength:
     - app/controllers/work_order_reports_controller.rb
     - app/interactors/get_car_events.rb
     - app/controllers/cars_controller.rb
+    - app/controllers/application_controller.rb
 Rails/RootPathnameMethods:
   Exclude:
     - config/initializers/app_version.rb
