@@ -167,4 +167,3 @@ gem 'noticed', '~> 1.6'
 
 # Used to processing images [https://github.com/janko/image_processing]
 gem 'image_processing', '>= 1.2'
-

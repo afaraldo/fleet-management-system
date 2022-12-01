@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_130805) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_140004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string   "name",        :null=>false
+    t.string   "record_type", :null=>false, :index=>{:name=>"index_active_storage_attachments_uniqueness", :with=>["record_id", "name", "blob_id"], :unique=>true}
+    t.bigint   "record_id",   :null=>false
+    t.bigint   "blob_id",     :null=>false, :index=>{:name=>"index_active_storage_attachments_on_blob_id"}
+    t.datetime "created_at",  :null=>false
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string   "key",          :null=>false, :index=>{:name=>"index_active_storage_blobs_on_key", :unique=>true}
+    t.string   "filename",     :null=>false
+    t.string   "content_type"
+    t.text     "metadata"
+    t.string   "service_name", :null=>false
+    t.bigint   "byte_size",    :null=>false
+    t.string   "checksum"
+    t.datetime "created_at",   :null=>false
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id",          :null=>false, :index=>{:name=>"index_active_storage_variant_records_uniqueness", :with=>["variation_digest"], :unique=>true}
+    t.string "variation_digest", :null=>false
+  end
 
   create_table "cars", force: :cascade do |t|
     t.string   "make"
@@ -135,6 +159,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_130805) do
     t.integer  "status",        :null=>false, :index=>{:name=>"index_work_orders_on_status"}
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "insurance_plans", "suppliers", column: "insurance_carrier_id"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
