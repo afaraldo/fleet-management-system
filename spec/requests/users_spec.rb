@@ -19,9 +19,7 @@ RSpec.describe "/users", type: :request do
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    hash = build(:user).attributes
-    hash.extract!("id")
-    hash
+    { email: "test@email.com", password: "HolaMundo123", password_confirmation: "HolaMundo123"}
   }
 
   let(:invalid_attributes) {
