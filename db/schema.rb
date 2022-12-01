@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_015400) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_130805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_015400) do
     t.datetime "updated_at",             :null=>false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string   "recipient_type", :null=>false, :index=>{:name=>"index_notifications_on_recipient", :with=>["recipient_id"]}
+    t.bigint   "recipient_id",   :null=>false
+    t.string   "type",           :null=>false
+    t.jsonb    "params"
+    t.datetime "read_at",        :index=>{:name=>"index_notifications_on_read_at"}
+    t.datetime "created_at",     :null=>false
+    t.datetime "updated_at",     :null=>false
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string   "name",       :null=>false
     t.string   "ruc",        :null=>false
@@ -94,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_015400) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",             :null=>false
     t.datetime "updated_at",             :null=>false
+    t.string   "avatar"
   end
 
   create_table "versions", force: :cascade do |t|

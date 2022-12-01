@@ -153,3 +153,18 @@ gem 'interactor-rails', '~> 2.0'
 # Used to export spreadsheet [https://github.com/caxlsx/caxlsx_rails]
 gem 'caxlsx'
 gem 'caxlsx_rails'
+
+# Used to add notification [https://github.com/excid3/noticed]
+
+# Used to improve performance using second level cache [https://github.com/hooopo/second_level_cache]
+# gem 'second_level_cache', '~> 2.7'
+
+# Used to process background job [https://github.com/collectiveidea/delayed_job/tree/v4.1.11]
+# gem 'delayed_job_active_record'
+
+# Used to add notification [https://github.com/excid3/noticed]
+gem 'noticed', '~> 1.6'
+
+# Used to processing images [https://github.com/janko/image_processing]
+gem 'image_processing', '>= 1.2'
+
