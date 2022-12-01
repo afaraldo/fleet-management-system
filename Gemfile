@@ -144,6 +144,8 @@ gem 'nokogiri', '>= 1.13.9'
 gem 'paper_trail', '~> 13.0'
 # Used to add app version [https://github.com/mort666/app_version]
 gem 'app_version', '~> 0.1.8'
+# Access-granted [https://github.com/chaps-io/access-granted]
+gem 'access-granted', '~> 1.0.0'
 # Used to generate reports [https://github.com/ruport/ruport]
 # Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 # Used to generate reports [https://github.com/ashrafuzzaman/query_report]

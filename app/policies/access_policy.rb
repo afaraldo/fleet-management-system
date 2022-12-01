@@ -23,21 +23,21 @@ class AccessPolicy
     #
     # The most important admin roles, gets checked first
      role :admin, { is_admin: true } do
-       can :manage, User#Post
+       can :manage, User
        #can :manage, Comment
-       can :destroy, Supplier#Post
-       can :update, Supplier#Post
+       can :destroy, Supplier
+       can :update, Supplier
      end
     #roles :member, MemberRole, -> { |user| !u.guest? }
     # Less privileged moderator roles
      role :moderator, proc {|u| u.moderator? } do
-        can [:update, :destroy], Supplier#Post
+        can [:update, :destroy], Supplier
         can :update, User
      end
      role :member, proc { |user| user.registered? } do
-       can :create, Supplier#Post
+       can :create, Supplier
        #can :create, Comment
-       can [:update, :destroy], Supplier do |post, user|
+       can [:update, :destroy], Supplier do |supplier, user|
          #post.author == user && post.comments.empty?
          post.author_id == user.id
        end
@@ -50,11 +50,12 @@ class AccessPolicy
     #  can :read, Post
     #  can :read, Comment
     # end
-=begin
-    roles :member do
-      can :read, Post, { published: true }
-      can :create, Post
+
+    begin
+      role :member do
+        can :read, Post
+        can :create, Post
+      end
     end
-=end
-     end
   end
+end

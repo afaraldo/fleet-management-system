@@ -5,5 +5,5 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
-  enum role: { admin: 0, member: 1, guest: 2, moderator: 3 }, _default: 0
+  enum role: { admin: 0, member: 1, guest: 2, moderator: 3 }
 end
