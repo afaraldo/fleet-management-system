@@ -1,0 +1,47 @@
+<%= render 'search_form', ransack: @ransack %>
+
+<div class="card">
+  <h5 class="card-header">
+    <%= t('activerecord.models.user.other') %>
+    <%= link_to t('buttons.new'), new_user_path, class: 'btn btn-primary' %>
+  </h5>
+
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @users, entry_name: 'item' %>
+          </div>
+          <%= paginate @users, remote: true %>
+        </div>
+      </caption>
+      <thead>
+      <tr>
+        <%= search_form_for @ransack do |f| %>
+          <th>
+            <%= sort_link(@ransack, :email, t('activerecord.attributes.user.email'), default_order: :asc) %>
+          </th>
+          <th>
+            <%= sort_link(@ransack, :roles, t('activerecord.attributes.user.roles'), default_order: :asc) %>
+          </th>
+          <th class="d-print-none"></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><strong><%= link_to user.email, user_path(user) %></strong></td>
+          <td><%#= user.roles.map {|rol| rol.to_s }.to_sentence %></td>
+          <td class="d-print-none">
+          <td class="d-print-none">
+            <%= render(partial: 'components/action_buttons', locals: { model: user })%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
