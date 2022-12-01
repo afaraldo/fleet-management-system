@@ -10,6 +10,9 @@ es:
   form: Formulario
   authorize: Autorizar
   finish: Finalizar
+  profile: Mi Perfil
+  settings: Configuraciones
+  logout: Cerrar Sessión
   enums:
     work_order:
       status:
@@ -57,6 +60,9 @@ es:
       insurance_carrier:
         one: Aseguradora
         other: Aseguradoras
+      user:
+        one: Usuario
+        other: Usuarios
     attributes:
       car:
         make: Marca

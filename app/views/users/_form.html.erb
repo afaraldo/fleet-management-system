@@ -1,0 +1,32 @@
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t('form')%>
+  </h5>
+  <div class="card-body">
+    <%= simple_form_for user, class: 'form-floating' do |f| %>
+      <div class='row'>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= f.input_field :email, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.label :email, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= f.input_field :password, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :password, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= f.input_field :password_confirmation, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :password_confirmation, for: 'floatingInput', input_html: { value: user.password } %>
+          </div>
+        </div>
+      </div>
+      <div class='col-xl-2 d-grid gap-2'>
+        <%= f.button 'submit', class: 'btn-primary btn-block' %>
+      </div>
+    <% end %>
+  </div>
+</div>

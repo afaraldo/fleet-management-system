@@ -59,3 +59,4 @@ AllCops:
     - spec/*
     - config/initializers/simple_form_bootstrap.rb
     - config/initializers/simple_form.rb
+    - db/migrate/20221201140004_create_active_storage_tables.active_storage.rb
