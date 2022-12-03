@@ -35,6 +35,7 @@
         <tr>
           <td><strong><%= link_to user.email, user_path(user) %></strong></td>
           <td><%#= user.roles.map {|rol| rol.to_s }.to_sentence %></td>
+          <td><%= add_role(user.role) %></td>
           <td class="d-print-none">
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: user })%>

@@ -4,7 +4,7 @@ class SuppliersController < ApplicationController
 
   def show
     @supplier = Supplier.find(params[:id])
-    authorize! :read, @supplier, 'You do not have access to this post'
+    authorize! :read, @supplier, 'No tienes acceso a ésta pantalla.'
     render json: { supplier: @supplier }
   rescue AccessGranted::AccessDenied => e
     render json: { error: e.message }, status: :forbidden

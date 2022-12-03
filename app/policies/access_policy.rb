@@ -22,39 +22,23 @@ class AccessPolicy
     # More privileged roles, applies to registered users.
     #
     # The most important admin roles, gets checked first
-     role :admin, { is_admin: true } do
-       can :manage, User
-       #can :manage, Comment
-       can :destroy, Supplier
-       can :update, Supplier
-     end
-    #roles :member, MemberRole, -> { |user| !u.guest? }
-    # Less privileged moderator roles
-     role :moderator, proc {|u| u.moderator? } do
+    def configure
+
+      # The most important admin role, gets checked first
+      role :admin, { admin?: true }  do
+        can :manage, Supplier
+      end
+
+      # Less privileged driver role
+      role :driver  do
         can [:update, :destroy], Supplier
-        can :update, User
-     end
-     role :member, proc { |user| user.registered? } do
-       can :create, Supplier
-       #can :create, Comment
-       can [:update, :destroy], Supplier do |supplier, user|
-         #post.author == user && post.comments.empty?
-         post.author_id == user.id
-       end
-     end
+        #can :create, Supplier
+      end
 
-    # The base roles with no additional conditions.
-    # Applies to every user.
-    #
-    # roles :guest do
-    #  can :read, Post
-    #  can :read, Comment
-    # end
-
-    begin
-      role :member do
-        can :read, Post
-        can :create, Post
+      # Less privileged secretary role
+      role :secretary do
+        #can :read, Supplier
+        #can :destroy, Supplier
       end
     end
   end

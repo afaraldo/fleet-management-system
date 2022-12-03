@@ -1,8 +1,10 @@
-class UsersController
-  def update
-    # only admins can elevate users to moderator status
-    if can? :make_moderator, @user
-      @user.moderator = params[:user][:moderator]
-    end
+# This class is a user controller
+class UsersController < ApplicationController
+  resource :user
+
+  private
+
+  def extra_params
+    %i[password password_confirmation]
   end
 end
