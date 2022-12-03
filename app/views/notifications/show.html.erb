@@ -1,0 +1,14 @@
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t("activerecord.models.notification.one") + " ##{@notification.id}" %>
+  </h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-12">
+        <p>
+          <%= @notification.params[:message] %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

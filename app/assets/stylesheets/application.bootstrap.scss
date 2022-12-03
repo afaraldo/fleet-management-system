@@ -65,3 +65,10 @@
   transform: translateY(-50%);
   transition: opacity 0.5s;
 }
+
+.badge.bg-primary.rounded-pill {
+  background-color: #ff3804 !important;
+  position: absolute;
+  top: 18px;
+  left: 22px;
+}

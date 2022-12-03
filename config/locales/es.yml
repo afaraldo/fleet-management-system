@@ -13,6 +13,8 @@ es:
   profile: Mi Perfil
   settings: Configuraciones
   logout: Cerrar Sessión
+  notification: Notificaciones
+  view_all_notification: Ver todos
   enums:
     work_order:
       status:
@@ -57,6 +59,9 @@ es:
       mechanical_workshop:
         one: Taller
         other: Talleres
+      notification:
+        one: Notificación
+        other: Notificaciones
       insurance_carrier:
         one: Aseguradora
         other: Aseguradoras
@@ -114,6 +119,8 @@ es:
         insurance_carrier: Aseguradora
         mechanical_workshop: Taller
         amount: Monto
+      notification:
+        message: Mensaje
   date:
     abbr_day_names:
       - dom
