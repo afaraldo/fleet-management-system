@@ -42,14 +42,30 @@
                 </div>
               </div>
               <!-- /Search -->
-              
-      
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
-                  <span></span>
+                <li class="nav-item dropdown lh-1 me-3">
+                  <a class="nav-link dropdown-toggle show" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                    <i class="tf-icons bx-sm bx bxs-bell"></i>
+                    <% if @current_user.notifications.unread.size.nonzero? %>
+                        <span class="badge bg-primary rounded-pill">
+                          <%= @current_user.notifications.unread.size %>
+                        </span>
+                    <% end %>
+                  </a>
+                  <ul class="dropdown-menu" data-bs-popper="none" aria-labelledby="navbarDropdown">
+                    <% @current_user.notifications.unread.each do |notification| %>
+                      <li><a class="dropdown-item" href="javascript:void(0);"><%= notification.params[:message] %></a></li>
+                    <% end %>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                      <%= link_to t('view_all_notification'), user_notifications_path(@current_user), class: "dropdown-item" %>
+                    </li>
+                  </ul>
                 </li>
-      
+
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">

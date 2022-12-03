@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :insurance_plans
   resources :maintenances
   resources :suppliers
-  resources :users
+  resources :users do
+    resources :notifications, only: %i[index show destroy]
+  end
   resources :work_orders
   resources :work_order_reports
 
