@@ -9,8 +9,4 @@ class SuppliersController < ApplicationController
   rescue AccessGranted::AccessDenied => e
     render json: { error: e.message }, status: :forbidden
   end
-
-  def create
-    authorize! :create, Supplier
-  end
 end

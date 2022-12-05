@@ -142,22 +142,24 @@
         <%= f.button 'submit', class: 'btn-primary btn-block' unless f.object.finished?%>
       </div>
     <% end %>
-    <div class='mt-2'>
-      <%= button_to t('authorize'),
-                    work_order_path(work_order),
-                    method: :put,
-                    params: {work_order: {status: :authorized}},
-                    remote: true,
-                    data: { confirm: t('buttons.confirm') },
-                    class: 'btn btn-secondary' if work_order.requested? && work_order.persisted? %>
-      <%= button_to t('finish'),
-                    work_order_path(work_order),
-                    method: :put,
-                    params: {work_order: {status: :finished}},
-                    remote: true,
-                    data: { confirm: t('buttons.confirm') },
-                    class: 'btn btn-secondary' if work_order.authorized? %>
-    </div>
+    <% if can? :authorize, WorkOrder %>
+      <div class='mt-2'>
+        <%= button_to t('authorize'),
+                      work_order_path(work_order),
+                      method: :put,
+                      params: {work_order: {status: :authorized}},
+                      remote: true,
+                      data: { confirm: t('buttons.confirm') },
+                      class: 'btn btn-secondary' if work_order.requested? && work_order.persisted? %>
+        <%= button_to t('finish'),
+                      work_order_path(work_order),
+                      method: :put,
+                      params: {work_order: {status: :finished}},
+                      remote: true,
+                      data: { confirm: t('buttons.confirm') },
+                      class: 'btn btn-secondary' if work_order.authorized? %>
+      </div>
+    <%end %>
   </div>
   <div class="card-footer text-right">
     <small class="text-light fw-semibold">

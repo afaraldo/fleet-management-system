@@ -155,8 +155,4 @@ class ApplicationController < ActionController::Base
       format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
   end
-
-  rescue_from "AccessGranted::AccessDenied" do |exception|
-    redirect_to root_path, alert: "No tienes permiso para acceder a esta página."
-  end
 end

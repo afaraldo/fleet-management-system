@@ -72,7 +72,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   employees_path(session['employees']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/employees}
+                  highlights_on: %r{/employees},
+                  if: proc { can? :create, Employee }
 
     primary.item  :key3,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
@@ -80,7 +81,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   work_orders_path(session['work_orders']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/work_orders}
+                  highlights_on: %r{/work_orders},
+                  if: proc { can? :create, WorkOrder }
 
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-car') +
@@ -88,7 +90,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   cars_path(session['cars']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/cars}
+                  highlights_on: %r{/cars},
+                  if: proc { can? :create, Car }
 
     primary.item  :key5,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-garage') +
@@ -96,7 +99,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   suppliers_path(session['suppliers']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/suppliers}
+                  highlights_on: %r{/suppliers},
+                  if: proc { can? :create, Supplier }
 
     primary.item  :key6,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-mechanic') +
@@ -104,14 +108,17 @@ SimpleNavigation::Configuration.run do |navigation|
                   maintenances_path(session['maintenances']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/maintenances}
+                  highlights_on: %r{/maintenances},
+                  if: proc { can? :create, Maintenance }
+
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-crash') +
                   content_tag(:div, I18n.t('navbar.insurance_plan'), class: nil),
                   insurance_plans_path(session['insurance_plans']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/insurance_plans}
+                  highlights_on: %r{/insurance_plans},
+                  if: proc { can? :create, InsurancePlan }
 
     primary.item :report,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-report') +
