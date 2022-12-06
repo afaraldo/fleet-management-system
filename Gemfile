@@ -168,4 +168,6 @@ gem 'noticed', '~> 1.6'
 # Used to processing images [https://github.com/janko/image_processing]
 gem 'image_processing', '>= 1.2'
 
-gem "sidekiq", "~> 7.0"
+# Used as backend and background jobs
+gem 'sidekiq', '~> 7.0'
+gem 'sidekiq-cron'
