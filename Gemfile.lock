@@ -106,6 +106,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.1.10)
+    connection_pool (2.3.0)
     controller_resources (1.0.0)
       rails
     crass (1.0.6)
@@ -307,6 +308,8 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
+    redis-client (0.11.2)
+      connection_pool
     reek (6.1.1)
       kwalify (~> 0.7.0)
       parser (~> 3.1.0)
@@ -410,6 +413,11 @@ GEM
     sexp_processor (4.16.1)
     shoulda-matchers (5.2.0)
       activesupport (>= 5.2.0)
+    sidekiq (7.0.2)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     simple-navigation (4.4.0)
       activesupport (>= 2.3.2)
     simple_form (5.1.0)
@@ -539,6 +547,7 @@ DEPENDENCIES
   sassc-rails
   schema_validations
   shoulda-matchers (~> 5.0)
+  sidekiq (~> 7.0)
   simple-navigation
   simple_form
   simple_form_ransack
