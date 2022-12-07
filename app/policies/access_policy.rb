@@ -24,28 +24,28 @@ class AccessPolicy
   def configure
     # The most important admin role, gets checked first
     role :admin, { admin?: true } do
-      can :manage, Employee
       can :manage, Car
-      can :manage, Supplier
-      can :manage, WorkOrder
-      can :manage, Maintenance
+      can :manage, Employee
       can :manage, InsurancePlan
+      can :manage, Maintenance
+      can :manage, Supplier
       can :manage, User
+      can :manage, WorkOrder
       can :authorize, WorkOrder
     end
-    # Less privileged driver role
-    role :driver do
+    # Less privileged secretary role
+    role :secretary, { secretary?: true } do
       can :create, Car
+      can :create, Employee
+      can :create, InsurancePlan
+      can :create, Maintenance
+      can :create, Supplier
       can :create, WorkOrder
     end
-    # Less privileged secretary role
-    role :secretary do
-      can :create, WorkOrder
-      can :create, Supplier
-      can :create, Employee
+    # Less privileged driver role
+    role :driver, { driver?: true } do
       can :create, Car
-      can :create, Maintenance
-      can :create, InsurancePlan
+      can :create, WorkOrder
     end
   end
 end
