@@ -21,6 +21,7 @@ Metrics/AbcSize:
     - app/controllers/work_order_reports_controller.rb
     - app/controllers/cars_controller.rb
     - app/interactors/get_car_events.rb
+    - app/sidekiq/notifications/insurance_plan_expiration_job.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb

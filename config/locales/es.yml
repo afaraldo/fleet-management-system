@@ -121,6 +121,7 @@ es:
         amount: Monto
       notification:
         message: Mensaje
+        status: Estado
   date:
     abbr_day_names:
       - dom
