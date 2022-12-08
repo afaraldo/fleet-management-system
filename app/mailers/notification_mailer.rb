@@ -1,6 +1,6 @@
 # This class is Notification Mailer
 class NotificationMailer < ApplicationMailer
   def event_notification
-    mail(to: @user.email, subject: @user.email)
+    mail(to: 'afaraldo@protonmail.com', subject: I18n.t('notification_message'))
   end
 end
