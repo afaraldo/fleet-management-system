@@ -159,9 +159,6 @@ gem 'caxlsx_rails'
 # Used to improve performance using second level cache [https://github.com/hooopo/second_level_cache]
 # gem 'second_level_cache', '~> 2.7'
 
-# Used to process background job [https://github.com/collectiveidea/delayed_job/tree/v4.1.11]
-# gem 'delayed_job_active_record'
-
 # Used to add notification [https://github.com/excid3/noticed]
 gem 'noticed', '~> 1.6'
 
@@ -169,5 +166,8 @@ gem 'noticed', '~> 1.6'
 gem 'image_processing', '>= 1.2'
 
 # Used as backend and background jobs
-gem 'sidekiq', '~> 7.0'
-gem 'sidekiq-cron'
+gem 'sidekiq', '~> 7.0' # [https://github.com/mperham/sidekiq]
+gem 'sidekiq-cron' # [https://github.com/sidekiq-cron/sidekiq-cron]
+
+# Used to send email [https://github.com/mikel/mailhttps://github.com/mikel/mail]
+gem 'mail'
