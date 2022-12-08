@@ -73,7 +73,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/employees},
-                  if: proc { can? :create, Employee }
+                  if: proc { can? :read, Employee }
 
     primary.item  :key3,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
@@ -82,7 +82,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/work_orders},
-                  if: proc { can? :create, WorkOrder }
+                  if: proc { can? :read, WorkOrder }
 
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-car') +
@@ -91,7 +91,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/cars},
-                  if: proc { can? :create, Car }
+                  if: proc { can? :read, Car }
 
     primary.item  :key5,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-garage') +
@@ -100,7 +100,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/suppliers},
-                  if: proc { can? :create, Supplier }
+                  if: proc { can? :read, Supplier }
 
     primary.item  :key6,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-mechanic') +
@@ -109,7 +109,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/maintenances},
-                  if: proc { can? :create, Maintenance }
+                  if: proc { can? :read, Maintenance }
 
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-crash') +
@@ -118,7 +118,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/insurance_plans},
-                  if: proc { can? :create, InsurancePlan }
+                  if: proc { can? :read, InsurancePlan }
 
     primary.item :report,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-report') +
@@ -126,7 +126,8 @@ SimpleNavigation::Configuration.run do |navigation|
                  work_order_reports_path(session['work_order_reports']),
                  html: { class: 'menu-item' },
                  link_html: { class: 'menu-link' },
-                 highlights_on: %r{/work_order_reports}
+                 highlights_on: %r{/work_order_reports},
+                 if: proc { can? :view_report, WorkOrder }
 
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|

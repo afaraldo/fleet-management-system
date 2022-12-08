@@ -32,20 +32,22 @@ class AccessPolicy
       can :manage, User
       can :manage, WorkOrder
       can :authorize, WorkOrder
+      can :view_report, WorkOrder
     end
     # Less privileged secretary role
     role :secretary, { secretary?: true } do
-      can :create, Car
-      can :create, Employee
-      can :create, InsurancePlan
-      can :create, Maintenance
-      can :create, Supplier
-      can :create, WorkOrder
+      can :manage, Car
+      can :manage, Employee
+      can :manage, InsurancePlan
+      can :manage, Maintenance
+      can :manage, Supplier
+      can :manage, WorkOrder
+      can :view_report, WorkOrder
     end
     # Less privileged driver role
     role :driver, { driver?: true } do
-      can :create, Car
-      can :create, WorkOrder
+      can :read, Car
+      can :read, WorkOrder
     end
   end
 end

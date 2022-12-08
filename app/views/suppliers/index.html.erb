@@ -40,9 +40,7 @@
             <td><%= supplier.ruc %></td>
             <td><%= t("activerecord.models.#{supplier.type.underscore}.one") %></td>
             <td class="d-print-none">
-              <% if can? :destroy, Supplier %>
                 <%= render(partial: 'components/action_buttons', locals: { model: supplier })%>
-              <%end %>
             </td>
           </tr>
         <% end %>

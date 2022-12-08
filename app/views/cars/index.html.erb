@@ -3,7 +3,9 @@
 <div class="card">
   <h5 class="card-header">
     <%= t('activerecord.models.car.other') %>
-    <%= link_to t('buttons.new'), new_car_path, class: 'btn btn-primary' %>
+    <% if can? :create, Car %>
+      <%= link_to t('buttons.new'), new_car_path, class: 'btn btn-primary' %>
+    <%end %>
   </h5>
 
   <div class="table-responsive text-nowrap">
@@ -48,7 +50,9 @@
       <tbody>
         <% @cars.each do |car| %>
           <tr>
-            <td><strong><%= link_to car.plate_number, car_path(car) %></strong></td>
+            <% if can? :update, Car %>
+              <td><strong><%= link_to car.plate_number, car_path(car) %></strong></td>
+            <%end %>
             <td><%= car.make %></td>
             <td><%= car.model %></td>
             <td>

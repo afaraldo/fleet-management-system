@@ -65,7 +65,7 @@
           <td><%= work_order.employee_full_name %></td>
           <td><%= add_status(work_order.status) %></td>
           <td class="d-print-none">
-              <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
+            <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
           </td>
         </tr>
       <% end %>
