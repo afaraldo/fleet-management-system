@@ -21,12 +21,14 @@ Metrics/AbcSize:
     - app/controllers/work_order_reports_controller.rb
     - app/controllers/cars_controller.rb
     - app/interactors/get_car_events.rb
+    - app/policies/access_policy.rb
     - app/sidekiq/notifications/insurance_plan_expiration_job.rb
     - app/controllers/users_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
     - config/environments/development.rb
+    - db/seeds.rb
   #Max: 50
 Rails/Delegate:
   Exclude:
@@ -39,6 +41,7 @@ Metrics/MethodLength:
     - app/interactors/get_car_events.rb
     - app/controllers/cars_controller.rb
     - app/controllers/application_controller.rb
+    - app/policies/access_policy.rb
 Rails/RootPathnameMethods:
   Exclude:
     - config/initializers/app_version.rb

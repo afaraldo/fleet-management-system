@@ -13,4 +13,5 @@ class User < ApplicationRecord
   def to_s
     "#{self.class.model_name.human} #{email}"
   end
+  enum role: { admin: 0, secretary: 1, driver: 2 }
 end

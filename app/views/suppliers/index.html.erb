@@ -1,49 +1,50 @@
 <%= render 'search_form', ransack: @ransack %>
-
-<div class="card">
-  <h5 class="card-header">
-    <%= t('activerecord.models.supplier.other') %>
-    <%= link_to t('buttons.new'), new_supplier_path, class: 'btn btn-primary' %>
-  </h5>
-
-  <div class="table-responsive text-nowrap">
-    <table class="table">
-      <caption class="ms-4">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="mr-auto">
-            <%= page_entries_info @suppliers, entry_name: 'item' %>
-          </div>
-          <%= paginate @suppliers, remote: true %>
-        </div>
-      </caption>
-      <thead>
-      <tr>
-        <%= search_form_for @ransack do |f| %>
-          <th>
-            <%= sort_link(@ransack, :name, t('activerecord.attributes.supplier.name'), default_order: :asc) %>
-          </th>
-          <th>
-            <%= sort_link(@ransack, :ruc, t('activerecord.attributes.supplier.ruc'), default_order: :asc) %>
-          </th>
-          <th>
-            <%= sort_link(@ransack, :type, t('activerecord.attributes.supplier.type'), default_order: :asc) %>
-          </th>
-          <th class="d-print-none"></th>
-        <% end %>
-      </tr>
-      </thead>
-      <tbody>
-      <% @suppliers.each do |supplier| %>
-        <tr>
-          <td><strong><%= supplier.name %></strong></td>
-          <td><%= supplier.ruc %></td>
-          <td><%= t("activerecord.models.#{supplier.type.underscore}.one") %></td>
-          <td class="d-print-none">
-            <%= render(partial: 'components/action_buttons', locals: { model: supplier })%>
-          </td>
-        </tr>
+  <div class="card">
+    <h5 class="card-header">
+      <%= t('activerecord.models.supplier.other') %>
+      <% if can? :create, Supplier %>
+        <%= link_to t('buttons.new'), new_supplier_path, class: 'btn btn-primary' %>
       <% end %>
-      </tbody>
-    </table>
+    </h5>
+
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <caption class="ms-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="mr-auto">
+              <%= page_entries_info @suppliers, entry_name: 'item' %>
+            </div>
+            <%= paginate @suppliers, remote: true %>
+          </div>
+        </caption>
+        <thead>
+        <tr>
+          <%= search_form_for @ransack do |f| %>
+            <th>
+              <%= sort_link(@ransack, :name, t('activerecord.attributes.supplier.name'), default_order: :asc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :ruc, t('activerecord.attributes.supplier.ruc'), default_order: :asc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :type, t('activerecord.attributes.supplier.type'), default_order: :asc) %>
+            </th>
+            <th class="d-print-none"></th>
+          <% end %>
+        </tr>
+        </thead>
+        <tbody>
+        <% @suppliers.each do |supplier| %>
+          <tr>
+            <td><strong><%= supplier.name %></strong></td>
+            <td><%= supplier.ruc %></td>
+            <td><%= t("activerecord.models.#{supplier.type.underscore}.one") %></td>
+            <td class="d-print-none">
+                <%= render(partial: 'components/action_buttons', locals: { model: supplier })%>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>

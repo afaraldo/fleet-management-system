@@ -7,7 +7,28 @@
 #   Character.create(name: "Luke", movie: movies.first)
 PaperTrail.request(whodunnit: 'Administrador') do
   superuser = User.find_by(email: 'admin@email.com')
-  User.create(email: 'admin@email.com', password: 'test123', password_confirmation: 'test123') unless superuser
+  unless superuser
+    User.create(email: 'admin@email.com',
+                password: 'test123',
+                password_confirmation: 'test123',
+                role: :admin)
+  end
+
+  superuser = User.find_by(email: 'afaraldo@protonmail.com')
+  unless superuser
+    User.create(email: 'afaraldo@protonmail.com',
+                password: 'test123',
+                password_confirmation: 'test123',
+                role: :admin)
+  end
+
+  superuser = User.find_by(email: 'karina.sanabria75@gmail.com ')
+  unless superuser
+    User.create(email: 'karina.sanabria75@gmail.com',
+                password: 'test123',
+                password_confirmation: 'test123',
+                role: :admin)
+  end
 
   100.times do
     FactoryBot.create(:car)

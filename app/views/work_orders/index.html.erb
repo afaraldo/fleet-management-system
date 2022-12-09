@@ -3,10 +3,12 @@
 <div class="card">
   <h5 class="card-header">
     <%= t('activerecord.models.work_order.other') %>
-    <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
-    <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
-                work_orders_path(params: session['work_orders'], format: 'xlsx' ),
-                class: 'btn btn-secondary' %>
+    <% if can? :create, WorkOrder %>
+      <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
+      <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                  work_orders_path(params: session['work_orders'], format: 'xlsx' ),
+                  class: 'btn btn-secondary' %>
+    <% end %>
   </h5>
 
   <div class="table-responsive text-nowrap">
@@ -49,8 +51,13 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
-          <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+          <% if can? :update, WorkOrder %>
+            <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
+            <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+          <%else %>
+            <td><%= work_order.number%></td>
+            <td><%= work_order.car_plate_number%></td>
+          <%end %>
           <td><%= work_order.city %></td>
           <td><%= datetime_format(work_order.start_date) %></td>
           <td><%= datetime_format(work_order.final_date) %></td>
