@@ -28,9 +28,15 @@ yarn install   # for dependencies in NodeJS
 
 Create file config/master.key with decrypt credentials.yml.enc
 
+Usage: EDITOR="gedit" bin/rails credentials:edit
+
+Example in credentials_example.yml
+
 * Database creation
 
-podman-compose down/up
+podman-compose up/down
+
+This command should initialize a postgresql database and redis database
 
 * Database initialization
 
@@ -42,6 +48,9 @@ rake db:seed
 rspec
 
 * Services (job queues, cache servers, search engines, etc.)
+
+sidekiq # To start job queues
+podman exec -it fleet-management-system_cache_1 redis-cli flushall # clean all data in redis
 
 Nothing
 

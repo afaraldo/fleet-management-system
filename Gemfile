@@ -139,7 +139,7 @@ gem 'faker' # https://github.com/faker-ruby/faker
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
-gem 'nokogiri', '>= 1.13.9'
+gem 'nokogiri', '>= 1.13.10'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
 # Used to add app version [https://github.com/mort666/app_version]
@@ -159,11 +159,15 @@ gem 'caxlsx_rails'
 # Used to improve performance using second level cache [https://github.com/hooopo/second_level_cache]
 # gem 'second_level_cache', '~> 2.7'
 
-# Used to process background job [https://github.com/collectiveidea/delayed_job/tree/v4.1.11]
-# gem 'delayed_job_active_record'
-
 # Used to add notification [https://github.com/excid3/noticed]
 gem 'noticed', '~> 1.6'
 
 # Used to processing images [https://github.com/janko/image_processing]
 gem 'image_processing', '>= 1.2'
+
+# Used as backend and background jobs
+gem 'sidekiq', '~> 7.0' # [https://github.com/mperham/sidekiq]
+gem 'sidekiq-cron' # [https://github.com/sidekiq-cron/sidekiq-cron]
+
+# Used to send email [https://github.com/mikel/mailhttps://github.com/mikel/mail]
+gem 'mail'

@@ -20,12 +20,16 @@
         <th>
           <%= t('activerecord.attributes.notification.message') %>
         </th>
+        <th>
+          <%= t('activerecord.attributes.notification.status') %>
+        </th>
       </tr>
       </thead>
       <tbody>
       <% @notifications.each do |notification| %>
         <tr>
           <td><strong><%= link_to notification.params[:message], user_notification_path(@user, notification) %></strong></td>
+          <td><%= content_tag(:span, "Sin leer", class: 'badge bg-label bg-primary') if notification.unread? %></td>
         </tr>
       <% end %>
       </tbody>

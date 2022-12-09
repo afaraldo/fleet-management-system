@@ -1,6 +1,7 @@
 version: "3.9"
 
 services:
+  # podman exec -it fleet-management-system_db_1 /bin/bash
   db:
     image: postgres
     volumes:
@@ -11,3 +12,10 @@ services:
       - POSTGRES_DB=postgres
     ports:
       - '5432:5432'
+  #  podman exec -it fleet-management-system_cache_1 redis-cli
+  cache:
+    image: redis:6.2-alpine
+    volumes:
+      - cache:/data:Z
+    ports:
+      - '6379:6379'

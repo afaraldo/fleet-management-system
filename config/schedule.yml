@@ -1,0 +1,17 @@
+insurance_plan_expiration_today_job:
+  cron: "0 7 * * 1" # Tuesday at 23:50
+  class: "Notifications::InsurancePlanExpirationJob"
+  queue: default
+  args: day # Using to calculate expiry plans
+
+insurance_plan_expiration_week_job:
+  cron: "0 7 * * 1" # Tuesday at 23:50
+  class: "Notifications::InsurancePlanExpirationJob"
+  queue: default
+  args: week # Using to calculate expiry plans
+
+insurance_plan_expiration_month_job:
+  cron: "0 7 * * 1" # Tuesday at 23:50
+  class: "Notifications::InsurancePlanExpirationJob"
+  queue: default
+  args: month # Using to calculate expiry plans

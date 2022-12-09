@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy # https://github.com/excid3/noticed
 
   validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
   validates :password, confirmation: { presence: true }
 
   def to_s
