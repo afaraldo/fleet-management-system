@@ -43,6 +43,20 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration-for-gmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: Rails.application.credentials.smpt.gmail.username,
+    password: Rails.application.credentials.smpt.gmail.password,
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    open_timeout: 5,
+    read_timeout: 5
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

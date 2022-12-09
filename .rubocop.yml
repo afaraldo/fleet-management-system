@@ -22,9 +22,12 @@ Metrics/AbcSize:
     - app/controllers/cars_controller.rb
     - app/interactors/get_car_events.rb
     - app/policies/access_policy.rb
+    - app/sidekiq/notifications/insurance_plan_expiration_job.rb
+    - app/controllers/users_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
+    - config/environments/development.rb
   #Max: 50
 Rails/Delegate:
   Exclude:

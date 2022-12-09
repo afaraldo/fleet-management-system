@@ -7,6 +7,7 @@ es:
       number:
         contains: Contiene
     total: Total
+  notification_message: Mensaje de Alerta
   form: Formulario
   authorize: Autorizar
   finish: Finalizar
@@ -126,6 +127,7 @@ es:
         amount: Monto
       notification:
         message: Mensaje
+        status: Estado
   date:
     abbr_day_names:
       - dom
