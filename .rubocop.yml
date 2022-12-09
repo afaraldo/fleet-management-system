@@ -28,6 +28,7 @@ Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
     - config/environments/development.rb
+    - db/seeds.rb
   #Max: 50
 Rails/Delegate:
   Exclude:
