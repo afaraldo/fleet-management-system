@@ -1,2 +1,69 @@
-<h1>DashBoard#index</h1>
-<p>Find me in app/views/dash_board/index.html.erb</p>
+<div class="content-wrapper">
+  <!-- Content -->
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <div class = "row">
+      <div class="col-lg-8 mb-4 order-0">
+        <div class="card">
+          <div class="d-flex align-items-end row">
+            <div class="col-sm-6">
+              <div class="card-body">
+                <p class="mb-4">
+                  <h4 class="card-title text-primary">BIENVENIDO!!! 🎉</h4>
+                  <h5><span class="fw-semibold d-block"><%= @current_user.email %></span></h5>
+                </p>
+                <span class="fw-semibold d-block"><%= I18n.localize Date.today, format: :long%></span>
+              </div>
+            </div>
+            <div class="col-sm-5 text-center text-sm-left">
+              <div class="card-body pb-0 px-0 px-md-6">
+              <span class="app-brand-logo demo" >
+                <%= image_tag SystemSettings[:cars], size: "300x140" %></svg>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 order-1">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                  <h4 class="card-title text-primary">
+                    <span class="fw-semibold d-block"><%= WorkOrder.where(status: :finished).size %></span>
+                  </h4>
+                  <div class="avatar flex-shrink-0">
+                   <span class="app-brand-logo demo" >
+                     <%= image_tag SystemSettings[:success], size: "100x100" %></svg>
+                   </span>
+                  </div>
+                </div>
+                <span>Ordenes de Trabajo Terminados </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                  <h4 class="card-title text-primary">
+                    <span class="fw-semibold d-block"><%= WorkOrder.where(status: :requested).size %></span>
+                  </h4>
+                  <div class="avatar flex-shrink-0">
+                    <span class="app-brand-logo demo" >
+                      <%= image_tag SystemSettings[:success], size: "100x100" %></svg>
+                    </span>
+                  </div>
+                </div>
+                <span>Solicitudes de Ordenes de Trabajo </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
