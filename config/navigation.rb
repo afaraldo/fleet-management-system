@@ -129,6 +129,14 @@ SimpleNavigation::Configuration.run do |navigation|
                  highlights_on: %r{/work_order_reports},
                  if: proc { can? :view_report, WorkOrder }
 
+    primary.item :settings,
+                 content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-cog me-2') +
+                 content_tag(:div, I18n.t('settings'), class: nil),
+                 system_settings_path(),
+                 html: { class: 'menu-item' },
+                 link_html: { class: 'menu-link' }
+
+
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|
     #  # Add an item to the sub navigation (same params again)

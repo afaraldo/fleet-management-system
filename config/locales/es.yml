@@ -358,6 +358,7 @@ es:
     maintenance: "Mantenimientos"
     insurance_plan : "Pólizas de Seguros"
     report: Reportes
+    settings: Configuraciones
   views:
     links:
       pdf: PDF
