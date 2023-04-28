@@ -19,7 +19,7 @@ gem 'breadcrumbs_on_rails'
 gem 'controller_resources'
 
 # This line is required for dependabot security alerts [CVE-2022-32209]
-gem 'rails-html-sanitizer', '>= 1.4.3'
+gem 'rails-html-sanitizer', '>= 1.4.4'
 
 # This gem is used for build form more easily [https://github.com/heartcombo/simple_form]
 gem 'simple_form'
