@@ -73,7 +73,7 @@ Also use rubocop -f html -o rubocop.html
 
 # fleet-management-system
 
-Demo: https://fleet-management-system-prod.herokuapp.com/
+Demo: https://railway.app/project/9d28cfea-2239-4672-9a26-de1c09593ffd
 Credentials:
 - username: admin@email.com
 - password: test123
