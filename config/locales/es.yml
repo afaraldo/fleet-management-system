@@ -116,8 +116,9 @@ es:
         name: Nombre
         last_name: Apellido
         document: Nro. de Identidad
-        address: Dirección
+        address: Distrito
         phone: Teléfono
+        position: Cargo
       insurance_plan:
         contract_date: Fecha de Contrato
         expiry_date: Fecha de Vencimiento
@@ -417,8 +418,9 @@ es:
         name: Nombre
         last_name: Apellido
         document: Nro. de Identidad
-        address: Dirección
+        address: Distrito
         phone: Teléfono
+        position: Cargo
       insurance_plan:
         contract_date: Fecha de Contrato
         expiry_date: Fecha de Vencimiento
