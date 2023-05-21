@@ -23,11 +23,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_134353) do
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string   "key",          :null=>false, :index=>{:name=>"index_active_storage_blobs_on_key", :unique=>true}
-    t.string   "filename",     :null=>false
-    t.string   "content_type"
-    t.text     "metadata"
-    t.string   "service_name", :null=>false
+    t.string "key", :null => false, :index => { :name => "index_active_storage_blobs_on_key", :unique => true }
+    t.string "filename", :null => false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", :null => false
     t.bigint "byte_size", :null => false
     t.string "checksum"
     t.datetime "created_at", :null => false
@@ -95,8 +95,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_134353) do
     t.string "engine"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "rasp",         :index=>{:name=>"index_cars_on_rasp"}
-    t.boolean  "horometro",    :default=>false, :null=>false
+    t.string "rasp", :index => { :name => "index_cars_on_rasp" }
+    t.boolean "horometro", :default => false, :null => false
   end
 
   create_table "cars_insurance_plans", force: :cascade do |t|

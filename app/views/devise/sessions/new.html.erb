@@ -2,9 +2,9 @@
   <div class="card shadow">
     <div class="card-header">
       <div class="app-brand justify-content-center">
-        <a href="<%= root_path %>>" class="app-brand-link" >
-          <span class="app-brand-logo demo" >
-            <%= image_tag SystemSettings[:logo_file], size: "100x100" %></svg>
+        <a href="<%= root_path %>>" class="app-brand-link">
+          <span class="app-brand-logo demo">
+            <%= image_tag SystemSettings[:logo_file], size: "250x250" %></svg>
           </span>
         </a>
       </div>
@@ -13,8 +13,8 @@
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
-        <div class='mb-3'>
-          <%= f.label :email %><br />
+          <div class='mb-3'>
+            <%= f.label :email %><br/>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control",placeholder: "Ingrese su correo"%>
         </div>
         <div class="mb-3 form-password-toggle">
@@ -31,16 +31,16 @@
             <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
           </div>
         </div>
-        <div class="mb-3">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="remember-me">
-            <label class="form-check-label" for="remember-me">
-              Recuerdame
-            </label>
-          </div>
-        </div>
-        <div class='mb-3'>
-          <%= f.submit "Iniciar Sesión" , class:"btn btn-primary d-grid w-100" %>
+          <!--        <div class="mb-3">-->
+          <!--          <div class="form-check">-->
+          <!--            <input class="form-check-input" type="checkbox" id="remember-me">-->
+          <!--            <label class="form-check-label" for="remember-me">-->
+          <!--              Recuerdame-->
+          <!--            </label>-->
+          <!--          </div>-->
+          <!--        </div>-->
+          <div class='mb-3'>
+            <%= f.submit "Iniciar Sesión" , class:"btn btn-primary d-grid w-100" %>
         </div>
         </form>
       <% end %>
