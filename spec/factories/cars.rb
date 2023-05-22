@@ -7,5 +7,7 @@ FactoryBot.define do
     chassis { Faker::Vehicle.car_type }
     rasp { Faker::Number.number(digits: 6) }
     horometro { Faker::Boolean.boolean }
+    year { Faker::Vehicle.year }
+    type_car { Faker::Vehicle.car_type }
   end
 end
