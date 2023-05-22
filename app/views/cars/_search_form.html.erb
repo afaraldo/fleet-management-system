@@ -44,6 +44,17 @@
         <%= f.label :rasp, for: 'floatingInput' %>
       </div>
     </div>
+    <div class="col-3">
+      <div class='form-floating'>
+        <%= f.input_field :assigned_dependency,
+                          class:'form-control',
+                          'aria-describedby':"floatingInputHelp",
+                          name: 'q[assigned_dependency_start]',
+                          value: ransack.assigned_dependency_start
+        %>
+        <%= f.label :assigned_dependency, for: 'floatingInput' %>
+      </div>
+    </div>
     <div class="col">
       <%= f.button :submit, t('buttons.search'), class:'btn btn btn-secondary' %>
     </div>

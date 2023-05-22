@@ -5,8 +5,9 @@ FactoryBot.define do
     color { Faker::Color.hex_color }
     plate_number { Faker::Vehicle.license_plate }
     chassis { Faker::Vehicle.car_type }
-    engine { Faker::Vehicle.engine }
     rasp { Faker::Number.number(digits: 6) }
     horometro { Faker::Boolean.boolean }
+    year { Faker::Vehicle.year }
+    type_car { Faker::Vehicle.car_type }
   end
 end

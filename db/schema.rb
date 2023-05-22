@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_160454) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,11 +44,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_160454) do
     t.string   "color"
     t.string   "plate_number"
     t.string   "chassis"
-    t.string   "engine"
-    t.datetime "created_at",   :null=>false
-    t.datetime "updated_at",   :null=>false
-    t.string   "rasp",         :index=>{:name=>"index_cars_on_rasp"}
-    t.boolean  "horometro",    :default=>false, :null=>false
+    t.datetime "created_at",          :null=>false
+    t.datetime "updated_at",          :null=>false
+    t.string   "rasp",                :index=>{:name=>"index_cars_on_rasp"}
+    t.boolean  "horometro",           :default=>false, :null=>false
+    t.integer  "year"
+    t.string   "assigned_dependency"
+    t.string   "type_car"
   end
 
   create_table "cars_insurance_plans", force: :cascade do |t|

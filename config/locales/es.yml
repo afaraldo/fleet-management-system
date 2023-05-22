@@ -81,7 +81,9 @@ es:
         color: Color
         plate_number: Chapa
         chassis: Chasis
-        engine: Motor
+        type_car: Tipo de vehículo
+        year: Año
+        assigned_dependency: Dependencia Asignada
       work_order:
         start_date: Desde
         final_date: Hasta
@@ -378,7 +380,6 @@ es:
         color: Color
         plate_number: Chapa
         chassis: Chasis
-        engine: Motor
     hints:
       car:
         make: 'User name to sign in.'
@@ -389,8 +390,10 @@ es:
         color: Color
         plate_number: Chapa
         chassis: Chasis
-        engine: Motor
+        type_car: Tipo de vehículo
         rasp: RASP
+        year: Año
+        assigned_dependency: Dependencia Asignada
         horometro: Horometro
       work_order:
         date: Fecha
@@ -445,6 +448,5 @@ es:
         make: Marca
         model: Modelo
         color: Color
-        engine: Motor
       work_order:
         date: Fecha
