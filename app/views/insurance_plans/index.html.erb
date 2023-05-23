@@ -24,6 +24,7 @@
             <%= sort_link(@ransack, :contract_date, t('activerecord.attributes.insurance_plan.contract_date'), default_order: :desc) %>
           </th>
           <th><%= t('activerecord.attributes.insurance_plan.expiry_date')%></th>
+          <th><%= t('activerecord.attributes.insurance_plan.type_coverage')%></th>
           <th><%= t('activerecord.attributes.insurance_plan.cars')%></th>
           <th><%= t('activerecord.attributes.insurance_plan.insurance_carrier')%></th>
           <th><%= t('activerecord.attributes.insurance_plan.amount')%></th>
@@ -36,6 +37,7 @@
         <tr>
           <td><strong><%= datetime_format(insurance_plan.contract_date)%></strong></td>
           <td><%= datetime_format(insurance_plan.expiry_date)%></td>
+          <td><%= insurance_plan.type_coverage %></td>
           <td><%= insurance_plan.cars.map {|car| car.to_s }.to_sentence %></td>
           <td><%= insurance_plan.insurance_carrier_name%></td>
           <td><%= insurance_plan.amount %></td>

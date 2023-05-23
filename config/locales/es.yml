@@ -122,12 +122,13 @@ es:
         phone: Teléfono
         position: Cargo
       insurance_plan:
-        contract_date: Fecha de Contrato
-        expiry_date: Fecha de Vencimiento
+        type_coverage: Tipo de Cobertura
+        contract_date: Fecha de Cobertura
+        expiry_date: Vencimiento de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
         mechanical_workshop: Taller
-        amount: Monto
+        amount: Monto anual
       notification:
         message: Mensaje
         status: Estado
@@ -425,11 +426,12 @@ es:
         phone: Teléfono
         position: Cargo
       insurance_plan:
-        contract_date: Fecha de Contrato
-        expiry_date: Fecha de Vencimiento
+        type_coverage: Tipo de Cobertura
+        contract_date: Fecha de Cobertura
+        expiry_date: Vencimiento de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
-        amount: Monto
+        amount: Monto Anual
 
   ransack:
     asc: Ascendente

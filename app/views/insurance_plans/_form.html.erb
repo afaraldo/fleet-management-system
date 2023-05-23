@@ -5,7 +5,7 @@
   <div class="card-body">
     <%= simple_form_for(@insurance_plan) do |f| %>
       <div class='row'>
-        <div class='col-xl-6 mb-3'>
+        <div class='col-xl-4 mb-3'>
           <div class='form-floating'>
             <%= f.input_field :contract_date,
                               as: :string,
@@ -18,7 +18,7 @@
             <%= f.label :contract_date, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-xl-6 mb-3">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :expiry_date,
                               as: :string,
@@ -31,6 +31,12 @@
             <%= f.label :expiry_date, for: 'floatingInput' %>
           </div>
         </div>
+          <div class="col-xl-4 mb-3">
+            <div class='form-floating'>
+              <%= f.input_field :type_coverage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+              <%= f.label :type_coverage, for: 'floatingInput' %>
+            </div>
+          </div>
       </div>
       <div class="row">
         <div class='form-floating col-xl-6 mb-3'>
@@ -63,7 +69,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xl-12 mb-3">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.input_field :amount, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :amount, for: 'floatingInput' %>

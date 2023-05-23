@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_23_022033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.datetime "created_at",           :null=>false
     t.datetime "updated_at",           :null=>false
     t.bigint   "insurance_carrier_id", :index=>{:name=>"index_insurance_plans_on_insurance_carrier_id"}
+    t.string   "type_coverage"
   end
 
   create_table "maintenances", force: :cascade do |t|
