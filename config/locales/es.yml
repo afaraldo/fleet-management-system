@@ -124,7 +124,7 @@ es:
       insurance_plan:
         type_coverage: Tipo de Cobertura
         contract_date: Fecha de Cobertura
-        expiry_date: Vencimiento de Cobertura
+        expiry_date: Venc. de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
         mechanical_workshop: Taller
@@ -428,7 +428,7 @@ es:
       insurance_plan:
         type_coverage: Tipo de Cobertura
         contract_date: Fecha de Cobertura
-        expiry_date: Vencimiento de Cobertura
+        expiry_date: Venc. de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
         amount: Monto Anual

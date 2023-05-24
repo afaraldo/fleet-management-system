@@ -17,7 +17,7 @@
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.input_field :contract_date,
+        <%= f.input_field :expiry_date,
                           as: :string,
                           class: 'form-control',
                           value: ransack.contract_date_gteq,
@@ -27,7 +27,18 @@
                           },
                           name: 'q[contract_date_gteq]'
         %>
-        <%= f.label :contract_date, for: 'floatingInput' %>
+        <%= f.label :expiry_date, for: 'floatingInput' %>
+      </div>
+    </div>
+    <div class="col">
+      <div class='form-floating'>
+        <%= f.input_field :type_coverage,
+                          class:'form-control col-auto',
+                          'aria-describedby':"floatingInputHelp",
+                          name: 'q[type_coverage_start]',
+                          value: ransack.type_coverage_start
+        %>
+        <%= f.label :type_coverage, for: 'floatingInput' %>
       </div>
     </div>
     <div class="col">
@@ -70,17 +81,7 @@
         <%= f.label :cars, for: 'floatingInput' %>
       </div>
     </div>
-    <div class="col">
-      <div class='form-floating'>
-        <%= f.input_field :type_coverage,
-                          class:'form-control col-auto',
-                          'aria-describedby':"floatingInputHelp",
-                          name: 'q[type_coverage_start]',
-                          value: ransack.type_coverage_start
-        %>
-        <%= f.label :type_coverage, for: 'floatingInput' %>
-      </div>
-    </div>
+
     <div class="col">
       <%= f.button :submit, t('buttons.search'), class:'btn btn btn-secondary' %>
     </div>
