@@ -20,7 +20,10 @@ This README would normally document whatever steps are necessary to get the
 You need to install libyaml-devel
 dnf install libyaml-devel
 dnf install postgresql-devel
-gem install pg -- --with-pg-lib=/usr/lib64
+
+# gem install pg -v 1.4.3 -- --with-pg-lib=/usr/lib64
+
+# gem install pg -v 1.4.3 -- --with-pg-config=/usr/pgsql-15/bin/pg_config
 
 You need to install ImageMagick
 Use dnf install ImageMagick ImageMagick-devel in RHEL Linux [https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/]
