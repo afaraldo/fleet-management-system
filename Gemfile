@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.0.3'
+gem 'rails', '~> 7.0.5'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -93,8 +93,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'brakeman', '~> 5.2.3'
   gem 'bundler-audit', '~> 0.9.1'
-  gem 'debase', require: false
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
@@ -139,17 +137,17 @@ gem 'faker' # https://github.com/faker-ruby/faker
 # Used to integration between ActiveRecord Enum and simple_form [https://github.com/zmbacker/enum_help]
 gem 'enum_help'
 # Parser XML/JSON [https://github.com/sparklemotion/nokogiri]
-gem 'nokogiri', '>= 1.13.10'
+gem 'nokogiri'
 # Used to add version to objects [https://github.com/paper-trail-gem/paper_trail]
 gem 'paper_trail', '~> 13.0'
 # Used to add app version [https://github.com/mort666/app_version]
-gem 'app_version', '~> 0.1.8'
+gem 'app_version', git: 'https://github.com/afaraldo/app_version.git', branch: 'master'
 # Access-granted [https://github.com/chaps-io/access-granted]
 gem 'access-granted', '~> 1.0.0'
 # Used to generate reports [https://github.com/ruport/ruport]
 # Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 # Used to generate reports [https://github.com/ashrafuzzaman/query_report]
-gem 'query_report'
+# gem 'query_report'
 # Used to add service layer [https://github.com/collectiveidea/interactor-rails]
 gem 'interactor-rails', '~> 2.0'
 # Used to export spreadsheet [https://github.com/caxlsx/caxlsx_rails]
@@ -176,3 +174,6 @@ gem 'mail'
 
 # Used to reporting [https://github.com/ankane/blazer]
 gem 'blazer'
+
+# Used to build view components [https://github.com/viewcomponent/view_component]
+gem 'view_component'

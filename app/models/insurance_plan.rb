@@ -8,4 +8,12 @@ class InsurancePlan < ApplicationRecord
   def to_s
     "#{self.class.model_name.human} Nro: #{id}"
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[amount contract_date created_at expiry_date id insurance_carrier_id updated_at]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[cars insurance_carrier versions]
+  end
 end

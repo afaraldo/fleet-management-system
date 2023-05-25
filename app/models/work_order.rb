@@ -70,6 +70,10 @@ class WorkOrder < ApplicationRecord
     parent.table[:status]
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[area car_id city created_at description employee_id final_date final_mileage final_oil id integer number start_date start_mileage status updated_at]
+  end
+
   private
 
   def validate_start_date

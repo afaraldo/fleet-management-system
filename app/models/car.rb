@@ -10,4 +10,8 @@ class Car < ApplicationRecord
   def to_s
     "#{make} #{model} #{plate_number}"
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[chassis color created_at engine horometro id make model plate_number rasp updated_at]
+  end
 end
