@@ -38,6 +38,54 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.string "variation_digest", :null=>false
   end
 
+  create_table "blazer_audits", force: :cascade do |t|
+    t.bigint   "user_id",     :index=>{:name=>"index_blazer_audits_on_user_id"}
+    t.bigint   "query_id",    :index=>{:name=>"index_blazer_audits_on_query_id"}
+    t.text     "statement"
+    t.string   "data_source"
+    t.datetime "created_at"
+  end
+
+  create_table "blazer_checks", force: :cascade do |t|
+    t.bigint   "creator_id",     :index=>{:name=>"index_blazer_checks_on_creator_id"}
+    t.bigint   "query_id",       :index=>{:name=>"index_blazer_checks_on_query_id"}
+    t.string   "state"
+    t.string   "schedule"
+    t.text     "emails"
+    t.text     "slack_channels"
+    t.string   "check_type"
+    t.text     "message"
+    t.datetime "last_run_at"
+    t.datetime "created_at",     :null=>false
+    t.datetime "updated_at",     :null=>false
+  end
+
+  create_table "blazer_dashboard_queries", force: :cascade do |t|
+    t.bigint   "dashboard_id", :index=>{:name=>"index_blazer_dashboard_queries_on_dashboard_id"}
+    t.bigint   "query_id",     :index=>{:name=>"index_blazer_dashboard_queries_on_query_id"}
+    t.integer  "position"
+    t.datetime "created_at",   :null=>false
+    t.datetime "updated_at",   :null=>false
+  end
+
+  create_table "blazer_dashboards", force: :cascade do |t|
+    t.bigint   "creator_id", :index=>{:name=>"index_blazer_dashboards_on_creator_id"}
+    t.string   "name"
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+  end
+
+  create_table "blazer_queries", force: :cascade do |t|
+    t.bigint   "creator_id",  :index=>{:name=>"index_blazer_queries_on_creator_id"}
+    t.string   "name"
+    t.text     "description"
+    t.text     "statement"
+    t.string   "data_source"
+    t.string   "status"
+    t.datetime "created_at",  :null=>false
+    t.datetime "updated_at",  :null=>false
+  end
+
   create_table "cars", force: :cascade do |t|
     t.string   "make"
     t.string   "model"
@@ -50,7 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.boolean  "horometro",           :default=>false, :null=>false
     t.integer  "year"
     t.string   "assigned_dependency"
-    t.string   "type_car"
+    t.string   "type_car",            :null=>false
   end
 
   create_table "cars_insurance_plans", force: :cascade do |t|
@@ -155,8 +203,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.datetime "updated_at",    :null=>false
     t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
     t.string   "integer"
-    t.datetime "start_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_start_date"}
-    t.datetime "final_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_final_date"}
+    t.datetime "start_date",    :null=>false, :index=>{:name=>"index_work_orders_on_start_date"}
+    t.datetime "final_date",    :null=>false, :index=>{:name=>"index_work_orders_on_final_date"}
     t.integer  "final_oil"
     t.string   "area",          :null=>false
     t.integer  "status",        :null=>false, :index=>{:name=>"index_work_orders_on_status"}
