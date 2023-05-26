@@ -120,15 +120,6 @@ SimpleNavigation::Configuration.run do |navigation|
                   highlights_on: %r{/insurance_plans},
                   if: proc { can? :read, InsurancePlan }
 
-    primary.item :report,
-                 content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-report') +
-                 content_tag(:div, I18n.t('navbar.report'), class: nil),
-                 work_order_reports_path(session['work_order_reports']),
-                 html: { class: 'menu-item' },
-                 link_html: { class: 'menu-link' },
-                 highlights_on: %r{/work_order_reports},
-                 if: proc { can? :view_report, WorkOrder }
-
     primary.item :settings,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-cog me-2') +
                  content_tag(:div, I18n.t('settings'), class: nil),
