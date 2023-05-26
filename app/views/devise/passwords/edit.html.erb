@@ -2,7 +2,7 @@
   <div class="card shadow">
     <div class="card-header">
       <div class="app-brand justify-content-center">
-        <a href="<%= root_path %>>" class="app-brand-link">
+        <a href="<%= root_path %>" class="app-brand-link">
           <span class="app-brand-logo demo">
             <%= image_tag SystemSettings[:logo_file], size: "250x250" %></svg>
           </span>
@@ -15,7 +15,7 @@
           Cambiar contraseña
         </h4>
       </div>
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), data: { turbo: false }) do |f| %>
         <%= f.error_notification %>
 
         <%= f.input :reset_password_token, as: :hidden %>
