@@ -1,4 +1,4 @@
-  # representation of a vehicle
+# representation of a vehicle
 class Car < ApplicationRecord
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy
@@ -11,11 +11,11 @@ class Car < ApplicationRecord
     "#{type_car} #{make} #{model} #{plate_number}"
   end
 
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[chassis color created_at engine horometro id make model plate_number assigned_dependency rasp updated_at]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[maintenances work_orders insurance_plans]
   end
 end
