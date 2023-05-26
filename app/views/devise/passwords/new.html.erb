@@ -1,0 +1,37 @@
+<div class="col-lg-3 mx-lg-auto" xmlns="http://www.w3.org/1999/html">
+  <div class="card shadow">
+    <div class="card-header">
+      <div class="app-brand justify-content-center">
+        <a href="<%= root_path %>>" class="app-brand-link">
+          <span class="app-brand-logo demo">
+            <%= image_tag SystemSettings[:logo_file], size: "250x250" %></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">
+        <h4 class="text-center">
+          <%= t(:forgot_password) %>
+        </h4>
+      </div>
+
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="mb-3 form-inputs">
+          <%= f.input :email,
+                      label: false,
+                      placeholder: "Correo Electrónico",
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+        </div>
+
+        <div class="form-actions d-grid gap-2">
+          <%= f.button :submit, t(:send_instructions), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
