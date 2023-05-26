@@ -23,7 +23,7 @@
         <tr>
           <%= search_form_for @ransack do |f| %>
             <th>
-              <%= sort_link(@ransack, :plate_number, t('activerecord.attributes.car.plate_number'), default_order: :asc) %>
+              <%= sort_link(@ransack, :type_car, t('activerecord.attributes.car.type_car'), default_order: :asc) %>
             </th>
             <th>
               <%= sort_link(@ransack, :make, t('activerecord.attributes.car.make'), default_order: :asc) %>
@@ -32,16 +32,22 @@
               <%= sort_link(@ransack, :model, t('activerecord.attributes.car.model'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@ransack, :color, t('activerecord.attributes.car.color'), default_order: :asc) %>
+              <%= sort_link(@ransack, :plate_number, t('activerecord.attributes.car.plate_number'), default_order: :asc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :rasp, t('activerecord.attributes.car.rasp'), default_order: :asc) %>
             </th>
             <th>
               <%= sort_link(@ransack, :chassis, t('activerecord.attributes.car.chassis'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@ransack, :engine, t('activerecord.attributes.car.engine'), default_order: :asc) %>
+              <%= sort_link(@ransack, :year, t('activerecord.attributes.car.year'), default_order: :asc) %>
             </th>
             <th>
-              <%= sort_link(@ransack, :rasp, t('activerecord.attributes.car.rasp'), default_order: :asc) %>
+              <%= sort_link(@ransack, :color, t('activerecord.attributes.car.color'), default_order: :asc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :assigned_dependency, t('activerecord.attributes.car.assigned_dependency'), default_order: :asc) %>
             </th>
             <th class="d-print-none"></th>
           <% end %>
@@ -50,19 +56,22 @@
       <tbody>
         <% @cars.each do |car| %>
           <tr>
+            <td><%= car.type_car %></td>
+            <td><%= car.make %></td>
+            <td><%= car.model %></td>
             <% if can? :update, Car %>
               <td><strong><%= link_to car.plate_number, car_path(car) %></strong></td>
             <%end %>
-            <td><%= car.make %></td>
-            <td><%= car.model %></td>
+            <td><%= car.rasp %></td>
+            <td><%= car.chassis %></td>
+            <td><%= car.year %></td>
             <td>
               <%= content_tag(:span, " ", class:"badge", style:"background-color: #{car.color};") %>
             </td>
-            <td><%= car.chassis %></td>
-            <td><%= car.engine %></td>
-            <td><%= car.rasp %></td>
+            <td><%= car.assigned_dependency %></td>
             <td class="d-print-none">
             <td class="d-print-none">
+
               <%= render(partial: 'components/action_buttons', locals: { model: car })%>
             </td>
           </tr>

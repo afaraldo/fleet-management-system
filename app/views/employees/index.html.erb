@@ -34,6 +34,9 @@
           <th>
             <%= sort_link(@ransack, :phone, t('activerecord.attributes.employee.phone'), default_order: :asc) %>
           </th>
+          <th>
+            <%= sort_link(@ransack, :position, t('activerecord.attributes.employee.position'), default_order: :asc) %>
+          </th>
           <th class="d-print-none"></th>
         <% end %>
       </tr>
@@ -46,6 +49,7 @@
           <td><%= employee.document %></td>
           <td><%= employee.address %></td>
           <td><%= employee.phone %></td>
+          <td><%= employee.position %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: employee })%>
           </td>
