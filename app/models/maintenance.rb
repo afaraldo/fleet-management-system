@@ -7,4 +7,8 @@ class Maintenance < ApplicationRecord
   def to_s
     "#{self.class.model_name.human} Nro: #{id}"
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[budget car_id created_at date description id mechanical_workshop_id updated_at]
+  end
 end

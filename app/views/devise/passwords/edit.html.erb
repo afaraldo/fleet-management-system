@@ -1,0 +1,50 @@
+<div class="col-lg-3 mx-lg-auto" xmlns="http://www.w3.org/1999/html">
+  <div class="card shadow">
+    <div class="card-header">
+      <div class="app-brand justify-content-center">
+        <a href="<%= root_path %>" class="app-brand-link">
+          <span class="app-brand-logo demo">
+            <%= image_tag SystemSettings[:logo_file], size: "250x250" %></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">
+        <h4 class="text-center">
+          Cambiar contraseña
+        </h4>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), data: { turbo: false }) do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :reset_password_token, as: :hidden %>
+        <%= f.full_error :reset_password_token %>
+
+        <div class="form-inputs">
+          <div class="mb-3">
+            <%= f.input :password,
+                        label: false,
+                        required: true,
+                        autofocus: true,
+                        placeholder: "Nueva contraseña",
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :password_confirmation,
+                        label: false,
+                        placeholder: "Confirmar nueva contraseña",
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+        </div>
+
+        <div class="form-actions d-grid gap-2">
+          <%= f.button :submit, "Cambiar contraseña", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%#= render "devise/shared/links" %>

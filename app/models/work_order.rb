@@ -70,11 +70,16 @@ class WorkOrder < ApplicationRecord
     parent.table[:status]
   end
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[area car_id city created_at description employee_id final_date final_mileage final_oil id integer number
+       start_date start_mileage status updated_at]
+  end
+
   private
 
   def validate_start_date
     posterior_work_order = WorkOrder.where('start_date BETWEEN ? AND ?', start_date, final_date)
-                                    .where(car_id: car_id)
+                                    .where(car_id:)
                                     .excluding(self)
 
     return unless posterior_work_order.any?
@@ -84,7 +89,7 @@ class WorkOrder < ApplicationRecord
 
   def validate_final_date
     previous_work_orders = WorkOrder.where('final_date BETWEEN ? AND ?', start_date, final_date)
-                                    .where(car_id: car_id)
+                                    .where(car_id:)
                                     .excluding(self)
 
     return unless previous_work_orders.any?

@@ -13,7 +13,7 @@ module Notifications
       logger.debug { 'There are no plans to expire' } if plans_to_beat.empty?
       plans_to_beat.each do |plan|
         message = "El contrato de seguro Nro #{plan.id} vence el #{plan.expiry_date}"
-        EventNotification.with(message: message).deliver(users_to_notify)
+        EventNotification.with(message:).deliver(users_to_notify)
       end
     end
   end

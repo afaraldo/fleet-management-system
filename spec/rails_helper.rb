@@ -86,6 +86,7 @@ RSpec.configure do |config|
   Dir["./spec/support/**/*.rb"].sort.each {|f| require f} # Import shared examples rspec
 
   config.before(:each, type: :request) do
+    SystemSettings.load
     host! 'http://localhost:3000'
   end
 end

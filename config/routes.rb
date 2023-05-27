@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   devise_for :users
   mount SystemSettings::Engine, at: '/system_settings'
 
-  authenticate :user do # , lambda { |user| user.admin? } do
+  authenticate :user do
+    # , lambda { |user| user.admin? } do
     mount Sidekiq::Web => '/sidekiq' # mount Sidekiq::Web in your Rails app
   end
+
+  mount Blazer::Engine, at: 'blazer'
 
   resources :cars
   resources :dash_boards, only: [:index]
