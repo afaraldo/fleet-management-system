@@ -536,7 +536,6 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari
-  mail
   nokogiri
   noticed (~> 1.6)
   paper_trail (~> 13.0)

@@ -169,8 +169,8 @@ gem 'image_processing', '>= 1.2'
 gem 'sidekiq', '~> 7.0' # [https://github.com/mperham/sidekiq]
 gem 'sidekiq-cron' # [https://github.com/sidekiq-cron/sidekiq-cron]
 
-# Used to send email [https://github.com/mikel/mailhttps://github.com/mikel/mail]
-gem 'mail'
+# Used to send email [https://github.com/mikel/mail]
+# gem 'mail'
 
 # Used to reporting [https://github.com/ankane/blazer]
 gem 'blazer'
