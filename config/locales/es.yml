@@ -1,12 +1,8 @@
 ---
 es:
-  query_report:
-    labels:
-      search: Filtrar
-    filters:
-      number:
-        contains: Contiene
-    total: Total
+  forgot_password: 'Olvidaste tu contraseña?'
+  send_instructions: 'Enviar correo de recuperación'
+  change_password: 'Cambiar contraseña'
   notification_message: Mensaje de Alerta
   form: Formulario
   authorize: Autorizar

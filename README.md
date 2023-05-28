@@ -6,23 +6,31 @@ This README would normally document whatever steps are necessary to get the
   podman-composer version:  1.0.3
 
 * Ruby version
-rvm install 3.0.0
-rvm use 3.0.0
-rvm gemset create fleet-management-system
-rvm use 3.0.0@fleet-management-system 
+  rvm install 3.0.0
+  rvm use 3.0.0
+  rvm gemset create fleet-management-system
+  rvm use 3.0.0@fleet-management-system
 
 * Node version
-nvm install 18.11
-nvm use --default 18.11
+  nvm install 18.11
+  nvm use --default 18.11
 
 * System dependencies
+
+You need to install libyaml-devel
+dnf install libyaml-devel
+dnf install postgresql-devel
+
+# gem install pg -v 1.4.3 -- --with-pg-lib=/usr/lib64
+
+# gem install pg -v 1.4.3 -- --with-pg-config=/usr/pgsql-15/bin/pg_config
 
 You need to install ImageMagick
 Use dnf install ImageMagick ImageMagick-devel in RHEL Linux [https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/]
 Use apt install imagemagick
 
 bundle install # for dependencies in RoR
-yarn install   # for dependencies in NodeJS
+yarn install # for dependencies in NodeJS
 
 * Configuration
 
@@ -73,7 +81,7 @@ Also use rubocop -f html -o rubocop.html
 
 # fleet-management-system
 
-Demo: https://fleet-management-system-prod.herokuapp.com/
+Demo: https://fleet-management-system.herokuapp.com/
 Credentials:
 - username: admin@email.com
 - password: test123

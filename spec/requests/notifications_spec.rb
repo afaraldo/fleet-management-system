@@ -26,7 +26,7 @@ RSpec.describe "/notifications", type: :request do
     {}
   }
 
-  let(:user) { User.first }
+  let(:user) { create(:user) }
 
   before { host! 'http://localhost:3000' }
 

@@ -1,11 +1,13 @@
 version: "3.9"
-
+volumes:
+  db_data:
+  cache_data:
 services:
   # podman exec -it fleet-management-system_db_1 /bin/bash
   db:
     image: postgres
     volumes:
-      - db:/var/lib/postgresql/data:Z
+      - db_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -16,6 +18,6 @@ services:
   cache:
     image: redis:6.2-alpine
     volumes:
-      - cache:/data:Z
+      - cache_data:/data
     ports:
       - '6379:6379'

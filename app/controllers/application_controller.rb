@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   # POST
   def create
     record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
-    flash[:success] = I18n.t('created', record: record)
+    flash[:success] = I18n.t('created', record:)
     respond_to do |format|
       format.html { redirect_to action: :edit, id: record.id }
     end
@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   def update
     model.send(:update!, model_params)
     record = instance_variable_set "@#{resource_name}", model
-    flash[:success] = I18n.t('updated', record: record)
+    flash[:success] = I18n.t('updated', record:)
     respond_to do |format|
       format.html { redirect_to action: :edit, id: record.id }
     end
@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
     record = instance_variable_set "@#{resource_name}", model
     model.send(:destroy!)
 
-    flash[:success] = I18n.t('destroyed', record: record)
+    flash[:success] = I18n.t('destroyed', record:)
     redirect_to :"#{plural_resource_name}"
   end
 

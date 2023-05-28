@@ -46,15 +46,13 @@ Rails.application.configure do
   # https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration-for-gmail
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+    password: Rails.application.credentials.sendgrid.fetch(:api_key, nil), # This is the secret sendgrid API key which was issued during API key creation
+    domain: Rails.application.credentials.sendgrid.fecth(:domain, nil),
+    address: 'smtp.sendgrid.net',
     port: 587,
-    domain: 'gmail.com',
-    user_name: Rails.application.credentials.smpt.gmail.username,
-    password: Rails.application.credentials.smpt.gmail.password,
-    authentication: 'plain',
-    enable_starttls_auto: true,
-    open_timeout: 5,
-    read_timeout: 5
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 
   # Print deprecation notices to the Rails logger.
@@ -83,4 +81,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  # config.asset_host = 'http://localhost:3000'
 end

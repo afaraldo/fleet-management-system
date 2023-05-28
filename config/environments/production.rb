@@ -63,6 +63,16 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "fleet_management_system_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'fleet-management-system.herokuapp.com' }
+  config.action_mailer.smtp_settings = {
+    user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+    password: Rails.application.credentials.sendgrid.fetch(:api_key, nil), # This is the secret sendgrid API key which was issued during API key creation
+    domain: Rails.application.credentials.sendgrid.fecth(:domain, nil),
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -76,7 +86,7 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  config.log_formatter = Logger::Formatter.new
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"

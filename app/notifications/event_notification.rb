@@ -1,8 +1,5 @@
 # To deliver this notification:
 #
-# EventNotification.with(post: @post).deliver_later(current_user)
-# EventNotification.with(post: @post).deliver(current_user)
-
 class EventNotification < Noticed::Base
   # Add your delivery methods
   deliver_by :database
