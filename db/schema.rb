@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_034003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -126,6 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.datetime "created_at",           :null=>false
     t.datetime "updated_at",           :null=>false
     t.bigint   "insurance_carrier_id", :index=>{:name=>"index_insurance_plans_on_insurance_carrier_id"}
+    t.string   "type_coverage"
   end
 
   create_table "maintenances", force: :cascade do |t|
@@ -146,6 +147,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.datetime "read_at",        :index=>{:name=>"index_notifications_on_read_at"}
     t.datetime "created_at",     :null=>false
     t.datetime "updated_at",     :null=>false
+  end
+
+  create_table "repairs", force: :cascade do |t|
+    t.date     "date"
+    t.bigint   "car_id",                 :null=>false, :index=>{:name=>"index_repairs_on_car_id"}
+    t.bigint   "mechanical_workshop_id", :null=>false, :index=>{:name=>"index_repairs_on_mechanical_workshop_id"}
+    t.string   "repairs"
+    t.datetime "created_at",             :null=>false
+    t.datetime "updated_at",             :null=>false
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -203,8 +213,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
     t.datetime "updated_at",    :null=>false
     t.bigint   "car_id",        :index=>{:name=>"index_work_orders_on_car_id"}
     t.string   "integer"
-    t.datetime "start_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_start_date"}
-    t.datetime "final_date",    :precision=>nil, :null=>false, :index=>{:name=>"index_work_orders_on_final_date"}
+    t.datetime "start_date",    :null=>false, :index=>{:name=>"index_work_orders_on_start_date"}
+    t.datetime "final_date",    :null=>false, :index=>{:name=>"index_work_orders_on_final_date"}
     t.integer  "final_oil"
     t.string   "area",          :null=>false
     t.integer  "status",        :null=>false, :index=>{:name=>"index_work_orders_on_status"}
@@ -215,6 +225,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_21_214228) do
   add_foreign_key "insurance_plans", "suppliers", column: "insurance_carrier_id"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
+  add_foreign_key "repairs", "cars"
+  add_foreign_key "repairs", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "work_orders", "cars"
   add_foreign_key "work_orders", "employees"
 end

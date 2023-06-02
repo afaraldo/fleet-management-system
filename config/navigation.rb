@@ -111,7 +111,15 @@ SimpleNavigation::Configuration.run do |navigation|
                   highlights_on: %r{/maintenances},
                   if: proc { can? :read, Maintenance }
 
-    primary.item  :key4,
+    primary.item  :key7,
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-wrench') +
+                  content_tag(:div, I18n.t('navbar.repairs'), class: nil),
+                  repairs_path(session['repairs']),
+                  html: { class: 'menu-item' },
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/repairs}
+
+    primary.item  :key8,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-crash') +
                   content_tag(:div, I18n.t('navbar.insurance_plan'), class: nil),
                   insurance_plans_path(session['insurance_plans']),
