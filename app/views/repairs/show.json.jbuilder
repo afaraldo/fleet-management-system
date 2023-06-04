@@ -1,1 +1,1 @@
-json.partial! "repairs/repair", repair: @repair
+json.partial! 'repairs/repair', repair: @repair

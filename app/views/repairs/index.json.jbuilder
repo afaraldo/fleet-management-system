@@ -1,1 +1,1 @@
-json.array! @repairs, partial: "repairs/repair", as: :repair
+json.array! @repairs, partial: 'repairs/repair', as: :repair

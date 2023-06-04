@@ -5,5 +5,4 @@ class RepairsController < ApplicationController
   def included_associations
     %i[car mechanical_workshop]
   end
-
 end
