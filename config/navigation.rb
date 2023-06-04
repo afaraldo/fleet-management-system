@@ -113,7 +113,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item  :key7,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-wrench') +
-                  content_tag(:div, I18n.t('navbar.repairs'), class: nil),
+                  content_tag(:div, I18n.t('navbar.repair'), class: nil),
                   repairs_path(session['repairs']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
