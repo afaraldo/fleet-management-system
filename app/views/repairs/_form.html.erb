@@ -53,8 +53,14 @@
           </div>
         </div>
         <div class="col-xl-6 mb-3">
-          <div class='form-floating'>
-            <%= f.input_field :repairs, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+          <div class='form-floating mb-3'>
+            <%= f.input_field :repairs,
+                              as: :text,
+                              class:'form-control',
+                              'aria-describedby':"floatingInputHelp",
+                              cols: 5,
+                              rows: 10
+            %>
             <%= f.label :repairs, for: 'floatingInput' %>
           </div>
         </div>
