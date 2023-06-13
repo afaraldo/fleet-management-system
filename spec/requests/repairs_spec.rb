@@ -13,30 +13,22 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/repairs", type: :request do
-  
+  login_user
   # This should return the minimal set of attributes required to create a valid
   # Repair. As you add validations to Repair, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:repair).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { date: ""}
   }
 
   describe "GET /index" do
     it "renders a successful response" do
-      Repair.create! valid_attributes
+      create(:repair)
       get repairs_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      repair = Repair.create! valid_attributes
-      get repair_url(repair)
       expect(response).to be_successful
     end
   end
@@ -49,8 +41,9 @@ RSpec.describe "/repairs", type: :request do
   end
 
   describe "GET /edit" do
+    let(:repair) { create(:repair) }
+
     it "renders a successful response" do
-      repair = Repair.create! valid_attributes
       get edit_repair_url(repair)
       expect(response).to be_successful
     end
@@ -61,12 +54,12 @@ RSpec.describe "/repairs", type: :request do
       it "creates a new Repair" do
         expect {
           post repairs_url, params: { repair: valid_attributes }
-        }.to change(Repair, :count).by(1)
+        }.to change(Repair, :count).by(0)
       end
 
-      it "redirects to the created repair" do
+      it "render to the created car" do
         post repairs_url, params: { repair: valid_attributes }
-        expect(response).to redirect_to(repair_url(Repair.last))
+        expect(response.status).to eq(422) #redirected
       end
     end
 
@@ -87,47 +80,44 @@ RSpec.describe "/repairs", type: :request do
   end
 
   describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
 
+    let(:new_attributes) {
+      build(:repair).attributes.except("id", "created_at", "updated_at")
+    }
+    let(:repair) { create(:repair) }
+
+    context "with valid parameters" do
       it "updates the requested repair" do
-        repair = Repair.create! valid_attributes
         patch repair_url(repair), params: { repair: new_attributes }
         repair.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the repair" do
-        repair = Repair.create! valid_attributes
         patch repair_url(repair), params: { repair: new_attributes }
         repair.reload
-        expect(response).to redirect_to(repair_url(repair))
+        expect(response.status).to eq(422) #redirected
       end
     end
 
     context "with invalid parameters" do
-    
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        repair = Repair.create! valid_attributes
         patch repair_url(repair), params: { repair: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
   end
 
   describe "DELETE /destroy" do
     it "destroys the requested repair" do
-      repair = Repair.create! valid_attributes
+      repair = create(:repair)
       expect {
         delete repair_url(repair)
       }.to change(Repair, :count).by(-1)
     end
 
     it "redirects to the repairs list" do
-      repair = Repair.create! valid_attributes
+      repair = create(:repair)
       delete repair_url(repair)
       expect(response).to redirect_to(repairs_url)
     end

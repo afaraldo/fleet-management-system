@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :repair do
-    date { "2023-05-31" }
-    car { nil }
-    mechanical_workshop { nil }
-    repairs { "MyString" }
+    date { Faker::Date.between(from: 6.months.ago, to: Date.today) }
+    repairs { Faker::Lorem.sentence }
+    car
+    mechanical_workshop
   end
 end

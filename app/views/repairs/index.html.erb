@@ -28,6 +28,8 @@
               <%= sort_link(@ransack, :mechanical_workshop, t('activerecord.attributes.repair.mechanical_workshop'), default_order: :desc) %>
             </th>
             <th>
+              <%= sort_link(@ransack, :repairs, t('activerecord.attributes.repair.repairs'), default_order: :desc) %>
+            </th>
             <th class="d-print-none"></th>
           <% end %>
         </tr>
