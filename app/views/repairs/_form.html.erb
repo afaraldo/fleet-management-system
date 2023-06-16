@@ -5,7 +5,7 @@
   <div class="card-body">
     <%= simple_form_for repair, class: 'form-floating'  do |f| %>
       <div class='row'>
-        <div class="col-xl-6 mb-3">
+        <div class="col-xl-3 mb-3">
           <div class='form-floating'>
             <%= f.input_field :date,
                               as: :string,
@@ -18,7 +18,7 @@
             <%= f.label :date, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-xl-6 mb-3">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.association :mechanical_workshop, collection: MechanicalWorkshop.all.page(0),
                               include_blank: true,
@@ -35,13 +35,13 @@
             <%= f.label :mechanical_workshop, for: 'floatingInput' %>
           </div>
         </div>
-      <div class="row">
-        <div class="col-xl-6 mb-3">
+        <div class="col-xl-4 mb-3">
           <div class='form-floating'>
             <%= f.association :car,
                               collection: f.object.car ? [f.object.car] : Car.all.page(0),
                               include_blank: true,
                               placeholder: t("activerecord.attributes.work_order.car"),
+                              label: false,
                               input_html: {
                                 data: {
                                   controller: 'ts--select',
@@ -52,18 +52,18 @@
             %>
           </div>
         </div>
-        <div class="col-xl-6 mb-3">
+      </div>
+      <div class='row'>
           <div class='form-floating mb-3'>
             <%= f.input_field :repairs,
                               as: :text,
                               class:'form-control',
                               'aria-describedby':"floatingInputHelp",
-                              cols: 5,
+                              cols: 50,
                               rows: 10
             %>
             <%= f.label :repairs, for: 'floatingInput' %>
           </div>
-        </div>
       </div>
         <div class='col-xl-2 d-grid gap-2'>
           <%= f.button 'submit', class: 'btn-primary btn-block' %>
