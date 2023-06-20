@@ -31,6 +31,7 @@ class AccessPolicy
       can :manage, Supplier
       can :manage, User
       can :manage, WorkOrder
+      can :manage, Repair
       can :authorize, WorkOrder
       can :view_report, WorkOrder
     end
@@ -42,6 +43,7 @@ class AccessPolicy
       can :manage, Maintenance
       can :manage, Supplier
       can :manage, WorkOrder
+      can :manage, Repair
       can :view_report, WorkOrder
     end
     # Less privileged driver role

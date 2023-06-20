@@ -117,7 +117,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   repairs_path(session['repairs']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
-                  highlights_on: %r{/repairs}
+                  highlights_on: %r{/repairs},
+                  if: proc { can? :read, Repair }
 
     primary.item  :key8,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-crash') +
