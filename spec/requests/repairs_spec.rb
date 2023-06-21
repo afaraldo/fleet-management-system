@@ -98,7 +98,6 @@ RSpec.describe "/repairs", type: :request do
         expect(response.status).to eq(422) #redirected
       end
     end
-=begin
     context "with invalid parameters" do
 
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
@@ -107,7 +106,6 @@ RSpec.describe "/repairs", type: :request do
       end
 
     end
-=end
   end
 
   describe "DELETE /destroy" do
