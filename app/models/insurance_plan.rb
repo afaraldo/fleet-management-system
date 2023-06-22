@@ -10,7 +10,7 @@ class InsurancePlan < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[amount contract_date created_at expiry_date id insurance_carrier_id updated_at]
+    %w[amount contract_date created_at type_coverage expiry_date id insurance_carrier_id updated_at]
   end
 
   def self.ransackable_associations(_auth_object = nil)

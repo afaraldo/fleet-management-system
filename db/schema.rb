@@ -226,7 +226,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_020811) do
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "repairs", "cars"
-  add_foreign_key "repairs", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "work_orders", "cars"
   add_foreign_key "work_orders", "employees"
 end

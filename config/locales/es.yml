@@ -121,12 +121,13 @@ es:
         phone: Teléfono
         position: Cargo
       insurance_plan:
-        contract_date: Fecha de Contrato
-        expiry_date: Fecha de Vencimiento
+        type_coverage: Tipo de Cobertura
+        contract_date: Fecha de Cobertura
+        expiry_date: Venc. de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
         mechanical_workshop: Taller
-        amount: Monto
+        amount: Monto anual
       repair:
         date: Fecha de Reparación
         car: Vehiculo
@@ -430,17 +431,17 @@ es:
         phone: Teléfono
         position: Cargo
       insurance_plan:
-        contract_date: Fecha de Contrato
-        expiry_date: Fecha de Vencimiento
+        type_coverage: Tipo de Cobertura
+        contract_date: Fecha de Cobertura
+        expiry_date: Venc. de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
-        amount: Monto
+        amount: Monto Anual
       repair:
         date: Fecha de Reparacion
         car: Vehiculo
         mechanical_workshop: Taller Mecánico
         repairs: Reparaciones
-
   ransack:
     asc: Ascendente
     desc: Descendente
