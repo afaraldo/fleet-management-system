@@ -100,14 +100,14 @@ RSpec.describe "/maintenances", type: :request do
         end
       end
 
-    context "with invalid parameters" do
-    
-      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        patch maintenance_url(maintenance), params: { maintenance: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+      context "with invalid parameters" do
+
+        it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+          patch maintenance_url(maintenance), params: { maintenance: invalid_attributes }
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+
       end
-    
-    end
   end
 
   describe "DELETE /destroy" do

@@ -1,0 +1,53 @@
+<%= render 'search_form', ransack: @ransack %>
+
+<div class="card">
+  <h5 class="card-header">
+    <%= t('activerecord.models.repair.other') %>
+    <%= link_to t('buttons.new'), new_repair_path, class: 'btn btn-primary' %>
+  </h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <caption class="ms-4">
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="mr-auto">
+            <%= page_entries_info @repairs, entry_name: 'item' %>
+          </div>
+          <%= paginate @repairs, remote: true %>
+        </div>
+      </caption>
+      <thead>
+        <tr>
+          <%= search_form_for @ransack do |f| %>
+            <th>
+              <%= sort_link(@ransack, :date, t('activerecord.attributes.repair.date'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :car, t('activerecord.attributes.repair.car'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :mechanical_workshop, t('activerecord.attributes.repair.mechanical_workshop'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :repairs, t('activerecord.attributes.repair.repairs'), default_order: :desc) %>
+            </th>
+            <th class="d-print-none"></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+      <% @repairs.each do |repair| %>
+        <tr>
+          <td><strong><%= repair.date %></strong></td>
+          <td><%= repair.car%></td>
+          <td><%= repair.mechanical_workshop.name%></td>
+          <td><%= repair.repairs %></td>
+          <td class="d-print-none">
+            <%= render(partial: 'components/action_buttons', locals: { model: repair })%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

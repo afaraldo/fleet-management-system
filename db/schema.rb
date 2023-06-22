@@ -149,6 +149,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_022033) do
     t.datetime "updated_at",     :null=>false
   end
 
+  create_table "repairs", force: :cascade do |t|
+    t.date     "date",                   :null=>false
+    t.bigint   "car_id",                 :null=>false, :index=>{:name=>"index_repairs_on_car_id"}
+    t.bigint   "mechanical_workshop_id", :null=>false, :index=>{:name=>"index_repairs_on_mechanical_workshop_id"}
+    t.string   "repairs"
+    t.datetime "created_at",             :null=>false
+    t.datetime "updated_at",             :null=>false
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string   "name",       :null=>false
     t.string   "ruc",        :null=>false
@@ -216,6 +225,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_022033) do
   add_foreign_key "insurance_plans", "suppliers", column: "insurance_carrier_id"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
+  add_foreign_key "repairs", "cars"
+  add_foreign_key "repairs", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "work_orders", "cars"
   add_foreign_key "work_orders", "employees"
 end
