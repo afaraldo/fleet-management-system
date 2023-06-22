@@ -1,0 +1,74 @@
+<div class="card mb-4">
+  <h5 class="card-header">
+    <%= t('form')%>
+  </h5>
+  <div class="card-body">
+    <%= simple_form_for repair, class: 'form-floating'  do |f| %>
+      <div class='row'>
+        <div class="col-xl-3 mb-3">
+          <div class='form-floating'>
+            <%= f.input_field :date,
+                              as: :string,
+                              class: 'form-control',
+                              data: {
+                                controller: "flatpickr",
+                                flatpickr_enable_time: false
+                              }
+            %>
+            <%= f.label :date, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= f.association :mechanical_workshop, collection: MechanicalWorkshop.all.page(0),
+                              include_blank: true,
+                              placeholder: t("activerecord.attributes.insurance_plan.mechanical_workshop"),
+                              label: false,
+                              input_html: {
+                                data: {
+                                  controller: 'ts--select',
+                                  'ts--select-url-value': suppliers_path,
+                                  searcher: "q[name_start]"
+                                }
+                              }
+            %>
+            <%= f.label :mechanical_workshop, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= f.association :car,
+                              collection: f.object.car ? [f.object.car] : Car.all.page(0),
+                              include_blank: true,
+                              placeholder: t("activerecord.attributes.work_order.car"),
+                              label: false,
+                              input_html: {
+                                data: {
+                                  controller: 'ts--select',
+                                  'ts--select-url-value': cars_path,
+                                  searcher: "q[plate_number_cont]"
+                                }
+                              }
+            %>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+          <div class='form-floating mb-3'>
+            <%= f.input_field :repairs,
+                              as: :text,
+                              class:'form-control',
+                              'aria-describedby':"floatingInputHelp",
+                              cols: 50,
+                              rows: 10
+            %>
+            <%= f.label :repairs, for: 'floatingInput' %>
+          </div>
+      </div>
+        <div class='col-xl-2 d-grid gap-2'>
+          <%= f.button 'submit', class: 'btn-primary btn-block' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
