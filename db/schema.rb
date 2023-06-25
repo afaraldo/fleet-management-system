@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_020811) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_25_015034) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -132,11 +132,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_020811) do
   create_table "maintenances", force: :cascade do |t|
     t.date     "date",                   :null=>false
     t.bigint   "mechanical_workshop_id", :null=>false, :index=>{:name=>"index_maintenances_on_mechanical_workshop_id"}
-    t.integer  "budget"
     t.bigint   "car_id",                 :null=>false, :index=>{:name=>"index_maintenances_on_car_id"}
     t.string   "description"
     t.datetime "created_at",             :null=>false
     t.datetime "updated_at",             :null=>false
+    t.integer  "current_mileage"
+    t.integer  "next_mileage"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -226,6 +227,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_020811) do
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "repairs", "cars"
+  add_foreign_key "repairs", "suppliers", column: "mechanical_workshop_id"
   add_foreign_key "work_orders", "cars"
   add_foreign_key "work_orders", "employees"
 end

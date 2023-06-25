@@ -111,8 +111,9 @@ es:
         date: Fecha
         car:  Vehiculo
         mechanical_workshop: Taller
-        budget: Presupuesto
-        description: Descripcion
+        current_next: Km actual
+        next_next:  Km próximo
+        description: Descripción
       employee:
         name: Nombre
         last_name: Apellido
@@ -421,8 +422,9 @@ es:
         date: Fecha
         car : Vehiculo
         mechanical_workshop : Taller Mecánico
-        budget : Presupuesto
-        description : Descripcion
+        current_mileage : Km Actual
+        next_mileage: Km Próximo
+        description : Descripción
       employee:
         name: Nombre
         last_name: Apellido

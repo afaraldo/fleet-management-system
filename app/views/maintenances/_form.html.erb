@@ -38,10 +38,16 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-6 mb-3">
+        <div class="col-xl-3 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :budget, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= f.label :budget, for: 'floatingInput' %>
+            <%= f.input_field :current_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :current_mileage, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-3 mb-3">
+          <div class='form-floating'>
+            <%= f.input_field :next_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.label :next_mileage, for: 'floatingInput' %>
           </div>
         </div>
         <div class="col-xl-6 mb-3">

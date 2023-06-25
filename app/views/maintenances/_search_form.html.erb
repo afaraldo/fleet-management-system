@@ -17,21 +17,6 @@
     </div>
     <div class="col">
       <div class='form-floating'>
-        <%= f.input_field :date,
-                          as: :string,
-                          class: 'form-control',
-                          value: ransack.date_lteq,
-                          data: {
-                            controller: "flatpickr",
-                            flatpickr_enable_time: false
-                          },
-                          name: 'q[date_lteq]'
-        %>
-        <%= f.label :date, for: 'floatingInput' %>
-      </div>
-    </div>
-    <div class="col">
-      <div class='form-floating'>
         <%= f.association :car,
                           collection: ransack.car_id_eq ? [Car.find(ransack.car_id_eq)] : Car.all.page(0),
                           include_blank: true,
