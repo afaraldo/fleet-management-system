@@ -111,8 +111,8 @@ es:
         date: Fecha
         car:  Vehiculo
         mechanical_workshop: Taller
-        current_next: Km actual
-        next_next:  Km próximo
+        current_next: Km Actual
+        next_next:  Km Próximo
         description: Descripción
       employee:
         name: Nombre
