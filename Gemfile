@@ -93,6 +93,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'brakeman', '~> 5.2.3'
   gem 'bundler-audit', '~> 0.9.1'
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
@@ -166,11 +167,7 @@ gem 'noticed', '~> 1.6'
 gem 'image_processing', '>= 1.2'
 
 # Used as backend and background jobs
-gem 'sidekiq', '~> 7.0' # [https://github.com/mperham/sidekiq]
-gem 'sidekiq-cron' # [https://github.com/sidekiq-cron/sidekiq-cron]
-
-# Used to send email [https://github.com/mikel/mail]
-# gem 'mail'
+gem 'good_job', '~> 3.15' # https://github.com/bensheldon/good_job
 
 # Used to reporting [https://github.com/ankane/blazer]
 gem 'blazer'

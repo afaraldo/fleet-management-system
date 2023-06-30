@@ -1,15 +1,11 @@
-require 'sidekiq/web'
-require 'sidekiq/cron/web' # https://github.com/sidekiq-cron/sidekiq-cron#web-ui-for-cron-jobs
-
 Rails.application.routes.draw do
   resources :repairs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users
   mount SystemSettings::Engine, at: '/system_settings'
 
-  authenticate :user do
-    # , lambda { |user| user.admin? } do
-    mount Sidekiq::Web => '/sidekiq' # mount Sidekiq::Web in your Rails app
+  authenticate :user, ->(user) { user.admin? } do
+    mount GoodJob::Engine => 'good_job'
   end
 
   mount Blazer::Engine, at: 'blazer'
