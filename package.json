@@ -9,7 +9,7 @@
     "bootstrap-icons": "^1.9.1",
     "bootstrap-print-css": "^1.0.1",
     "boxicons": "^2.1.2",
-    "esbuild": "^0.15.5",
+    "esbuild": "^0.18.11",
     "flatpickr": "^4.6.13",
     "highlight.js": ">=10.4.1",
     "jquery": "^3.6.1",
