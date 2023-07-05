@@ -17,26 +17,29 @@
         </div>
       </caption>
       <thead>
-      <tr>
-        <%= search_form_for @ransack do |f| %>
-          <th>
-            <%= sort_link(@ransack, :date, t('activerecord.attributes.work_order.date'), default_order: :desc) %>
-          </th>
-          <th>
-            <%= sort_link(@ransack, :car, t('activerecord.attributes.maintenance.car'), default_order: :desc) %>
-          </th>
-          <th>
-            <%= sort_link(@ransack, :mechanical_workshop, t('activerecord.attributes.maintenance.mechanica_workshop'), default_order: :desc) %>
-          </th>
-          <th>
-            <%= sort_link(@ransack, :budget, t('activerecord.attributes.maintenance.budget'), default_order: :desc) %>
-          </th>
-          <th>
-            <%= sort_link(@ransack, :description, t('activerecord.attributes.maintenance.description'), default_order: :desc) %>
-          </th>
-          <th class="d-print-none"></th>
-        <% end %>
-      </tr>
+        <tr>
+          <%= search_form_for @ransack do |f| %>
+            <th>
+              <%= sort_link(@ransack, :date, t('activerecord.attributes.work_order.date'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :car, t('activerecord.attributes.maintenance.car'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :mechanical_workshop, t('activerecord.attributes.maintenance.mechanical_workshop'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :current_mileage, t('activerecord.attributes.maintenance.current_mileage'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :next_mileage, t('activerecord.attributes.maintenance.next_mileage'), default_order: :desc) %>
+            </th>
+            <th>
+              <%= sort_link(@ransack, :description, t('activerecord.attributes.maintenance.description'), default_order: :desc) %>
+            </th>
+            <th class="d-print-none"></th>
+          <% end %>
+        </tr>
       </thead>
       <tbody>
       <% @maintenances.each do |maintenance| %>
@@ -44,7 +47,8 @@
           <td><strong><%= maintenance.date %></strong></td>
           <td><%= maintenance.car%></td>
           <td><%= maintenance.mechanical_workshop.name%></td>
-          <td><%= maintenance.budget %></td>
+          <td><%= maintenance.current_mileage%></td>
+          <td><%= maintenance.next_mileage%></td>
           <td><%= maintenance.description %></td>
           <td class="d-print-none">
             <%= render(partial: 'components/action_buttons', locals: { model: maintenance })%>
