@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
 
   def blazer_authentication
     # depending on your auth, something like...
-    redirect_to root_path unless current_user #&.admin?
+    redirect_to root_path unless current_user # &.admin?
   end
 
   private

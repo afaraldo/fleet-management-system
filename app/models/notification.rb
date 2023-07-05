@@ -16,7 +16,6 @@
 #  index_notifications_on_read_at    (read_at)
 #  index_notifications_on_recipient  (recipient_type,recipient_id)
 #
-# Notification Model
 class Notification < ApplicationRecord
   include Noticed::Model
   belongs_to :recipient, polymorphic: true

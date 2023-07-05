@@ -20,7 +20,6 @@
 #
 #  fk_rails_...  (insurance_carrier_id => suppliers.id)
 #
-# This model represents a Insurance Plan
 class InsurancePlan < ApplicationRecord
   has_and_belongs_to_many :cars
   belongs_to :insurance_carrier

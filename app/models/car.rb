@@ -20,7 +20,6 @@
 #
 #  index_cars_on_rasp  (rasp)
 #
-# representation of a vehicle
 class Car < ApplicationRecord
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy

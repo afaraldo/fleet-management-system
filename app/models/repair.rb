@@ -19,7 +19,6 @@
 #
 #  fk_rails_...  (car_id => cars.id)
 #
-# This model represents a reapi
 class Repair < ApplicationRecord
   belongs_to :car
   belongs_to :mechanical_workshop

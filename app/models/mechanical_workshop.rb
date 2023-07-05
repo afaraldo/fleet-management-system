@@ -9,7 +9,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# This class represents a MechanicalWorkshop
 class MechanicalWorkshop < Supplier
   def to_s
     name

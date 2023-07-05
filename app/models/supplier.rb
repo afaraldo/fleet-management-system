@@ -9,7 +9,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Supplier Model
 class Supplier < ApplicationRecord
   validates :type, presence: true
 

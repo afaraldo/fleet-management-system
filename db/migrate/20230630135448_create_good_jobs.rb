@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# Migration of good_job
 class CreateGoodJobs < ActiveRecord::Migration[7.0]
   def change
     enable_extension 'pgcrypto'

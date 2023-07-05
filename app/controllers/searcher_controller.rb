@@ -19,5 +19,4 @@ class SearcherController < ApplicationController
     # Ejecuta la consulta combinada y obtén los resultados
     combined_query.flatten
   end
-
 end

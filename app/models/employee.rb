@@ -12,7 +12,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# This model represents a employee
 class Employee < ApplicationRecord
   has_many :work_orders, dependent: :restrict_with_error
   validates :name, :last_name, :document, presence: true

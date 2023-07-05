@@ -58,8 +58,8 @@ development:
 test:
   <<: *default
   database: fleet_management_system_test
-  username: postgres
-  password: postgres
+  username: <%= ENV["DATABASE_USER"]  %>
+  password: <%= ENV["DATABASE_PASSWORD"]  %>
   host: localhost
 
 # As with config/credentials.yml, you never want to store sensitive information,

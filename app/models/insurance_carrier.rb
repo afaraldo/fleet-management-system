@@ -9,7 +9,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# This class represents a InsuranceCarrier
 class InsuranceCarrier < Supplier
   has_many :insurance_plans, dependent: :destroy
 

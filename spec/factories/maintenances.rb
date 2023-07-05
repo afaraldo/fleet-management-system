@@ -3,9 +3,10 @@
 # Table name: maintenances
 #
 #  id                     :bigint           not null, primary key
-#  budget                 :integer
+#  current_mileage        :integer
 #  date                   :date             not null
 #  description            :string
+#  next_mileage           :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  car_id                 :bigint           not null

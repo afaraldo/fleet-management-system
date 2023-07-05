@@ -3,9 +3,10 @@
 # Table name: maintenances
 #
 #  id                     :bigint           not null, primary key
-#  budget                 :integer
+#  current_mileage        :integer
 #  date                   :date             not null
 #  description            :string
+#  next_mileage           :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  car_id                 :bigint           not null
@@ -21,7 +22,6 @@
 #  fk_rails_...  (car_id => cars.id)
 #  fk_rails_...  (mechanical_workshop_id => suppliers.id)
 #
-# This class represents a Maintenance
 class Maintenance < ApplicationRecord
   belongs_to :mechanical_workshop
   belongs_to :car

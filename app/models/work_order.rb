@@ -35,7 +35,6 @@
 #  fk_rails_...  (car_id => cars.id)
 #  fk_rails_...  (employee_id => employees.id)
 #
-# This class represent a task
 class WorkOrder < ApplicationRecord
   belongs_to :employee, optional: true
   belongs_to :car
