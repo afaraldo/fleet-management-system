@@ -1,4 +1,27 @@
-# This class represents a Maintenance
+# == Schema Information
+#
+# Table name: maintenances
+#
+#  id                     :bigint           not null, primary key
+#  current_mileage        :integer
+#  date                   :date             not null
+#  description            :string
+#  next_mileage           :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  car_id                 :bigint           not null
+#  mechanical_workshop_id :bigint           not null
+#
+# Indexes
+#
+#  index_maintenances_on_car_id                  (car_id)
+#  index_maintenances_on_mechanical_workshop_id  (mechanical_workshop_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (car_id => cars.id)
+#  fk_rails_...  (mechanical_workshop_id => suppliers.id)
+#
 class Maintenance < ApplicationRecord
   belongs_to :mechanical_workshop
   belongs_to :car

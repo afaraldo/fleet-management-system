@@ -2,6 +2,7 @@ version: "3.9"
 volumes:
   db_data:
   cache_data:
+  node_modules:
 services:
   # podman exec -it fleet-management-system_db_1 /bin/bash
   db:
@@ -9,15 +10,26 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
     ports:
       - '5432:5432'
   #  podman exec -it fleet-management-system_cache_1 redis-cli
-  cache:
-    image: redis:6.2-alpine
-    volumes:
-      - cache_data:/data
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
     ports:
-      - '6379:6379'
+      - "3000:3000"
+      # Ports required for debugging
+      - "1234:1234"
+      - "26166:26168"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    env_file: .env
+    environment:
+      RAILS_ENV: development

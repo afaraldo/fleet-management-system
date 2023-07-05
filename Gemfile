@@ -93,6 +93,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'brakeman', '~> 5.2.3'
   gem 'bundler-audit', '~> 0.9.1'
+  gem 'dotenv-rails'
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', require: false
@@ -144,10 +145,7 @@ gem 'paper_trail', '~> 13.0'
 gem 'app_version', git: 'https://github.com/afaraldo/app_version.git', branch: 'master'
 # Access-granted [https://github.com/chaps-io/access-granted]
 gem 'access-granted', '~> 1.0.0'
-# Used to generate reports [https://github.com/ruport/ruport]
-# Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
-# Used to generate reports [https://github.com/ashrafuzzaman/query_report]
-# gem 'query_report'
+
 # Used to add service layer [https://github.com/collectiveidea/interactor-rails]
 gem 'interactor-rails', '~> 2.0'
 # Used to export spreadsheet [https://github.com/caxlsx/caxlsx_rails]
@@ -166,14 +164,14 @@ gem 'noticed', '~> 1.6'
 gem 'image_processing', '>= 1.2'
 
 # Used as backend and background jobs
-gem 'sidekiq', '~> 7.0' # [https://github.com/mperham/sidekiq]
-gem 'sidekiq-cron' # [https://github.com/sidekiq-cron/sidekiq-cron]
-
-# Used to send email [https://github.com/mikel/mail]
-# gem 'mail'
+gem 'audited-activejob' # [https://github.com/markrebec/audited-activejob]
+gem 'good_job', '~> 3.15' # [https://github.com/bensheldon/good_job]
 
 # Used to reporting [https://github.com/ankane/blazer]
 gem 'blazer'
 
 # Used to build view components [https://github.com/viewcomponent/view_component]
 gem 'view_component'
+
+# Add docs to models [https://github.com/ctran/annotate_models]
+gem 'annotate', '~> 3.2'

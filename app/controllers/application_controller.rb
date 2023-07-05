@@ -92,6 +92,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def blazer_authentication
+    # depending on your auth, something like...
+    redirect_to root_path unless current_user # &.admin?
+  end
+
   private
 
   # Override this method to provide your own search params.

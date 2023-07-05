@@ -1,4 +1,17 @@
-# This model represents a employee
+# == Schema Information
+#
+# Table name: employees
+#
+#  id         :bigint           not null, primary key
+#  address    :string
+#  document   :string
+#  last_name  :string
+#  name       :string
+#  phone      :string
+#  position   :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Employee < ApplicationRecord
   has_many :work_orders, dependent: :restrict_with_error
   validates :name, :last_name, :document, presence: true

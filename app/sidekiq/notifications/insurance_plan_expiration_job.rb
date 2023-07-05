@@ -1,8 +1,6 @@
 module Notifications
   # This is a job running to sidekiq
   class InsurancePlanExpirationJob
-    include Sidekiq::Job
-
     # args should be a hash likes {period: day} or {period: week} or {period: month}
     # args = [{"period":"week"}]
     def perform(args)

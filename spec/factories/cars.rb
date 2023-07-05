@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: cars
+#
+#  id                  :bigint           not null, primary key
+#  assigned_dependency :string
+#  chassis             :string
+#  color               :string
+#  horometro           :boolean          default(FALSE), not null
+#  make                :string
+#  model               :string
+#  plate_number        :string
+#  rasp                :string
+#  type_car            :string           not null
+#  year                :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+# Indexes
+#
+#  index_cars_on_rasp  (rasp)
+#
 FactoryBot.define do
   factory :car do
     make { Faker::Vehicle.make }
