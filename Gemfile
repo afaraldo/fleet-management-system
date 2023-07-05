@@ -145,10 +145,8 @@ gem 'paper_trail', '~> 13.0'
 gem 'app_version', git: 'https://github.com/afaraldo/app_version.git', branch: 'master'
 # Access-granted [https://github.com/chaps-io/access-granted]
 gem 'access-granted', '~> 1.0.0'
-# Used to generate reports [https://github.com/ruport/ruport]
-# Require https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
-# Used to generate reports [https://github.com/ashrafuzzaman/query_report]
-# gem 'query_report'
+
+
 # Used to add service layer [https://github.com/collectiveidea/interactor-rails]
 gem 'interactor-rails', '~> 2.0'
 # Used to export spreadsheet [https://github.com/caxlsx/caxlsx_rails]
@@ -167,10 +165,14 @@ gem 'noticed', '~> 1.6'
 gem 'image_processing', '>= 1.2'
 
 # Used as backend and background jobs
-gem 'good_job', '~> 3.15' # https://github.com/bensheldon/good_job
+gem 'good_job', '~> 3.15' # [https://github.com/bensheldon/good_job]
+gem 'audited-activejob' # [https://github.com/markrebec/audited-activejob]
 
 # Used to reporting [https://github.com/ankane/blazer]
 gem 'blazer'
 
 # Used to build view components [https://github.com/viewcomponent/view_component]
 gem 'view_component'
+
+# Add docs to models [https://github.com/ctran/annotate_models]
+gem 'annotate', '~> 3.2'

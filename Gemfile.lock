@@ -77,7 +77,16 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    audited (5.3.3)
+      activerecord (>= 5.0, < 7.1)
+      request_store (~> 1.2)
+    audited-activejob (0.0.5)
+      activejob
+      audited
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -513,7 +522,9 @@ PLATFORMS
 DEPENDENCIES
   access-granted (~> 1.0.0)
   activerecord (>= 7.0.3.1)
+  annotate (~> 3.2)
   app_version!
+  audited-activejob
   better_errors
   binding_of_caller
   blazer

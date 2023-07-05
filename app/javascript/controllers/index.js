@@ -7,5 +7,8 @@ import { application } from "./application"
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
+import SearcherController from "./searcher_controller"
+application.register("searcher", SearcherController)
+
 import Ts__SelectController from "./ts/select_controller"
 application.register("ts--select", Ts__SelectController)
