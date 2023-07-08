@@ -58,3 +58,5 @@
 
 # Ignore env var
 .env
+.env.*
+.idea/modules.xml
