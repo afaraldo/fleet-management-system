@@ -26,12 +26,14 @@ class AccessPolicy
     role :admin, { admin?: true } do
       can :manage, Car
       can :manage, Employee
+      can :manage, GoodJob
       can :manage, InsurancePlan
       can :manage, Maintenance
+      can :manage, Repair
       can :manage, Supplier
+      can :manage, SystemSettings
       can :manage, User
       can :manage, WorkOrder
-      can :manage, Repair
       can :authorize, WorkOrder
       can :view_report, WorkOrder
     end
@@ -41,15 +43,12 @@ class AccessPolicy
       can :manage, Employee
       can :manage, InsurancePlan
       can :manage, Maintenance
-      can :manage, Supplier
-      can :manage, WorkOrder
       can :manage, Repair
+      can :manage, Supplier
+      can :manage, User
+      can :manage, WorkOrder
+      can :authorize, WorkOrder
       can :view_report, WorkOrder
-    end
-    # Less privileged driver role
-    role :driver, { driver?: true } do
-      can :read, Car
-      can :read, WorkOrder
     end
   end
 end

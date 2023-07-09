@@ -134,7 +134,8 @@ SimpleNavigation::Configuration.run do |navigation|
                  content_tag(:div, I18n.t('settings'), class: nil),
                  system_settings_path(session['settings']),
                  html: { class: 'menu-item' },
-                 link_html: { class: 'menu-link' }
+                 link_html: { class: 'menu-link' },
+                 if: proc { can? :read, SystemSettings }
 
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|
