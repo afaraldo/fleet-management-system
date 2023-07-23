@@ -16,10 +16,19 @@
             <%= f.label :email %><br/>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Ingrese su correo" %>
           </div>
-          <div class="mb-3 form-password-toggle">
+          <div class="mb-3 form-password-toggle" data-controller="login">
             <div class="input-group input-group-merge">
-              <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "············" %>
-              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+              <%= f.password_field :password,
+                                   autocomplete: "current-password",
+                                   class: "form-control",
+                                   placeholder: "Ingrese contraseña",
+                                   data: {
+                                     target: 'login.passwordInput'
+                                   }
+              %>
+              <span class="input-group-text cursor-pointer" data-action="click->login#passwordToggle">
+                <i class="bx bx-hide" data-target="login.passwordIcon"></i>
+              </span>
             </div>
           </div>
           <div class="mb-2">
