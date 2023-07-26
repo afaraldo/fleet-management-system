@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'searcher/search'
-  resources :repairs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users
   mount SystemSettings::Engine, at: '/system_settings'
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :insurance_plans
   resources :maintenances
+  resources :repairs
   resources :suppliers
   resources :users do
     resources :notifications, only: %i[index show destroy]
