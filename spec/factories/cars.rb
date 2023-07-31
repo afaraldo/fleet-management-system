@@ -18,7 +18,8 @@
 #
 # Indexes
 #
-#  index_cars_on_rasp  (rasp)
+#  index_cars_on_plate_number  (plate_number) UNIQUE
+#  index_cars_on_rasp          (rasp)
 #
 FactoryBot.define do
   factory :car do

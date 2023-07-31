@@ -175,3 +175,6 @@ gem 'view_component'
 
 # Add docs to models [https://github.com/ctran/annotate_models]
 gem 'annotate', '~> 3.2'
+
+gem 'activerecord-import' # [https://github.com/zdennis/activerecord-import]
+

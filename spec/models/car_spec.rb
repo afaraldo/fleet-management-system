@@ -18,7 +18,8 @@
 #
 # Indexes
 #
-#  index_cars_on_rasp  (rasp)
+#  index_cars_on_plate_number  (plate_number) UNIQUE
+#  index_cars_on_rasp          (rasp)
 #
 require 'rails_helper'
 

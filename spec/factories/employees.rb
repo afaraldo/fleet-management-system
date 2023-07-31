@@ -12,6 +12,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_employees_on_document  (document) UNIQUE
+#
 FactoryBot.define do
   factory :employee do
     name { Faker::Name.first_name }

@@ -18,15 +18,18 @@
 #
 # Indexes
 #
-#  index_cars_on_rasp  (rasp)
+#  index_cars_on_plate_number  (plate_number) UNIQUE
+#  index_cars_on_rasp          (rasp)
 #
 class Car < ApplicationRecord
+
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy
   has_and_belongs_to_many :insurance_plans
   delegate :plate_number, to: :insurance_plans, prefix: true
 
-  validates :type_car, :make, :model, :plate_number, presence: true
+  validates :type_car, :make, :plate_number, presence: true
+  validates :plate_number, uniqueness: true
 
   def self.query_search
     lambda do |params|

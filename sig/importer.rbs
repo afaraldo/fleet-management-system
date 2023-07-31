@@ -1,0 +1,3 @@
+class Importer
+  def self.import: -> untyped
+end

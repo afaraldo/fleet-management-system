@@ -1,0 +1,3 @@
+class AddIndexUniqueToPlateNumberCars
+  def change: -> untyped
+end
