@@ -73,3 +73,5 @@ AllCops:
     - config/environments/development.rb
     - db/migrate/20230630135448_create_good_jobs.rb
     - lib/tasks/auto_annotate_models.rake
+    - config/application.rb
+    - lib/importer.rb
