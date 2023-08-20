@@ -3,20 +3,8 @@ require 'rails_helper'
 RSpec.describe "employees/index", type: :view do
   before(:each) do
     assign(:employees, [
-      Employee.create!(
-        name: "Name",
-        last_name: "Last Name",
-        document: "Document",
-        address: "Address",
-        phone: "Phone"
-      ),
-      Employee.create!(
-        name: "Name",
-        last_name: "Last Name",
-        document: "Document",
-        address: "Address",
-        phone: "Phone"
-      )
+      create(:employee),
+      create(:employee)
     ])
   end
 

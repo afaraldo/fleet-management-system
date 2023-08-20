@@ -31,35 +31,21 @@
             <% end %>
           </div>
 
-          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme " id="layout-navbar">
+          <nav class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme " id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ok">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
               <%= render(SearchComponent.new) %>
-              <!-- /Search -->
+              <!--/ Search -->
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item dropdown lh-1 me-3">
-                  <a class="nav-link dropdown-toggle show" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                    <i class="tf-icons bx-sm bx bxs-bell"></i>
-                    <% if @current_user.notifications.unread.size.nonzero? %>
-                        <span class="badge bg-primary rounded-pill">
-                          <%= @current_user.notifications.unread.size %>
-                        </span>
-                    <% end %>
-                  </a>
-                  <ul class="dropdown-menu" data-bs-popper="none" aria-labelledby="navbarDropdown">
-                    <% @current_user.notifications.unread.each do |notification| %>
-                      <li class="col-8 text-truncate">
-                        <a class="dropdown-item" href="javascript:void(0);"><%= notification.params[:message] %></a>
-                      </li>
-                    <% end %>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                      <%= link_to t('view_all_notification'), user_notifications_path(@current_user), class: "dropdown-item" %>
-                    </li>
-                  </ul>
-                </li>
+                <!-- Notification -->
+                <%= render(NotificationComponent.new(notifications: @current_user.notifications,
+                                                     link_to_all_notification: user_notifications_path(@current_user))) %>
+                <!--/ Notification -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -117,18 +103,13 @@
       
               </ul>
             </div>
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center ml-3 d-xl-none ">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ok">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </div>
           </nav>
           
           <!-- Content wrapper -->
           <div class="content-wrapper">
 
             <!-- Content --> 
-            <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="container-fluid flex-grow-1 container-p-y">
 
             <h3 class="breadcrumbs">
               <%= render_breadcrumbs separator: ' / ' %>

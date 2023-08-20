@@ -52,3 +52,4 @@ class Car < ApplicationRecord
     %w[maintenances work_orders insurance_plans]
   end
 end
+

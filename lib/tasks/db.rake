@@ -16,5 +16,4 @@ namespace :db do
     unique_by = [:document]
     Importer.import(file_path, model_class, unique_by)
   end
-
 end

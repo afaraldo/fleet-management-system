@@ -34,6 +34,9 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, confirmation: { presence: true }
 
+  # SCOPE
+  scope :administrative_only, -> { where(role: %w[admin secretary]) }
+
   def to_s
     "#{self.class.model_name.human} #{email}"
   end

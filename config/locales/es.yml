@@ -11,7 +11,7 @@ es:
   settings: Configuraciones
   logout: Cerrar Sessión
   notification: Notificaciones
-  view_all_notification: Ver todos
+  view_all_notification: Ver todas las notificaciones
   enums:
     work_order:
       status:

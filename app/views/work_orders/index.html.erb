@@ -25,21 +25,30 @@
       <tr>
         <%= simple_search_form_for @ransack do |f| %>
           <th>
+            <%= sort_link(@ransack, :date, t('activerecord.attributes.work_order.created_at'), default_order: :desc) %>
+          </th>
+          <th>
             <%= sort_link(@ransack, :number, t('activerecord.attributes.work_order.number'), default_order: :desc) %>
           </th>
           <th>
             <%= sort_link(@ransack, :car_plate_number, t('activerecord.attributes.work_order.car'), default_order: :desc) %>
           </th>
+          <th><%= t('activerecord.attributes.work_order.description')%></th>
           <th>
             <%= sort_link(@ransack, :city, t('activerecord.attributes.work_order.city'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@ransack, :start_date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
+            <%= sort_link(@ransack, :duration, t('activerecord.attributes.work_order.duration'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@ransack, :final_date, t('activerecord.attributes.work_order.final_date'), default_order: :desc) %>
+            <%= sort_link(@ransack, :start_mileage, t('activerecord.attributes.work_order.start_mileage'), default_order: :desc) %>
           </th>
-          <th><%= t('activerecord.attributes.work_order.description')%></th>
+          <th>
+            <%= sort_link(@ransack, :start_mileage, t('activerecord.attributes.work_order.start_mileage'), default_order: :desc) %>
+          </th>
+          <th>
+            <%= sort_link(@ransack, :final_mileage, t('activerecord.attributes.work_order.final_mileage'), default_order: :desc) %>
+          </th>
           <th>
             <%= sort_link(@ransack, :employee_full_name, t('activerecord.attributes.work_order.employee'), default_order: :desc) %>
           </th>

@@ -63,8 +63,6 @@ GEM
     activerecord (7.0.5)
       activemodel (= 7.0.5)
       activesupport (= 7.0.5)
-    activerecord-import (1.4.1)
-      activerecord (>= 4.2)
     activestorage (7.0.5)
       actionpack (= 7.0.5)
       activejob (= 7.0.5)
@@ -126,6 +124,7 @@ GEM
       actionpack (>= 3.1)
       caxlsx (>= 3.0)
     chartkick (5.0.2)
+    chroma (0.2.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.2)
@@ -524,7 +523,6 @@ PLATFORMS
 DEPENDENCIES
   access-granted (~> 1.0.0)
   activerecord (>= 7.0.3.1)
-  activerecord-import
   annotate (~> 3.2)
   app_version!
   audited-activejob
@@ -537,6 +535,7 @@ DEPENDENCIES
   bundler-audit (~> 0.9.1)
   caxlsx
   caxlsx_rails
+  chroma
   controller_resources
   cssbundling-rails (~> 1.1)
   devise

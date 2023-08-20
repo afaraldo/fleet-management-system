@@ -29,26 +29,4 @@ PaperTrail.request(whodunnit: 'Administrador') do
                 password_confirmation: 'test123',
                 role: :admin)
   end
-
-  100.times do
-    FactoryBot.create(:car)
-  end
-
-  50.times do
-    FactoryBot.create(:insurance_carrier)
-  end
-
-  50.times do
-    FactoryBot.create(:mechanical_workshop)
-  end
-
-  3.times do
-    FactoryBot.create(:maintenance)
-  end
-
-  100.times do
-    FactoryBot.create(:work_order)
-  rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.fatal e
-  end
 end
