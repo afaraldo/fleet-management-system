@@ -43,6 +43,18 @@ module FleetManagementSystem
 
     config.i18n.default_locale = :es
     config.i18n.load_path += SimpleFormRansack.locale_files # Using for https://github.com/kaspernj/simple_form_ransack
-    config.autoload_paths += %W[#{config.root}/app/policies]
+    config.autoload_paths += %W[#{config.root}/app/policies, #{config.root}/lib]
+
+    config.good_job.enable_cron = true
+    config.good_job.cron = {
+      frequent_task: { # each recurring job must have a unique key
+        cron: '*/5 * * * *', # cron-style scheduling format by fugit gem
+        class: 'PendingWorkOrderNotificationJob', # name of the job class as a String; must reference an Active Job job class
+        # args: [], # positional arguments to pass to the job; can also be a proc e.g. `-> { [Time.now] }`
+        # kwargs: { name: "Alice" }, # keyword arguments to pass to the job; can also be a proc e.g. `-> { { name: NAMES.sample } }`
+        # set: { priority: -10 }, # additional Active Job properties; can also be a lambda/proc e.g. `-> { { priority: [1,2].sample } }`
+        description: 'Notification of pending WorkOrders', # optional description that appears in Dashboard
+      }
+    }
   end
 end

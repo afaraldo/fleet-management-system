@@ -3,13 +3,13 @@
     <i class="bx bx-dots-vertical-rounded"></i></button>
   <div class="dropdown-menu">
     <% if can? :update, model %>
-      <%= link_to content_tag(:i, nil, class:'bx bx-edit-alt me-1') + t('buttons.edit')   , url_for([:edit, generate_model_for_url(model)]), class:'dropdown-item' %>
+      <%= link_to content_tag(:i, nil, class: 'bx bx-edit-alt me-1') + t('buttons.edit')   , url_for([:edit, generate_model_for_url(model)]), class: 'dropdown-item' %>
     <%end %>
     <% if can? :destroy, model %>
-      <%= link_to content_tag(:i, nil, class:'bx bx-trash me-1')    + t('buttons.destroy'), url_for(generate_model_for_url(model)), data: {
+      <%= link_to content_tag(:i, nil, class: 'bx bx-trash me-1')    + t('buttons.destroy'), url_for(generate_model_for_url(model)), data: {
         turbo_method: :delete,
         turbo_confirm: t('buttons.confirm')
-      }, class:'dropdown-item' %>
-    <%end %>
+      }, class: 'dropdown-item' %>
+    <% end %>
   </div>
 </div>

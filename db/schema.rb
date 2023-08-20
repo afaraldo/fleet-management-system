@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_30_135448) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_135448) do
     t.string   "make"
     t.string   "model"
     t.string   "color"
-    t.string   "plate_number"
+    t.string   "plate_number",        :index=>{:name=>"index_cars_on_plate_number", :unique=>true}
     t.string   "chassis"
     t.datetime "created_at",          :null=>false
     t.datetime "updated_at",          :null=>false
@@ -112,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_135448) do
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "last_name"
-    t.string   "document"
+    t.string   "document",   :index=>{:name=>"index_employees_on_document", :unique=>true}
     t.string   "address"
     t.string   "phone"
     t.datetime "created_at", :null=>false

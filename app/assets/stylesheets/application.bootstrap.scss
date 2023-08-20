@@ -9,6 +9,7 @@
 @import "flatpickr/dist/themes/airbnb";
 @import "tom-select/dist/css/tom-select.bootstrap4.min";
 @import "timeline";
+@import "devise-flash-messages";
 
 // Using to fix text area height
 .form-floating {
@@ -16,6 +17,19 @@
      height: calc(3.5rem + 2px);
      line-height: 1.25;
   }
+}
+
+.badge.badge-notifications {
+  position: absolute;
+  top: auto;
+  display: inline-block;
+  margin: 0;
+  transform: translate(-50%, -30%);
+}
+
+.layout-navbar .navbar-dropdown .dropdown-menu {
+  min-width: 22rem;
+  overflow: hidden;
 }
 
 // Using to fix text area height

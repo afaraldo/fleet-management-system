@@ -12,6 +12,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_employees_on_document  (document) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Employee, type: :model do

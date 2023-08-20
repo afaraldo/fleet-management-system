@@ -1,8 +1,8 @@
 <!-- Search -->
-<div class="navbar-nav align-items-center" data-controller="searcher">
+<div class="navbar-nav align-items-center">
   <div class="nav-item d-flex align-items-center">
     <i class="bx bx-search fs-4 lh-0"></i>
-      <%= text_field(:q, :search, class: "form-control border-0 shadow-none", data: { "searcher-target":"input", action:"input->searcher#search"} ) %>
+    <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
   </div>
-  <ul id="results"></ul>
 </div>
+<!-- /Search -->

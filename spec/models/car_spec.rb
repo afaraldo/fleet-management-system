@@ -18,7 +18,8 @@
 #
 # Indexes
 #
-#  index_cars_on_rasp  (rasp)
+#  index_cars_on_plate_number  (plate_number) UNIQUE
+#  index_cars_on_rasp          (rasp)
 #
 require 'rails_helper'
 
@@ -31,7 +32,7 @@ RSpec.describe Car, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:type_car) }
     it { should validate_presence_of(:make) }
-    it { should validate_presence_of(:model) }
+    it { should validate_presence_of(:type_car) }
     it { should validate_presence_of(:plate_number) }
   end
 

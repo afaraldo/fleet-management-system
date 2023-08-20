@@ -175,3 +175,5 @@ gem 'view_component'
 
 # Add docs to models [https://github.com/ctran/annotate_models]
 gem 'annotate', '~> 3.2'
+
+gem 'chroma' # [https://github.com/jfairbank/chroma]

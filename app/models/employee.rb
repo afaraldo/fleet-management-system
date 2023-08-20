@@ -12,6 +12,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_employees_on_document  (document) UNIQUE
+#
 class Employee < ApplicationRecord
   has_many :work_orders, dependent: :restrict_with_error
   validates :name, :last_name, :document, presence: true
