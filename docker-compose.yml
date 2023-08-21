@@ -33,3 +33,5 @@ services:
     env_file: .env
     environment:
       RAILS_ENV: development
+  reports:
+    image: bitnami/reportserver:latest

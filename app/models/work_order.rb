@@ -56,6 +56,8 @@ class WorkOrder < ApplicationRecord
   delegate :plate_number, to: :car, prefix: true
   delegate :full_name, to: :employee, prefix: true, allow_nil: true
 
+  scope :pending, -> { where(status: :requested) }
+
   def distance
     self.final_mileage ||= 0
     self.start_mileage ||= 0

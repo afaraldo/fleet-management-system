@@ -50,6 +50,8 @@ This command should initialize a postgresql database and redis database
 
 rake db:migrate
 rake db:seed
+rake db:import_cars
+rake db:import_employees
 
 * How to run the test suite
 
@@ -78,6 +80,9 @@ https://www.linuxcapable.com/how-to-install-imagemagick-on-rocky-linux-8/
 Contributions to fleet-management-system may be made using GitHub pull requests. You must include accompanying tests, and all tests must pass for any contribution to be considered.
 
 Also use rubocop -f html -o rubocop.html
+
+# Email Preview 
+http://localhost:3000/rails/mailers/work_order/pending_work_order_notification.html?locale=es
 
 # fleet-management-system
 

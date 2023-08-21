@@ -1,6 +1,8 @@
 # String type values
 string :organization_name, value: 'Gobernación de Itapúa', description: 'This name show in navbar'
+string :organization_url, value: 'www.itapua.gov.py', description: 'URL Organization use'
 string :site_name, value: 'Gobernación de Itapúa', description: 'This name appers in tab browser header title'
+string :site_url, value: 'https://fleet-management-system.herokuapp.com', description: 'System URL'
 string :logo_file, value: 'logo.png'
 string :user_file, value: 'user.png'
 string :favicon, value: 'favicon.ico'
