@@ -5,7 +5,7 @@ class WorkOrderMailer < ApplicationMailer
   #
   #   en.work_order_mailer.pending_work_order_notification.subject
   #
-  def pending_work_order_notification
+  def pending_work_orders_notification
     @recipient = params[:recipient]
     @work_orders = WorkOrder.pending
 

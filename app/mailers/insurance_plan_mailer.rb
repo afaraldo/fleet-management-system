@@ -5,7 +5,7 @@ class InsurancePlanMailer < ApplicationMailer
   #
   #   en.insurance_plan_mailer.insurance_plans_to_expire.subject
   #
-  def pending_work_order_notification
+  def insurance_plans_to_expire_notification
     @recipient = params[:recipient]
     @insurance_plans = InsurancePlan.all
 

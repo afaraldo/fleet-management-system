@@ -75,3 +75,8 @@ AllCops:
     - lib/tasks/auto_annotate_models.rake
     - config/application.rb
     - lib/importer.rb
+    - app/jobs/insurance_plans_to_expire_job.rb
+    - app/mailers/insurance_plan_mailer.rb
+    - app/mailers/work_order_mailer.rb
+    - app/notifications/insurance_plans_to_expire_notification.rb
+    - app/notifications/pending_work_orders_notification.rb
