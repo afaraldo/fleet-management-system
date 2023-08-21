@@ -94,7 +94,7 @@
     <p class="summary"><%= "Estimado #{@recipient.email}," %></p>
     <p class="instructions">Les informamos sobre las siguientes órdenes de trabajo pendientes de autorización:</p>
     <ul class="order-list">
-      <% WorkOrder.all.each do |work_order| %>
+      <% @work_orders.all.each do |work_order| %>
         <li class="order-item"><%= "Orden ##{work_order.id}: #{work_order.description&.truncate(60)}" %></li>
       <% end %>
     </ul>

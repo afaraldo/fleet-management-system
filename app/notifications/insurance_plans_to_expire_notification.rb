@@ -1,13 +1,13 @@
 # To deliver this notification:
 #
-# PendingWorkOrderNotification.with(post: @post).deliver_later(current_user)
-# PendingWorkOrderNotification.with(post: @post).deliver(current_user)
+# InsurancePlansToExpireNotification.with(post: @post).deliver_later(current_user)
+# InsurancePlansToExpireNotification.with(post: @post).deliver(current_user)
 
-class PendingWorkOrderNotification < Noticed::Base
+class InsurancePlansToExpireNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database
-  deliver_by :email, mailer: 'WorkOrderMailer'
+  deliver_by :email, mailer: 'InsurancePlanMailer'
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
 
