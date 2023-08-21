@@ -30,6 +30,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      RAILS_MASTER_KEY: 7343f73082e5afc1a717137af3b0462e
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

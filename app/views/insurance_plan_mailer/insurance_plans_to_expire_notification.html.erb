@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Órdenes de Trabajo Pendientes</title>
+  <style>
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+      }
+      .container {
+          max-width: 800px;
+          margin: 30px auto;
+          background-color: #ffffff;
+          border-radius: 5px;
+          box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      .header-card {
+          background-color: #047c0c;
+          color: #ffffff;
+          text-align: center;
+          padding: 1em;
+          border-radius: 5px 5px 0 0;
+      }
+      .card-content {
+          padding: 20px;
+      }
+      .order-list {
+          list-style: none;
+          padding: 0;
+      }
+      .order-item {
+          background-color: #ffffff;
+          border: 1px solid #ddd;
+          padding: 15px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .summary {
+          font-size: 24px;
+          color: #1e1e2d;
+          margin-bottom: 20px;
+      }
+      .instructions {
+          font-size: 16px;
+          color: #455056;
+          margin-bottom: 20px;
+      }
+      .action-button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #047c0c;
+          color: #ffffff;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: bold;
+      }
+      .logo {
+          display: block;
+          margin: 0 auto;
+          padding: 1em;
+          background-color: #f4f4f4;
+          text-align: center;
+      }
+      .footer {
+          text-align: center;
+          padding: 1em;
+          background-color: #f4f4f4;
+          color: #047c0c;
+      }
+      .body-background {
+          background-color: #f4f4f4; /* Cambiar al color gris deseado */
+      }
+      .date {
+          text-align: left;
+          margin: 0;
+      }
+  </style>
+</head>
+<body class="body-background">
+<div class="logo">
+  <img width="200" src="https://raw.githubusercontent.com/afaraldo/fleet-management-system/main/app/assets/images/logo.png" title="logo" alt="logo">
+</div>
+<div class="container">
+  <div class="header-card">
+    <h1>Resumen de Seguros a vencer</h1>
+    <p class="date"><%= "Fecha: #{I18n.l(DateTime.now, format: :default)}" %></p>
+  </div>
+  <div class="card-content">
+    <p class="summary"><%= "Estimado #{@recipient.email}," %></p>
+    <p class="instructions">Les informamos sobre las siguientes órdenes de trabajo pendientes de autorización:</p>
+    <ul class="order-list">
+      <% @insurance_plans.all.each do |insurance_plan| %>
+        <li class="order-item"><%= "Seguro ##{insurance_plan.id}: #{insurance_plan.type_coverage&.truncate(60)}" %></li>
+      <% end %>
+    </ul>
+    <p class="instructions">Por favor, tomen las medidas necesarias para revisar y autorizar estas órdenes a la brevedad posible.</p>
+    <a class="action-button" style="color: #ffffff;" href=<%= "#{SystemSettings[:site_url]}/work_orders" %>>Ir al Sistema de Órdenes</a>
+  </div>
+  <div class="footer">
+    <a href="<%= SystemSettings[:organization_url] %>"><%="© #{SystemSettings[:organization_url]}" %></a>
+  </div>
+</div>
+</body>
+</html>

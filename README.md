@@ -50,6 +50,8 @@ This command should initialize a postgresql database and redis database
 
 rake db:migrate
 rake db:seed
+rake db:import_cars
+rake db:import_employees
 
 * How to run the test suite
 
@@ -79,9 +81,17 @@ Contributions to fleet-management-system may be made using GitHub pull requests.
 
 Also use rubocop -f html -o rubocop.html
 
+# Email Preview 
+http://localhost:3000/rails/mailers/work_order/pending_work_order_notification.html?locale=es
+
 # fleet-management-system
 
 Demo: https://fleet-management-system.herokuapp.com/
 Credentials:
 - username: admin@email.com
 - password: test123
+
+AUTHORS:
+- Adrián Agüero
+- Karina Sanabria
+
