@@ -90,3 +90,8 @@ Demo: https://fleet-management-system.herokuapp.com/
 Credentials:
 - username: admin@email.com
 - password: test123
+
+AUTHORS:
+- Adrián Agüero
+- Karina Sanabria
+
