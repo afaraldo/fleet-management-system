@@ -8,7 +8,7 @@ RSpec.describe WorkOrderMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Hay 0 nuevas Órdenes de Trabajo.")
       expect(mail.to).to eq([recipient.email.to_s])
-      expect(mail.from).to eq(["iceberg.04@gmail.com"])
+      expect(mail.from).to eq(["example@gmail.com"])
     end
 
     it "renders the body" do
