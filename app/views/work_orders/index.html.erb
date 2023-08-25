@@ -47,7 +47,7 @@
             <%= sort_link(@ransack, :start_mileage, t('activerecord.attributes.work_order.start_mileage'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@ransack, :final_mileage, t('activerecord.attributes.work_order.final_mileage'), default_order: :desc) %>
+            <%= sort_link(@ransack, :distance, t('activerecord.attributes.work_order.distance'), default_order: :desc) %>
           </th>
           <th>
             <%= sort_link(@ransack, :employee_full_name, t('activerecord.attributes.work_order.employee'), default_order: :desc) %>
@@ -60,17 +60,15 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <% if can? :update, WorkOrder %>
-            <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
-            <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
-          <%else %>
-            <td><%= work_order.number%></td>
-            <td><%= work_order.car_plate_number%></td>
-          <%end %>
+          <td><%= datetime_format(work_order.start_date) %></td>
+          <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
+          <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+          <td><%= work_order.description&.truncate(45) %></td>
           <td><%= work_order.city %></td>
+          <td><%= work_order.workdays %></td>
           <td><%= datetime_format(work_order.start_date) %></td>
           <td><%= datetime_format(work_order.final_date) %></td>
-          <td><%= work_order.description %></td>
+          <td><%= work_order.distance %></td>
           <td><%= work_order.employee_full_name %></td>
           <td><%= add_status(work_order.status) %></td>
           <td class="d-print-none">

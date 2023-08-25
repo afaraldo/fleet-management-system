@@ -10,7 +10,18 @@ class NotificationsController < ApplicationController
     @q = @user.notifications.ransack(params[:q])
     @q.sorts = 'created_at desc' if @q.sorts.empty?
     @notifications = @q.result(distinct: true).page(params[:page]).per(25)
-    respond_with(@notifications)
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          draw: '1',
+          recordsTotal: @notifications.size,
+          recordsFiltered: @notifications.size,
+          data: @notifications.map { |notification| { message: 'hola', status: notification.read? } }
+        }
+      end
+    end
   end
 
   def show

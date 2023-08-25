@@ -6,6 +6,23 @@
   </h5>
 
   <div class="table-responsive text-nowrap">
+    <!--<div class="absolute z-30 w-full ml-10 pt-px" data-item-select-all-target="selectAllOverlay">
+      <div class="bg-white flex items-center h-9 mt-0.5">
+        <div class="mt-1.5" data-item-select-all-target="unselectedMessage">
+          <span class="font-bold text-gray-700">48</span> records selected on this page from a total of <span class="font-bold text-gray-700">437</span>
+          <a class="button-component inline-flex flex-grow-0 items-center font-semibold leading-6 fill-current whitespace-nowrap transition duration-100 transform transition duration-100 cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 border justify-center active:outline active:outline-1 relative -top-[0.1rem] ml-2 cursor-pointer text-primary-500 rounded bg-white text-primary-500 border-primary-500 hover:bg-primary-100 active:bg-primary-100 active:border-primary-500 active:outline-primary-500 px-2 py-0 text-xs" data-action="click->item-select-all#selectAll" href="https://lcs-api-dev.le.mu/admin/resources/transactions?page=1&amp;per_page=48"><span>
+            Select all matching</span>
+          </a>
+        </div>
+        <div class="mt-1.5 hidden" data-item-select-all-target="selectedMessage">
+          <span class="font-bold text-gray-700">437</span> records selected from all pages
+          <a class="button-component inline-flex flex-grow-0 items-center font-semibold leading-6 fill-current whitespace-nowrap transition duration-100 transform transition duration-100 cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 border justify-center active:outline active:outline-1 relative -top-[0.1rem] ml-2 cursor-pointer text-primary-500 rounded bg-white text-primary-500 border-primary-500 hover:bg-primary-100 active:bg-primary-100 active:border-primary-500 active:outline-primary-500 px-2 py-0 text-xs" data-action="click->item-select-all#selectAll" href="https://lcs-api-dev.le.mu/admin/resources/transactions?page=1&amp;per_page=48"><span>
+            Undo
+          </span>
+          </a>
+        </div>
+      </div>
+    </div>-->
     <table class="table">
       <caption class="ms-4">
         <div class="d-flex align-items-center justify-content-between">
@@ -17,6 +34,7 @@
       </caption>
       <thead>
       <tr>
+        <th><input type="checkbox" id="select-all" /></th>
         <th>
           <%= t('activerecord.attributes.notification.message') %>
         </th>
@@ -28,6 +46,7 @@
       <tbody>
       <% @notifications.each do |notification| %>
         <tr>
+          <td><%= check_box_tag 'item_ids[]', notification.id, false, class: 'item-checkbox' %></td>
           <td><strong><%= link_to notification.params[:message], user_notification_path(@user, notification) %></strong></td>
           <td><%= content_tag(:span, "Sin leer", class: 'badge bg-label bg-primary') if notification.unread? %></td>
         </tr>

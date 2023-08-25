@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import DataTableController from "./data_table_controller"
+application.register("data-table", DataTableController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
