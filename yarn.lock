@@ -121,7 +121,7 @@
 
 "@hotwired/turbo-rails@hotwired/turbo-rails":
   version "7.3.0"
-  resolved "git+ssh://git@github.com/hotwired/turbo-rails.git#037a307e3a4ab0d861e49140eb626d738c5b2788"
+  resolved "https://github.com/hotwired/turbo-rails.git#037a307e3a4ab0d861e49140eb626d738c5b2788"
   dependencies:
     "@hotwired/turbo" "^7.3.0"
     "@rails/actioncable" "^7.0"
