@@ -43,7 +43,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-          token: "${{ GH_PERSONAL_TOKEN }}"
+          token: "${{ secrets.GH_PERSONAL_TOKEN }}"
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
