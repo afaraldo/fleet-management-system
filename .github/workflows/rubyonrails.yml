@@ -53,8 +53,6 @@ jobs:
       # Add or replace test runners here
       - name: Run tests
         run: bin/rake
-        with:
-          bundler-cache: true # Esto instala las dependencias y cachea las gemas para pasos futuros
 
   lint:
     runs-on: ubuntu-22.04
