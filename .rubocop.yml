@@ -80,3 +80,4 @@ AllCops:
     - app/mailers/work_order_mailer.rb
     - app/notifications/insurance_plans_to_expire_notification.rb
     - app/notifications/pending_work_orders_notification.rb
+    - app/controllers/notifications_controller.rb

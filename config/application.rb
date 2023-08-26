@@ -49,7 +49,7 @@ module FleetManagementSystem
     config.good_job.cron = {
       pending_work_order_notification_job: { # each recurring job must have a unique key
         cron: '0 7 * * 1-5', # cron-style scheduling format by fugit gem
-        class: 'PendingWorkOrderNotificationJob', # name of the job class as a String; must reference an Active Job job class
+        class: 'PendingWorkOrdersNotificationJob', # name of the job class as a String; must reference an Active Job job class
         # args: [], # positional arguments to pass to the job; can also be a proc e.g. `-> { [Time.now] }`
         # kwargs: { name: "Alice" }, # keyword arguments to pass to the job; can also be a proc e.g. `-> { { name: NAMES.sample } }`
         # set: { priority: -10 }, # additional Active Job properties; can also be a lambda/proc e.g. `-> { { priority: [1,2].sample } }`
