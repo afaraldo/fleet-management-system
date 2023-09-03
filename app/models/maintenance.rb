@@ -6,6 +6,7 @@
 #  current_mileage        :integer
 #  date                   :date             not null
 #  description            :string
+#  discarded_at           :datetime
 #  next_mileage           :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -15,6 +16,7 @@
 # Indexes
 #
 #  index_maintenances_on_car_id                  (car_id)
+#  index_maintenances_on_discarded_at            (discarded_at)
 #  index_maintenances_on_mechanical_workshop_id  (mechanical_workshop_id)
 #
 # Foreign Keys

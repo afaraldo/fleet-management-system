@@ -177,3 +177,5 @@ gem 'view_component'
 gem 'annotate', '~> 3.2'
 
 gem 'chroma' # [https://github.com/jfairbank/chroma]
+
+gem 'discard', '~> 1.2' # [https://github.com/jhawthorn/discard]

@@ -6,6 +6,7 @@
 #  area          :string           not null
 #  city          :string
 #  description   :string           not null
+#  discarded_at  :datetime
 #  final_date    :datetime         not null
 #  final_mileage :integer
 #  final_oil     :integer
@@ -21,14 +22,15 @@
 #
 # Indexes
 #
-#  index_work_orders_on_car_id       (car_id)
-#  index_work_orders_on_city         (city)
-#  index_work_orders_on_description  (description)
-#  index_work_orders_on_employee_id  (employee_id)
-#  index_work_orders_on_final_date   (final_date)
-#  index_work_orders_on_number       (number) UNIQUE
-#  index_work_orders_on_start_date   (start_date)
-#  index_work_orders_on_status       (status)
+#  index_work_orders_on_car_id        (car_id)
+#  index_work_orders_on_city          (city)
+#  index_work_orders_on_description   (description)
+#  index_work_orders_on_discarded_at  (discarded_at)
+#  index_work_orders_on_employee_id   (employee_id)
+#  index_work_orders_on_final_date    (final_date)
+#  index_work_orders_on_number        (number) UNIQUE
+#  index_work_orders_on_start_date    (start_date)
+#  index_work_orders_on_status        (status)
 #
 # Foreign Keys
 #

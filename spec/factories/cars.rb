@@ -6,6 +6,7 @@
 #  assigned_dependency :string
 #  chassis             :string
 #  color               :string
+#  discarded_at        :datetime
 #  horometro           :boolean          default(FALSE), not null
 #  make                :string
 #  model               :string
@@ -18,6 +19,7 @@
 #
 # Indexes
 #
+#  index_cars_on_discarded_at  (discarded_at)
 #  index_cars_on_plate_number  (plate_number) UNIQUE
 #  index_cars_on_rasp          (rasp)
 #

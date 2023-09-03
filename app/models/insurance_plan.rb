@@ -5,6 +5,7 @@
 #  id                   :bigint           not null, primary key
 #  amount               :integer          not null
 #  contract_date        :date             not null
+#  discarded_at         :datetime
 #  expiry_date          :date
 #  type_coverage        :string
 #  created_at           :datetime         not null
@@ -13,6 +14,7 @@
 #
 # Indexes
 #
+#  index_insurance_plans_on_discarded_at          (discarded_at)
 #  index_insurance_plans_on_expiry_date           (expiry_date)
 #  index_insurance_plans_on_insurance_carrier_id  (insurance_carrier_id)
 #
