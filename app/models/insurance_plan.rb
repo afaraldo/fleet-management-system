@@ -45,7 +45,7 @@ class InsurancePlan < ApplicationRecord
 
   delegate :name, to: :insurance_carrier
 
-  algoliasearch enqueue: true do
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :name, :contract_date, :title, :description
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes

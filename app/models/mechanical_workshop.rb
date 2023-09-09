@@ -15,7 +15,6 @@
 #  index_suppliers_on_discarded_at  (discarded_at)
 #
 class MechanicalWorkshop < Supplier
-
   def to_s
     name
   end

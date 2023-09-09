@@ -83,3 +83,5 @@ AllCops:
     - app/controllers/notifications_controller.rb
     - db/migrate/20230826181701_add_discard_to_models.rb
     - db/migrate/20230903235741_add_indexes_to_cars_insurance_plans.rb
+    - config/initializers/algoliasearch.rb
+    - app/controllers/search_controller.rb

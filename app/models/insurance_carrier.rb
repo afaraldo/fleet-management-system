@@ -16,13 +16,13 @@
 #
 class InsuranceCarrier < Supplier
   include AlgoliaSearch
-  has_many :name, dependent: :destroy
+  has_many :insurance_plans, dependent: :destroy
 
   def to_s
     name
   end
 
-  algoliasearch enqueue: true do
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :name, :ruc, :title, :description
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
@@ -33,7 +33,7 @@ class InsuranceCarrier < Supplier
   end
 
   def title
-    "#{name}"
+    name.to_s
   end
 
   def description

@@ -39,7 +39,7 @@ class Employee < ApplicationRecord
     %w[work_orders]
   end
 
-  algoliasearch enqueue: true do
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :name, :last_name, :document, :title, :description
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes

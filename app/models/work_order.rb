@@ -118,7 +118,7 @@ class WorkOrder < ApplicationRecord
 
   delegate :plate_number, to: :car
 
-  algoliasearch enqueue: true do
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :car_plate_number, :description, :start_date, :title, :description
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
@@ -164,5 +164,4 @@ class WorkOrder < ApplicationRecord
     errors.add :start_date, :busy_date, record: wo1.first.to_s
     errors.add :final_date, :busy_date, record: wo2.first.to_s
   end
-
 end

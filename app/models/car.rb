@@ -54,7 +54,7 @@ class Car < ApplicationRecord
     %w[maintenances work_orders insurance_plans]
   end
 
-  algoliasearch enqueue: true do
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :plate_number, :type_car, :rasp, :model, :year, :make, :color, :chassis, :assigned_dependency
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
@@ -75,5 +75,4 @@ class Car < ApplicationRecord
   def url
     car_path(self)
   end
-
 end
