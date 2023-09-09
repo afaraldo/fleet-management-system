@@ -77,6 +77,14 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    algolia (2.3.2)
+      faraday (>= 0.15, < 3)
+      faraday-net_http_persistent (>= 0.15, < 3)
+      multi_json (~> 1.0)
+      net-http-persistent
+    algoliasearch-rails (2.2.2)
+      algolia (< 3.0.0)
+      json (>= 1.5.1)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -128,6 +136,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     controller_resources (1.0.0)
       rails
     crass (1.0.6)
@@ -169,6 +178,13 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
+    faraday (2.7.5)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
+    faraday-net_http_persistent (2.1.0)
+      faraday (~> 2.5)
+      net-http-persistent (~> 4.0)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -265,6 +281,9 @@ GEM
     minitest (5.18.0)
     modware (1.0.2)
     msgpack (1.7.1)
+    multi_json (1.15.0)
+    net-http-persistent (4.0.2)
+      connection_pool (~> 2.2)
     net-imap (0.3.4)
       date
       net-protocol
@@ -395,6 +414,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    ruby2_keywords (0.0.5)
     ruby_parser (3.20.1)
       sexp_processor (~> 4.16)
     rubycritic (4.8.1)
@@ -525,6 +545,7 @@ PLATFORMS
 DEPENDENCIES
   access-granted (~> 1.0.0)
   activerecord (>= 7.0.3.1)
+  algoliasearch-rails
   annotate (~> 3.2)
   app_version!
   audited-activejob
