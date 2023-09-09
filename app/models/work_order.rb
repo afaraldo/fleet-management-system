@@ -38,6 +38,7 @@
 #  fk_rails_...  (employee_id => employees.id)
 #
 class WorkOrder < ApplicationRecord
+  include AlgoliaSearch
   belongs_to :employee, optional: true
   belongs_to :car
   has_paper_trail
@@ -113,6 +114,22 @@ class WorkOrder < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     %w[area car_id city created_at description employee_id final_date final_mileage final_oil id integer number
        start_date start_mileage status updated_at]
+  end
+
+  delegate :plate_number, to: :car
+
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
+    attributes :car_plate_number, :description, :start_date, :title, :description
+
+    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
+    # you want to search in: here `title`, `subtitle` & `description`.
+    # You need to list them by order of importance. `description` is tagged as
+    # `unordered` to avoid taking the position of a match into account in that attribute.
+    searchableAttributes %w[plate_number type_car rasp model year make color chassis assigned_dependency]
+  end
+
+  def title
+    "#{car_plate_number} en #{start_date}"
   end
 
   private

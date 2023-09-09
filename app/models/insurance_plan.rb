@@ -23,6 +23,7 @@
 #  fk_rails_...  (insurance_carrier_id => suppliers.id)
 #
 class InsurancePlan < ApplicationRecord
+  include AlgoliaSearch
   has_and_belongs_to_many :cars
   belongs_to :insurance_carrier
   validates :cars, presence: true
@@ -40,5 +41,25 @@ class InsurancePlan < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     %w[cars insurance_carrier versions]
+  end
+
+  delegate :name, to: :insurance_carrier
+
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
+    attributes :name, :contract_date, :title, :description
+
+    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
+    # you want to search in: here `title`, `subtitle` & `description`.
+    # You need to list them by order of importance. `description` is tagged as
+    # `unordered` to avoid taking the position of a match into account in that attribute.
+    searchableAttributes %w[name last_name document]
+  end
+
+  def title
+    insurance_carrier_name.to_s
+  end
+
+  def description
+    contract_date&.format('%d/%m/%Y')
   end
 end

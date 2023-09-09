@@ -24,6 +24,8 @@
 #  index_cars_on_rasp          (rasp)
 #
 class Car < ApplicationRecord
+  include AlgoliaSearch
+  include Rails.application.routes.url_helpers
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy
   has_and_belongs_to_many :insurance_plans
@@ -50,5 +52,27 @@ class Car < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     %w[maintenances work_orders insurance_plans]
+  end
+
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
+    attributes :plate_number, :type_car, :rasp, :model, :year, :make, :color, :chassis, :assigned_dependency
+
+    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
+    # you want to search in: here `title`, `subtitle` & `description`.
+    # You need to list them by order of importance. `description` is tagged as
+    # `unordered` to avoid taking the position of a match into account in that attribute.
+    searchableAttributes %w[plate_number type_car rasp model year make color chassis assigned_dependency]
+  end
+
+  def title
+    "#{plate_number} RASP: #{rasp}"
+  end
+
+  def description
+    "#{type_car} #{model} #{year}"
+  end
+
+  def url
+    car_path(self)
   end
 end

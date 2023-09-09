@@ -19,6 +19,7 @@
 #  index_employees_on_document      (document) UNIQUE
 #
 class Employee < ApplicationRecord
+  include AlgoliaSearch
   has_many :work_orders, dependent: :restrict_with_error
   validates :name, :last_name, :document, presence: true
 
@@ -36,5 +37,23 @@ class Employee < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     %w[work_orders]
+  end
+
+  algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
+    attributes :name, :last_name, :document, :title, :description
+
+    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
+    # you want to search in: here `title`, `subtitle` & `description`.
+    # You need to list them by order of importance. `description` is tagged as
+    # `unordered` to avoid taking the position of a match into account in that attribute.
+    searchableAttributes %w[name last_name document]
+  end
+
+  def title
+    "#{name} #{last_name}"
+  end
+
+  def description
+    document.to_s
   end
 end

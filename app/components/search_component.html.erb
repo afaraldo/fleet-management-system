@@ -1,8 +1,9 @@
 <!-- Search -->
-<div class="navbar-nav align-items-center">
+<div class="navbar-nav align-items-center position-relative" data-controller="search">
   <div class="nav-item d-flex align-items-center">
     <i class="bx bx-search fs-4 lh-0"></i>
-    <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
+    <input type="text" class="form-control border-0 shadow-none" data-search-target="query" placeholder="Buscar..." aria-label="Search...">
   </div>
+  <div data-search-target="results" class="list-group position-absolute start-0 bg-white" style="max-width: 300px; width: 100%; top: 100%; z-index: 1000;"></div>
 </div>
 <!-- /Search -->

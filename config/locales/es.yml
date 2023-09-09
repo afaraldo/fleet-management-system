@@ -354,9 +354,9 @@ es:
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     pm: pm
-  created: "%{record} fue creado."
-  updated: "%{record} fue actualizado."
-  destroyed: "%{record} fue borrado."
+  created: "%{class}: %{record} fue creado."
+  updated: "%{class}: %{record} fue actualizado."
+  destroyed: "%{class}: %{record} fue borrado."
   navbar:
     dashboard: "Dashboard"
     car: "Vehículos"

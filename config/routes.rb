@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
   resources :work_orders
   resources :work_order_reports
+  get 'search', to: 'search#index'
 
   # Defines the root path route ("/")
   root 'dash_boards#index'
