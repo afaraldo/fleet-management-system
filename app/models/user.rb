@@ -43,7 +43,7 @@ class User < ApplicationRecord
     "#{self.class.model_name.human} #{email}"
   end
 
-  enum role: { admin: 0, secretary: 1, driver: 2 }
+  enum role: { admin: 0, secretary: 1, superadmin: 2 }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[email last_sign_in_at profile_foto reset_password_sent_at reset_password_token]

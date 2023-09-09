@@ -23,7 +23,6 @@ es:
       role:
         admin: Administrador
         secretary: Secretario/a
-        driver: Chofer
   buttons:
     new: Agregar
     edit: Editar

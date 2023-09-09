@@ -19,7 +19,7 @@ PaperTrail.request(whodunnit: 'Administrador') do
     User.create(email: 'iceberg.04@gmail.com',
                 password: 'test123',
                 password_confirmation: 'test123',
-                role: :admin)
+                role: :superadmin)
   end
 
   superuser = User.find_by(email: 'karina.sanabria75@gmail.com ')
@@ -27,6 +27,6 @@ PaperTrail.request(whodunnit: 'Administrador') do
     User.create(email: 'karina.sanabria75@gmail.com',
                 password: 'test123',
                 password_confirmation: 'test123',
-                role: :admin)
+                role: :superadmin)
   end
 end
