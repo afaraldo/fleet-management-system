@@ -92,14 +92,14 @@
   </div>
   <div class="card-content">
     <p class="summary"><%= "Estimado #{@recipient.email}," %></p>
-    <p class="instructions">Les informamos sobre las siguientes órdenes de trabajo pendientes de autorización:</p>
+    <p class="instructions">Le informamos sobre los siguientes seguros por vencer:</p>
     <ul class="order-list">
       <% @insurance_plans.all.each do |insurance_plan| %>
         <li class="order-item"><%= "Seguro ##{insurance_plan.id}: #{insurance_plan.type_coverage&.truncate(60)}" %></li>
       <% end %>
     </ul>
-    <p class="instructions">Por favor, tomen las medidas necesarias para revisar y autorizar estas órdenes a la brevedad posible.</p>
-    <a class="action-button" style="color: #ffffff;" href=<%= "#{SystemSettings[:site_url]}/work_orders" %>>Ir al Sistema de Órdenes</a>
+    <p class="instructions">Por favor, tomen las medidas necesarias para renovar estos seguros.</p>
+    <a class="action-button" style="color: #ffffff;" href=<%= "#{SystemSettings[:site_url]}/work_orders" %>>Ir al Sistema</a>
   </div>
   <div class="footer">
     <a href="<%= SystemSettings[:organization_url] %>"><%="© #{SystemSettings[:organization_url]}" %></a>

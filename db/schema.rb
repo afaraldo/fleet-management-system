@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_235741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
     t.integer  "year"
     t.string   "assigned_dependency"
     t.string   "type_car",            :null=>false
+    t.datetime "discarded_at",        :index=>{:name=>"index_cars_on_discarded_at"}
   end
 
   create_table "cars_insurance_plans", force: :cascade do |t|
@@ -112,12 +113,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "last_name"
-    t.string   "document",   :index=>{:name=>"index_employees_on_document", :unique=>true}
+    t.string   "document",     :index=>{:name=>"index_employees_on_document", :unique=>true}
     t.string   "address"
     t.string   "phone"
-    t.datetime "created_at", :null=>false
-    t.datetime "updated_at", :null=>false
+    t.datetime "created_at",   :null=>false
+    t.datetime "updated_at",   :null=>false
     t.string   "position"
+    t.datetime "discarded_at", :index=>{:name=>"index_employees_on_discarded_at"}
   end
 
   create_table "good_job_batches", id: :uuid, default: %q{gen_random_uuid()}, force: :cascade do |t|
@@ -193,6 +195,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
     t.datetime "updated_at",           :null=>false
     t.bigint   "insurance_carrier_id", :index=>{:name=>"index_insurance_plans_on_insurance_carrier_id"}
     t.string   "type_coverage"
+    t.datetime "discarded_at",         :index=>{:name=>"index_insurance_plans_on_discarded_at"}
   end
 
   create_table "maintenances", force: :cascade do |t|
@@ -204,6 +207,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
     t.datetime "updated_at",             :null=>false
     t.integer  "current_mileage"
     t.integer  "next_mileage"
+    t.datetime "discarded_at",           :index=>{:name=>"index_maintenances_on_discarded_at"}
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -223,14 +227,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
     t.string   "repairs"
     t.datetime "created_at",             :null=>false
     t.datetime "updated_at",             :null=>false
+    t.datetime "discarded_at",           :index=>{:name=>"index_repairs_on_discarded_at"}
   end
 
   create_table "suppliers", force: :cascade do |t|
-    t.string   "name",       :null=>false
-    t.string   "ruc",        :null=>false
-    t.string   "type",       :null=>false
-    t.datetime "created_at", :null=>false
-    t.datetime "updated_at", :null=>false
+    t.string   "name",         :null=>false
+    t.string   "ruc",          :null=>false
+    t.string   "type",         :null=>false
+    t.datetime "created_at",   :null=>false
+    t.datetime "updated_at",   :null=>false
+    t.datetime "discarded_at", :index=>{:name=>"index_suppliers_on_discarded_at"}
   end
 
   create_table "system_settings_settings", id: :serial, force: :cascade do |t|
@@ -257,6 +263,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
     t.datetime "created_at",             :null=>false
     t.datetime "updated_at",             :null=>false
     t.integer  "role"
+    t.datetime "discarded_at",           :index=>{:name=>"index_users_on_discarded_at"}
   end
 
   create_table "versions", force: :cascade do |t|
@@ -285,10 +292,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_013900) do
     t.integer  "final_oil"
     t.string   "area",          :null=>false
     t.integer  "status",        :null=>false, :index=>{:name=>"index_work_orders_on_status"}
+    t.datetime "discarded_at",  :index=>{:name=>"index_work_orders_on_discarded_at"}
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cars_insurance_plans", "cars"
+  add_foreign_key "cars_insurance_plans", "insurance_plans"
   add_foreign_key "insurance_plans", "suppliers", column: "insurance_carrier_id"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"

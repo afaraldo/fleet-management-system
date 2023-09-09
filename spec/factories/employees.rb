@@ -2,19 +2,21 @@
 #
 # Table name: employees
 #
-#  id         :bigint           not null, primary key
-#  address    :string
-#  document   :string
-#  last_name  :string
-#  name       :string
-#  phone      :string
-#  position   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :bigint           not null, primary key
+#  address      :string
+#  discarded_at :datetime
+#  document     :string
+#  last_name    :string
+#  name         :string
+#  phone        :string
+#  position     :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 # Indexes
 #
-#  index_employees_on_document  (document) UNIQUE
+#  index_employees_on_discarded_at  (discarded_at)
+#  index_employees_on_document      (document) UNIQUE
 #
 FactoryBot.define do
   factory :employee do
