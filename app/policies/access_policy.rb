@@ -23,7 +23,7 @@ class AccessPolicy
   # The most important admin roles, gets checked first
   def configure
     # The most important admin role, gets checked first
-    role :admin, { admin?: true } do
+    role :superadmin, { superadmin?: true } do
       can :manage, Car
       can :manage, Employee
       can :manage, GoodJob
@@ -32,6 +32,19 @@ class AccessPolicy
       can :manage, Repair
       can :manage, Supplier
       can :manage, SystemSettings
+      can :manage, User
+      can :manage, WorkOrder
+      can :authorize, WorkOrder
+      can :view_report, WorkOrder
+    end
+    # The most important admin role, gets checked first
+    role :admin, { admin?: true } do
+      can :manage, Car
+      can :manage, Employee
+      can :manage, InsurancePlan
+      can :manage, Maintenance
+      can :manage, Repair
+      can :manage, Supplier
       can :manage, User
       can :manage, WorkOrder
       can :authorize, WorkOrder
@@ -47,7 +60,6 @@ class AccessPolicy
       can :manage, Supplier
       can :manage, User
       can :manage, WorkOrder
-      can :authorize, WorkOrder
       can :view_report, WorkOrder
     end
   end

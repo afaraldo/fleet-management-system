@@ -15,6 +15,7 @@
             <div class='form-floating'>
               <%= f.input_field :role,
                                 class:'form-control',
+                                collection: User.roles.except(:superadmin), # Excluimos la opción super_admin
                                 'aria-describedby':"floatingInputHelp",
                                 selected: f.object.role || :admin,
                                 onlyread: true
