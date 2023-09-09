@@ -38,6 +38,7 @@
 #  fk_rails_...  (employee_id => employees.id)
 #
 class WorkOrder < ApplicationRecord
+  include AlgoliaSearch
   belongs_to :employee, optional: true
   belongs_to :car
   has_paper_trail

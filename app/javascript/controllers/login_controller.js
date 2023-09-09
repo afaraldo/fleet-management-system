@@ -20,6 +20,4 @@ export default class extends Controller {
       passwordIcon.classList.replace("bx-hide", "bx-show")
     }
   }
-
-
 }

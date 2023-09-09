@@ -25,6 +25,7 @@
 #  fk_rails_...  (mechanical_workshop_id => suppliers.id)
 #
 class Maintenance < ApplicationRecord
+  include AlgoliaSearch
   belongs_to :mechanical_workshop
   belongs_to :car
   delegate :name, to: :mechanical_workshop, prefix: true

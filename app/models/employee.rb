@@ -40,12 +40,20 @@ class Employee < ApplicationRecord
   end
 
   algoliasearch enqueue: true do
-    attributes :name, :last_name, :document
+    attributes :name, :last_name, :document, :title, :description
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
     # you want to search in: here `title`, `subtitle` & `description`.
     # You need to list them by order of importance. `description` is tagged as
     # `unordered` to avoid taking the position of a match into account in that attribute.
     searchableAttributes %w[name last_name document]
+  end
+
+  def title
+    "#{name} #{last_name}"
+  end
+
+  def description
+    document.to_s
   end
 end

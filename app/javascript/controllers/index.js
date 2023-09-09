@@ -13,8 +13,8 @@ application.register("flatpickr", FlatpickrController)
 import LoginController from "./login_controller"
 application.register("login", LoginController)
 
-import SearcherController from "./searcher_controller"
-application.register("searcher", SearcherController)
+import SearchController from "./search_controller"
+application.register("search", SearchController)
 
 import Ts__SelectController from "./ts/select_controller"
 application.register("ts--select", Ts__SelectController)

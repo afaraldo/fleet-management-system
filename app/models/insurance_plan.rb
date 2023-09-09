@@ -23,6 +23,7 @@
 #  fk_rails_...  (insurance_carrier_id => suppliers.id)
 #
 class InsurancePlan < ApplicationRecord
+  include AlgoliaSearch
   has_and_belongs_to_many :cars
   belongs_to :insurance_carrier
   validates :cars, presence: true

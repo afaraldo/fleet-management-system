@@ -62,4 +62,12 @@ class Car < ApplicationRecord
     # `unordered` to avoid taking the position of a match into account in that attribute.
     searchableAttributes %w[plate_number type_car rasp model year make color chassis assigned_dependency]
   end
+
+  def title
+    "#{plate_number} RASP: #{rasp}"
+  end
+
+  def description
+    "#{type_car} #{model} #{year}"
+  end
 end
