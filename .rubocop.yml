@@ -81,3 +81,5 @@ AllCops:
     - app/notifications/insurance_plans_to_expire_notification.rb
     - app/notifications/pending_work_orders_notification.rb
     - app/controllers/notifications_controller.rb
+    - db/migrate/20230826181701_add_discard_to_models.rb
+    - db/migrate/20230903235741_add_indexes_to_cars_insurance_plans.rb

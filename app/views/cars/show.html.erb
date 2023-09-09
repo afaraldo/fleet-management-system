@@ -5,26 +5,92 @@
   <div class="card-body">
     <div class="row">
       <div class="col-xl-12">
-        <!-- Section: Timeline -->
-        <section class="py-3">
-          <ul class="timeline-with-icons">
-            <% @events.each do |event| %>
-              <li class="timeline-item mb-5">
-                <span class="timeline-icon">
-                  <i class="bx bx-tachometer text-primary fa-sm fa-fw"></i>
-                </span>
-                <h5 class="fw-bold"><%= event[:title] %></h5>
-                <p class="text-muted mb-2 fw-bold"><%= datetime_format(event[:date]) %></p>
-                <p class="text-muted">
-                  <%= event[:description] %>
-                </p>
-              </li>
+        <%#= render "search_form", ransack: @ransack %>
+
+        <div class="card">
+          <h5 class="card-header">
+            <%= t('activerecord.models.work_order.other') %>
+            <% if can? :create, WorkOrder %>
+              <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
+              <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                          work_orders_path(params: session['work_orders'], format: 'xlsx' ),
+                          class: 'btn btn-secondary' %>
             <% end %>
-            <%= content_tag(:h5,
-                            t('helpers.page_entries_info.one_page.display_entries.zero', entry_name: 'items')) if @events.empty? %>
-          </ul>
-        </section>
-        <!-- Section: Timeline -->
+          </h5>
+
+          <div class="table-responsive text-nowrap">
+            <table class="table table-sm table-hover">
+              <caption class="ms-4">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="mr-auto">
+                    <%#= page_entries_info @work_orders, entry_name: 'item' %>
+                  </div>
+                  <%#= paginate @work_orders, remote: true %>
+                </div>
+              </caption>
+              <thead>
+              <tr>
+
+                  <th>
+                   Fecha
+                  </th>
+                  <th>
+                    Numero
+                  </th>
+                  <th>
+                    Chapa
+                  </th>
+                  <th>
+                    Description
+                  <th>
+                    Destino
+                  </th>
+                  <th>
+                    Duracion
+                  </th>
+                  <th>
+                    Inicio
+                  </th>
+                  <th>
+                   Fin
+                  </th>
+                  <th>
+                    Distancia
+                  </th>
+                  <th>
+                    Empleado
+                  </th>
+                  <th>
+                   Estado
+                  </th>
+                  <th class="d-print-none"></th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <% @work_orders.each do |work_order| %>
+                <tr>
+                  <td><%= datetime_format(work_order.start_date) %></td>
+                  <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
+                  <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+                  <td><%= work_order.description&.truncate(45) %></td>
+                  <td><%= work_order.city %></td>
+                  <td><%= work_order.workdays %></td>
+                  <td><%= datetime_format(work_order.start_date) %></td>
+                  <td><%= datetime_format(work_order.final_date) %></td>
+                  <td><%= work_order.distance %></td>
+                  <td><%= work_order.employee_full_name %></td>
+                  <td><%= add_status(work_order.status) %></td>
+                  <td class="d-print-none">
+                    <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

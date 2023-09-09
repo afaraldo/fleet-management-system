@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_26_181701) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_235741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -297,6 +297,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_181701) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cars_insurance_plans", "cars"
+  add_foreign_key "cars_insurance_plans", "insurance_plans"
   add_foreign_key "insurance_plans", "suppliers", column: "insurance_carrier_id"
   add_foreign_key "maintenances", "cars"
   add_foreign_key "maintenances", "suppliers", column: "mechanical_workshop_id"

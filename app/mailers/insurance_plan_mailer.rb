@@ -8,7 +8,7 @@ class InsurancePlanMailer < ApplicationMailer
   #
   def insurance_plans_to_expire_notification
     @recipient = params[:recipient]
-    @insurance_plans = InsurancePlan.all
+    @insurance_plans = InsurancePlan.where(id: params[:insurance_plans_close_to_expire_ids])
 
     mail to: @recipient.email, subject: "Hay #{@insurance_plans.size} seguros próximos a vencer."
   end
