@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     @results = []
 
     ActiveRecord::Base.descendants.each do |model|
-      next unless model.respond_to?(:algolia_search)
+      next unless model.respond_to?(:algoliasearch)
       next if query.blank?
 
       @results += model.algolia_search(query).map do |result|
@@ -13,7 +13,7 @@ class SearchController < ApplicationController
         title = result.try(:title) || result.id
         description = result.try(:description) || 'No description available'
         icon = result.try(:icon) || 'https://fleet-management-system-development.s3.us-east-2.amazonaws.com/default/coche.png'
-        url = url_for(result)
+        url = result.try(:url) || url_for(action: 'edit', controller: result.class.name.underscore.pluralize, id: result.id)
 
         result.attributes.merge(
           model_name:,

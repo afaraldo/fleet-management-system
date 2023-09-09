@@ -25,6 +25,7 @@
 #
 class Car < ApplicationRecord
   include AlgoliaSearch
+  include Rails.application.routes.url_helpers
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy
   has_and_belongs_to_many :insurance_plans
@@ -70,4 +71,9 @@ class Car < ApplicationRecord
   def description
     "#{type_car} #{model} #{year}"
   end
+
+  def url
+    car_path(self)
+  end
+
 end

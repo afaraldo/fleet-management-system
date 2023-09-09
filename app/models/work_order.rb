@@ -116,6 +116,22 @@ class WorkOrder < ApplicationRecord
        start_date start_mileage status updated_at]
   end
 
+  delegate :plate_number, to: :car
+
+  algoliasearch enqueue: true do
+    attributes :car_plate_number, :description, :start_date, :title, :description
+
+    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
+    # you want to search in: here `title`, `subtitle` & `description`.
+    # You need to list them by order of importance. `description` is tagged as
+    # `unordered` to avoid taking the position of a match into account in that attribute.
+    searchableAttributes %w[plate_number type_car rasp model year make color chassis assigned_dependency]
+  end
+
+  def title
+    "#{car_plate_number} en #{start_date}"
+  end
+
   private
 
   def validate_start_date
@@ -148,4 +164,5 @@ class WorkOrder < ApplicationRecord
     errors.add :start_date, :busy_date, record: wo1.first.to_s
     errors.add :final_date, :busy_date, record: wo2.first.to_s
   end
+
 end

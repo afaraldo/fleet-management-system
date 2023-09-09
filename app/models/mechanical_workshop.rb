@@ -15,7 +15,7 @@
 #  index_suppliers_on_discarded_at  (discarded_at)
 #
 class MechanicalWorkshop < Supplier
-  include AlgoliaSearch
+
   def to_s
     name
   end
