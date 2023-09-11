@@ -1,8 +1,19 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: WorkOrder.model_name.human) do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w[number start_date final_date]
+  sheet.add_row %w[
+      Número Fecha_Inicial Fecha_Final Chapa Misión
+      Destino Km_inicial Km_final Realizado_por Estado]
   @work_orders.each do |work_order|
-    sheet.add_row [work_order.number, work_order.start_date, work_order.final_date]
+    sheet.add_row [work_order.number,
+                   work_order.start_date,
+                   work_order.final_date,
+                   work_order.car_plate_number,
+                   work_order.description,
+                   work_order.city,
+                   work_order.start_mileage,
+                   work_order.final_mileage,
+                   work_order.employee,
+                   I18n.t("enums.work_order.status.#{work_order.status}")]
   end
 end

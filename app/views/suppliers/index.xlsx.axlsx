@@ -1,0 +1,22 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: Supplier.model_name.human) do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w[ Nombre Ruc Tipo_Proveedor ]
+  @suppliers.each do |supplier|
+    tipo_proveedor = case supplier.type
+                    when 'InsuranceCarrier'
+                      'Aseguradora'
+                    when 'MechanicalWorkshop'
+                      'Taller Mecánico'
+                    else
+                      supplier.type
+                    end
+    sheet.add_row [supplier.name,
+                   supplier.ruc,
+                   tipo_proveedor]
+  end
+end
+
+
+
+

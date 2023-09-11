@@ -7,7 +7,8 @@
       <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
       <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
                   work_orders_path(params: session['work_orders'], format: 'xlsx' ),
-                  class: 'btn btn-secondary' %>
+                  class: 'btn btn-secondary',
+                  title: 'Exportar a Excel'%>
     <% end %>
   </h5>
 
@@ -44,7 +45,7 @@
             <%= sort_link(@ransack, :start_mileage, t('activerecord.attributes.work_order.start_mileage'), default_order: :desc) %>
           </th>
           <th>
-            <%= sort_link(@ransack, :start_mileage, t('activerecord.attributes.work_order.start_mileage'), default_order: :desc) %>
+            <%= sort_link(@ransack, :final_mileage, t('activerecord.attributes.work_order.final_mileage'), default_order: :desc) %>
           </th>
           <th>
             <%= sort_link(@ransack, :distance, t('activerecord.attributes.work_order.distance'), default_order: :desc) %>
@@ -66,8 +67,8 @@
           <td><%= work_order.description&.truncate(45) %></td>
           <td><%= work_order.city %></td>
           <td><%= work_order.workdays %></td>
-          <td><%= datetime_format(work_order.start_date) %></td>
-          <td><%= datetime_format(work_order.final_date) %></td>
+          <td><%= work_order.start_mileage %></td>
+          <td><%= work_order.final_mileage %></td>
           <td><%= work_order.distance %></td>
           <td><%= work_order.employee_full_name %></td>
           <td><%= add_status(work_order.status) %></td>

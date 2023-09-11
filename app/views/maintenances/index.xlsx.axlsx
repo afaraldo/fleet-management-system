@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: Maintenance.model_name.human) do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w[
+      Fecha Vehículo Taller Km_actual Km_próximo Descripción ]
+  @maintenances.each do |maintenance|
+    sheet.add_row [maintenance.date,
+                   maintenance.car,
+                   maintenance.mechanical_workshop,
+                   maintenance.current_mileage,
+                   maintenance.next_mileage,
+                   maintenance.description]
+  end
+end

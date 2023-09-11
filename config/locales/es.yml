@@ -88,6 +88,7 @@ es:
         number: Numero
         description: Mision
         city: Destino
+        duration: Duración
         workdays: Duracion
         start_mileage: Km Inicio
         final_mileage: Km Fin
