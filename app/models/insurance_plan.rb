@@ -60,6 +60,6 @@ class InsurancePlan < ApplicationRecord
   end
 
   def description
-    contract_date&.format('%d/%m/%Y')
+    contract_date&.strftime("%d/%M/%Y")
   end
 end

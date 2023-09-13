@@ -18,3 +18,6 @@ application.register("search", SearchController)
 
 import Ts__SelectController from "./ts/select_controller"
 application.register("ts--select", Ts__SelectController)
+
+import WorkOrderWidgetController from "./work_order_widget_controller"
+application.register("work-order-widget", WorkOrderWidgetController)

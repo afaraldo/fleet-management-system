@@ -180,3 +180,4 @@ gem 'chroma' # [https://github.com/jfairbank/chroma]
 
 gem 'algoliasearch-rails' # [https://github.com/algolia/algoliasearch-rails]
 gem 'discard', '~> 1.2' # [https://github.com/jhawthorn/discard]
+gem 'groupdate' # [https://github.com/ankane/groupdate]

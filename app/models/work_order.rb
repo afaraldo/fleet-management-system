@@ -129,7 +129,7 @@ class WorkOrder < ApplicationRecord
   end
 
   def title
-    "#{car_plate_number} en #{start_date}"
+    "#{car_plate_number} en #{start_date&.strftime('%d/%M/%Y')}"
   end
 
   private
