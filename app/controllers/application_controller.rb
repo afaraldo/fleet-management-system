@@ -40,7 +40,9 @@ class ApplicationController < ActionController::Base
 
   # GET
   def edit
-    add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
+    if can? :read, resource_name
+      add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true) # Use for breadcrumbs_on_rails gem
+    end
     add_breadcrumb I18n.t('buttons.edit'), nil # Use for breadcrumbs_on_rails gem
   end
 

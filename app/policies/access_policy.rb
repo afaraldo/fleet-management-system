@@ -58,7 +58,6 @@ class AccessPolicy
       can :manage, Maintenance
       can :manage, Repair
       can :manage, Supplier
-      can :manage, User
       can :manage, WorkOrder
       can :view_report, WorkOrder
     end

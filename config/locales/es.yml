@@ -368,6 +368,7 @@ es:
     insurance_plan : "Pólizas de Seguros"
     repair: "Reparaciones"
     report: Reportes
+    user: Usuarios
     settings: Configuraciones
   views:
     links:
