@@ -1,11 +1,11 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: Maintenance.model_name.human) do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w[ Fecha_Cobertura Venc_Cobertura Tipo_Cobertura Vehículo Aseguradora Monto_Anual ]
+  sheet.add_row %w[Fecha_Cobertura Venc_Cobertura Tipo_Cobertura Vehículo Aseguradora Monto_Anual]
   @insurance_plans.each do |insurance_plan|
-  # Obtiene una lista de vehículos en una cadena
+    # Obtiene una lista de vehículos en una cadena
     cars_list = insurance_plan.cars.map do |car|
-          "#{car.type_car} #{car.make} #{car.model} #{car.plate_number}"
+      "#{car.type_car} #{car.make} #{car.model} #{car.plate_number}"
     end.join(', ')
     sheet.add_row [insurance_plan.contract_date,
                    insurance_plan.expiry_date,
