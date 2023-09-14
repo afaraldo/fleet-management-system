@@ -18,10 +18,6 @@ class InsuranceCarrier < Supplier
   include AlgoliaSearch
   has_many :insurance_plans, dependent: :destroy
 
-  def to_s
-    name
-  end
-
   algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :name, :ruc, :title, :description
 
@@ -35,9 +31,11 @@ class InsuranceCarrier < Supplier
   def title
     name.to_s
   end
+
   def to_s
     "Nro: #{id}"
   end
+
   def description
     ruc.to_s
   end
