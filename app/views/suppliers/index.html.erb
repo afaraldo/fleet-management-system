@@ -4,6 +4,10 @@
       <%= t('activerecord.models.supplier.other') %>
       <% if can? :create, Supplier %>
         <%= link_to t('buttons.new'), new_supplier_path, class: 'btn btn-primary' %>
+        <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                    suppliers_path(params: session['suppliers'], format: 'xlsx' ),
+                    class: 'btn btn-secondary',
+                    title: 'Exportar a Excel'%>
       <% end %>
     </h5>
 

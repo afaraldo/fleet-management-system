@@ -129,6 +129,15 @@ SimpleNavigation::Configuration.run do |navigation|
                   highlights_on: %r{/insurance_plans},
                   if: proc { can? :read, InsurancePlan }
 
+    primary.item  :key9,
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-user') +
+                  content_tag(:div, I18n.t('navbar.user'), class: nil),
+                  users_path(session['users']),
+                  html: { class: 'menu-item' },
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/users},
+                  if: proc { can? :read, User }
+
     primary.item :settings,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-cog me-2') +
                  content_tag(:div, I18n.t('settings'), class: nil),

@@ -1,8 +1,10 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: Car.model_name.human) do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w[plate_number make model rasp]
+  sheet.add_row %w[TipoDeVehículo Marca Modelo Chapa RASP Chasis Año Dependencia_Asignada]
   @cars.each do |car|
-    sheet.add_row [car.plate_number, car.make, car.model, car.rasp]
+    sheet.add_row [car.type_car, car.make, car.model, car.plate_number, car.rasp,
+                   car.chassis, car.year,
+                   car.assigned_dependency]
   end
 end

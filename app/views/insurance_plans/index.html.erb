@@ -4,6 +4,10 @@
   <h5 class="card-header">
     <%= t('activerecord.models.insurance_plan.other') %>
     <%= link_to t('buttons.new'), new_insurance_plan_path, class: 'btn btn-primary' %>
+    <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                insurance_plans_path(params: session['insurance_plans'], format: 'xlsx' ),
+                class: 'btn btn-secondary',
+                title: 'Exportar a Excel'%>
   </h5>
 
   <div class="table-responsive text-nowrap">

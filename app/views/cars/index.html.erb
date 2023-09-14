@@ -5,7 +5,12 @@
     <%= t('activerecord.models.car.other') %>
     <% if can? :create, Car %>
       <%= link_to t('buttons.new'), new_car_path, class: 'btn btn-primary' %>
+      <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                  cars_path(params: session['cars'], format: 'xlsx' ),
+                  class: 'btn btn-secondary',
+                  title: 'Exportar a Excel'%>
     <%end %>
+
   </h5>
 
   <div class="table-responsive text-nowrap">
