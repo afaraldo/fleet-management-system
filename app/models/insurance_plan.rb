@@ -32,7 +32,7 @@ class InsurancePlan < ApplicationRecord
   scope :close_to_expire, -> { where(expiration_date: DateTime.now..1.week.from_now) }
 
   def to_s
-    "#{self.class.model_name.human} Nro: #{id}"
+    "Nro: #{id}"
   end
 
   def self.ransackable_attributes(_auth_object = nil)

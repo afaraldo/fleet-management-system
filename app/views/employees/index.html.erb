@@ -4,6 +4,11 @@
   <h5 class="card-header">
     <%= t('activerecord.models.employee.other') %>
     <%= link_to t('buttons.new'), new_employee_path, class: 'btn btn-primary' %>
+    <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet') ,
+                employees_path(params: session['employees'], format: 'xlsx'),
+                class: 'btn btn-secondary ',
+                title: 'Exportar a Excel'
+    %>
   </h5>
   <div class="table-responsive text-nowrap">
     <table class="table">

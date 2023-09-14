@@ -4,6 +4,10 @@
   <h5 class="card-header">
     <%= t('activerecord.models.maintenance.other') %>
     <%= link_to t('buttons.new'), new_maintenance_path, class: 'btn btn-primary' %>
+    <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
+                maintenances_path(params: session['maintenances'], format: 'xlsx' ),
+                class: 'btn btn-secondary',
+                title: 'Exportar a Excel'%>
   </h5>
   <div class="table-responsive text-nowrap">
     <table class="table">
@@ -20,7 +24,7 @@
         <tr>
           <%= search_form_for @ransack do |f| %>
             <th>
-              <%= sort_link(@ransack, :date, t('activerecord.attributes.work_order.date'), default_order: :desc) %>
+              <%= sort_link(@ransack, :date, t('activerecord.attributes.maintenance.date'), default_order: :desc) %>
             </th>
             <th>
               <%= sort_link(@ransack, :car, t('activerecord.attributes.maintenance.car'), default_order: :desc) %>

@@ -30,7 +30,7 @@ class Maintenance < ApplicationRecord
   delegate :name, to: :mechanical_workshop, prefix: true
 
   def to_s
-    "#{self.class.model_name.human} Nro: #{id}"
+    "Nro: #{id}"
   end
 
   def self.ransackable_attributes(_auth_object = nil)

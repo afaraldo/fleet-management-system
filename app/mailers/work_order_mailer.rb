@@ -1,6 +1,5 @@
 class WorkOrderMailer < ApplicationMailer
-  default from: Rails.application.credentials.sendgrid.domain!
-
+  default from: Rails.application.credentials.sendgrid.domain
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,7 +7,7 @@ class WorkOrderMailer < ApplicationMailer
   #
   def pending_work_orders_notification
     @recipient = params[:recipient]
-    @work_orders = WorkOrder.where(id: params[:work_order_ids])
+    @work_orders = WorkOrder.pending
 
     mail to: @recipient.email, subject: "Hay #{@work_orders.size} nuevas Órdenes de Trabajo."
   end

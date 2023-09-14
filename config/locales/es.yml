@@ -40,8 +40,8 @@ es:
         busy_date: Fecha ya ha sido ocupada %{record}
     models:
       car:
-        one: 'Vehiculo'
-        other: 'Vehiculos'
+        one: Vehiculo
+        other: Vehiculos
       work_order:
         one: Orden de Trabajo
         other: Ordenes de Trabajo
@@ -88,6 +88,7 @@ es:
         number: Numero
         description: Mision
         city: Destino
+        duration: Duración
         workdays: Duracion
         start_mileage: Km Inicio
         final_mileage: Km Fin
@@ -123,7 +124,7 @@ es:
       insurance_plan:
         type_coverage: Tipo de Cobertura
         contract_date: Fecha de Cobertura
-        expiry_date: Venc. de Cobertura
+        expiry_date: Vto. de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
         mechanical_workshop: Taller
@@ -366,8 +367,9 @@ es:
     maintenance: "Mantenimientos"
     insurance_plan : "Pólizas de Seguros"
     repair: "Reparaciones"
-    report: Reportes
-    settings: Configuraciones
+    report: "Reportes"
+    user: "Usuarios"
+    settings: "Configuraciones"
   views:
     links:
       pdf: PDF
@@ -434,12 +436,12 @@ es:
       insurance_plan:
         type_coverage: Tipo de Cobertura
         contract_date: Fecha de Cobertura
-        expiry_date: Venc. de Cobertura
+        expiry_date: Vto. de Cobertura
         cars: Vehículos
         insurance_carrier: Aseguradora
         amount: Monto Anual
       repair:
-        date: Fecha de Reparacion
+        date: Fecha de Reparación
         car: Vehiculo
         mechanical_workshop: Taller Mecánico
         repairs: Reparaciones
