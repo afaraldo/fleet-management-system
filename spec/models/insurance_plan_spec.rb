@@ -33,8 +33,8 @@ RSpec.describe InsurancePlan, type: :model do
 
   describe '.to_s' do
     subject { create(:insurance_plan, { id: 13 } ) }
-    context 'should return a String with format "#{self.class.model_name.human} #{"Nro:"} #{id}"' do
-      it { expect(subject.to_s).to eq("Seguro Nro: 13") }
+    context 'should return a String with format "#{"Nro:"} #{id}"' do
+      it { expect(subject.to_s).to eq("Nro: 13") }
     end
   end
 end
