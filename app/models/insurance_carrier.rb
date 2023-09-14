@@ -35,7 +35,9 @@ class InsuranceCarrier < Supplier
   def title
     name.to_s
   end
-
+  def to_s
+    "Nro: #{id}"
+  end
   def description
     ruc.to_s
   end

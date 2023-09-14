@@ -16,6 +16,6 @@
 #
 class MechanicalWorkshop < Supplier
   def to_s
-    name
+    "Nro: #{id}"
   end
 end
