@@ -121,17 +121,25 @@ class WorkOrder < ApplicationRecord
   delegate :plate_number, to: :car
 
   algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
-    attributes :car_plate_number, :description, :start_date, :title, :description
+    attributes :car_plate_number, :description, :start_date, :title
+
+    attribute :mission do
+      description
+    end
+
+    attribute :description do
+      "#{I18n.l(start_date, format: :default)} - #{car_plate_number}"
+    end
 
     # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
     # you want to search in: here `title`, `subtitle` & `description`.
     # You need to list them by order of importance. `description` is tagged as
     # `unordered` to avoid taking the position of a match into account in that attribute.
-    searchableAttributes %w[plate_number type_car rasp model year make color chassis assigned_dependency]
+    searchableAttributes %w[car_plate_number description start_date title mission]
   end
 
   def title
-    "#{car_plate_number} en #{start_date}"
+    "Orden de Trabajo #{to_s}"
   end
 
   private
