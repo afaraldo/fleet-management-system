@@ -6,8 +6,8 @@ import TomSelect      from "tom-select"
 // Connects to data-controller="ts--select"
 export default class extends Controller {
   static values = { url: String }
-
   connect() {
+    console.log("Init searcher" + this.element.id)
     const config = {
       plugins: ['clear_button'],
       valueField: 'value',
