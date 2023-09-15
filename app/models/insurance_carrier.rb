@@ -28,16 +28,8 @@ class InsuranceCarrier < Supplier
     searchableAttributes %w[name last_name document]
   end
 
-  def title
-    name.to_s
-  end
-
   def to_s
     "Nro: #{id}"
-  end
-
-  def description
-    ruc.to_s
   end
 
   algoliasearch enqueue: true, disable_indexing: Rails.env.test? do

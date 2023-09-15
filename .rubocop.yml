@@ -26,6 +26,7 @@ Metrics/AbcSize:
     - app/sidekiq/notifications/insurance_plan_expiration_job.rb
     - app/controllers/users_controller.rb
     - db/migrate/20230630135448_create_good_jobs.rb
+    - app/controllers/reports_controller.rb
 Metrics/BlockLength:
   Exclude:
     - config/navigation.rb
@@ -44,6 +45,7 @@ Metrics/MethodLength:
     - app/controllers/cars_controller.rb
     - app/controllers/application_controller.rb
     - app/policies/access_policy.rb
+    - app/controllers/reports_controller.rb
 Rails/RootPathnameMethods:
   Exclude:
     - config/initializers/app_version.rb

@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
 
     render json: {
       series: @data.values,
-      categories: @data.keys.map { |date| date.strftime("%Y-%m-%d") }
+      categories: @data.keys.map { |date| date.strftime('%Y-%m-%d') }
     }
   end
 
