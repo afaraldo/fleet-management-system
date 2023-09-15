@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     instance_variable_set "@#{plural_resource_name}", @result
     respond_to do |format|
       format.html
-      format.json
+      format.json { render json: @result }
       format.xlsx do
         filename = "#{model_class.model_name.human}_#{current_user.email}_#{Time.zone.today}"
         response.headers['Content-Disposition'] = "attachment;filename=\"#{filename}\".xlsx"
