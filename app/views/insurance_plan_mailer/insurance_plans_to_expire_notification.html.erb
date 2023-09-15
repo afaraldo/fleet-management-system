@@ -93,12 +93,19 @@
   <div class="card-content">
     <p class="summary"><%= "Estimado #{@recipient.email}," %></p>
     <p class="instructions">Les informamos sobre las siguientes órdenes de trabajo pendientes de autorización:</p>
-    <ul class="order-list">
-      <% WorkOrder.all.each do |insurance_plan| %>
-        <li class="order-item"><%= "Seguros ##{insurance_plan.id}: #{insurance_plan.id}" %></li>
-      <% end %>
-    </ul>
-    <p class="instructions">Por favor, tomen las medidas necesarias para revisar y autorizar estas órdenes a la brevedad posible.</p>
+    <% if @insurance_plans.empty? %>
+      <div class="alert alert-info">
+        <strong>No hay planes de seguro disponibles en este momento.</strong>
+      </div>
+    <% else %>
+      <ul class="order-list">
+        <% @insurance_plans.all.each do |insurance_plan| %>
+          <li class="order-item"><%= "Seguro ##{insurance_plan.to_s}: Ven el #{I18n.l(insurance_plan.expiry_date, format: :default)}" %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <p class="instructions">Por favor, tomen las medidas necesarias para revisar los seguros a vencer.</p>
     <a class="action-button" style="color: #ffffff;" href=<%= "#{SystemSettings[:site_url]}/work_orders" %>>Ir al Sistema de Órdenes</a>
   </div>
   <div class="footer">

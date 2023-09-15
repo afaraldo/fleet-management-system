@@ -88,16 +88,23 @@
 <div class="container">
   <div class="header-card">
     <h1>Resumen de Órdenes de Trabajo Pendientes</h1>
-    <p class="date"><%= "Fecha: #{I18n.l(DateTime.now, format: :default)}" %></p>
+    <p class="date"><%= "Fecha: #{I18n.l(Date.today, format: :default)}" %></p>
   </div>
   <div class="card-content">
     <p class="summary"><%= "Estimado #{@recipient.email}," %></p>
     <p class="instructions">Les informamos sobre las siguientes órdenes de trabajo pendientes de autorización:</p>
-    <ul class="order-list">
-      <% @work_orders.all.each do |work_order| %>
-        <li class="order-item"><%= "Orden ##{work_order.id}: #{work_order.description&.truncate(60)}" %></li>
-      <% end %>
-    </ul>
+    <% if @work_orders.empty? %>
+      <div class="alert alert-warning">
+        <strong>No hay órdenes de trabajo disponibles en este momento.</strong>
+      </div>
+    <% else %>
+      <ul class="order-list">
+        <% @work_orders.all.each do |work_order| %>
+          <li class="order-item"><%= "Orden de trabajo ##{work_order.id}: #{work_order.description}" %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <p class="instructions">Por favor, tomen las medidas necesarias para revisar y autorizar estas órdenes a la brevedad posible.</p>
     <a class="action-button" style="color: #ffffff;" href=<%= "#{SystemSettings[:site_url]}/work_orders" %>>Ir al Sistema de Órdenes</a>
   </div>

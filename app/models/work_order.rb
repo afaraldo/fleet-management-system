@@ -99,7 +99,7 @@ class WorkOrder < ApplicationRecord
   end
 
   def to_s
-    "#{self.class.model_name.human} ##{number}"
+    "##{number}"
   end
 
   validate :validate_start_date,

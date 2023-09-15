@@ -60,6 +60,6 @@ class InsurancePlan < ApplicationRecord
   end
 
   def description
-    contract_date&.format('%d/%m/%Y')
+    I18n.l(contract_date, format: :default)
   end
 end

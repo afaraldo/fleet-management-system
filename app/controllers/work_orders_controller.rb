@@ -16,7 +16,7 @@ class WorkOrdersController < ApplicationController
 
   def create
     record = instance_variable_set "@#{resource_name}", model_class.send(:create!, model_params)
-    flash[:success] = I18n.t('created', record:, class: I18n.t("activerecord.models.#{record.class.name.downcase}.one"))
+    flash[:success] = I18n.t('created', record:, class: I18n.t("activerecord.models.#{record.class.name.underscore.parameterize}.one"))
     respond_to do |format|
       format.html { redirect_to action: :edit, id: record.id }
     end
@@ -25,7 +25,7 @@ class WorkOrdersController < ApplicationController
   def update
     model.send(:update!, model_params)
     record = instance_variable_set "@#{resource_name}", model
-    flash[:success] = I18n.t('updated', record:, class: I18n.t("activerecord.models.#{record.class.name.downcase}.one"))
+    flash[:success] = I18n.t('updated', record:, class: I18n.t("activerecord.models.#{record.class.name.underscore.parameterize}.one"))
     respond_to do |format|
       format.html { redirect_to action: :edit, id: record.id }
     end
