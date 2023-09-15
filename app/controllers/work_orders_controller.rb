@@ -7,6 +7,7 @@ class WorkOrdersController < ApplicationController
     add_breadcrumb I18n.t("activerecord.models.#{resource_name}.other"), polymorphic_url(plural_resource_name, params: session[controller_name], only_path: true)
     add_breadcrumb I18n.t('buttons.new'), nil # Use for breadcrumbs_on_rails gem
     @model = model_class.send(:new)
+    @model.status = :requested
     instance_variable_set "@#{resource_name}", @model
 
     # Add extra variables
