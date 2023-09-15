@@ -7,7 +7,7 @@ class WorkOrderMailer < ApplicationMailer
   #
   def pending_work_orders_notification
     @recipient = params[:recipient]
-    @work_orders = WorkOrder.pending
+    @work_orders = WorkOrder.pending_work_orders_for_the_week
 
     mail to: @recipient.email, subject: "Hay #{@work_orders.size} nuevas Órdenes de Trabajo."
   end

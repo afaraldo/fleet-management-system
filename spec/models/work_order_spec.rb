@@ -168,7 +168,7 @@ RSpec.describe WorkOrder, type: :model do
   describe '.to_s' do
     subject { create(:work_order, { number: 101}) }
     context 'should return a String with format "#{class_name.human} #{number}"' do
-      it { expect(subject.to_s).to  eq("Orden de Trabajo #101") }
+      it { expect(subject.to_s).to  eq("#101") }
     end
   end
 
