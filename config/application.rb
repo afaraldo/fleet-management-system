@@ -45,10 +45,10 @@ module FleetManagementSystem
     config.i18n.load_path += SimpleFormRansack.locale_files # Using for https://github.com/kaspernj/simple_form_ransack
     config.autoload_paths += %W[#{config.root}/app/policies, #{config.root}/lib]
 
-    config.good_job.enable_cron = true
+    config.good_job.enable_cron = Rails.env.production?
     config.good_job.cron = {
       pending_work_order_notification_job: { # each recurring job must have a unique key
-        cron: '*/5 * * * 1-5', # cron-style scheduling format by fugit gem
+        cron: '0 7 * * 1-5', # cron-style scheduling format by fugit gem
         class: 'PendingWorkOrdersNotificationJob', # name of the job class as a String; must reference an Active Job job class
         # args: [], # positional arguments to pass to the job; can also be a proc e.g. `-> { [Time.now] }`
         # kwargs: { name: "Alice" }, # keyword arguments to pass to the job; can also be a proc e.g. `-> { { name: NAMES.sample } }`
@@ -56,7 +56,7 @@ module FleetManagementSystem
         description: 'Notification of pending WorkOrders', # optional description that appears in Dashboard
       },
       insurance_plans_to_expire_job: { # each recurring job must have a unique key
-                                             cron: '*/6 * * * 1-5', # cron-style scheduling format by fugit gem
+                                             cron: '0 7 * * 1-5', # cron-style scheduling format by fugit gem
                                              class: 'InsurancePlansToExpireJob', # name of the job class as a String; must reference an Active Job job class
                                              # args: [], # positional arguments to pass to the job; can also be a proc e.g. `-> { [Time.now] }`
                                              # kwargs: { name: "Alice" }, # keyword arguments to pass to the job; can also be a proc e.g. `-> { { name: NAMES.sample } }`
