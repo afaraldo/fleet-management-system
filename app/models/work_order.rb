@@ -47,7 +47,7 @@ class WorkOrder < ApplicationRecord
 
   validates :start_mileage, presence: true, if: :finished?
   validates :final_mileage, presence: true, if: :finished?
-  validates :final_oil, presence: true, if: :finished?
+  # validates :final_oil, presence: true, if: :finished?
   validates :employee, presence: true, if: :finished?
 
   # Validations date
