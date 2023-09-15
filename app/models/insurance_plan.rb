@@ -29,7 +29,7 @@ class InsurancePlan < ApplicationRecord
   validates :cars, presence: true
   delegate :name, to: :insurance_carrier, prefix: true
 
-  scope :close_to_expire, -> { where(expiration_date: DateTime.now..1.week.from_now) }
+  scope :close_to_expire, -> { where(expiry_date: DateTime.now..1.week.from_now) }
 
   def to_s
     "Nro: #{id}"
