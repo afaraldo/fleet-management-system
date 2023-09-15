@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       format.html do
         save_last_params
       end
-      format.json { render @result }
+      format.json
       format.xlsx do
         filename = "#{model_class.model_name.human}_#{Time.zone.now}"
         response.headers['Content-Disposition'] = "attachment; filename=\"#{filename}.xlsx\""
