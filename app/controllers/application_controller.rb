@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
   # GET
   def index

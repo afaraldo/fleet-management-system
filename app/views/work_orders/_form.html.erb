@@ -9,8 +9,8 @@
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :number,
-                                class:'form-control',
-                                'aria-describedby':"floatingInputHelp",
+                                class: 'form-control',
+                                'aria-describedby': "floatingInputHelp",
                                 value: f.object.number || last_number
               %>
               <%= f.label :number, for: 'floatingInput' %>
@@ -50,7 +50,7 @@
         <div class="col-xl-4">
           <div class='mb-3'>
             <div class='form-floating'>
-              <%= f.input_field :city, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+              <%= f.input_field :city, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
               <%= f.label :city, for: 'floatingInput' %>
             </div>
           </div>
@@ -59,8 +59,8 @@
           <div class='mb-3'>
             <div class='form-floating'>
               <%= f.input_field :status,
-                                class:'form-control',
-                                'aria-describedby':"floatingInputHelp",
+                                class: 'form-control',
+                                'aria-describedby': "floatingInputHelp",
                                 selected: f.object.status || :requested,
                                 onlyread: true
               %>
@@ -88,7 +88,7 @@
         </div>
         <div class="col-xl-2">
           <div class='form-floating mb-3'>
-            <%= f.input_field :area, class:'form-control', 'aria-describedby':"floatingInputHelp", autocomplete: true%>
+            <%= f.input_field :area, class: 'form-control', 'aria-describedby':"floatingInputHelp", autocomplete: true%>
             <%= f.label :area, for: 'floatingInput' %>
           </div>
         </div>
@@ -97,49 +97,49 @@
         <div class='form-floating mb-3'>
           <%= f.input_field :description,
                             as: :text,
-                            class:'form-control',
-                            'aria-describedby':"floatingInputHelp",
+                            class: 'form-control',
+                            'aria-describedby': "floatingInputHelp",
                             cols: 5,
                             rows: 10
           %>
           <%= f.label :description, for: 'floatingInput' %>
         </div>
       </div>
-      <% if work_order.authorized? %>
-      <div class="divider text-start-center">
-        <div class="divider-text">Completar al finalizar</div>
-      </div>
-      <div class="row">
-        <div class="col-xl-4">
-          <div class='form-floating mb-3'>
-            <%= f.input_field :start_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= f.label :start_mileage, for: 'floatingInput' %>
-          </div>
-        </div>
-        <div class='col-xl-4'>
-          <div class='form-floating mb-3'>
-            <%= f.input_field :final_mileage, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= f.label :final_mileage, for: 'floatingInput' %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
+      <% unless work_order.requested? %>
+    <div class="divider text-start-center">
+            <div class="divider-text">Completar al finalizar</div>
+    </div>
+    <div class="row">
+      <div class="col-xl-4">
         <div class='form-floating mb-3'>
-          <%= f.association :employee, collection: f.object.employee ? [f.object.employee] : Employee.all.page(0),
-                            include_blank: true,
-                            placeholder: t("activerecord.attributes.work_order.employee"),
-                            input_html: {
-                              data: {
-                                controller: 'ts--select',
-                                'ts--select-url-value': employees_path
-                              }
-                            }
-          %>
+          <%=  f.input_field :start_mileage, class: 'form-control', 'aria-describedby':"floatingInputHelp"  %>
+          <%= f.label :start_mileage, for: 'floatingInput' %>
         </div>
       </div>
-      <% end %>
+      <div class='col-xl-4'>
+        <div class='form-floating mb-3'>
+          <%=  f.input_field :final_mileage, class: 'form-control', 'aria-describedby':"floatingInputHelp"  %>
+          <%= f.label :final_mileage, for: 'floatingInput' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class='form-floating mb-3'>
+        <%=  f.association :employee, collection: f.object.employee ? [f.object.employee] : Employee.all.page(0),
+                              include_blank: true,
+                              placeholder: t("activerecord.attributes.work_order.employee"),
+                              input_html: {
+                                data: {
+                                  controller: 'ts--select',
+                                  'ts--select-url-value': employees_path
+                                }
+                              }
+             %>
+      </div>
+    </div>
+    <%  end %>
       <div class='col-xl-2 d-grid gap-2'>
-        <%= f.button 'submit', class: 'btn-primary btn-block' unless f.object.finished?%>
+        <%= f.button 'submit', class: 'btn-primary btn-block' %>
       </div>
     <% end %>
       <div class='mt-2'>
@@ -152,13 +152,13 @@
                         data: { confirm: t('buttons.confirm') },
                         class: 'btn btn-secondary' if work_order.requested? && work_order.persisted? %>
         <%end %>
-          <%= button_to t('finish'),
-                        work_order_path(work_order),
-                        method: :put,
-                        params: {work_order: {status: :finished}},
-                        remote: true,
-                        data: { confirm: t('buttons.confirm') },
-                        class: 'btn btn-secondary' if work_order.authorized? %>
+        <%= button_to t('finish'),
+                      work_order_path(work_order),
+                      method: :put,
+                      params: {work_order: {status: :finished}},
+                      remote: true,
+                      data: { confirm: t('buttons.confirm') },
+                      class: 'btn btn-secondary' if work_order.authorized? %>
       </div>
   </div>
   <div class="card-footer text-right">

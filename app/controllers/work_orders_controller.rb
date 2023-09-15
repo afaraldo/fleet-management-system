@@ -23,11 +23,11 @@ class WorkOrdersController < ApplicationController
   end
 
   def update
-    model.send(:update!, model_params)
+    model.send(:update, model_params)
     record = instance_variable_set "@#{resource_name}", model
     flash[:success] = I18n.t('updated', record:, class: I18n.t("activerecord.models.#{record.class.name.underscore.parameterize}.one"))
     respond_to do |format|
-      format.html { redirect_to action: :edit, id: record.id }
+      format.html { redirect_to action: :edit, work_order: record }
     end
   end
 

@@ -59,7 +59,9 @@ class WorkOrder < ApplicationRecord
   delegate :plate_number, to: :car, prefix: true
   delegate :full_name, to: :employee, prefix: true, allow_nil: true
 
-  scope :pending, -> { where(status: :requested) }
+  scope :pending_work_orders_for_the_week, lambda {
+                                             where(status: :requested).where(start_date: DateTime.now..1.week.from_now)
+                                           }
 
   def distance
     self.final_mileage ||= 0
