@@ -7,19 +7,19 @@
       <div class='row'>
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :type_car, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.input_field :type_car, class: 'form-control', 'aria-describedby': "floatingInputHelp", autofocus: true %>
             <%= f.label :type_car, for: 'floatingInput' %>
           </div>
         </div>
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :make, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.input_field :make, class: 'form-control', 'aria-describedby': "floatingInputHelp", autofocus: true %>
             <%= f.label :make, for: 'floatingInput' %>
           </div>
         </div>
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :model, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :model, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
             <%= f.label :model, for: 'floatingInput' %>
           </div>
         </div>
@@ -27,19 +27,19 @@
       <div class="row">
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :plate_number, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :plate_number, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
             <%= f.label :plate_number, for: 'floatingInput' %>
           </div>
         </div>
         <div class='col-xl-4 mb-3'>
           <div class='form-floating'>
-            <%= f.input_field :rasp, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :rasp, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
             <%= f.label :rasp, for: 'floatingInput' %>
           </div>
         </div>
         <div class='col-xl-4 mb-3'>
           <div class='form-floating'>
-            <%= f.input_field :chassis, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :chassis, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
             <%= f.label :chassis, for: 'floatingInput' %>
           </div>
         </div>
@@ -47,25 +47,47 @@
       <div class="row">
         <div class='col-xl-4 mb-3'>
           <div class='form-floating'>
-            <%= f.input_field :year, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :year, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
             <%= f.label :year, for: 'floatingInput' %>
           </div>
         </div>
         <div class='col-xl-4 mb-3'>
           <div class='form-floating'>
-            <%= f.input_field :color, as: :color, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :color, as: :select, collection: [
+              ['Verde', 'green'],
+              ['Dorado Oscuro', 'darkgoldenrod'],
+              ['Rojo', 'red'],
+              ['Naranja', 'orange'],
+              ['Amarillo', 'yellow'],
+              ['Bordo', 'maroon'],
+              ['Gris', 'gray'],
+              ['Blanco', 'white'],
+              ['Plateado', 'silver'],
+              ['Negro', 'black'],
+              ['Azul Oscuro', 'darkblue'],
+              ['Azul Cielo', 'skyblue'],
+              ['Marrón', 'brown'],
+              ['Beige', 'beige'],
+              ['Verde Militar', 'darkgreen'],
+              ['Oro', 'gold'],
+              ['Coral', 'coral'],
+              ['Rosa', 'pink'],
+              ['Púrpura', 'purple'],
+              ['Cyan', 'cyan']
+            ], label_method: :first, value_method: :last, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
+
             <%= f.label :color, for: 'floatingInput' %>
           </div>
         </div>
         <div class='col-xl-4 mb-3'>
           <div class='form-floating'>
-            <%= f.input_field :assigned_dependency, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :assigned_dependency, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
             <%= f.label :assigned_dependency, for: 'floatingInput' %>
           </div>
         </div>
         <div class='mb-3'>
           <div class='form-floating'>
-            <%= f.input :horometro, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input :horometro, label: "Utiliza horómetro?", class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
           </div>
         </div>
       </div>
