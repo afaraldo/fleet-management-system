@@ -47,7 +47,7 @@ class Car < ApplicationRecord
   end
 
   def text
-    plate_number.to_s
+    to_s
   end
 
   def self.ransackable_attributes(_auth_object = nil)
