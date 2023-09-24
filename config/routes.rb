@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     mount GoodJob::Engine => 'good_job'
   end
 
-  mount Blazer::Engine, at: 'blazer'
+  mount Blazer::Engine, at: 'reports'
 
   resources :cars
   resources :dash_boards, only: [:index]

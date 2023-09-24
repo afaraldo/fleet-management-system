@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <% if @query %>
+        <%= "#{@query.name.downcase.gsub(' ', '_')}_#{l(DateTime.now)}" %>
+      <% else %>
+        <%= SystemSettings[:site_name] %>
+      <% end %>
+    </title>
+    <%= favicon_link_tag asset_path(SystemSettings[:favicon]) %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", type: "module", defer: true %>
+
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <%= favicon_link_tag "blazer/favicon.png" %>
+    <% if defined?(Propshaft::Railtie) %>
+      <%= stylesheet_link_tag "blazer/bootstrap-propshaft", "blazer/bootstrap", "blazer/selectize", "blazer/github", "blazer/daterangepicker", "blazer/application" %>
+      <%= javascript_include_tag "blazer/jquery", "blazer/jquery-ujs", "blazer/stupidtable", "blazer/stupidtable-custom-settings", "blazer/jquery.stickytableheaders", "blazer/selectize", "blazer/highlight.min", "blazer/moment", "blazer/moment-timezone-with-data", "blazer/daterangepicker", "blazer/Chart.js", "blazer/chartkick", "blazer/ace/ace", "blazer/ace/ext-language_tools", "blazer/ace/theme-twilight", "blazer/ace/mode-sql", "blazer/ace/snippets/text", "blazer/ace/snippets/sql", "blazer/Sortable", "blazer/bootstrap", "blazer/vue", "blazer/routes", "blazer/queries", "blazer/fuzzysearch", "blazer/application" %>
+    <% else %>
+      <%= stylesheet_link_tag "blazer/application" %>
+      <%= javascript_include_tag "blazer/application" %>
+    <% end %>
+    <script>
+      <%= blazer_js_var "rootPath", root_path %>
+    </script>
+    <% if blazer_maps? %>
+      <%= stylesheet_link_tag "https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css", integrity: "sha384-vxzdEt+wZRPNQbhChjmiaFMLWg86IGuq1NGDehJHsD2mphYkxXll/eSs16WWi6Dq", crossorigin: "anonymous" %>
+      <%= javascript_include_tag "https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js", integrity: "sha384-CTBEiDLiZJ8gkAQ3fYGoeiRp81/ecNiBkGz11jXFALOZ6++rbnqmdo6OImkmr1MO", crossorigin: "anonymous" %>
+    <% end %>
+  </head>
+  <body>
+
+      <!-- Layout wrapper -->
+      <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+          <!-- Menu -->
+          <%= render(partial: 'layouts/sidebar') %>
+          <!-- / Menu -->
+
+          <!-- Layout container -->
+          <div class="layout-page">
+            <div id="flash">
+              <% flash.each do |role, message| %>
+                <%= render(partial: 'shared/flash', locals: { role: role, message: message }) %>
+              <% end %>
+            </div>
+
+            <nav class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme " id="layout-navbar">
+              <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ok">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+              <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                <!-- Search -->
+                <%= render(SearchComponent.new) %>
+                <!--/ Search -->
+                <ul class="navbar-nav flex-row align-items-center ms-auto">
+                  <!-- Notification -->
+                  <%#= render(NotificationComponent.new(notifications: @current_user.notifications,
+                                                       link_to_all_notification: user_notifications_path(@current_user))) %>
+                  <!--/ Notification -->
+
+                  <!-- User -->
+                  <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                      <div class="avatar avatar-online">
+                        <%= image_tag(@current_user.avatar.variant(resize: "100x100") || "user-avatar.svg",
+                                      size: '100',
+                                      alt: 'Profile image',
+                                      class: 'w-px-40 h-auto rounded-circle')
+                        %>
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                              <div class="avatar avatar-online">
+                                <%= image_tag(@current_user.avatar.variant(resize: "100x100") || "user-avatar.svg",
+                                              size: '100',
+                                              alt: 'Profile image',
+                                              class: 'w-px-40 h-auto rounded-circle')
+                                %>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <span class="fw-semibold d-block"><%= @current_user.email %></span>
+                              <small class="text-muted">Admin</small>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="<%#= edit_user_path(@current_user) %>">
+                          <i class="bx bx-user me-2"></i>
+                          <span class="align-middle"><%= t('profile') %></span>
+                        </a>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                      </li>
+                      <li>
+                        <%#= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+<!--                          <i class="bx bx-power-off me-2"></i>-->
+<!--                          <span class="align-middle"><%#= t('logout') %></span>-->
+                        <%# end %>
+                      </li>
+                    </ul>
+                  </li>
+                  <!--/ User -->
+
+
+                </ul>
+              </div>
+            </nav>
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+
+              <!-- Content -->
+              <div class="container-fluid flex-grow-1 container-p-y">
+
+                <h3 class="breadcrumbs">
+                  <%#= render_breadcrumbs separator: ' / ' %>
+                </h3>
+
+
+                <!-- Layout Demo -->
+                <%= yield %>
+
+                <!--/ Layout Demo -->
+              </div>
+              <!-- / Content -->
+
+              <!-- Footer -->
+              <footer class="content-footer footer bg-footer-theme">
+                <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                  <div class="mb-2 mb-md-0">
+                    © Desarrollado por
+                    <a href="https://github.com/afaraldo" class="footer-link fw-bolder">@afaraldo</a> y
+                    <a href="https://github.com/KariSanabria" class="footer-link fw-bolder">KariSanabria</a>
+                    <%= APP_VERSION.to_s %>
+                  </div>
+                </div>
+              </footer>
+              <!-- / Footer -->
+              <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+          </div>
+          <!-- / Layout page -->
+        </div>
+
+        <!-- Overlay -->
+        <!--<div class="layout-overlay layout-menu-toggle"></div>-->
+      </div>
+      <!-- / Layout wrapper -->
+
+
+  </body>
+</html>

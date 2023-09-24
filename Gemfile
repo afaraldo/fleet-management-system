@@ -30,7 +30,7 @@ gem 'simple_form_ransack'
 gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 5.0'
+gem 'puma', '>= 5.6.7'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
@@ -178,6 +178,8 @@ gem 'annotate', '~> 3.2'
 
 gem 'chroma' # [https://github.com/jfairbank/chroma]
 
+gem 'actionpack', '>= 7.0.5.1'
+gem 'activesupport', '>= 7.0.7.1'
 gem 'algoliasearch-rails' # [https://github.com/algolia/algoliasearch-rails]
 gem 'discard', '~> 1.2' # [https://github.com/jhawthorn/discard]
 gem 'groupdate' # [https://github.com/ankane/groupdate]

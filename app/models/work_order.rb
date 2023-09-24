@@ -139,7 +139,7 @@ class WorkOrder < ApplicationRecord
   end
 
   def title
-    "Orden de Trabajo #{to_s}"
+    "Orden de Trabajo #{self}"
   end
 
   private

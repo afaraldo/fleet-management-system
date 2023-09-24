@@ -25,6 +25,8 @@ data_sources:
     # zone_id: "SELECT id, name FROM zones ORDER BY name ASC"
     # period: ["day", "week", "month"]
     # status: {0: "Active", 1: "Archived"}
+      month_param: { 0: "Todos", 1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio", 7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre" }
+
 
     linked_columns:
     # user_id: "/admin/users/{value}"
@@ -60,6 +62,8 @@ check_schedules:
   - "1 day"
   - "1 hour"
   - "5 minutes"
+
+override_csp: true # https://github.com/ankane/blazer#content-security-policy
 
 # enable anomaly detection
 # note: with trend, time series are sent to https://trendapi.org

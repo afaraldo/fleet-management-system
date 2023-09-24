@@ -62,14 +62,14 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key1,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-home-circle') +
                   content_tag(:div, I18n.t('navbar.dashboard'), class: nil),
-                  root_path,
+                  main_app.root_path,
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' }
 
     primary.item  :key2,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-id-card') +
                   content_tag(:div, I18n.t('navbar.employee'), class: nil),
-                  employees_path(session['employees']),
+                  main_app.employees_path(session['employees']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/employees},
@@ -78,7 +78,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key3,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
                   content_tag(:div, I18n.t('navbar.work_order'), class: nil),
-                  work_orders_path(session['work_orders']),
+                  main_app.work_orders_path(session['work_orders']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/work_orders},
@@ -87,7 +87,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key4,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-car') +
                   content_tag(:div, I18n.t('navbar.car'), class: nil),
-                  cars_path(session['cars']),
+                  main_app.cars_path(session['cars']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/cars},
@@ -96,7 +96,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key5,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-garage') +
                   content_tag(:div, I18n.t('navbar.supplier'), class: nil),
-                  suppliers_path(session['suppliers']),
+                  main_app.suppliers_path(session['suppliers']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/suppliers},
@@ -105,7 +105,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key6,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-mechanic') +
                   content_tag(:div, I18n.t('navbar.maintenance'), class: nil),
-                  maintenances_path(session['maintenances']),
+                  main_app.maintenances_path(session['maintenances']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/maintenances},
@@ -114,7 +114,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key7,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-wrench') +
                   content_tag(:div, I18n.t('navbar.repair'), class: nil),
-                  repairs_path(session['repairs']),
+                  main_app.repairs_path(session['repairs']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/repairs},
@@ -123,7 +123,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key8,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-car-crash') +
                   content_tag(:div, I18n.t('navbar.insurance_plan'), class: nil),
-                  insurance_plans_path(session['insurance_plans']),
+                  main_app.insurance_plans_path(session['insurance_plans']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/insurance_plans},
@@ -132,16 +132,25 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item  :key9,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-user') +
                   content_tag(:div, I18n.t('navbar.user'), class: nil),
-                  users_path(session['users']),
+                  main_app.users_path(session['users']),
                   html: { class: 'menu-item' },
                   link_html: { class: 'menu-link' },
                   highlights_on: %r{/users},
                   if: proc { can? :read, User }
 
+    primary.item :reports,
+                 content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-cog me-2') +
+                 content_tag(:div, I18n.t('navbar.report'), class: nil),
+                 blazer.root_path,
+                 html: { class: 'menu-item' },
+                 link_html: { class: 'menu-link', data: { turbo: false } },
+                 highlights_on: %r{/reports},
+                 if: proc { can? :view_report, WorkOrder }
+
     primary.item :settings,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-cog me-2') +
                  content_tag(:div, I18n.t('settings'), class: nil),
-                 system_settings_path(session['settings']),
+                 main_app.system_settings_path(session['settings']),
                  html: { class: 'menu-item' },
                  link_html: { class: 'menu-link' },
                  if: proc { can? :read, SystemSettings }
