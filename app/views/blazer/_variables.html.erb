@@ -122,6 +122,7 @@
             }
         </script>
       <% end %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
       <input type="submit" class="btn btn-success" value="Generar" style="vertical-align: top;" />
     </form>
