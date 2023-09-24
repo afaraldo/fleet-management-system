@@ -26,7 +26,7 @@
       <tr>
         <%= simple_search_form_for @ransack do |f| %>
           <th>
-            <%= sort_link(@ransack, :date, t('activerecord.attributes.work_order.created_at'), default_order: :desc) %>
+            <%= sort_link(@ransack, :start_date, t('activerecord.attributes.work_order.start_date'), default_order: :desc) %>
           </th>
           <th>
             <%= sort_link(@ransack, :number, t('activerecord.attributes.work_order.number'), default_order: :desc) %>
@@ -61,7 +61,7 @@
       <tbody>
       <% @work_orders.each do |work_order| %>
         <tr>
-          <td><%= datetime_format(work_order.start_date) %></td>
+          <td><%= l(work_order.start_date) %></td>
           <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
           <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
           <td><%= work_order.description&.truncate(45) %></td>

@@ -3,8 +3,8 @@
     <div class="col">
       <div class='form-floating'>
         <%= f.input_field :number,
-                          class:'form-control',
-                          'aria-describedby':"floatingInputHelp",
+                          class: 'form-control',
+                          'aria-describedby': "floatingInputHelp",
                           name: 'q[number_eq]',
                           value: ransack.number_eq
         %>
@@ -44,8 +44,8 @@
     <div class="col">
       <div class='form-floating'>
         <%= f.input_field :status,
-                          class:'form-control',
-                          'aria-describedby':"floatingInputHelp",
+                          class: 'form-control',
+                          'aria-describedby': "floatingInputHelp",
                           name: "q[status_eq]",
                           selected: ransack.status_eq,
                           include_blank: true
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="col">
-      <%= f.button :submit, t('buttons.search'), class:'btn btn btn-secondary' %>
+      <%= f.button :submit, t('buttons.search'), class: 'btn btn btn-secondary' %>
     </div>
   </div>
 <% end %>

@@ -11,9 +11,12 @@ export default class extends Controller {
   }
 
   renderChart() {
-      let value1 = "2023-01-01"
-      let value2 = "2023-09-10"
-      fetch(`/reports/work_orders.json?from=${value1}&to=${value2}`)
+
+      let today = new Date();
+      let beginning_of_year = new Date(today.getFullYear(), 0, 1);
+      let end_of_year = new Date(hoy.getFullYear(), 11, 31);
+
+      fetch(`/reports/work_orders.json?from=${beginning_of_year}&to=${end_of_year}`)
           .then(response => response.json())
           .then(data => {
               let options = {

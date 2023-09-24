@@ -52,8 +52,8 @@ es:
         one: Mantenimiento
         other: Mantenimientos
       employee:
-        one: Empleado
-        other: Empleados
+        one: Funcionario
+        other: Funcionarios
       insurance_plan:
         one: Seguro
         other: Pólizas de Seguros
@@ -83,7 +83,7 @@ es:
         year: Año
         assigned_dependency: Dependencia Asignada
       work_order:
-        start_date: Desde
+        start_date: Fecha
         final_date: Hasta
         number: Numero
         description: Mision

@@ -1,8 +1,54 @@
 <div class="content-wrapper">
   <!-- Content -->
   <div class = "row">
-    <div class="col-lg-8 mb-4 order-0">
+    <div class="col-lg-10 mb-4 order-0">
       <%= render(WorkOrdersWidgetComponent.new(data: @work_orders)) %>
+    </div>
+    <div class="col-lg-2 mb-4 order-0">
+      <div class="card shadow-sm p-2 mb-3 bg-white rounded">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Flota Total</h5>
+          <h2 class="card-text font-weight-bold"><strong><%= Car.all.size %></strong></h2>
+        </div>
+      </div>
+
+      <div class="card shadow-sm p-2 mb-3 bg-white rounded">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Nuevas OT autorizadas</h5>
+          <h2 class="card-text font-weight-bold"><strong><%= @authorized_work_orders_count_this_month %></strong></h2>
+          <p class="card-text text-muted mb-0">
+            <% if @percentage_difference.positive? %>
+              <span class="text-success">
+                  <%= @percentage_difference.round(2) %>%
+              </span>
+            <% else %>
+              <span class="text-danger">
+                  <%= @percentage_difference.round(2) %>%
+              </span>
+            <% end %>
+            Desde último mes
+          </p>
+        </div>
+      </div>
+
+      <div class="card shadow-sm p-2 mb-3 bg-white rounded">
+        <div class="card-body">
+          <h5 class="card-title text-muted">Promedio de Utilización</h5>
+          <h2 class="card-text font-weight-bold"><strong><%= @average_utilization_this_month %></strong></h2>
+          <p class="card-text text-muted mb-0">
+            <% if @percentage_difference_avg.positive? %>
+              <span class="text-success">
+                  <%= @percentage_difference_avg.round(2) %>%
+              </span>
+            <% else %>
+              <span class="text-danger">
+                  <%= @percentage_difference_avg.round(2) %>%
+              </span>
+            <% end %>
+            Desde último mes
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
