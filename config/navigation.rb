@@ -139,7 +139,7 @@ SimpleNavigation::Configuration.run do |navigation|
                   if: proc { can? :read, User }
 
     primary.item :reports,
-                 content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-cog me-2') +
+                 content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-report me-2') +
                  content_tag(:div, I18n.t('navbar.report'), class: nil),
                  blazer.root_path,
                  html: { class: 'menu-item' },
