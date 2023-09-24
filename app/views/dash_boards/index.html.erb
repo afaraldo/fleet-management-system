@@ -17,7 +17,7 @@
           <h5 class="card-title text-muted">Nuevas OT autorizadas</h5>
           <h2 class="card-text font-weight-bold"><strong><%= @authorized_work_orders_count_this_month %></strong></h2>
           <p class="card-text text-muted mb-0">
-            <% if @percentage_difference.positive? %>
+            <% if @percentage_difference && @percentage_difference.positive? %>
               <span class="text-success">
                   <%= @percentage_difference.round(2) %>%
               </span>
@@ -36,7 +36,7 @@
           <h5 class="card-title text-muted">Promedio de Utilización</h5>
           <h2 class="card-text font-weight-bold"><strong><%= @average_utilization_this_month %></strong></h2>
           <p class="card-text text-muted mb-0">
-            <% if @percentage_difference_avg.positive? %>
+            <% if @percentage_difference_avg && @percentage_difference_avg.positive? %>
               <span class="text-success">
                   <%= @percentage_difference_avg.round(2) %>%
               </span>

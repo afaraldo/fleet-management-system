@@ -88,3 +88,5 @@ AllCops:
     - db/migrate/20230903235741_add_indexes_to_cars_insurance_plans.rb
     - config/initializers/algoliasearch.rb
     - app/controllers/search_controller.rb
+    - app/controllers/blazer/queries_controller.rb
+    - app/controllers/dash_boards_controller.rb
