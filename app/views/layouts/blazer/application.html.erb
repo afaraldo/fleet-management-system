@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      <% if @query %>
+      <% if @query && @query.name %>
         <%= "#{@query.name.downcase.gsub(' ', '_')}_#{l(DateTime.now)}" %>
       <% else %>
         <%= SystemSettings[:site_name] %>
