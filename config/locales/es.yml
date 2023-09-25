@@ -38,7 +38,42 @@ es:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
         busy_date: Fecha ya ha sido ocupada %{record}
+      models:
+        system_settings/setting:
+          attributes:
+            value:
+              not_a_list_of_integers: "no es una lista de enteros"
+              not_a_list_of_strings: "no es una lista de cadenas"
+              not_a_list_of_decimals: "no es una lista de decimales"
+        system_settings/boolean_setting:
+          attributes:
+            value:
+              inclusion: "debe ser establecido a verdadero o falso"
     models:
+      system_settings/setting:
+        one: "Configuración del Sistema"
+        other: "Configuraciones del Sistema"
+      system_settings/integer_list_setting:
+        one: "Configuración del Sistema (Lista de enteros)"
+        other: "Configuraciones del Sistema (Lista de enteros)"
+      system_settings/integer_setting:
+        one: "Configuración del Sistema (Entero)"
+        other: "Configuraciones del Sistema (Entero)"
+      system_settings/string_list_setting:
+        one: "Configuración del Sistema (Lista de cadenas)"
+        other: "Configuraciones del Sistema (Lista de cadenas)"
+      system_settings/string_setting:
+        one: "Configuración del Sistema (Cadena)"
+        other: "Configuraciones del Sistema (Cadena)"
+      system_settings/decimal_setting:
+        one: "Configuración del Sistema (Decimal)"
+        other: "Configuraciones del Sistema (Decimal)"
+      system_settings/decimal_list_setting:
+        one: "Configuración del Sistema (Lista de decimales)"
+        other: "Configuraciones del Sistema (Lista de decimales)"
+      system_settings/boolean_setting:
+        one: "Configuración del Sistema (Booleano)"
+        other: "Configuraciones del Sistema (Booleano)"
       car:
         one: Vehiculo
         other: Vehiculos
@@ -464,3 +499,26 @@ es:
         color: Color
       work_order:
         date: Fecha
+      system_settings/setting:
+        id: "ID"
+        name: "Nombre"
+        type: "Tipo"
+        value: "Valor"
+        description: "Descripción"
+        created_at: "Creado el"
+        uploaded_at: "Actualizado el"
+  system_settings:
+    settings:
+      index:
+        no_settings: "Sin configuraciones"
+        add_new: "Agregar nuevas entradas en <code>%{path}</code>"
+      show:
+        edit: Editar
+        back: Atrás
+      form:
+        save: Guardar
+        back: Atrás
+        hints_by_type:
+          "SystemSettings::StringListSetting": "Separa los valores por el carácter <code>;</code>."
+          "SystemSettings::IntegerListSetting": "Separa los valores por el carácter <code>;</code>."
+          "SystemSettings::DecimalListSetting": "El separador decimal es el carácter <code>.</code>. Separa los valores múltiples por el carácter <code>;</code>."

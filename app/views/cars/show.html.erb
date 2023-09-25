@@ -1,97 +1,346 @@
-<div class="card mb-4">
-  <h5 class="card-header">
-    <%= t("activerecord.models.car.one") + " #{@car.plate_number}" %>
-  </h5>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-xl-12">
-        <%#= render "search_form", ransack: @ransack %>
-
-        <div class="card">
-          <h5 class="card-header">
-            <%= t('activerecord.models.work_order.other') %>
-            <% if can? :create, WorkOrder %>
-              <%= link_to t('buttons.new'), new_work_order_path, class: 'btn btn-primary' %>
-              <%= link_to content_tag(:i, nil, class: 'bx bx-spreadsheet'),
-                          work_orders_path(params: session['work_orders'], format: 'xlsx' ),
-                          class: 'btn btn-secondary' %>
-            <% end %>
-          </h5>
-
-          <div class="table-responsive text-nowrap">
-            <table class="table table-sm table-hover">
-              <caption class="ms-4">
-                <div class="d-flex align-items-center justify-content-between">
-                  <div class="mr-auto">
-                    <%#= page_entries_info @work_orders, entry_name: 'item' %>
-                  </div>
-                  <%#= paginate @work_orders, remote: true %>
-                </div>
-              </caption>
-              <thead>
-              <tr>
-
-                  <th>
-                   Fecha
-                  </th>
-                  <th>
-                    Numero
-                  </th>
-                  <th>
-                    Chapa
-                  </th>
-                  <th>
-                    Description
-                  <th>
-                    Destino
-                  </th>
-                  <th>
-                    Duracion
-                  </th>
-                  <th>
-                    Inicio
-                  </th>
-                  <th>
-                   Fin
-                  </th>
-                  <th>
-                    Distancia
-                  </th>
-                  <th>
-                    Empleado
-                  </th>
-                  <th>
-                   Estado
-                  </th>
-                  <th class="d-print-none"></th>
-
-              </tr>
-              </thead>
-              <tbody>
-              <% @work_orders.each do |work_order| %>
-                <tr>
-                  <td><%= datetime_format(work_order.start_date) %></td>
-                  <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
-                  <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
-                  <td><%= work_order.description&.truncate(45) %></td>
-                  <td><%= work_order.city %></td>
-                  <td><%= work_order.workdays %></td>
-                  <td><%= datetime_format(work_order.start_date) %></td>
-                  <td><%= datetime_format(work_order.final_date) %></td>
-                  <td><%= work_order.distance %></td>
-                  <td><%= work_order.employee_full_name %></td>
-                  <td><%= add_status(work_order.status) %></td>
-                  <td class="d-print-none">
-                    <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
+<div class="row mb-3">
+  <div class="col-md">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img class="card-img card-img-left p-4" src="https://fleet-management-system-development.s3.us-east-2.amazonaws.com/default/hyundai_accent2.jpg" alt="Card image">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">
+              CARACTERÍSTICAS
+            </h3>
+            <div class="row">
+              <div class="col-sm">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-between">
+                      <strong class="fs-5 d-flex"><i class="bx bx-sm me-2 bx-barcode me-2"></i>Chasis:</strong>
+                      <span><%= @car.chassis.present? ? @car.chassis : '-' %></span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-between">
+                      <strong class="fs-5 d-flex"><i class="bx bx-sm bx-car me-2 bx-cab"></i>Tipo:</strong>
+                      <span><%= @car.type_car.present? ? @car.type_car : '-' %></span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-between">
+                      <strong class="fs-5 d-flex"><i class="bx bx-sm me-2 bx-registered"></i>Marca:</strong>
+                      <span><%= @car.make.present? ? @car.make : '-' %></span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-between">
+                      <strong class="fs-5 d-flex"><i class="bx bx-sm me-2 bx-palette"></i>Color:</strong>
+                      <span><%= @car.color.present? ? I18n.t("colors.#{@car.color}") : '-' %></span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-between">
+                      <strong class="fs-5 d-flex"><i class="bx bx-sm me-2 bx-calendar"></i>Año:</strong>
+                      <span> <%= @car.year.present? ? @car.year : '-' %></span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-between">
+                      <strong class="fs-5 d-flex"><i class="bx bx-sm me-2 bx-package"></i>Modelo:</strong>
+                      <span><%= @car.model.present? ? @car.model : '-' %></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col-md">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img class="card-img card-img-left p-4" src="https://fleet-management-system-development.s3.us-east-2.amazonaws.com/default/comprobar.png" alt="Card image">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Protegido</h5>
+            <p class="card-text">
+              El seguro se encuentra actualizado.
+            </p>
+            <p class="card-text"><small class="text-muted">Actualizado hace 1 semana</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img class="card-img card-img-left p-4" src="https://fleet-management-system-development.s3.us-east-2.amazonaws.com/default/comprobar.png" alt="Card image">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Mantenimiento al día</h5>
+            <p class="card-text">
+              El último mantenimiento fue realizado.
+            </p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img class="card-img card-img-left p-4" src="https://fleet-management-system-development.s3.us-east-2.amazonaws.com/default/senal-de-peligro.png" alt="Card image">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Orden de Trabajo</h5>
+            <p class="card-text">
+              Falta actualizar la última OT
+            </p>
+            <p class="card-text"><small class="text-muted">Actualizado hace 1 mes.</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="work-orders-tab" data-bs-toggle="tab" href="#work-orders" role="tab" aria-controls="work-orders" aria-selected="true">Ordenes de Trabajo</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="insurances-tab" data-bs-toggle="tab" href="#insurances" role="tab" aria-controls="insurances" aria-selected="false">Seguros</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="maintenances-tab" data-bs-toggle="tab" href="#maintenances" role="tab" aria-controls="maintenances" aria-selected="false">Mantenimientos</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="work-orders" role="tabpanel" aria-labelledby="work-orders-tab">
+      <table class="table table-sm table-hover">
+        <caption class="ms-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="mr-auto">
+              <%#= page_entries_info @work_orders, entry_name: 'item' %>
+            </div>
+            <%#= paginate @work_orders, remote: true %>
+          </div>
+        </caption>
+        <thead>
+        <tr>
+
+          <th>
+            Fecha
+          </th>
+          <th>
+            Numero
+          </th>
+          <th>
+            Chapa
+          </th>
+          <th>
+            Description
+          <th>
+            Destino
+          </th>
+          <th>
+            Duracion
+          </th>
+          <th>
+            Inicio
+          </th>
+          <th>
+            Fin
+          </th>
+          <th>
+            Distancia
+          </th>
+          <th>
+            Empleado
+          </th>
+          <th>
+            Estado
+          </th>
+          <th class="d-print-none"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @work_orders.each do |work_order| %>
+          <tr>
+            <td><%= datetime_format(work_order.start_date) %></td>
+            <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
+            <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+            <td><%= work_order.description&.truncate(45) %></td>
+            <td><%= work_order.city %></td>
+            <td><%= work_order.workdays %></td>
+            <td><%= datetime_format(work_order.start_date) %></td>
+            <td><%= datetime_format(work_order.final_date) %></td>
+            <td><%= work_order.distance %></td>
+            <td><%= work_order.employee_full_name %></td>
+            <td><%= add_status(work_order.status) %></td>
+            <td class="d-print-none">
+              <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="insurances" role="tabpanel" aria-labelledby="insurances-tab">
+      <table class="table table-sm table-hover">
+        <caption class="ms-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="mr-auto">
+              <%#= page_entries_info @work_orders, entry_name: 'item' %>
+            </div>
+            <%#= paginate @work_orders, remote: true %>
+          </div>
+        </caption>
+        <thead>
+        <tr>
+
+          <th>
+            Fecha
+          </th>
+          <th>
+            Numero
+          </th>
+          <th>
+            Chapa
+          </th>
+          <th>
+            Description
+          <th>
+            Destino
+          </th>
+          <th>
+            Duracion
+          </th>
+          <th>
+            Inicio
+          </th>
+          <th>
+            Fin
+          </th>
+          <th>
+            Distancia
+          </th>
+          <th>
+            Empleado
+          </th>
+          <th>
+            Estado
+          </th>
+          <th class="d-print-none"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @work_orders.each do |work_order| %>
+          <tr>
+            <td><%= datetime_format(work_order.start_date) %></td>
+            <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
+            <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+            <td><%= work_order.description&.truncate(45) %></td>
+            <td><%= work_order.city %></td>
+            <td><%= work_order.workdays %></td>
+            <td><%= datetime_format(work_order.start_date) %></td>
+            <td><%= datetime_format(work_order.final_date) %></td>
+            <td><%= work_order.distance %></td>
+            <td><%= work_order.employee_full_name %></td>
+            <td><%= add_status(work_order.status) %></td>
+            <td class="d-print-none">
+              <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="maintenances" role="tabpanel" aria-labelledby="maintenances-tab">
+      <table class="table table-sm table-hover">
+        <caption class="ms-4">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="mr-auto">
+              <%#= page_entries_info @work_orders, entry_name: 'item' %>
+            </div>
+            <%#= paginate @work_orders, remote: true %>
+          </div>
+        </caption>
+        <thead>
+        <tr>
+
+          <th>
+            Fecha
+          </th>
+          <th>
+            Numero
+          </th>
+          <th>
+            Chapa
+          </th>
+          <th>
+            Description
+          <th>
+            Destino
+          </th>
+          <th>
+            Duracion
+          </th>
+          <th>
+            Inicio
+          </th>
+          <th>
+            Fin
+          </th>
+          <th>
+            Distancia
+          </th>
+          <th>
+            Empleado
+          </th>
+          <th>
+            Estado
+          </th>
+          <th class="d-print-none"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <% @work_orders.each do |work_order| %>
+          <tr>
+            <td><%= datetime_format(work_order.start_date) %></td>
+            <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
+            <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+            <td><%= work_order.description&.truncate(45) %></td>
+            <td><%= work_order.city %></td>
+            <td><%= work_order.workdays %></td>
+            <td><%= datetime_format(work_order.start_date) %></td>
+            <td><%= datetime_format(work_order.final_date) %></td>
+            <td><%= work_order.distance %></td>
+            <td><%= work_order.employee_full_name %></td>
+            <td><%= add_status(work_order.status) %></td>
+            <td class="d-print-none">
+              <%= render(partial: 'components/action_buttons', locals: { model: work_order })%>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

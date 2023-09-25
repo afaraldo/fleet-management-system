@@ -1,0 +1,24 @@
+<%= simple_form_for setting, as: :setting, url: setting_path(setting), method: "post" do |f| %>
+  <div class='row'>
+    <div class="col-xl-2">
+      <div class='mb-3'>
+        <div class='form-floating'>
+          <% if f.object.is_a?(SystemSettings::BooleanSetting) %>
+            <%= f.check_box :value, value: f.object.value %>
+          <% else %>
+            <%= f.text_field :value, value: format_value_for_form(f.object), class: "value form-control" %>
+          <% end %>
+          <% if f.object.errors.messages[:value].any? %>
+            <div class="errors"><%= f.object.errors.messages[:value].join("; ") %></div>
+          <% end %>
+          <div class="hint"><%= t(f.object.type, scope: "system_settings.settings.form.hints_by_type", default: "").html_safe %></div>
+          <%= f.label :value, class: "name", for: 'floatingInput' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+  <%= f.submit t(".save"), class: "btn btn-primary" %>
+  <%= link_to t(".back"), setting_path(setting), class: "btn btn-secondary button" %>
+  </div>
+<% end %>

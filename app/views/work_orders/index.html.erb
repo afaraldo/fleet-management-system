@@ -63,7 +63,7 @@
         <tr>
           <td><%= l(work_order.start_date) %></td>
           <td><%= link_to work_order.number, edit_work_order_path(work_order) %></td>
-          <td><%= link_to work_order.car_plate_number, edit_car_path(work_order.car) %></td>
+          <td><%= link_to work_order.car_plate_number, car_path(work_order.car) %></td>
           <td><%= work_order.description&.truncate(45) %></td>
           <td><%= work_order.city %></td>
           <td><%= work_order.workdays %></td>
