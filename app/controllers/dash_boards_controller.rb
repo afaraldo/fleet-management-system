@@ -45,21 +45,6 @@ class DashBoardsController < ApplicationController
       orders.sum { |order| order.final_date - order.start_date }
     end
 
-    # Calcula el promedio de utilización para cada mes
-    average_utilization_this_month = utilization_this_month.values.sum / utilization_this_month.keys.count unless utilization_this_month.empty?
-    average_utilization_last_month = utilization_last_month.values.sum / utilization_last_month.keys.count unless utilization_last_month.empty?
-
-    # O puedes poner 0 si no hay datos
-    @average_utilization_this_month ||= 0
-    @average_utilization_last_month ||= 0
-
-    if @average_utilization_last_month.zero?
-      # Si el denominador es 0, maneja este caso como lo consideres necesario.
-      # Por ejemplo, podrías considerar una diferencia del 100% si el promedio de este mes es positivo,
-      # o una diferencia del 0% si ambos promedios son 0.
-      @percentage_difference_avg = @average_utilization_this_month.positive? ? 100 : 0
-    else
-      @percentage_difference = ((@average_utilization_this_month - @average_utilization_last_month) / @average_utilization_last_month.to_f) * 100
-    end
+    @insurance_plans_close_to_expire_total = InsurancePlan.close_to_expire.size
   end
 end

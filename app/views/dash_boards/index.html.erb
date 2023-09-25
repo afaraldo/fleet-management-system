@@ -31,26 +31,17 @@
         </div>
       </div>
       <% end %>
-      <% if @percentage_difference_avg %>
+
       <div class="card shadow-sm p-2 mb-3 bg-white rounded">
         <div class="card-body">
-          <h5 class="card-title text-muted">Promedio de Utilización</h5>
-          <h2 class="card-text font-weight-bold"><strong><%= @average_utilization_this_month %></strong></h2>
+          <h5 class="card-title text-muted">Seguros próximos a vencer</h5>
+          <h2 class="card-text font-weight-bold"><strong><%= @insurance_plans_close_to_expire_total %></strong></h2>
           <p class="card-text text-muted mb-0">
-              <% if @percentage_difference_avg.positive? %>
-                <span class="text-success">
-                    <%= @percentage_difference_avg.round(2) %>%
-                </span>
-              <% else %>
-                <span class="text-danger">
-                    <%= @percentage_difference_avg.round(2) %>%
-                </span>
-              <% end %>
-              Desde último mes
+              Esta semana
           </p>
         </div>
       </div>
-      <% end %>
+
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
       <div class='row'>
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :email, class:'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
+            <%= f.input_field :email, class: 'form-control', 'aria-describedby':"floatingInputHelp", autofocus: true %>
             <%= f.label :email, for: 'floatingInput' %>
           </div>
         </div>
@@ -15,7 +15,7 @@
           <div class="col-xl-4 mb-3">
               <div class='form-floating'>
                 <%= f.input_field :role,
-                                  class:'form-control',
+                                  class: 'form-control',
                                   collection: User.roles.except(:superadmin), # Excluimos la opción super_admin
                                   'aria-describedby':"floatingInputHelp",
                                   selected: f.object.role || :admin,
@@ -29,20 +29,26 @@
       <div class='row'>
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :password, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :password, class: 'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :password, for: 'floatingInput' %>
           </div>
         </div>
         <div class="col-xl-4 mb-3">
           <div class='form-floating'>
-            <%= f.input_field :password_confirmation, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= f.input_field :password_confirmation, class: 'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :password_confirmation, for: 'floatingInput', input_html: { value: user.password } %>
           </div>
+        </div>
+      </div>
+      <div class='mb-3'>
+        <div class='form-floating'>
+          <%= f.input :receive_notifications, label: "¿Recibir notificaciones?", class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
         </div>
       </div>
       <div class='col-xl-2 d-grid gap-2'>
         <%= f.button 'submit', class: 'btn-primary btn-block' %>
       </div>
+
     <% end %>
   </div>
 </div>

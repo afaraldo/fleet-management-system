@@ -1,0 +1,53 @@
+<div class="table-responsive text-nowrap">
+  <table class="table">
+    <caption class="ms-4">
+
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="mr-auto">
+          <%= page_entries_info @maintenances, entry_name: 'item' %>
+        </div>
+        <%= paginate @maintenances, remote: true %>
+      </div>
+    </caption>
+    <thead>
+    <tr>
+      <%= simple_search_form_for @ransack do |f| %>
+        <th>
+          <%= helpers.sort_link(@ransack, :date, t('activerecord.attributes.maintenance.date'), default_order: :desc) %>
+        </th>
+        <th>
+          <%= helpers.sort_link(@ransack, :car, t('activerecord.attributes.maintenance.car'), default_order: :desc) %>
+        </th>
+        <th>
+          <%= helpers.sort_link(@ransack, :mechanical_workshop, t('activerecord.attributes.maintenance.mechanical_workshop'), default_order: :desc) %>
+        </th>
+        <th>
+          <%= helpers.sort_link(@ransack, :current_mileage, t('activerecord.attributes.maintenance.current_mileage'), default_order: :desc) %>
+        </th>
+        <th>
+          <%= helpers.sort_link(@ransack, :next_mileage, t('activerecord.attributes.maintenance.next_mileage'), default_order: :desc) %>
+        </th>
+        <th>
+          <%= helpers.sort_link(@ransack, :description, t('activerecord.attributes.maintenance.description'), default_order: :desc) %>
+        </th>
+        <th class="d-print-none"></th>
+      <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    <% @maintenances.each do |maintenance| %>
+      <tr>
+        <td><strong><%= maintenance.date %></strong></td>
+        <td><%= maintenance.car%></td>
+        <td><%= maintenance.mechanical_workshop.name%></td>
+        <td><%= maintenance.current_mileage%></td>
+        <td><%= maintenance.next_mileage%></td>
+        <td><%= maintenance.description %></td>
+        <td class="d-print-none">
+          <%= render(partial: 'components/action_buttons', locals: { model: maintenance })%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

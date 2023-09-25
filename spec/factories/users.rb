@@ -11,6 +11,7 @@
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  profile_foto           :string
+#  receive_notifications  :boolean          default(FALSE), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

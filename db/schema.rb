@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_03_235741) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_133529) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "tablefunc"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string   "name",        :null=>false
@@ -264,6 +265,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_235741) do
     t.datetime "updated_at",             :null=>false
     t.integer  "role"
     t.datetime "discarded_at",           :index=>{:name=>"index_users_on_discarded_at"}
+    t.boolean  "receive_notifications",  :default=>false, :null=>false
   end
 
   create_table "versions", force: :cascade do |t|
