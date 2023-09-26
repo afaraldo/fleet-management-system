@@ -5,6 +5,7 @@
 #  id            :bigint           not null, primary key
 #  area          :string           not null
 #  city          :string
+#  cost          :integer          default(0), not null
 #  description   :string           not null
 #  discarded_at  :datetime
 #  final_date    :datetime         not null

@@ -29,6 +29,8 @@ class Car < ApplicationRecord
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy
   has_and_belongs_to_many :insurance_plans
+  has_one_attached :image
+
   delegate :plate_number, to: :insurance_plans, prefix: true
 
   validates :type_car, :make, :plate_number, presence: true

@@ -136,6 +136,8 @@ es:
         finished_on: Completado el
         finished_by: Completado por
         status: Estado
+        final_oil: Combustible
+        cost: Costo
         car: Chapa
         area: Area Asignada
       supplier:

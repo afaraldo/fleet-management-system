@@ -19,4 +19,8 @@ class CarsController < ApplicationController
     @ransack_maintenances = Maintenance.ransack(params[:q])
     @maintenances = @ransack_maintenances.result.page(params[:page]).per(params[:per])
   end
+
+  def extra_params
+    [:image]
+  end
 end
