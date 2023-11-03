@@ -8,5 +8,4 @@ class MaintenanceTableComponent < ViewComponent::Base
     @maintenances = maintenances
     @ransack = ransack
   end
-
 end

@@ -6,7 +6,7 @@ RSpec.describe InsurancePlanMailer, type: :mailer do
     let(:mail) { InsurancePlanMailer.with(recipient:).insurance_plans_to_expire_notification }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Hay 0 seguros próximos a vencer.")
+      expect(mail.subject).to eq("Insurance plans to expire notification")
       expect(mail.to).to eq([recipient.email.to_s])
       expect(mail.from).to eq(["example@gmail.com"])
     end
