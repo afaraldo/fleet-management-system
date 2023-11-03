@@ -7,5 +7,4 @@ class InsurancePlanTableComponent < ViewComponent::Base
     @insurance_plans = insurance_plans
     @ransack = ransack
   end
-
 end

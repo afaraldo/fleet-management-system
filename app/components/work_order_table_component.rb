@@ -8,5 +8,4 @@ class WorkOrderTableComponent < ViewComponent::Base
     @work_orders = work_orders
     @ransack = ransack
   end
-
 end

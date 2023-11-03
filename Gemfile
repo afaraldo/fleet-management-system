@@ -181,6 +181,6 @@ gem 'chroma' # [https://github.com/jfairbank/chroma]
 gem 'actionpack', '>= 7.0.5.1'
 gem 'activesupport', '>= 7.0.7.1'
 gem 'algoliasearch-rails' # [https://github.com/algolia/algoliasearch-rails]
+gem 'aws-sdk-s3'
 gem 'discard', '~> 1.2' # [https://github.com/jhawthorn/discard]
 gem 'groupdate' # [https://github.com/ankane/groupdate]
-gem 'aws-sdk-s3'
