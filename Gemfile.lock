@@ -300,7 +300,6 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
-    modware (1.0.2)
     msgpack (1.7.1)
     multi_json (1.15.0)
     net-http-persistent (4.0.2)
@@ -459,23 +458,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    schema_monkey (3.0.2)
-      activerecord (>= 5.2)
-      modware (~> 1.0.2)
-    schema_plus_columns (1.0.1)
-      activerecord (>= 5.2, < 7.1)
-      schema_plus_core (~> 3.1.0)
-      schema_plus_indexes (~> 1.0.1)
-    schema_plus_core (3.1.0)
-      activerecord (>= 5.2, < 7.1)
-      schema_monkey (~> 3.0.2)
-    schema_plus_indexes (1.0.1)
-      activerecord (>= 5.2, < 7.1)
-      schema_plus_core (~> 3.1.0)
-    schema_validations (2.4.1)
-      activerecord (>= 5.2, < 7.1)
-      schema_plus_columns (~> 1.0.1)
-      valuable
     sentry-ruby (5.12.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
     sexp_processor (4.17.0)
@@ -540,7 +522,6 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
-    valuable (0.9.14)
     view_component (3.0.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
@@ -622,7 +603,6 @@ DEPENDENCIES
   ruby-debug-ide
   rubycritic
   sassc-rails
-  schema_validations
   sentry-ruby
   shoulda-matchers (~> 5.0)
   simple-navigation
