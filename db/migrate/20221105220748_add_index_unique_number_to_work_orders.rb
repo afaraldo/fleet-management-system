@@ -6,7 +6,7 @@ class AddIndexUniqueNumberToWorkOrders < ActiveRecord::Migration[7.0]
       t.string :area, null: false
     end
     remove_index :work_orders, :number
-    add_index :work_orders, :number, unique: true, if_not_exists: true
+    add_index :work_orders, :number, if_not_exists: true
     add_index :work_orders, :start_date, if_not_exists: true
     add_index :work_orders, :final_date, if_not_exists: true
     add_index :work_orders, :status, if_not_exists: true

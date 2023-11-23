@@ -66,7 +66,7 @@ gem 'ransack'
 gem 'importmap-rails'
 
 # Use to dry validation between database and model [https://github.com/SchemaPlus/schema_validations]
-gem 'schema_validations'
+# gem 'schema_validations'
 
 # Use to build navbar [https://github.com/codeplant/simple-navigation]
 gem 'simple-navigation'
@@ -179,8 +179,11 @@ gem 'annotate', '~> 3.2'
 gem 'chroma' # [https://github.com/jfairbank/chroma]
 
 gem 'actionpack', '>= 7.0.5.1'
+gem 'activerecord-multi-tenant' # [https://github.com/citusdata/activerecord-multi-tenant]
 gem 'activesupport', '>= 7.0.7.1'
 gem 'algoliasearch-rails' # [https://github.com/algolia/algoliasearch-rails]
 gem 'aws-sdk-s3'
 gem 'discard', '~> 1.2' # [https://github.com/jhawthorn/discard]
 gem 'groupdate' # [https://github.com/ankane/groupdate]
+gem 'sentry-ruby' # [https://github.com/getsentry/sentry-ruby]
+gem 'stackprof' # [https://github.com/getsentry/sentry-ruby]

@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  get 'reports/work_orders'
-  get 'searcher/search'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  devise_for :users
-  mount SystemSettings::Engine, at: '/system_settings'
+  devise_for :users, controllers: { sessions: 'custom_sessions' }
 
   authenticate :user, ->(user) { user.admin? } do
     mount GoodJob::Engine => 'good_job'
+    mount SystemSettings::Engine, at: '/system_settings'
   end
 
   mount Blazer::Engine, at: 'reports'
@@ -16,14 +14,16 @@ Rails.application.routes.draw do
   resources :employees
   resources :insurance_plans
   resources :maintenances
+  resources :organizations
   resources :repairs
   resources :suppliers
   resources :users do
     resources :notifications, only: %i[index show destroy]
   end
   resources :work_orders
-  resources :work_order_reports
   get 'search', to: 'search#index'
+  get 'reports/work_orders'
+  get 'searcher/search'
 
   # Defines the root path route ("/")
   root 'dash_boards#index'

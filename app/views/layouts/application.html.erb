@@ -2,9 +2,9 @@
 <html id="html-document" lang="en">
   <head>
     <title>
-      <%= SystemSettings[:site_name] %>
+      <%= current_user&.organization&.name || "Sistema de Gestión" %>
     </title>
-    <%= favicon_link_tag asset_path(SystemSettings[:favicon]) %>
+    <%= favicon_link_tag asset_path(current_user&.organization&.logo.url) %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <%= csrf_meta_tags %>

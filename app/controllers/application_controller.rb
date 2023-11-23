@@ -1,8 +1,24 @@
 # Main class controller
 class ApplicationController < ActionController::Base
   include ControllerResources
+  set_current_tenant_through_filter # Required to opt into this behavior
+
   before_action :authenticate_user!
   before_action :set_paper_trail_whodunnit
+  before_action :set_organization_as_tenant
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def set_organization_as_tenant
+    return if current_user.blank?
+
+    organization = current_user.organization
+    set_current_tenant(organization)
+  end
+
+  def set_sentry_context
+    Sentry.set_user(id: current_user.id, email: current_user.email) if current_user
+  end
+
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
@@ -101,6 +117,9 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:org])
+  end
   # Override this method to provide your own search params.
   # Also it save filters in params[:q] in cookies.
   # This allow remember last action in index views

@@ -19,17 +19,33 @@
 #  sign_in_count          :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  organization_id        :bigint
 #
 # Indexes
 #
 #  index_users_on_discarded_at          (discarded_at)
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_email                 (email)
+#  index_users_on_organization_id       (organization_id)
+#  index_users_on_reset_password_token  (reset_password_token)
 #
 class User < ApplicationRecord
+  # Constants
+  # Enums
+  # Associations (belongs_to, has_one, has_many, has_and_belongs_to_many)
+  # Extensions (includes Rails concerns)
+  # Scopes
+  # Validations
+  # Callbacks (before_save, after_commit, etc.)
+  # Delegations
+  # Virtual attributes (attr_accessor, etc.)
+  # Class methods (self.method)
+  # Instance methods
+  # Private methods
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable
+  multi_tenant :organization
 
   has_one_attached :avatar # Active Storage
   has_many :notifications, as: :recipient, dependent: :destroy # https://github.com/excid3/noticed

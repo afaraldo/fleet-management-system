@@ -10,12 +10,14 @@
 #  updated_at             :datetime         not null
 #  car_id                 :bigint           not null
 #  mechanical_workshop_id :bigint           not null
+#  organization_id        :bigint
 #
 # Indexes
 #
 #  index_repairs_on_car_id                  (car_id)
 #  index_repairs_on_discarded_at            (discarded_at)
 #  index_repairs_on_mechanical_workshop_id  (mechanical_workshop_id)
+#  index_repairs_on_organization_id         (organization_id)
 #
 # Foreign Keys
 #

@@ -16,16 +16,32 @@
 #  year                :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  organization_id     :bigint
 #
 # Indexes
 #
-#  index_cars_on_discarded_at  (discarded_at)
-#  index_cars_on_plate_number  (plate_number) UNIQUE
-#  index_cars_on_rasp          (rasp)
+#  index_cars_on_discarded_at     (discarded_at)
+#  index_cars_on_organization_id  (organization_id)
+#  index_cars_on_plate_number     (plate_number)
+#  index_cars_on_rasp             (rasp)
 #
 class Car < ApplicationRecord
+  # Constants
+  # Enums
+  # Associations (belongs_to, has_one, has_many, has_and_belongs_to_many)
+  # Extensions (includes Rails concerns)
+  # Scopes
+  # Validations
+  # Callbacks (before_save, after_commit, etc.)
+  # Delegations
+  # Virtual attributes (attr_accessor, etc.)
+  # Class methods (self.method)
+  # Instance methods
+  # Private methods
+
   include AlgoliaSearch
   include Rails.application.routes.url_helpers
+
   has_many :work_orders, dependent: :destroy
   has_many :maintenances, dependent: :destroy
   has_and_belongs_to_many :insurance_plans
@@ -44,14 +60,6 @@ class Car < ApplicationRecord
     end
   end
 
-  def to_s
-    "#{type_car} #{make} #{model} #{plate_number}"
-  end
-
-  def text
-    to_s
-  end
-
   def self.ransackable_attributes(_auth_object = nil)
     %w[chassis color created_at engine horometro id make model plate_number assigned_dependency rasp updated_at]
   end
@@ -60,6 +68,7 @@ class Car < ApplicationRecord
     %w[maintenances work_orders insurance_plans]
   end
 
+  multi_tenant :organization
   algoliasearch enqueue: true, disable_indexing: Rails.env.test? do
     attributes :plate_number, :type_car, :rasp, :model, :year, :make, :color, :chassis, :assigned_dependency
 
@@ -80,5 +89,13 @@ class Car < ApplicationRecord
 
   def url
     car_path(self)
+  end
+
+  def to_s
+    "#{type_car} #{make} #{model} #{plate_number}"
+  end
+
+  def text
+    to_s
   end
 end

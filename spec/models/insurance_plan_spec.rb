@@ -11,12 +11,14 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  insurance_carrier_id :bigint
+#  organization_id      :bigint
 #
 # Indexes
 #
 #  index_insurance_plans_on_discarded_at          (discarded_at)
 #  index_insurance_plans_on_expiry_date           (expiry_date)
 #  index_insurance_plans_on_insurance_carrier_id  (insurance_carrier_id)
+#  index_insurance_plans_on_organization_id       (organization_id)
 #
 # Foreign Keys
 #

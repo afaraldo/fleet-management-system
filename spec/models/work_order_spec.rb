@@ -2,36 +2,38 @@
 #
 # Table name: work_orders
 #
-#  id            :bigint           not null, primary key
-#  area          :string           not null
-#  city          :string
-#  cost          :integer          default(0), not null
-#  description   :string           not null
-#  discarded_at  :datetime
-#  final_date    :datetime         not null
-#  final_mileage :integer
-#  final_oil     :integer
-#  integer       :string
-#  number        :bigint           not null
-#  start_date    :datetime         not null
-#  start_mileage :integer
-#  status        :integer          not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  car_id        :bigint
-#  employee_id   :bigint
+#  id              :bigint           not null, primary key
+#  area            :string           not null
+#  city            :string
+#  cost            :integer          default(0), not null
+#  description     :string           not null
+#  discarded_at    :datetime
+#  final_date      :datetime         not null
+#  final_mileage   :integer
+#  final_oil       :integer
+#  integer         :string
+#  number          :bigint           not null
+#  start_date      :datetime         not null
+#  start_mileage   :integer
+#  status          :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  car_id          :bigint
+#  employee_id     :bigint
+#  organization_id :bigint
 #
 # Indexes
 #
-#  index_work_orders_on_car_id        (car_id)
-#  index_work_orders_on_city          (city)
-#  index_work_orders_on_description   (description)
-#  index_work_orders_on_discarded_at  (discarded_at)
-#  index_work_orders_on_employee_id   (employee_id)
-#  index_work_orders_on_final_date    (final_date)
-#  index_work_orders_on_number        (number) UNIQUE
-#  index_work_orders_on_start_date    (start_date)
-#  index_work_orders_on_status        (status)
+#  index_work_orders_on_car_id           (car_id)
+#  index_work_orders_on_city             (city)
+#  index_work_orders_on_description      (description)
+#  index_work_orders_on_discarded_at     (discarded_at)
+#  index_work_orders_on_employee_id      (employee_id)
+#  index_work_orders_on_final_date       (final_date)
+#  index_work_orders_on_number           (number)
+#  index_work_orders_on_organization_id  (organization_id)
+#  index_work_orders_on_start_date       (start_date)
+#  index_work_orders_on_status           (status)
 #
 # Foreign Keys
 #

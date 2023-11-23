@@ -16,12 +16,14 @@
 #  year                :integer
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  organization_id     :bigint
 #
 # Indexes
 #
-#  index_cars_on_discarded_at  (discarded_at)
-#  index_cars_on_plate_number  (plate_number) UNIQUE
-#  index_cars_on_rasp          (rasp)
+#  index_cars_on_discarded_at     (discarded_at)
+#  index_cars_on_organization_id  (organization_id)
+#  index_cars_on_plate_number     (plate_number)
+#  index_cars_on_rasp             (rasp)
 #
 require 'rails_helper'
 
