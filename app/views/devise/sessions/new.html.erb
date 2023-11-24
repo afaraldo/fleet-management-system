@@ -39,6 +39,7 @@
             <%= link_to t(:forgot_password), new_user_password_path %>
           </div>
           <div class='mb-3'>
+            <%= f.hidden_field :organization_id, value: @organization.id %>
             <%= f.submit "Iniciar Sesión", class: "btn btn-primary d-grid w-100" %>
           </div>
       <% end %>

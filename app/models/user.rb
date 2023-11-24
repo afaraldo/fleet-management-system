@@ -57,10 +57,6 @@ class User < ApplicationRecord
   scope :administrative_only, -> { where(role: %w[admin secretary]) }
   scope :notifications_activated, -> { where(receive_notifications: true) }
 
-  def to_s
-    "#{self.class.model_name.human} #{email}"
-  end
-
   enum role: { admin: 0, secretary: 1, superadmin: 2 }
 
   def self.ransackable_attributes(_auth_object = nil)
@@ -69,5 +65,16 @@ class User < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     %w[avatar_attachment avatar_blob notifications versions]
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    email = conditions.delete(:email)
+    organization_id = conditions.delete(:organization_id)
+    where(email:, organization_id:).first
+  end
+
+  def to_s
+    "#{self.class.model_name.human} #{email}"
   end
 end

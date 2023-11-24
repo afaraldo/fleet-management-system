@@ -4,7 +4,7 @@
   <title>
     <%= @organization&.name || "Sistema de Gestión" %>
   </title>
-  <%= favicon_link_tag asset_path(@logo_url) %>
+  <%= favicon_link_tag asset_path(@logo_url) if @logo_url %>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <%= csrf_meta_tags %>

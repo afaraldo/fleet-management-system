@@ -8,6 +8,16 @@ class ApplicationController < ActionController::Base
   before_action :set_organization_as_tenant
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # protect_from_forgery with: :exception
+  #
+  # unless Rails.application.config.consider_all_requests_local
+  #   rescue_from Exception, with: :render_500
+  #   rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  #   rescue_from ActionController::RoutingError, with: :render_404
+  #
+  # end
+
+
   def set_organization_as_tenant
     return if current_user.blank?
 
@@ -118,7 +128,7 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:org])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[org organization_id])
   end
   # Override this method to provide your own search params.
   # Also it save filters in params[:q] in cookies.
@@ -180,5 +190,13 @@ class ApplicationController < ActionController::Base
       format.html { render :edit, status: :unprocessable_entity }
       format.json { render json: exception.record.errors, status: :unprocessable_entity }
     end
+  end
+
+  def render_404(exception)
+    render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
+  end
+
+  def render_500(exception)
+    render file: Rails.public_path.join('500.html'), status: :internal_server_error, layout: false
   end
 end
