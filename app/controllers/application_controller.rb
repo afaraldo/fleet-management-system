@@ -6,17 +6,14 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_paper_trail_whodunnit
   before_action :set_organization_as_tenant
+  before_action :set_sentry_context
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # protect_from_forgery with: :exception
-  #
-  # unless Rails.application.config.consider_all_requests_local
-  #   rescue_from Exception, with: :render_500
-  #   rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  #   rescue_from ActionController::RoutingError, with: :render_404
-  #
-  # end
-
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from Exception, with: :render_500
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+    rescue_from ActionController::RoutingError, with: :render_404
+  end
 
   def set_organization_as_tenant
     return if current_user.blank?
@@ -126,6 +123,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path(org: MultiTenant.current_tenant.name)
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: %i[org organization_id])

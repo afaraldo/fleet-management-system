@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users, controllers: { sessions: 'custom_sessions' }
 
-  authenticate :user, ->(user) { user.admin? } do
+  authenticate :user, ->(user) { user.superadmin? } do
     mount GoodJob::Engine => 'good_job'
     mount SystemSettings::Engine, at: '/system_settings'
   end

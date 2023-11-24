@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 PaperTrail.request(whodunnit: 'iceberg.04+gobernacion-itapua@gmail.com') do
-  organization_names = ['Gobernacion Itapúa', 'Municipalidad de Cambyreta']
+  organization_names = ['Gobernación Itapúa', 'Municipalidad de Cambyreta']
   organization_names.each do |name|
     organization = Organization.find_or_create_by!(name:)
     logo_path = Rails.root.join('app', 'assets', 'images', 'logos', "#{name}.png")

@@ -21,4 +21,15 @@ class Organization < ApplicationRecord
   # Instance methods
   # Private methods
   has_one_attached :logo
+
+  has_many :cars, dependent: :destroy
+  has_many :employees, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :users, dependent: :destroy
+  has_many :maintenances, dependent: :destroy
+  has_many :repairs, dependent: :destroy
+  has_many :suppliers, dependent: :destroy
+  has_many :work_orders, dependent: :destroy
+  has_many :insurance_carriers, dependent: :destroy
+  has_many :mechanical_workshops, dependent: :destroy
 end
