@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_19_115355) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_24_050001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -116,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_115355) do
     t.bigint "organization_id"
     t.index ["discarded_at"], name: "index_cars_on_discarded_at"
     t.index ["organization_id"], name: "index_cars_on_organization_id"
+    t.index ["plate_number", "organization_id"], name: "index_cars_on_plate_number_and_organization_id", unique: true
     t.index ["plate_number"], name: "index_cars_on_plate_number"
     t.index ["rasp"], name: "index_cars_on_rasp"
   end
@@ -141,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_115355) do
     t.datetime "discarded_at"
     t.bigint "organization_id"
     t.index ["discarded_at"], name: "index_employees_on_discarded_at"
+    t.index ["document", "organization_id"], name: "index_employees_on_document_and_organization_id", unique: true
     t.index ["document"], name: "index_employees_on_document"
     t.index ["organization_id"], name: "index_employees_on_organization_id"
   end

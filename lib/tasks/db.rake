@@ -2,18 +2,30 @@ require 'csv'
 
 namespace :db do
   desc 'Import cars from CSV'
-  task import_cars: :environment do
-    file_path = 'db/data/cars.csv'
+  task :import_cars, %i[relative_path organization_name] => :environment do |t, args|
+    raise 'No file path provided' if args[:relative_path].nil?
+
+    base_path = Rails.root.to_s
+    file_path = File.join(base_path, args[:relative_path])
     model_class = Car
-    unique_by = [:plate_number]
-    Importer.import(file_path, model_class, unique_by)
+    organization_id = Organization.find_by(name: args[:organization_name]).id
+    unique_by = %i[plate_number organization_id]
+    result = Importer.import(file_path, model_class, organization_id, unique_by)
+
+    puts "Object importerd: #{result}"
   end
 
-  desc 'Import cars from CSV'
-  task import_employees: :environment do
-    file_path = 'db/data/employees.csv'
+  desc 'Import employee from CSV'
+  task :import_employees, %i[relative_path organization_name] => :environment do |t, args|
+    raise 'No file path provided' if args[:relative_path].nil?
+
+    base_path = Rails.root.to_s
+    file_path = File.join(base_path, args[:relative_path])
     model_class = Employee
-    unique_by = [:document]
-    Importer.import(file_path, model_class, unique_by)
+    organization_id = Organization.find_by(name: args[:organization_name]).id
+    unique_by = %i[document organization_id]
+    result = Importer.import(file_path, model_class, organization_id, unique_by)
+
+    puts "Object importerd: #{result}"
   end
 end

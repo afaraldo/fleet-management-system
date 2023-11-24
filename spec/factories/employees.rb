@@ -16,9 +16,10 @@
 #
 # Indexes
 #
-#  index_employees_on_discarded_at     (discarded_at)
-#  index_employees_on_document         (document)
-#  index_employees_on_organization_id  (organization_id)
+#  index_employees_on_discarded_at                  (discarded_at)
+#  index_employees_on_document                      (document)
+#  index_employees_on_document_and_organization_id  (document,organization_id) UNIQUE
+#  index_employees_on_organization_id               (organization_id)
 #
 FactoryBot.define do
   factory :employee do

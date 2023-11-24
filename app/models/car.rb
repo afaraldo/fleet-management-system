@@ -20,10 +20,11 @@
 #
 # Indexes
 #
-#  index_cars_on_discarded_at     (discarded_at)
-#  index_cars_on_organization_id  (organization_id)
-#  index_cars_on_plate_number     (plate_number)
-#  index_cars_on_rasp             (rasp)
+#  index_cars_on_discarded_at                      (discarded_at)
+#  index_cars_on_organization_id                   (organization_id)
+#  index_cars_on_plate_number                      (plate_number)
+#  index_cars_on_plate_number_and_organization_id  (plate_number,organization_id) UNIQUE
+#  index_cars_on_rasp                              (rasp)
 #
 class Car < ApplicationRecord
   # Constants
