@@ -51,9 +51,12 @@ This command should initialize a postgresql database and redis database
 rake db:migrate
 rails system_settings:load RAILS_ENV=development
 rake db:seed
+
 rake db:import_cars[db/data/gobernacion/itapua/cars.csv,"Gobernacion Itapúa"]
+
+rake db:import_cars[db/data/municipalidad/cambyreta/cars.csv,"Municipalidad de Cambyreta"]
+
 rake db:import_employees[db/data/gobernacion/itapua/employees.csv,"Gobernacion Itapúa"]
-rake db:import_employees[db/data/municipalidad/cambyreta/cars.csv,"Municipalidad de Cambyreta"]
 
 * How to run the test suite
 
