@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_sentry_context
+    Rails.logger.debug { "User: #{current_user&.inspect}" }
     Sentry.set_user(id: current_user.id, email: current_user.email) if current_user
+    Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
   end
 
   add_breadcrumb 'Inicio', :root_path # Use for breadcrumbs_on_rails gem
@@ -194,10 +196,16 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404(exception)
+    notify_sentry(exception)
     render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
   end
 
   def render_500(exception)
+    notify_sentry(exception)
     render file: Rails.public_path.join('500.html'), status: :internal_server_error, layout: false
+  end
+
+  def notify_sentry(exception)
+    Sentry.capture_exception(exception)
   end
 end
