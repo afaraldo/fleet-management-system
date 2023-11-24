@@ -12,7 +12,7 @@ namespace :db do
     unique_by = %i[plate_number organization_id]
     result = Importer.import(file_path, model_class, organization_id, unique_by)
 
-    puts "Object importerd: #{result}"
+    puts "Object imported: #{result}"
   end
 
   desc 'Import employee from CSV'
@@ -26,6 +26,6 @@ namespace :db do
     unique_by = %i[document organization_id]
     result = Importer.import(file_path, model_class, organization_id, unique_by)
 
-    puts "Object importerd: #{result}"
+    puts "Object imported: #{result}"
   end
 end

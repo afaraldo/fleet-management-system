@@ -185,6 +185,6 @@ gem 'algoliasearch-rails' # [https://github.com/algolia/algoliasearch-rails]
 gem 'aws-sdk-s3'
 gem 'discard', '~> 1.2' # [https://github.com/jhawthorn/discard]
 gem 'groupdate' # [https://github.com/ankane/groupdate]
+gem 'sentry-rails' # [https://github.com/getsentry/sentry-ruby]
 gem 'sentry-ruby' # [https://github.com/getsentry/sentry-ruby]
-gem "sentry-rails" # [https://github.com/getsentry/sentry-ruby]
 gem 'stackprof' # [https://github.com/getsentry/sentry-ruby]

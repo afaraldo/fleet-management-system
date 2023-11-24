@@ -48,6 +48,7 @@ This command should initialize a postgresql database and redis database
 
 * Database initialization
 
+rake db:migrate
 rails system_settings:load RAILS_ENV=development
 rake db:seed
 rake db:import_cars[db/data/gobernacion/itapua/cars.csv,"Gobernacion Itapúa"]
