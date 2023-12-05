@@ -28,7 +28,7 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+/config/master.key:*
 
 # Ignore rubocop html folder
 /rubocop
@@ -63,3 +63,5 @@
 
 /config/credentials/test.key
 /config/production.key
+/config/master.key:Zone.Identifier
+/config/master.key

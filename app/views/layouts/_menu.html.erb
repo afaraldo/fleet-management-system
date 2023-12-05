@@ -27,10 +27,10 @@
       <div class="app-brand demo ">
         <a href="<%= root_path %>>" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <%= image_tag SystemSettings[:logo_file], size: "80x80" %>
+                <%= image_tag @current_user.organization.logo.url, size: "80x80" %>
               </span>
           <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                <%= SystemSettings[:organization_name].html_safe %>
+                <%= @current_user.organization.name %>
               </span>
         </a>
 
@@ -120,8 +120,8 @@
                           <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                         </span>
                   </a>
-                </li>
-                <li>-->
+                </li>-->
+                <li>
                   <div class="dropdown-divider"></div>
                 </li>
                 <li>

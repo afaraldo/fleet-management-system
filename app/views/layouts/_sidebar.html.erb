@@ -1,12 +1,12 @@
 <aside id="layout-menu" class="layout-menu menu-vertical app-brand app-brand-logo menu bg-menu-theme menu-collapsed" data-bg-class="bg-menu-theme">
   <a href="<%= root_path %>" class="app-brand-link gap-2">
-    <%= image_tag SystemSettings[:logo_file],
+    <%= image_tag  @current_user.organization.logo.url,
                   class: "demo h-auto",
                   alt: "logo",
                   width: 80
     %>
     <span class="app-brand-text demo menu-text fw-bolder">
-      <%= SystemSettings[:organization_name].html_safe %>
+      <%= @current_user.organization.name %>
     </span>
   </a>
   <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none" data-controller="navbar">

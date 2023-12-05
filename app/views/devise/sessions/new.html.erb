@@ -7,7 +7,7 @@
             <% if params[:org].present? && Organization.exists?(name: params[:org]) %>
               <%= image_tag @logo_url, alt: @organization.name, size: "250x250" %>
             <% else %>
-              <%= image_tag "logos/Gobernacion Itapúa.png", alt: "Default Logo", size: "250x250" %>
+              <%= image_tag "logos/Gobernación Itapúa.png", alt: "Default Logo", size: "250x250" %>
             <% end %>
           </span>
         </a>
