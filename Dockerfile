@@ -33,14 +33,15 @@ COPY --chown=app:app Gemfile Gemfile.lock package.json yarn.lock ./
 
 # Instala las gemas de la aplicación
 RUN gem install bundler -v '2.2.28' && \
-    bundle config set without 'development test' && \
+    # bundle config set without 'development test' && \
     bundle install --jobs 20 --retry 5
-
-# Instala dependencias JS
-RUN yarn install --production
 
 # Copia el resto de la aplicación al contenedor
 COPY --chown=app:app . .
+
+# Instala dependencias JS
+RUN yarn install
+RUN rake assets:precompile
 
 # Copia el script de entrada a la ubicación deseada en el contenedor
 COPY --chown=app:app entrypoint.sh /usr/bin/
