@@ -58,7 +58,6 @@
 
 # Ignore env var
 .env
-.env.*
 .idea/modules.xml
 
 /config/credentials/test.key
