@@ -25,3 +25,4 @@ services:
     environment:
       DATABASE_URL: "postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@db/${DATABASE_NAME}"
       RAILS_ENV: production
+      RAILS_SERVE_STATIC_FILES: true
