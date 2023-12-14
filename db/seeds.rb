@@ -25,7 +25,7 @@ PaperTrail.request(whodunnit: 'iceberg.04@gmail.com') do
                     role: :superadmin)
       end
 
-      superuser = User.find_by(email: 'karina.sanabria75@gmail.com ')
+      superuser = User.find_by(email: 'karina.sanabria75@gmail.com')
       unless superuser
         User.create(email: 'karina.sanabria75@gmail.com',
                     password: 'test123',

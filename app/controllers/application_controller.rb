@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   before_action :set_sentry_context
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: :render_500
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
-    rescue_from ActionController::RoutingError, with: :render_404
-  end
+  # unless Rails.application.config.consider_all_requests_local
+  #   rescue_from Exception, with: :render500
+  #   rescue_from ActiveRecord::RecordNotFound, with: :render404
+  #   rescue_from ActionController::RoutingError, with: :render404
+  # end
 
   def set_organization_as_tenant
     return if current_user.blank?
@@ -195,17 +195,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def render_404(exception)
+  def render404(exception)
+    Rails.logger.debug exception.full_message
     notify_sentry(exception)
     render file: Rails.public_path.join('404.html'), status: :not_found, layout: false
   end
 
-  def render_500(exception)
+  def render500(exception)
+    Rails.logger.debug exception.full_message
     notify_sentry(exception)
     render file: Rails.public_path.join('500.html'), status: :internal_server_error, layout: false
   end
 
   def notify_sentry(exception)
+    Rails.logger.debug exception.full_message
     Sentry.capture_exception(exception)
   end
 end
