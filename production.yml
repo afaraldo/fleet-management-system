@@ -16,13 +16,14 @@ services:
 #    ports:
 #      - '5432:5432'
   app:
-    build: .
+    image: afaraldo/fleet-management-system:latest
     ports:
       - "3000:3000"
     env_file:
       - .env.production
     volumes:
       - public-data:/app/public
+      - ./log/production.log:/app/log/production.log
     environment:
       DATABASE_URL: "postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@db:${DATABASE_PORT}/${DATABASE_NAME}"
       RAILS_ENV: production
