@@ -68,10 +68,15 @@ class User < ApplicationRecord
   end
 
   def self.find_for_database_authentication(warden_conditions)
+    Rails.logger.info { warden_conditions.inspect.to_s }
+
     conditions = warden_conditions.dup
     email = conditions.delete(:email)
     organization_id = conditions.delete(:organization_id)
-    where(email:, organization_id:).first
+    user = where(email:, organization_id:).first
+    Rails.logger.error { user&.inspect&.to_s }
+
+    user
   end
 
   def to_s
