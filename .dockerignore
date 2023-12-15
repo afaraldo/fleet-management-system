@@ -9,7 +9,8 @@
 .env.*
 .env
 tmp
-log
+log/development.log
+log/test.log
 test
 config/deploy
 public/packs
