@@ -157,7 +157,10 @@ es:
         document: Nro. de Identidad
         address: Distrito
         phone: Teléfono
-        position: Cargo
+        user:
+          email: Correo Electrónico
+          password: Contraseña
+          password_confirmation: Confirmación de contraseña
       insurance_plan:
         type_coverage: Tipo de Cobertura
         contract_date: Fecha de Cobertura

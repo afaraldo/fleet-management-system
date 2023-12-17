@@ -1,6 +1,7 @@
 # This class is a user controller
 class UsersController < ApplicationController
   resource :user
+
   # GET
   def edit
     if can? :read, User

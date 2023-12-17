@@ -44,6 +44,26 @@
           </div>
         </div>
       </div>
+      <%= f.fields_for :user do |user_fields| %>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= user_fields.input_field :email, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= user_fields.label :email, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= user_fields.input_field :password, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= user_fields.label :password, for: 'floatingInput' %>
+          </div>
+        </div>
+        <div class="col-xl-4 mb-3">
+          <div class='form-floating'>
+            <%= user_fields.input_field :password_confirmation, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+            <%= user_fields.label :password_confirmation, for: 'floatingInput' %>
+          </div>
+        </div>
+      <% end %>
       <div class='col-xl-2 d-grid gap-2'>
         <%= f.button 'submit', class: 'btn btn-primary btn-block' %>
       </div>

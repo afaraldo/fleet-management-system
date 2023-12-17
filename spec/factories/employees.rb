@@ -13,6 +13,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
+#  user_id         :bigint
 #
 # Indexes
 #
@@ -20,6 +21,7 @@
 #  index_employees_on_document                      (document)
 #  index_employees_on_document_and_organization_id  (document,organization_id) UNIQUE
 #  index_employees_on_organization_id               (organization_id)
+#  index_employees_on_user_id                       (user_id)
 #
 FactoryBot.define do
   factory :employee do

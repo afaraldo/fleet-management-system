@@ -13,6 +13,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint
+#  user_id         :bigint
 #
 # Indexes
 #
@@ -20,6 +21,7 @@
 #  index_employees_on_document                      (document)
 #  index_employees_on_document_and_organization_id  (document,organization_id) UNIQUE
 #  index_employees_on_organization_id               (organization_id)
+#  index_employees_on_user_id                       (user_id)
 #
 class Employee < ApplicationRecord
   # Constants
@@ -37,9 +39,14 @@ class Employee < ApplicationRecord
 
   include AlgoliaSearch
 
+  belongs_to :user
   has_many :work_orders, dependent: :restrict_with_error
 
   validates :name, :last_name, :document, presence: true
+  validates :document, uniqueness: { scope: :organization_id }
+
+  accepts_nested_attributes_for :user
+  delegate :email, :password, to: :user
 
   multi_tenant :organization
   algoliasearch enqueue: true, disable_indexing: Rails.env.test? do

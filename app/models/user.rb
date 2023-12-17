@@ -15,7 +15,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer
+#  role                   :string
 #  sign_in_count          :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -23,10 +23,11 @@
 #
 # Indexes
 #
-#  index_users_on_discarded_at          (discarded_at)
-#  index_users_on_email                 (email)
-#  index_users_on_organization_id       (organization_id)
-#  index_users_on_reset_password_token  (reset_password_token)
+#  index_users_on_discarded_at               (discarded_at)
+#  index_users_on_email                      (email)
+#  index_users_on_email_and_organization_id  (email,organization_id) UNIQUE
+#  index_users_on_organization_id            (organization_id)
+#  index_users_on_reset_password_token       (reset_password_token)
 #
 class User < ApplicationRecord
   # Constants
@@ -48,16 +49,18 @@ class User < ApplicationRecord
   multi_tenant :organization
 
   has_one_attached :avatar # Active Storage
+  has_one :employee
   has_many :notifications, as: :recipient, dependent: :destroy # https://github.com/excid3/noticed
 
   validates :email, presence: true
   validates :password, confirmation: { presence: true }
+  validates :email, uniqueness: { scope: :organization_id }
 
   # SCOPE
   scope :administrative_only, -> { where(role: %w[admin secretary]) }
   scope :notifications_activated, -> { where(receive_notifications: true) }
 
-  enum role: { admin: 0, secretary: 1, superadmin: 2 }
+  enum role: { admin: 'ADMIN', secretary: 'Secretario', superadmin: 'SUPERADMIN' }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[email last_sign_in_at profile_foto reset_password_sent_at reset_password_token]

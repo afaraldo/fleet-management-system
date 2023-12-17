@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_24_050001) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_17_212157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -141,10 +141,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_050001) do
     t.string "position"
     t.datetime "discarded_at"
     t.bigint "organization_id"
+    t.bigint "user_id"
     t.index ["discarded_at"], name: "index_employees_on_discarded_at"
     t.index ["document", "organization_id"], name: "index_employees_on_document_and_organization_id", unique: true
     t.index ["document"], name: "index_employees_on_document"
     t.index ["organization_id"], name: "index_employees_on_organization_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -327,11 +329,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_050001) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role"
+    t.string "role"
     t.datetime "discarded_at"
     t.boolean "receive_notifications", default: false, null: false
     t.bigint "organization_id"
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
+    t.index ["email", "organization_id"], name: "index_users_on_email_and_organization_id", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"

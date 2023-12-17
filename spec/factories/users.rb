@@ -15,7 +15,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer
+#  role                   :string
 #  sign_in_count          :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -23,10 +23,11 @@
 #
 # Indexes
 #
-#  index_users_on_discarded_at          (discarded_at)
-#  index_users_on_email                 (email)
-#  index_users_on_organization_id       (organization_id)
-#  index_users_on_reset_password_token  (reset_password_token)
+#  index_users_on_discarded_at               (discarded_at)
+#  index_users_on_email                      (email)
+#  index_users_on_email_and_organization_id  (email,organization_id) UNIQUE
+#  index_users_on_organization_id            (organization_id)
+#  index_users_on_reset_password_token       (reset_password_token)
 #
 FactoryBot.define do
   factory :user do
