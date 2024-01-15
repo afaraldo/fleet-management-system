@@ -10,7 +10,7 @@ class EmployeesController < ApplicationController
   end
 
   def extra_params
-    [user_attributes: [:email, :password]]
+    [user_attributes: %i[email password password_confirmation role id]]
   end
 
 end

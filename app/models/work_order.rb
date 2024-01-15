@@ -15,7 +15,7 @@
 #  number          :bigint           not null
 #  start_date      :datetime         not null
 #  start_mileage   :integer
-#  status          :integer          not null
+#  status          :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  car_id          :bigint
@@ -69,7 +69,12 @@ class WorkOrder < ApplicationRecord
   validates_comparison_of :start_date, less_than: :final_date
   validates_comparison_of :final_date, greater_than: :start_date
 
-  enum status: { requested: 0, authorized: 1, finished: 2 }
+  before_validation :set_default_status, if: :new_record?
+  before_create :set_number
+
+
+  enum status: { draft: 'DRAFT', requested: 'REQUESTED', authorized: 'AUTHORIZED', accepted: 'ACCEPTED',
+                 finished: 'FINISHED' }
 
   delegate :plate_number, to: :car, prefix: true
   delegate :full_name, to: :employee, prefix: true, allow_nil: true
@@ -188,5 +193,18 @@ class WorkOrder < ApplicationRecord
 
     errors.add :start_date, :busy_date, record: wo1.first.to_s
     errors.add :final_date, :busy_date, record: wo2.first.to_s
+  end
+
+  def set_default_status
+    self.status ||= :requested
+  end
+
+  def set_number
+    Organization.transaction do
+      organization = Organization.lock.find(organization_id)
+
+      last_number = WorkOrder.where(organization_id: organization.id).maximum(:number) || 0
+      self.number = last_number + 1
+    end
   end
 end

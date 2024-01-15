@@ -50,7 +50,7 @@ class AccessPolicy
       can :authorize, WorkOrder
       can :view_report, WorkOrder
     end
-    # Less privileged secretary role
+    # Less privileged admin role
     role :secretary, { secretary?: true } do
       can :manage, Car
       can :manage, Employee
@@ -60,6 +60,11 @@ class AccessPolicy
       can :manage, Supplier
       can :manage, WorkOrder
       can :view_report, WorkOrder
+    end
+
+    # Less privileged secretary role
+    role :driver, { driver?: true } do
+      can :manage, WorkOrder
     end
   end
 end

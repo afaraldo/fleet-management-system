@@ -64,7 +64,8 @@ SimpleNavigation::Configuration.run do |navigation|
                   content_tag(:div, I18n.t('navbar.dashboard'), class: nil),
                   main_app.root_path,
                   html: { class: 'menu-item' },
-                  link_html: { class: 'menu-link' }
+                  link_html: { class: 'menu-link' },
+                  if: proc { can? :read, Employee }
 
     primary.item  :key2,
                   content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-id-card') +
@@ -138,6 +139,15 @@ SimpleNavigation::Configuration.run do |navigation|
                   highlights_on: %r{/users},
                   if: proc { can? :read, User }
 
+    primary.item  :travels,
+                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bx-file') +
+                    content_tag(:div, I18n.t('navbar.travels'), class: nil),
+                  main_app.travels_path,
+                  html: { class: 'menu-item' },
+                  link_html: { class: 'menu-link' },
+                  highlights_on: %r{/travels},
+                  if: proc { can? :read, WorkOrder }
+
     primary.item :reports,
                  content_tag(:i, nil, class: 'menu-icon tf-icons bx bxs-report me-2') +
                  content_tag(:div, I18n.t('navbar.report'), class: nil),
@@ -154,6 +164,7 @@ SimpleNavigation::Configuration.run do |navigation|
                  html: { class: 'menu-item' },
                  link_html: { class: 'menu-link' },
                  if: proc { can? :read, SystemSettings }
+
 
     # Add an item which has a sub navigation (same params, but with block)
     # primary.item :key_2, 'name', root_path, {} do |sub_nav|

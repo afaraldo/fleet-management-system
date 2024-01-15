@@ -1,30 +1,20 @@
-<div class="card mb-4">
-  <h5 class="card-header">
+<div class= "card mb-4">
+  <h5 class= "card-header">
     <%= t('form')%>
   </h5>
-  <div class="card-body">
+  <div class= "card-body" data-controller= "work-order-date">
     <%= simple_form_for work_order, class: 'form-floating', novalidate: true do |f| %>
-      <div class='row'>
-        <div class="col-xl-2">
-          <div class='mb-3'>
-            <div class='form-floating'>
-              <%= f.input_field :number,
-                                class: 'form-control',
-                                'aria-describedby': "floatingInputHelp",
-                                value: f.object.number || last_number
-              %>
-              <%= f.label :number, for: 'floatingInput' %>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-2">
-          <div class='mb-3'>
-            <div class='form-floating'>
+      <div class= 'row'>
+        <div class= "col-xl-2">
+          <div class= 'mb-3'>
+            <div class= 'form-floating'>
               <%= f.input_field :start_date,
                                 as: :string,
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
+                                  action: "input->work-order-date#updateEndDate",
+                                  "work-order-date-target": "start",
                                   flatpickr_enable_time: true
                                 },
                                 autofocus: true
@@ -33,50 +23,40 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-2">
-          <div class='mb-3'>
-            <div class='form-floating'>
+        <div class= "col-xl-2">
+          <div class= 'mb-3'>
+            <div class= 'form-floating'>
               <%= f.input_field :final_date,
                                 as: :string,
                                 class: 'form-control',
                                 data: {
                                   controller: "flatpickr",
+                                  "work-order-date-target": "end",
                                 }
               %>
               <%= f.label :final_date, for: 'floatingInput' %>
             </div>
           </div>
         </div>
-        <div class="col-xl-4">
-          <div class='mb-3'>
-            <div class='form-floating'>
+        <div class= "col-xl-4">
+          <div class= 'mb-3'>
+            <div class= 'form-floating'>
               <%= f.input_field :city, class: 'form-control', 'aria-describedby': "floatingInputHelp" %>
               <%= f.label :city, for: 'floatingInput' %>
             </div>
           </div>
         </div>
-        <div class="col-xl-2">
-          <div class='mb-3'>
-            <div class='form-floating'>
-              <%= f.input_field :status,
-                                class: 'form-control',
-                                'aria-describedby': "floatingInputHelp",
-                                selected: f.object.status || :requested,
-                                onlyread: true
-              %>
-              <%= f.label :status, for: 'floatingInput' %>
-            </div>
-          </div>
-        </div>
       </div>
-      <div class="row">
-        <div class="col-xl-8">
-          <div class='form-floating mb-3'>
+      <div class= "row">
+        <div class= "col-xl-8">
+          <div class= 'form-floating mb-3'>
             <%= f.association :car,
                               collection: f.object.car ? [f.object.car] : Car.all.page(0),
                               include_blank: true,
+                              label: false,
                               placeholder: t("activerecord.attributes.work_order.car"),
                               input_html: {
+                                class: 'form-control',
                                 data: {
                                   controller: 'ts--select',
                                   'ts--select-url-value': cars_path,
@@ -86,67 +66,78 @@
             %>
           </div>
         </div>
-        <div class="col-xl-2">
-          <div class='form-floating mb-3'>
+        <div class= "col-xl-2">
+          <div class= 'form-floating mb-3'>
             <%= f.input_field :area, class: 'form-control', 'aria-describedby':"floatingInputHelp", autocomplete: true%>
             <%= f.label :area, for: 'floatingInput' %>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class='form-floating mb-3'>
-          <%= f.input_field :description,
-                            as: :text,
-                            class: 'form-control',
-                            'aria-describedby': "floatingInputHelp",
-                            cols: 5,
-                            rows: 10
-          %>
-          <%= f.label :description, for: 'floatingInput' %>
+        <div class="col-xl-12">
+          <div class= 'form-floating mb-3'>
+            <%= f.input_field :description,
+                              as: :text,
+                              class: 'form-control',
+                              'aria-describedby': "floatingInputHelp",
+                              cols: 5,
+                              rows: 10
+            %>
+            <%= f.label :description, for: 'floatingInput' %>
+          </div>
         </div>
       </div>
-      <% unless work_order.requested? %>
+      <% if work_order.requested? || work_order.authorized? %>
+        <div class="divider text-start-center">
+          <div class= "divider-text">Completar para Autorizar</div>
+        </div>
+        <div class= "row">
+          <div class="col-xl-12">
+            <div class= 'form-floating mb-3'>
+              <%=  f.association :employee, collection: f.object.employee ? [f.object.employee] : Employee.all.page(0),
+                                 include_blank: true,
+                                 placeholder: t("activerecord.attributes.work_order.employee"),
+                                 input_html: {
+                                   data: {
+                                     controller: 'ts--select',
+                                     'ts--select-url-value': employees_path
+                                   }
+                                 }
+              %>
+              <%= f.label :employee_id, for: 'floatingInput' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <% if work_order.authorized? %>
     <div class="divider text-start-center">
-            <div class="divider-text">Completar al finalizar</div>
+            <div class= "divider-text">Completar al finalizar</div>
     </div>
     <div class="row">
-      <div class="col-xl-4">
-        <div class='form-floating mb-3'>
-          <%=  f.input_field :start_mileage, class: 'form-control', 'aria-describedby':"floatingInputHelp"  %>
+      <div class= "col-xl-4">
+        <div class= 'form-floating mb-3'>
+          <%=  f.input_field :start_mileage, class: 'form-control', 'aria-describedby': "floatingInputHelp"  %>
           <%= f.label :start_mileage, for: 'floatingInput' %>
         </div>
       </div>
       <div class='col-xl-4'>
         <div class='form-floating mb-3'>
-          <%=  f.input_field :final_mileage, class: 'form-control', 'aria-describedby':"floatingInputHelp"  %>
+          <%=  f.input_field :final_mileage, class: 'form-control', 'aria-describedby': "floatingInputHelp"  %>
           <%= f.label :final_mileage, for: 'floatingInput' %>
         </div>
       </div>
-      <div class='col-xl-4'>
+      <div class= 'col-xl-4'>
         <div class='form-floating mb-3'>
-          <%=  f.input_field :final_oil, class: 'form-control', 'aria-describedby':"floatingInputHelp"  %>
+          <%=  f.input_field :final_oil, class: 'form-control', 'aria-describedby': "floatingInputHelp"  %>
           <%= f.label :final_oil, for: 'floatingInput' %>
         </div>
       </div>
-      <div class='col-xl-4'>
-        <div class='form-floating mb-3'>
-          <%=  f.input_field :cost, class: 'form-control', 'aria-describedby':"floatingInputHelp"  %>
+      <div class= 'col-xl-4'>
+        <div class= 'form-floating mb-3'>
+          <%= f.input_field :cost, class: 'form-control', 'aria-describedby': "floatingInputHelp"  %>
           <%= f.label :cost, for: 'floatingInput' %>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class='form-floating mb-3'>
-        <%=  f.association :employee, collection: f.object.employee ? [f.object.employee] : Employee.all.page(0),
-                              include_blank: true,
-                              placeholder: t("activerecord.attributes.work_order.employee"),
-                              input_html: {
-                                data: {
-                                  controller: 'ts--select',
-                                  'ts--select-url-value': employees_path
-                                }
-                              }
-             %>
       </div>
     </div>
     <%  end %>
@@ -154,7 +145,7 @@
         <%= f.button 'submit', class: 'btn-primary btn-block' %>
       </div>
     <% end %>
-      <div class='mt-2'>
+      <div class= 'mt-2'>
         <% if can? :authorize, WorkOrder %>
           <%= button_to t('authorize'),
                         work_order_path(work_order),
@@ -173,16 +164,16 @@
                       class: 'btn btn-secondary' if work_order.authorized? %>
       </div>
   </div>
-  <div class="card-footer text-right">
-    <small class="text-light fw-semibold">
+  <div class= "card-footer text-right">
+    <small class= "text-light fw-semibold">
       <%= "Solicitado por #{work_order.requested_by.email} el #{datetime_format(work_order.requested_on)}" if work_order.requested_by %>
     </small>
     <br>
-    <small class="text-light fw-semibold">
+    <small class= "text-light fw-semibold">
       <%= "Autorizado por #{work_order.authorized_by.email} el #{datetime_format(work_order.authorized_on)}" if work_order.authorized_by %>
     </small>
     <br>
-    <small class="text-light fw-semibold">
+    <small class= "text-light fw-semibold">
       <%= "Finalizado por #{work_order.finished_by.email} el #{datetime_format(work_order.finished_on)}" if work_order.finished_by %>
     </small>
   </div>

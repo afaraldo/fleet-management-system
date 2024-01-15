@@ -23,6 +23,7 @@ es:
       role:
         admin: Administrador
         secretary: Secretario/a
+        driver: Chofer
   buttons:
     new: Agregar
     edit: Editar
@@ -128,7 +129,7 @@ es:
         start_mileage: Km Inicio
         final_mileage: Km Fin
         distance: Recorrido
-        employee: Realizado por
+        employee: Encargado
         requested_on: Solicitado el
         requested_by: Solicitado por
         authorized_on: Authorizado el
@@ -209,7 +210,7 @@ es:
       - viernes
       - sábado
     formats:
-      default: "%-d/%-m/%Y"
+      default: "%d %b %Y"
       long: "%-d de %B de %Y"
       short: "%-d de %b"
     month_names:
@@ -402,6 +403,7 @@ es:
     dashboard: "Dashboard"
     car: "Vehículos"
     employee: "Funcionarios"
+    travels: Viajes
     work_order: "Ordenes de Trabajo"
     supplier: "Proveedores"
     maintenance: "Mantenimientos"

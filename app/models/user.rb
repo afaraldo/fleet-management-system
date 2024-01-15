@@ -60,7 +60,7 @@ class User < ApplicationRecord
   scope :administrative_only, -> { where(role: %w[admin secretary]) }
   scope :notifications_activated, -> { where(receive_notifications: true) }
 
-  enum role: { admin: 'ADMIN', secretary: 'Secretario', superadmin: 'SUPERADMIN' }
+  enum role: { admin: 'ADMIN', driver: 'DRIVER', secretary: 'SECRETARY', superadmin: 'SUPERADMIN' }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[email last_sign_in_at profile_foto reset_password_sent_at reset_password_token]

@@ -15,7 +15,7 @@
 #  number          :bigint           not null
 #  start_date      :datetime         not null
 #  start_mileage   :integer
-#  status          :integer          not null
+#  status          :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  car_id          :bigint

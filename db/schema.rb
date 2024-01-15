@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_17_212157) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_13_224918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -366,7 +366,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_17_212157) do
     t.datetime "final_date", null: false
     t.integer "final_oil"
     t.string "area", null: false
-    t.integer "status", null: false
+    t.string "status", null: false
     t.datetime "discarded_at"
     t.integer "cost", default: 0, null: false
     t.bigint "organization_id"

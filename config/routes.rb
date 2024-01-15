@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'travels/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users, controllers: { sessions: 'custom_sessions' }
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   get 'search', to: 'search#index'
   get 'reports/work_orders'
   get 'searcher/search'
+  resources :travels, only: %i[index update]
 
   # Defines the root path route ("/")
   root 'dash_boards#index'

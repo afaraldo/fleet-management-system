@@ -21,3 +21,6 @@ application.register("ts--select", Ts__SelectController)
 
 import WorkOrderWidgetController from "./work_order_widget_controller"
 application.register("work-order-widget", WorkOrderWidgetController)
+
+import WorkOrderDateController from "./work_order_date_controller"
+application.register("work-order-date", WorkOrderDateController)

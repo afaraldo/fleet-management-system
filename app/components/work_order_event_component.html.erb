@@ -1,0 +1,50 @@
+<div class="col-md-6 col-xl-4 mb-4">
+  <div class="card h-100">
+    <div class="card-body">
+      <div class="bg-label-primary rounded-3 text-center mb-3 pt-4">
+        <% if @work_order.car.image.attached? %>
+          <%= image_tag @work_order.car.image, alt: "Profile picture" %>
+        <% else %>
+          <p>Vehiculo sin imagen</p>
+        <% end %>
+      </div>
+      <h4 class="mb-2 pb-1">Orden de Trabajo #<%= "#{@work_order.number}" %></h4>
+      <p class="small"><%= @work_order.description %></p>
+      <div class="row mb-3 g-3">
+        <div class="col-6">
+          <div class="d-flex">
+            <div class="avatar flex-shrink-0 me-2">
+              <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-calendar-exclamation bx-sm"></i></span>
+            </div>
+            <div>
+              <h6 class="mb-0 text-nowrap"><%= I18n.l(@work_order.start_date.to_date, format: :default) %></h6>
+              <small>Fecha</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex">
+            <div class="avatar flex-shrink-0 me-2">
+              <span class="avatar-initial rounded bg-label-primary"><i class="bx bx-time-five bx-sm"></i></span>
+            </div>
+            <div>
+              <h6 class="mb-0 text-nowrap"><%= @work_order.city %></h6>
+              <small>Destino</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <% if @work_order.accepted? %>
+          <button class="btn btn-primary w-100 d-grid disabled">Aceptado</button>
+        <% else %>
+          <%= button_to travel_path(@work_order), method: :put, class: "btn btn-primary w-100 d-grid" do %>
+            <%= hidden_field_tag 'work_order[status]', 'accepted' %>
+            <%= hidden_field_tag 'work_order[id]', @work_order.id %>
+            Aceptar viaje
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

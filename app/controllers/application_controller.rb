@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
   def update
     model.send(:update!, model_params)
     record = instance_variable_set "@#{resource_name}", model
-    flash[:success] = I18n.t('updated', record:, class: I18n.t("activerecord.models.#{record.class.name.downcase}.one"))
+    flash[:success] = I18n.t('updated', record:, class: I18n.t("activerecord.models.#{record.class.name.underscore.parameterize}.one"))
     respond_to do |format|
       format.html { redirect_to action: :edit, id: record.id }
     end
@@ -126,6 +126,15 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def after_sign_in_path_for(_resource)
+    case current_user.role
+    when 'driver'
+      travels_index_path
+    else # :superadmin, :admin, :secretary
+      root_path
+    end
+  end
+
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path(org: MultiTenant.current_tenant.name)
   end
@@ -133,6 +142,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: %i[org organization_id])
   end
+
   # Override this method to provide your own search params.
   # Also it save filters in params[:q] in cookies.
   # This allow remember last action in index views
@@ -173,7 +183,7 @@ class ApplicationController < ActionController::Base
   # @return [ActionController::Parameters] Params given to the create
   # method.
   def model_params
-    params.require(model_class.name.underscore.to_sym).permit(_params)
+    params.require(model_class.name.underscore.to_sym).permit(model_class.name.underscore.to_sym)
   end
 
   def _params

@@ -1,0 +1,10 @@
+
+<% if @work_orders.empty? %>
+  <h2>No hay órdenes de trabajo asignados a Usted.</h2>
+<% else %>
+  <% @work_orders.each do |work_order| %>
+    <h1>Ordenes de Trabajo</h1>
+    <%= render(WorkOrderEventComponent.new(work_order:)) %>
+  <% end %>
+<% end %>
+

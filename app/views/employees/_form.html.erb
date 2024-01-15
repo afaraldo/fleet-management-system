@@ -37,7 +37,7 @@
             <%= f.label :phone, for: 'floatingInput' %>
           </div>
         </div>
-        <div class="col-xl-4 mb-3">
+        <div class="col-xl-5 mb-3">
           <div class='form-floating'>
             <%= f.input_field :position, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
             <%= f.label :position, for: 'floatingInput' %>
@@ -45,25 +45,42 @@
         </div>
       </div>
       <%= f.fields_for :user do |user_fields| %>
-        <div class="col-xl-4 mb-3">
-          <div class='form-floating'>
-            <%= user_fields.input_field :email, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= user_fields.label :email, for: 'floatingInput' %>
+        <div class="row">
+          <div class="col-3 mb-3">
+            <div class='form-floating'>
+              <%= user_fields.input_field :email, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+              <%= user_fields.label :email, for: 'floatingInput' %>
+            </div>
           </div>
-        </div>
-        <div class="col-xl-4 mb-3">
-          <div class='form-floating'>
-            <%= user_fields.input_field :password, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= user_fields.label :password, for: 'floatingInput' %>
+          <div class="col-3 mb-3">
+            <div class='form-floating'>
+              <%= user_fields.input_field :password, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+              <%= user_fields.label :password, for: 'floatingInput' %>
+            </div>
           </div>
-        </div>
-        <div class="col-xl-4 mb-3">
-          <div class='form-floating'>
-            <%= user_fields.input_field :password_confirmation, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
-            <%= user_fields.label :password_confirmation, for: 'floatingInput' %>
+          <div class="col-3 mb-3">
+            <div class='form-floating'>
+              <%= user_fields.input_field :password_confirmation, class:'form-control', 'aria-describedby':"floatingInputHelp" %>
+              <%= user_fields.label :password_confirmation, for: 'floatingInput' %>
+            </div>
           </div>
+          <% if can? :create, User %>
+            <div class="col-3 mb-3">
+              <div class='form-floating'>
+                <%= user_fields.input_field :role,
+                                            class: 'form-control',
+                                            collection: User.roles.except(:superadmin), # Excluimos la opción super_admin
+                                            'aria-describedby':"floatingInputHelp",
+                                            selected: user_fields.object.role || :admin
+                %>
+                <%= user_fields.label :role, for: 'floatingInput' %>
+              </div>
+            </div>
+          <% end %>
         </div>
+
       <% end %>
+
       <div class='col-xl-2 d-grid gap-2'>
         <%= f.button 'submit', class: 'btn btn-primary btn-block' %>
       </div>
